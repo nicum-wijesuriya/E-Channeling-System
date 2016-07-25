@@ -76,6 +76,7 @@
     <Compile Include="ScrSetAppointment.Designer.cs">
       <DependentUpon>ScrSetAppointment.cs</DependentUpon>
     </Compile>
+    <Compile Include="Validation.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
