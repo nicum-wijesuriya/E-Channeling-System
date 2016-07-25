@@ -91,3 +91,4 @@ BEGIN
 	update Patient set isDeleted = false where PID = vPID;
 END //
 DELIMITER ;
+select * from Patient;
