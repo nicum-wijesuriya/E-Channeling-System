@@ -28,7 +28,6 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrSetAppointment));
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -507,9 +506,9 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(12, 309);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(27, 13);
+			this.label3.Size = new System.Drawing.Size(56, 13);
 			this.label3.TabIndex = 0;
-			this.label3.Text = "Title";
+			this.label3.Text = "Nationality";
 			this.label3.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// button2
@@ -566,7 +565,6 @@
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrSetAppointment";
 			this.Text = "Place Appointment";
 			this.groupBox1.ResumeLayout(false);
