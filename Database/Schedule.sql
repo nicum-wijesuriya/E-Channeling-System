@@ -219,12 +219,15 @@ DELIMITER ;
 drop procedure GetFreeSlotsForTheWeek;
 
 DELIMITER //
-create procedure GetFreeSlotsForTheWeek(vDateToFind date, vTime time, vRoomID int)
+create procedure GetFreeSlotsForTheWeek(vDateToFind date, searchStartTime time, searchEndTime time)
 BEGIN
 		DECLARE $StartIndex int; 		# Contains the start index of the starting row in the availalbe schedules
 		DECLARE $EndIndex int;   		# Contains the Last index of the starting row in the availalbe schedules
         DECLARE $CenterStartTime time ; # This is the time when Medical Center Starts 
 		DECLARE $CenterEndTime time ;	# This is the time when Medical Center Ends
+        DECLARE dayCount int;
+        DECLARE $NumOfRooms int;
+        DECLARE countIndex int ;
         
 		set $CenterStartTime = '080000';
         set $CenterEndTime = '200000';
@@ -232,14 +235,14 @@ BEGIN
 		 Select S.SchID into $StartIndex from (
 						select * from Schedule where Status = 2
 					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.RoomID = vRoomID
+		 where weekofyear(S.Date) = weekofyear(vDateToFind)
 		 LIMIT 1;		 
              
 		 
 		 Select S.SchID into $EndIndex from (
 						select * from Schedule where Status = 2
 					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.RoomID = vRoomID 
+		 where weekofyear(S.Date) = weekofyear(vDateToFind) 
 		 ORDER BY S.SchID desc
 		 LIMIT 1;       			
 			
@@ -258,7 +261,7 @@ BEGIN
 			 select S.Date, $CenterStartTime, S.StartTime  from (
 							select * from Schedule where Status = 2
 						   ) AS S 
-			 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.RoomID = vRoomID
+			 where weekofyear(S.Date) = weekofyear(vDateToFind)
 			 LIMIT 1
          )
          UNION         
@@ -273,7 +276,7 @@ BEGIN
 						   (
 								select * from Schedule where Status = 2
 						   ) AS S
-			 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.RoomID = vRoomID
+			 where weekofyear(S.Date) = weekofyear(vDateToFind)
 			 LIMIT 1
 		 )         
          ;
@@ -293,7 +296,7 @@ BEGIN
 							select * from Schedule where Status = 2
 					   ) AS S
                        
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.SchID > $StartIndex AND S.SchID < $EndIndex AND S.RoomID = vRoomID;
+		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.SchID > $StartIndex AND S.SchID < $EndIndex ;
          
          # Inserting the Last row of the Current Schedules into availableSlots
          
@@ -302,16 +305,31 @@ BEGIN
 		 select S.Date, S.EndTime, $CenterEndTime  from (
 						select * from Schedule where Status = 2
 					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.RoomID = vRoomID
+		 where weekofyear(S.Date) = weekofyear(vDateToFind) 
          Order by S.SchID Desc
          LIMIT 1;
          
          # Selecting all in AvailableSlots table
        
          
-         Select * from AvailableSlots 
-         where time_to_sec(StartTime) <= time_to_sec(vTime) AND time_to_sec(EndTime) > time_to_sec(vTime)
-         order by Date;     
+        set $NumOfRooms = (select count(RoomID) from Room);
+        
+        
+        set countIndex = 1;
+        set dayCount = 0;
+        while(countIndex < $NumOFRooms) DO
+			while (weekofyear(S.Date) = weekofyear(DATE(vDateToFind, +dayCount)) ) DO
+				if((select count(RoomID) from AvailableSlots where RoomID = countIndex) = 0) THEN
+					insert into AvailableSlots (Date, StartTime, EndTime, RoomID) 
+					values (vDateToFind, searchStartTime, searchEndTime, countIndex);
+				end if;
+			end while;
+            set countIndex = countIndex + 1;
+		end while;
+         Select * from AvailableSlots
+		 where time_to_sec(searchStartTime) <= time_to_sec(StartTime) AND time_to_sec(searchEndTime) >= time_to_sec(StartTime)
+         
+		order by StartTime, RoomID ;    
          
         drop temporary table AvailableSlots;
      
