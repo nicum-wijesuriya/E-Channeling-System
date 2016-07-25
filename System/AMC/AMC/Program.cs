@@ -28,7 +28,9 @@ namespace AMC
 			
 			Patient p = new Patient(db.Connection);
 
-			MySqlCommand cmd = p.AddPatient("as","ds","12","dascn","asd","nick@gmail.com", "911162580v", "Mr.", "0712583695","0112700556", "1");
+		//	MySqlCommand cmd = p.AddPatient("as","ds","12","dascn","asd","nick@gmail.com", "911162580v", "Mr.", "0712583695","0112700556", "1");
+		//	MySqlCommand cmd = p.UpdatePatient("2","ad", "ds", "12", "dascn", "asd", "nick@gmail.com", "911162580v", "Mr.", "0712583695", "0112700556", "1");
+			MySqlCommand cmd = p.DeletePatient("1");
 			db.ExecuteProcedure(cmd,1);
 
 		}
