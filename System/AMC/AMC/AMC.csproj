@@ -45,11 +45,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddSchedule.cs">
+    <Compile Include="scrAddSchedule.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddSchedule.Designer.cs">
-      <DependentUpon>AddSchedule.cs</DependentUpon>
+    <Compile Include="scrAddSchedule.Designer.cs">
+      <DependentUpon>scrAddSchedule.cs</DependentUpon>
     </Compile>
     <Compile Include="ComboboxItem.cs" />
     <Compile Include="Program.cs" />
@@ -79,8 +79,8 @@
       <DependentUpon>ScrSetAppointment.cs</DependentUpon>
     </Compile>
     <Compile Include="Validation.cs" />
-    <EmbeddedResource Include="AddSchedule.resx">
-      <DependentUpon>AddSchedule.cs</DependentUpon>
+    <EmbeddedResource Include="scrAddSchedule.resx">
+      <DependentUpon>scrAddSchedule.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
