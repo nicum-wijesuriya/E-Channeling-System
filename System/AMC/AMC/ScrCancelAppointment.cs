@@ -118,7 +118,8 @@ namespace AMC
 				Int32.TryParse((String)this.cmbDoctor.SelectedValue,out DID);
 			}
 
-			startDate = this.dtpStartDate.
+			startDate = this.dtpStartDate.Value.Date.Year + "-" + this.dtpStartDate.Value.Date.Month + "-" + this.dtpStartDate.Value.Date.Day;
+			endDate = this.dtpEndDate.Value.Date.Year + "-" + this.dtpEndDate.Value.Date.Month + "-" + this.dtpEndDate.Value.Date.Day;
 		}
 	}
 }
