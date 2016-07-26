@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnector
 {
-	class Parameter
+	public class Parameter
 	{
 		String parameterName;
 

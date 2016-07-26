@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnector
 {
-	class ParameterList
+	public class ParameterList
 	{
 		private List<Parameter> list = new List<Parameter>();
 

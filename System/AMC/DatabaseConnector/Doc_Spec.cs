@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnector
 {
-	class Doc_Spec
+	public class Doc_Spec
 	{
 		ParameterList parameterList = new ParameterList();
 		private MySqlConnection con;

@@ -112,7 +112,20 @@ BEGIN
 	update Appoinment set status = 3 where RefID = VRefID; 
 END //
 DELIMITER ;
-
+drop procedure FindAppoinment;
+DELIMITER //
+create procedure FindAppoinment(vRefID int)
+BEGIN
+	select (Select P.NICNo from Patient as P where P.PID = A.PID) as NICNo,
+			(Select concat(D.Title,D.FName,' ',D.LName) from Doctor as D where D.DID = A.DID) as DocName,
+            A.Date as SchDate, A.Time as SchTime,A.QueNo as QueNo,
+            (Select R.Name from Room as R where R.RoomID = (Select S.RoomID from Schedule as S where A.SchID = S.SchID )) as Room,
+            A.Fee as Fee
+    from Appointment as A
+    where A.RefID = vRefID;
+END//
+DELIMITER ;
+call FindAppoinment(2);
 DELIMITER //
 create function getQueueNo (vSchID int) returns int 
     

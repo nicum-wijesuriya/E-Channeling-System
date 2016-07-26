@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnector
 {
-	class Appointment
+	public class Appointment
 	{
 
 		ParameterList parameterList = new ParameterList();
@@ -84,6 +84,24 @@ namespace DatabaseConnector
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
 			command.CommandText = "CloseAppointment";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
+
+		public MySqlCommand FindAppointment(String vRefID)
+		{
+			parameterList.Add(new Parameter("vRefID", vRefID));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "FindAppointment";
 			command.CommandType = CommandType.StoredProcedure;
 
 			foreach (Parameter p in parameterList.List)

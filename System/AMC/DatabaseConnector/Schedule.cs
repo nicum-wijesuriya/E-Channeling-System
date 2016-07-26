@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DatabaseConnector
 {
-	class Schedule
+	public class Schedule
 	{
 		ParameterList parameterList = new ParameterList();
 		private MySqlConnection con;
