@@ -37,6 +37,7 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 
 			Appointment app = new Appointment(db.Connection);
+			
 			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
 		
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
