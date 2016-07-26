@@ -46,8 +46,13 @@
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.radioMs = new System.Windows.Forms.RadioButton();
+			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.radioDr = new System.Windows.Forms.RadioButton();
+			this.radioProf = new System.Windows.Forms.RadioButton();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.cmbNewSpec = new System.Windows.Forms.TextBox();
+			this.txtNewSpec = new System.Windows.Forms.TextBox();
 			this.btnClearSpec = new System.Windows.Forms.Button();
 			this.btnNewSpec = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -56,16 +61,11 @@
 			this.btnAddSpec = new System.Windows.Forms.Button();
 			this.cmbSelectedSpec = new System.Windows.Forms.ComboBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.radioMs = new System.Windows.Forms.RadioButton();
-			this.radioProf = new System.Windows.Forms.RadioButton();
-			this.radioDr = new System.Windows.Forms.RadioButton();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
+			this.groupBox6.SuspendLayout();
+			this.groupBox5.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
-			this.groupBox5.SuspendLayout();
-			this.groupBox6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -194,6 +194,7 @@
 			this.btnRegister.TabIndex = 4;
 			this.btnRegister.Text = "Register";
 			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
 			// 
 			// btnClear
 			// 
@@ -237,9 +238,67 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Doctor Details";
 			// 
+			// groupBox6
+			// 
+			this.groupBox6.Controls.Add(this.radioMs);
+			this.groupBox6.Controls.Add(this.radioMrs);
+			this.groupBox6.Controls.Add(this.radioMr);
+			this.groupBox6.Location = new System.Drawing.Point(257, 31);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(236, 51);
+			this.groupBox6.TabIndex = 7;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Personal Title";
+			// 
+			// radioMs
+			// 
+			this.radioMs.AutoSize = true;
+			this.radioMs.Location = new System.Drawing.Point(160, 19);
+			this.radioMs.Name = "radioMs";
+			this.radioMs.Size = new System.Drawing.Size(42, 17);
+			this.radioMs.TabIndex = 5;
+			this.radioMs.TabStop = true;
+			this.radioMs.Text = "Ms.";
+			this.radioMs.UseVisualStyleBackColor = true;
+			// 
+			// groupBox5
+			// 
+			this.groupBox5.Controls.Add(this.radioDr);
+			this.groupBox5.Controls.Add(this.radioProf);
+			this.groupBox5.Location = new System.Drawing.Point(98, 31);
+			this.groupBox5.Name = "groupBox5";
+			this.groupBox5.Size = new System.Drawing.Size(144, 51);
+			this.groupBox5.TabIndex = 6;
+			this.groupBox5.TabStop = false;
+			this.groupBox5.Text = "Acadamic Title";
+			// 
+			// radioDr
+			// 
+			this.radioDr.AutoSize = true;
+			this.radioDr.Location = new System.Drawing.Point(84, 18);
+			this.radioDr.Name = "radioDr";
+			this.radioDr.Size = new System.Drawing.Size(39, 17);
+			this.radioDr.TabIndex = 1;
+			this.radioDr.TabStop = true;
+			this.radioDr.Text = "Dr.";
+			this.radioDr.UseVisualStyleBackColor = true;
+			this.radioDr.CheckedChanged += new System.EventHandler(this.radioDr_CheckedChanged);
+			// 
+			// radioProf
+			// 
+			this.radioProf.AutoSize = true;
+			this.radioProf.Location = new System.Drawing.Point(14, 19);
+			this.radioProf.Name = "radioProf";
+			this.radioProf.Size = new System.Drawing.Size(47, 17);
+			this.radioProf.TabIndex = 1;
+			this.radioProf.TabStop = true;
+			this.radioProf.Text = "Prof.";
+			this.radioProf.UseVisualStyleBackColor = true;
+			this.radioProf.CheckedChanged += new System.EventHandler(this.radioProf_CheckedChanged);
+			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.cmbNewSpec);
+			this.groupBox2.Controls.Add(this.txtNewSpec);
 			this.groupBox2.Controls.Add(this.btnClearSpec);
 			this.groupBox2.Controls.Add(this.btnNewSpec);
 			this.groupBox2.Controls.Add(this.groupBox3);
@@ -251,13 +310,13 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Specialization";
 			// 
-			// cmbNewSpec
+			// txtNewSpec
 			// 
-			this.cmbNewSpec.Location = new System.Drawing.Point(28, 226);
-			this.cmbNewSpec.Name = "cmbNewSpec";
-			this.cmbNewSpec.Size = new System.Drawing.Size(253, 20);
-			this.cmbNewSpec.TabIndex = 0;
-			this.cmbNewSpec.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
+			this.txtNewSpec.Location = new System.Drawing.Point(28, 226);
+			this.txtNewSpec.Name = "txtNewSpec";
+			this.txtNewSpec.Size = new System.Drawing.Size(253, 20);
+			this.txtNewSpec.TabIndex = 0;
+			this.txtNewSpec.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
 			// 
 			// btnClearSpec
 			// 
@@ -276,6 +335,7 @@
 			this.btnNewSpec.TabIndex = 4;
 			this.btnNewSpec.Text = "Add New";
 			this.btnNewSpec.UseVisualStyleBackColor = true;
+			this.btnNewSpec.Click += new System.EventHandler(this.btnNewSpec_Click);
 			// 
 			// groupBox3
 			// 
@@ -335,64 +395,6 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "New Specialization";
 			// 
-			// radioMs
-			// 
-			this.radioMs.AutoSize = true;
-			this.radioMs.Location = new System.Drawing.Point(160, 19);
-			this.radioMs.Name = "radioMs";
-			this.radioMs.Size = new System.Drawing.Size(42, 17);
-			this.radioMs.TabIndex = 5;
-			this.radioMs.TabStop = true;
-			this.radioMs.Text = "Ms.";
-			this.radioMs.UseVisualStyleBackColor = true;
-			// 
-			// radioProf
-			// 
-			this.radioProf.AutoSize = true;
-			this.radioProf.Location = new System.Drawing.Point(14, 19);
-			this.radioProf.Name = "radioProf";
-			this.radioProf.Size = new System.Drawing.Size(47, 17);
-			this.radioProf.TabIndex = 1;
-			this.radioProf.TabStop = true;
-			this.radioProf.Text = "Prof.";
-			this.radioProf.UseVisualStyleBackColor = true;
-			this.radioProf.CheckedChanged += new System.EventHandler(this.radioProf_CheckedChanged);
-			// 
-			// radioDr
-			// 
-			this.radioDr.AutoSize = true;
-			this.radioDr.Location = new System.Drawing.Point(84, 18);
-			this.radioDr.Name = "radioDr";
-			this.radioDr.Size = new System.Drawing.Size(39, 17);
-			this.radioDr.TabIndex = 1;
-			this.radioDr.TabStop = true;
-			this.radioDr.Text = "Dr.";
-			this.radioDr.UseVisualStyleBackColor = true;
-			this.radioDr.CheckedChanged += new System.EventHandler(this.radioDr_CheckedChanged);
-			// 
-			// groupBox5
-			// 
-			this.groupBox5.Controls.Add(this.radioDr);
-			this.groupBox5.Controls.Add(this.radioProf);
-			this.groupBox5.Location = new System.Drawing.Point(98, 31);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(144, 51);
-			this.groupBox5.TabIndex = 6;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "Acadamic Title";
-			// 
-			// groupBox6
-			// 
-			this.groupBox6.Controls.Add(this.radioMs);
-			this.groupBox6.Controls.Add(this.radioMrs);
-			this.groupBox6.Controls.Add(this.radioMr);
-			this.groupBox6.Location = new System.Drawing.Point(257, 31);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(236, 51);
-			this.groupBox6.TabIndex = 7;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Personal Title";
-			// 
 			// ScrDoctorRegistration
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,14 +407,14 @@
 			this.Text = "Register Doctor";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
+			this.groupBox6.ResumeLayout(false);
+			this.groupBox6.PerformLayout();
+			this.groupBox5.ResumeLayout(false);
+			this.groupBox5.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
-			this.groupBox5.ResumeLayout(false);
-			this.groupBox5.PerformLayout();
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
 			this.ResumeLayout(false);
 
 		}
@@ -437,7 +439,7 @@
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.TextBox cmbNewSpec;
+		private System.Windows.Forms.TextBox txtNewSpec;
 		private System.Windows.Forms.Button btnClearSpec;
 		private System.Windows.Forms.Button btnNewSpec;
 		private System.Windows.Forms.GroupBox groupBox3;

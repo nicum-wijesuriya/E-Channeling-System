@@ -46,5 +46,15 @@ namespace AMC
 		{
 
 		}
+
+		private void btnRegister_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnNewSpec_Click(object sender, EventArgs e)
+		{
+			String spec = this.txt
+		}
 	}
 }
