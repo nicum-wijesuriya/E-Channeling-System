@@ -68,9 +68,10 @@ namespace AMC
 
 			res.Read();
 			int SID = res.GetInt32(0);
+			String name = res.GetString(1);
 			res.Close();
 
-			MessageBox.Show(""+SID);
+			MessageBox.Show(""+name+"   "+SID);
 		}
 	}
 }
