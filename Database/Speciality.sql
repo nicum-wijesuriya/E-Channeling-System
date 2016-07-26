@@ -8,8 +8,7 @@ drop procedure AddSpeciality;
 
 DELIMITER //
 create procedure AddSpeciality (
-	vName varchar(60),
-    newSpecID int out
+	vName varchar(60)
 )
 BEGIN
 	insert into Speciality (Name) values (vName);

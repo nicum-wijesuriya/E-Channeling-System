@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using DatabaseConnector;
+using MySql.Data.MySqlClient;
 
 namespace AMC
 {
@@ -55,11 +56,21 @@ namespace AMC
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
 		{
-			String spec = this.txtNewSpec.Text;
+			String newSpec = this.txtNewSpec.Text;
 
 			DBConnect db = DBConnect.Connect();
 
 			Speciality spec = new Speciality(db.Connection);
+
+			MySqlCommand cmd = spec.AddSpeciality(newSpec);
+
+			MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			res.Read();
+			int SID = res.GetInt32(0);
+			res.Close();
+
+			MessageBox.Show(""+SID);
 		}
 	}
 }
