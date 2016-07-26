@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DatabaseConnector;
 
 namespace AMC
 {
@@ -54,7 +55,11 @@ namespace AMC
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
 		{
-			String spec = this.txt
+			String spec = this.txtNewSpec.Text;
+
+			DBConnect db = DBConnect.Connect();
+
+			Speciality spec = new Speciality(db.Connection);
 		}
 	}
 }
