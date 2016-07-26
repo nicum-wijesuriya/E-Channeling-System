@@ -12,7 +12,7 @@ create procedure AddSpeciality (
 )
 BEGIN
 	insert into Speciality (Name) values (vName);
-    select SID from speciality order by SID desc Limit 1;
+    select SID, Name from speciality order by SID desc Limit 1;
 END //
 DELIMITER ;
 
@@ -32,7 +32,7 @@ BEGIN
 	delete from Speciality where SID = vSID;
 END // 
 DELIMITER ;
-
+truncate table Speciality;
 
 Insert into speciality(Name) values ('Cardiac Electrophysiologists');
 Insert into speciality(Name) values ('Cardiologists');
