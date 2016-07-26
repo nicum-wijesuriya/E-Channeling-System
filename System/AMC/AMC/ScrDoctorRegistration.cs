@@ -31,5 +31,20 @@ namespace AMC
 		{
 
 		}
+
+		private void radioDr_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void radioProf_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void radioMrs_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
