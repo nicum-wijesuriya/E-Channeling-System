@@ -20,6 +20,7 @@ namespace AMC
 		{
 			InitializeComponent();
 			this.ToggleUpdate(false);
+			this.cmbSchedule.Items.Add(new ComboBoxItem("0","Select a Schedule"));
 		}
 
 		private void label2_Click(object sender, EventArgs e)
@@ -42,17 +43,20 @@ namespace AMC
 			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
 		
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			rs.Read();
-			this.lblPatientNIC.Text = rs.GetString(0);
-			this.lblDoctorName.Text = rs.GetString(1);
-			this.lblScheduleDate.Text = rs.GetString(2);
-			this.lblScheduleTime.Text = rs.GetString(3);
-			this.lblQueueNo.Text = rs.GetString(4);
-			this.lblRoom.Text = rs.GetString(5);
-			this.lblFee.Text = rs.GetString(6);
-			this.currentDID = rs.GetInt32(7);
+			if (rs.Read())
+			{
 
-			rs.Close();
+				this.lblPatientNIC.Text = rs.GetString(0);
+				this.lblDoctorName.Text = rs.GetString(1);
+				this.lblScheduleDate.Text = rs.GetString(2);
+				this.lblScheduleTime.Text = rs.GetString(3);
+				this.lblQueueNo.Text = rs.GetString(4);
+				this.lblRoom.Text = rs.GetString(5);
+				this.lblFee.Text = rs.GetString(6);
+				this.currentDID = rs.GetInt32(7);
+
+				rs.Close();
+			}
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -95,6 +99,8 @@ namespace AMC
 			}
 			rs.Close();
 
+			this.cmbDoctor.SelectedIndex = 0;
+
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
@@ -120,13 +126,13 @@ namespace AMC
 			String startDate;
 			String endDate;
 
-			if (this.cmbDoctor.SelectedItem.ToString().Equals("All"))
+			if (((ComboBoxItem)this.cmbDoctor.SelectedItem).Text.Equals("All"))
 			{
 				DID = -1;
 			}
 			else
 			{
-				Int32.TryParse((String)this.cmbDoctor.SelectedValue, out DID);
+				Int32.TryParse(((ComboBoxItem)this.cmbDoctor.SelectedItem).Value, out DID);
 			}
 
 			startDate = this.dtpStartDate.Value.Date.Year + "-" + this.dtpStartDate.Value.Date.Month + "-" + this.dtpStartDate.Value.Date.Day;
@@ -142,13 +148,15 @@ namespace AMC
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
 			this.cmbSchedule.Items.Clear();
-
+			this.cmbSchedule.Items.Add(new ComboBoxItem("0", "Select a Schedule"));
 			while (rs.Read())
 			{
 				this.cmbSchedule.Items.Add(new ComboBoxItem(rs.GetString(0), rs.GetString(1)));
 			}
 
 			rs.Close();
+
+			this.cmbSchedule.SelectedIndex = 0;
 		}
 
 		private void dtpStartDate_ValueChanged(object sender, EventArgs e)

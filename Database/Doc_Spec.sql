@@ -25,3 +25,8 @@ BEGIN
 	Select SID, Name from speciality where DID = vDID;
 END //
 DELIMITER ;
+
+
+insert into Doc_Spec(DID,SID) values (1, 2);
+insert into Doc_Spec(DID,SID) values (1, 5);
+insert into Doc_Spec(DID,SID) values (1, 6);

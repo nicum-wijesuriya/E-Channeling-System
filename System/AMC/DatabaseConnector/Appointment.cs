@@ -101,7 +101,7 @@ namespace DatabaseConnector
 
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
-			command.CommandText = "FindAppointment";
+			command.CommandText = "FindAppoinment";
 			command.CommandType = CommandType.StoredProcedure;
 
 			foreach (Parameter p in parameterList.List)

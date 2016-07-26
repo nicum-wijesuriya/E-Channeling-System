@@ -13,7 +13,7 @@ create table Appointment
     Status int(1)
     
 );
-
+call AddAppointment(1,2);
 drop procedure AddAppointment;
 
 DELIMITER // 

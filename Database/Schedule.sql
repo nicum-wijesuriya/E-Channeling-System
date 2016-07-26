@@ -89,13 +89,13 @@ begin
         concat(S.Date,' ', S.StartTime,' ', S.EndTime,' ', (Select concat(Title,'', D.Fname, ' ', D.Lname) from Doctor as D where D.DID = S.DID))
         ,S.DID
         from Schedule as S
-		where S.Status = 2 AND S.DID = vDID AND S.Date >= startDate AND S.EndDate <= endDate  ;
+		where S.Status = 2 AND S.DID = vDID AND S.Date >= startDate AND S.Date <= endDate  ;
     ELSE 
 		select S.SchID,
         concat(S.Date,' ', S.StartTime,' ', S.EndTime,' ', (Select concat(Title,'', D.Fname, ' ', D.Lname) from Doctor as D where D.DID = S.DID))
         ,S.DID
         from Schedule as S
-		where S.Status = 2 AND S.Date >= startDate AND S.EndDate <= endDate  ;
+		where S.Status = 2 AND S.Date >= startDate AND S.Date <= endDate  ;
     END IF;
 end //
 DELIMITER ;
@@ -397,3 +397,6 @@ insert into Room (Name) values ('Room 2');
 insert into Room (Name) values ('Room 3');
 
 select * from Room;
+
+
+select * from Schedule;

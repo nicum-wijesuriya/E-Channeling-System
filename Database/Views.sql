@@ -9,10 +9,12 @@ where D.DID IN (
     where Status = 2
 )
 
+drop procedure AvailableDoctors;
+
 DELIMITER //
 create procedure AvailableDoctors()
 BEGIN
-	Select * from AvailableDoctors;
+	Select distinct(DID), concat(Title,FName,' ',LName) from AvailableDoctors;
 END //
 DELIMITER ;
 
@@ -22,3 +24,5 @@ BEGIN
 	Select DID, concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
 END //
 DELIMITER ;
+
+select * from speciality;

@@ -277,7 +277,7 @@
 			this.cmbDoctor.FormattingEnabled = true;
 			this.cmbDoctor.Location = new System.Drawing.Point(413, 81);
 			this.cmbDoctor.Name = "cmbDoctor";
-			this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
+			this.cmbDoctor.Size = new System.Drawing.Size(294, 21);
 			this.cmbDoctor.TabIndex = 5;
 			this.cmbDoctor.SelectedIndexChanged += new System.EventHandler(this.cmbDoctor_SelectedIndexChanged);
 			// 
@@ -308,7 +308,7 @@
 			this.groupBox2.Controls.Add(this.label3);
 			this.groupBox2.Location = new System.Drawing.Point(371, 108);
 			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(268, 78);
+			this.groupBox2.Size = new System.Drawing.Size(336, 78);
 			this.groupBox2.TabIndex = 7;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Date";
@@ -317,7 +317,7 @@
 			// 
 			this.dtpEndDate.Location = new System.Drawing.Point(53, 46);
 			this.dtpEndDate.Name = "dtpEndDate";
-			this.dtpEndDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpEndDate.Size = new System.Drawing.Size(267, 20);
 			this.dtpEndDate.TabIndex = 7;
 			this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
 			// 
@@ -325,7 +325,7 @@
 			// 
 			this.dtpStartDate.Location = new System.Drawing.Point(53, 20);
 			this.dtpStartDate.Name = "dtpStartDate";
-			this.dtpStartDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpStartDate.Size = new System.Drawing.Size(267, 20);
 			this.dtpStartDate.TabIndex = 7;
 			this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
 			// 
@@ -344,12 +344,12 @@
 			this.cmbSchedule.FormattingEnabled = true;
 			this.cmbSchedule.Location = new System.Drawing.Point(424, 199);
 			this.cmbSchedule.Name = "cmbSchedule";
-			this.cmbSchedule.Size = new System.Drawing.Size(121, 21);
+			this.cmbSchedule.Size = new System.Drawing.Size(283, 21);
 			this.cmbSchedule.TabIndex = 5;
 			// 
 			// btnSave
 			// 
-			this.btnSave.Location = new System.Drawing.Point(371, 285);
+			this.btnSave.Location = new System.Drawing.Point(395, 278);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(99, 25);
 			this.btnSave.TabIndex = 8;
@@ -359,7 +359,7 @@
 			// 
 			// btnClear
 			// 
-			this.btnClear.Location = new System.Drawing.Point(540, 285);
+			this.btnClear.Location = new System.Drawing.Point(608, 278);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 25);
 			this.btnClear.TabIndex = 8;
@@ -370,7 +370,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(666, 340);
+			this.ClientSize = new System.Drawing.Size(719, 340);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.btnSave);
 			this.Controls.Add(this.cmbSchedule);
