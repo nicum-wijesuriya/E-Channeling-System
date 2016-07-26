@@ -34,8 +34,8 @@
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioProf = new System.Windows.Forms.RadioButton();
+			this.radioProfMrs = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.textBox1 = new System.Windows.Forms.TextBox();
@@ -113,27 +113,27 @@
 			this.label5.Text = "Fee per Patient";
 			this.label5.Click += new System.EventHandler(this.label1_Click);
 			// 
-			// radioButton1
+			// radioProf
 			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(112, 36);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(47, 17);
-			this.radioButton1.TabIndex = 1;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "Prof.";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.radioProf.AutoSize = true;
+			this.radioProf.Location = new System.Drawing.Point(112, 36);
+			this.radioProf.Name = "radioProf";
+			this.radioProf.Size = new System.Drawing.Size(47, 17);
+			this.radioProf.TabIndex = 1;
+			this.radioProf.TabStop = true;
+			this.radioProf.Text = "Prof.";
+			this.radioProf.UseVisualStyleBackColor = true;
 			// 
-			// radioButton2
+			// radioProfMrs
 			// 
-			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(193, 36);
-			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(70, 17);
-			this.radioButton2.TabIndex = 1;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "Prof(Mrs).";
-			this.radioButton2.UseVisualStyleBackColor = true;
+			this.radioProfMrs.AutoSize = true;
+			this.radioProfMrs.Location = new System.Drawing.Point(193, 36);
+			this.radioProfMrs.Name = "radioProfMrs";
+			this.radioProfMrs.Size = new System.Drawing.Size(70, 17);
+			this.radioProfMrs.TabIndex = 1;
+			this.radioProfMrs.TabStop = true;
+			this.radioProfMrs.Text = "Prof(Mrs).";
+			this.radioProfMrs.UseVisualStyleBackColor = true;
 			// 
 			// radioButton3
 			// 
@@ -237,9 +237,9 @@
 			this.groupBox1.Controls.Add(this.textBox1);
 			this.groupBox1.Controls.Add(this.radioButton3);
 			this.groupBox1.Controls.Add(this.textBox3);
-			this.groupBox1.Controls.Add(this.radioButton2);
+			this.groupBox1.Controls.Add(this.radioProfMrs);
 			this.groupBox1.Controls.Add(this.textBox4);
-			this.groupBox1.Controls.Add(this.radioButton1);
+			this.groupBox1.Controls.Add(this.radioProf);
 			this.groupBox1.Controls.Add(this.textBox5);
 			this.groupBox1.Controls.Add(this.button4);
 			this.groupBox1.Controls.Add(this.label2);
@@ -380,8 +380,8 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.RadioButton radioButton1;
-		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton radioProf;
+		private System.Windows.Forms.RadioButton radioProfMrs;
 		private System.Windows.Forms.RadioButton radioButton3;
 		private System.Windows.Forms.RadioButton radioButton4;
 		private System.Windows.Forms.TextBox textBox1;
