@@ -9,3 +9,10 @@ where D.DID IN (
     where Status = 2
 )
 
+DELIMITER //
+create procedure AvailableDoctors()
+BEGIN
+	Select * from AvailableDoctors;
+END //
+DELIMITER ;
+

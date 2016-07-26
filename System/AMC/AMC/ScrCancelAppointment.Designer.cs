@@ -97,6 +97,7 @@
 			this.btnUpdate.TabIndex = 2;
 			this.btnUpdate.Text = "Update";
 			this.btnUpdate.UseVisualStyleBackColor = true;
+			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 			// 
 			// groupBox1
 			// 
@@ -278,6 +279,7 @@
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
 			this.cmbDoctor.TabIndex = 5;
+			this.cmbDoctor.SelectedIndexChanged += new System.EventHandler(this.cmbDoctor_SelectedIndexChanged);
 			// 
 			// label3
 			// 
@@ -351,6 +353,7 @@
 			this.btnSave.TabIndex = 8;
 			this.btnSave.Text = "Save Changes";
 			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// btnClear
 			// 
