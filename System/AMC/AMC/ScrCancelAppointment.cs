@@ -39,7 +39,7 @@ namespace AMC
 			Appointment app = new Appointment(db.Connection);
 			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
 		
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, 2);
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 			rs.Read();
 			this.lblPatientNIC.Text = rs.GetString(0);
 			this.lblDoctorName.Text = rs.GetString(1);
@@ -58,7 +58,7 @@ namespace AMC
 			Appointment app = new Appointment(db.Connection);
 			MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
 
-			db.ExecuteProcedure(cmd, 1);
+			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
 		}
 
 		private void ToggleUpdate(Boolean value)
@@ -79,7 +79,7 @@ namespace AMC
 			Appointment app = new Appointment(db.Connection);
 			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
 
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, 2);
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
 			this.cmbDoctor.Items.Clear();
 
@@ -98,10 +98,11 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 
 			Appointment app = new Appointment(db.Connection);
+			String SchID = (String)this.cmbSchedule.SelectedValue ;
 			
-			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text,this.cmbSchedule.SelectedItem.ToString());
+			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text, SchID);
 
-			db.ExecuteProcedure(cmd, 1);
+			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
 		}
 
 		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)

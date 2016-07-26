@@ -1,62 +1,62 @@
 Cardiac Electrophysiologists 
-       Cardiologists 
-       Cardiothoracic Surgeons 
-        Chest Physicians 
-       Chest Specialists 
-       Dental Surgeons 
-       Dermatologists 
-       Dermatology & Hair Specialists 
-        Diabetes & Endocrinology Physician 
-        Diabetologists & Endocrinologists 
-       Dietician & Nutritionists 
-       Dieticians 
-        ENT Surgeons 
-        Eye Surgeon 
-        Gastroenterological Surgeon 
-        Gastroenterologists (Medical) 
-        Gastrointestinal Surgeons 
-        Gynaecologists 
-        Haematologists 
-        Immunologists 
-        Interventional Cardiologists 
-        Medical Microbiologists 
-        Nephrologist & Physicians 
-        Nephrologists 
-        Neuro Physicians 
-        Neurosurgeons 
-        Obstetrician Gynaecologist & Infertility Specialists 
-        Oncological Surgeons 
-        Oncologists (Cancer Specialists) 
-        Oral Maxillofacial Surgeons 
-        Orthodontists 
-        Orthopaedic Surgeons 
-        Paediatric  Cardiologists 
-        Paediatric Cardiothoracic Surgeons 
-        Paediatric Neurologists 
-        Paediatric Orthopaedic Surgeons 
-        Paediatric Surgeons 
-        Paediatricians 
-        Parasitologists 
-        Physician & Endocrinologist/Diabetologist 
-        Physician and Immunologist 
-        Physicians 
-        Physiotherapists 
-        Plastic Surgeons 
-        Psychiatrists 
-        Psychologists 
-        Rheumatologists 
-        Sexual Medicine 
-        Speech & Language Therapists 
-        Speech Therapists 
-        Speech, Language Pathologist & Audiologists 
-        Speech, Pathologist & Therapists 
-        Sport Medicine 
-        STD Specialists 
-        Surgeons 
-        Thoracic Surgeon 
-        Transplant & Genitourinary Surgeons 
-        Urologists 
-        Vaccinologist 
-        Vascular Surgeons 
-       
+Cardiologists
+Cardiothoracic Surgeons 
+Chest Physicians 
+Chest Specialists 
+Dental Surgeons 
+Dermatologists 
+Dermatology & Hair Specialists 
+Diabetes & Endocrinology Physician 
+Diabetologists & Endocrinologists 
+Dietician & Nutritionists 
+Dieticians 
+ENT Surgeons 
+Eye Surgeon 
+Gastroenterological Surgeon 
+Gastroenterologists (Medical) 
+Gastrointestinal Surgeons 
+Gynaecologists 
+Haematologists 
+Immunologists 
+Interventional Cardiologists 
+Medical Microbiologists 
+Nephrologist & Physicians 
+Nephrologists 
+Neuro Physicians 
+Neurosurgeons 
+Obstetrician Gynaecologist & Infertility Specialists 
+Oncological Surgeons 
+Oncologists (Cancer Specialists) 
+Oral Maxillofacial Surgeons 
+Orthodontists 
+Orthopaedic Surgeons 
+Paediatric  Cardiologists 
+Paediatric Cardiothoracic Surgeons 
+Paediatric Neurologists 
+Paediatric Orthopaedic Surgeons 
+Paediatric Surgeons 
+Paediatricians 
+Parasitologists 
+Physician & Endocrinologist/Diabetologist 
+Physician and Immunologist 
+Physicians 
+Physiotherapists 
+Plastic Surgeons 
+Psychiatrists 
+Psychologists 
+Rheumatologists 
+Sexual Medicine 
+Speech & Language Therapists 
+Speech Therapists 
+Speech, Language Pathologist & Audiologists 
+Speech, Pathologist & Therapists 
+Sport Medicine 
+STD Specialists 
+Surgeons 
+Thoracic Surgeon 
+Transplant & Genitourinary Surgeons 
+Urologists 
+Vaccinologist 
+Vascular Surgeons 
+
 
