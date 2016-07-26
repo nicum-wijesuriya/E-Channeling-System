@@ -319,6 +319,7 @@
 			this.dtpEndDate.Name = "dtpEndDate";
 			this.dtpEndDate.Size = new System.Drawing.Size(200, 20);
 			this.dtpEndDate.TabIndex = 7;
+			this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
 			// 
 			// dtpStartDate
 			// 
@@ -326,6 +327,7 @@
 			this.dtpStartDate.Name = "dtpStartDate";
 			this.dtpStartDate.Size = new System.Drawing.Size(200, 20);
 			this.dtpStartDate.TabIndex = 7;
+			this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
 			// 
 			// label5
 			// 

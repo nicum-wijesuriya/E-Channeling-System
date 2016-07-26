@@ -128,5 +128,23 @@ namespace DatabaseConnector
 			return command;
 
 		}
+
+		public MySqlCommand SelectPatient(String vNICNo)
+		{
+			parameterList.Add(new Parameter("vNICNo", vNICNo));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "SelectPatient";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
 	}
 }

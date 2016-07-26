@@ -123,5 +123,26 @@ namespace DatabaseConnector
 
 			return command;
 		}
+
+		public MySqlCommand SearchSchedule(String vDID, String startDate, String endDate)
+		{
+			parameterList.Add(new Parameter("vDID", vDID));
+			parameterList.Add(new Parameter("startDate", startDate));
+			parameterList.Add(new Parameter("endDate", endDate));
+
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "SearchSchedules";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
 	}
 }

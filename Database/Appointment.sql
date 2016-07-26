@@ -120,11 +120,14 @@ BEGIN
 			(Select concat(D.Title,D.FName,' ',D.LName) from Doctor as D where D.DID = A.DID) as DocName,
             A.Date as SchDate, A.Time as SchTime,A.QueNo as QueNo,
             (Select R.Name from Room as R where R.RoomID = (Select S.RoomID from Schedule as S where A.SchID = S.SchID )) as Room,
-            A.Fee as Fee
+            A.Fee as Fee, A.DID
     from Appointment as A
     where A.RefID = vRefID;
 END//
 DELIMITER ;
+
+select * from appointment;
+
 call FindAppoinment(2);
 DELIMITER //
 create function getQueueNo (vSchID int) returns int 

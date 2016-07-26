@@ -26,7 +26,7 @@ namespace AMC
 
 		private void btnAddSchedule_Click(object sender, EventArgs e)
 		{
-			AddSchedule scr = new AddSchedule();
+			scrAddSchedule scr = new scrAddSchedule();
 			scr.Visible = true;
 			this.Visible = false;
 		}

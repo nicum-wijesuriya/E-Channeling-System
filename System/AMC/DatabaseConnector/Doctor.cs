@@ -102,7 +102,54 @@ namespace DatabaseConnector
 
 		}
 
+		public MySqlCommand AvailableDoctors()
+		{
+			
 
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "AvailableDoctors";
+			command.CommandType = CommandType.StoredProcedure;
+
+			
+			return command;
+		}
+
+		public MySqlCommand AvailableDoctorsForASpecialization(String vSID)
+		{
+			parameterList.Add(new Parameter("vSID", vSID));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "AvailableDoctorsForSpecialization";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
+
+		public MySqlCommand SpecializationForDoctor(String vDID)
+		{
+			parameterList.Add(new Parameter("vDID", vDID));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "SpecializationsForDoctor";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
 
 	}
 }

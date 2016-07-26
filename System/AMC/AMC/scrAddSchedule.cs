@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace AMC
 {
-	public partial class AddSchedule : Form
+	public partial class scrAddSchedule : Form
 	{
-		public AddSchedule()
+		public scrAddSchedule()
 		{
 			InitializeComponent();
 		}

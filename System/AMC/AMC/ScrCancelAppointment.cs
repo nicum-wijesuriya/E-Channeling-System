@@ -15,6 +15,7 @@ namespace AMC
 	public partial class ScrCancelAppointment : Form
 	{
 		private Boolean UpdateStatus;
+		int currentDID;
 		public ScrCancelAppointment()
 		{
 			InitializeComponent();
@@ -49,6 +50,8 @@ namespace AMC
 			this.lblQueueNo.Text = rs.GetString(4);
 			this.lblRoom.Text = rs.GetString(5);
 			this.lblFee.Text = rs.GetString(6);
+			this.currentDID = rs.GetInt32(7);
+
 			rs.Close();
 		}
 
@@ -77,8 +80,8 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Appointment app = new Appointment(db.Connection);
-			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
+			Doctor doc = new Doctor(db.Connection);
+			MySqlCommand cmd = doc.AvailableDoctors();
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
@@ -108,21 +111,54 @@ namespace AMC
 
 		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			this.fillSchedule();
+		}
+
+		private void fillSchedule()
+		{
 			int DID;
 			String startDate;
 			String endDate;
 
-			if(this.cmbDoctor.SelectedItem.ToString().Equals("All"))
+			if (this.cmbDoctor.SelectedItem.ToString().Equals("All"))
 			{
 				DID = -1;
 			}
 			else
 			{
-				Int32.TryParse((String)this.cmbDoctor.SelectedValue,out DID);
+				Int32.TryParse((String)this.cmbDoctor.SelectedValue, out DID);
 			}
 
 			startDate = this.dtpStartDate.Value.Date.Year + "-" + this.dtpStartDate.Value.Date.Month + "-" + this.dtpStartDate.Value.Date.Day;
 			endDate = this.dtpEndDate.Value.Date.Year + "-" + this.dtpEndDate.Value.Date.Month + "-" + this.dtpEndDate.Value.Date.Day;
+
+			DBConnect db = DBConnect.Connect();
+
+			Schedule sch = new Schedule(db.Connection);
+			String SchID = (String)this.cmbSchedule.SelectedValue;
+
+			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			this.cmbSchedule.Items.Clear();
+
+			while (rs.Read())
+			{
+				this.cmbSchedule.Items.Add(new ComboBoxItem(rs.GetString(0), rs.GetString(1)));
+			}
+
+			rs.Close();
+		}
+
+		private void dtpStartDate_ValueChanged(object sender, EventArgs e)
+		{
+			this.fillSchedule();
+		}
+
+		private void dtpEndDate_ValueChanged(object sender, EventArgs e)
+		{
+			this.fillSchedule();
 		}
 	}
 }

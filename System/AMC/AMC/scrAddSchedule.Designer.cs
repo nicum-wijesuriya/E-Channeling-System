@@ -1,6 +1,6 @@
 ﻿namespace AMC
 {
-	partial class AddSchedule
+	partial class scrAddSchedule
 	{
 		/// <summary>
 		/// Required designer variable.

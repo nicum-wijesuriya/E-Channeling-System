@@ -68,24 +68,24 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.radioForeign = new System.Windows.Forms.RadioButton();
 			this.radioLocal = new System.Windows.Forms.RadioButton();
+			this.groupBox7 = new System.Windows.Forms.GroupBox();
+			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.radioNone = new System.Windows.Forms.RadioButton();
+			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
-			this.radioNone = new System.Windows.Forms.RadioButton();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
-			this.groupBox7 = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
 			this.groupBox1.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.groupBox2.SuspendLayout();
-			this.groupBox6.SuspendLayout();
-			this.groupBox7.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.groupBox7.SuspendLayout();
+			this.groupBox6.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -101,15 +101,15 @@
 			// cmbDoctor
 			// 
 			this.cmbDoctor.FormattingEnabled = true;
-			this.cmbDoctor.Location = new System.Drawing.Point(75, 32);
+			this.cmbDoctor.Location = new System.Drawing.Point(68, 30);
 			this.cmbDoctor.Name = "cmbDoctor";
-			this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
+			this.cmbDoctor.Size = new System.Drawing.Size(191, 21);
 			this.cmbDoctor.TabIndex = 1;
 			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(224, 35);
+			this.label2.Location = new System.Drawing.Point(272, 35);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(72, 13);
 			this.label2.TabIndex = 0;
@@ -119,9 +119,9 @@
 			// cmbSpec
 			// 
 			this.cmbSpec.FormattingEnabled = true;
-			this.cmbSpec.Location = new System.Drawing.Point(302, 32);
+			this.cmbSpec.Location = new System.Drawing.Point(359, 32);
 			this.cmbSpec.Name = "cmbSpec";
-			this.cmbSpec.Size = new System.Drawing.Size(121, 21);
+			this.cmbSpec.Size = new System.Drawing.Size(166, 21);
 			this.cmbSpec.TabIndex = 1;
 			// 
 			// label4
@@ -146,9 +146,9 @@
 			// 
 			// dtpDateFrom
 			// 
-			this.dtpDateFrom.Location = new System.Drawing.Point(75, 92);
+			this.dtpDateFrom.Location = new System.Drawing.Point(61, 18);
 			this.dtpDateFrom.Name = "dtpDateFrom";
-			this.dtpDateFrom.Size = new System.Drawing.Size(200, 20);
+			this.dtpDateFrom.Size = new System.Drawing.Size(191, 20);
 			this.dtpDateFrom.TabIndex = 2;
 			// 
 			// dtpDateTo
@@ -173,7 +173,7 @@
 			this.cmbSchedule.FormattingEnabled = true;
 			this.cmbSchedule.Location = new System.Drawing.Point(74, 134);
 			this.cmbSchedule.Name = "cmbSchedule";
-			this.cmbSchedule.Size = new System.Drawing.Size(121, 21);
+			this.cmbSchedule.Size = new System.Drawing.Size(451, 21);
 			this.cmbSchedule.TabIndex = 1;
 			// 
 			// label7
@@ -190,17 +190,18 @@
 			// 
 			this.txtNIC.Location = new System.Drawing.Point(75, 169);
 			this.txtNIC.Name = "txtNIC";
-			this.txtNIC.Size = new System.Drawing.Size(143, 20);
+			this.txtNIC.Size = new System.Drawing.Size(217, 20);
 			this.txtNIC.TabIndex = 4;
 			// 
 			// btnCheck
 			// 
-			this.btnCheck.Location = new System.Drawing.Point(244, 169);
+			this.btnCheck.Location = new System.Drawing.Point(298, 167);
 			this.btnCheck.Name = "btnCheck";
 			this.btnCheck.Size = new System.Drawing.Size(75, 23);
 			this.btnCheck.TabIndex = 5;
 			this.btnCheck.Text = "Check";
 			this.btnCheck.UseVisualStyleBackColor = true;
+			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
 			// 
 			// radioMr
 			// 
@@ -429,7 +430,6 @@
 			this.groupBox1.Controls.Add(this.cmbDoctor);
 			this.groupBox1.Controls.Add(this.cmbSchedule);
 			this.groupBox1.Controls.Add(this.cmbSpec);
-			this.groupBox1.Controls.Add(this.dtpDateFrom);
 			this.groupBox1.Controls.Add(this.dtpDateTo);
 			this.groupBox1.Controls.Add(this.groupBox5);
 			this.groupBox1.Location = new System.Drawing.Point(12, 8);
@@ -443,6 +443,7 @@
 			// 
 			this.groupBox5.Controls.Add(this.label4);
 			this.groupBox5.Controls.Add(this.label5);
+			this.groupBox5.Controls.Add(this.dtpDateFrom);
 			this.groupBox5.Location = new System.Drawing.Point(7, 73);
 			this.groupBox5.Name = "groupBox5";
 			this.groupBox5.Size = new System.Drawing.Size(529, 55);
@@ -475,14 +476,14 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Patient Details";
 			// 
-			// groupBox3
+			// panel1
 			// 
-			this.groupBox3.Location = new System.Drawing.Point(6, 106);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(232, 114);
-			this.groupBox3.TabIndex = 0;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Address";
+			this.panel1.Controls.Add(this.radioForeign);
+			this.panel1.Controls.Add(this.radioLocal);
+			this.panel1.Location = new System.Drawing.Point(67, 294);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(149, 41);
+			this.panel1.TabIndex = 10;
 			// 
 			// radioForeign
 			// 
@@ -505,6 +506,52 @@
 			this.radioLocal.TabStop = true;
 			this.radioLocal.Text = "Local";
 			this.radioLocal.UseVisualStyleBackColor = true;
+			// 
+			// groupBox7
+			// 
+			this.groupBox7.Controls.Add(this.radioMs);
+			this.groupBox7.Controls.Add(this.radioRev);
+			this.groupBox7.Controls.Add(this.radioMrs);
+			this.groupBox7.Controls.Add(this.radioMr);
+			this.groupBox7.Location = new System.Drawing.Point(262, 23);
+			this.groupBox7.Name = "groupBox7";
+			this.groupBox7.Size = new System.Drawing.Size(253, 42);
+			this.groupBox7.TabIndex = 9;
+			this.groupBox7.TabStop = false;
+			this.groupBox7.Text = "Personal Title";
+			// 
+			// groupBox6
+			// 
+			this.groupBox6.Controls.Add(this.radioNone);
+			this.groupBox6.Controls.Add(this.radioProf);
+			this.groupBox6.Controls.Add(this.radioDr);
+			this.groupBox6.Location = new System.Drawing.Point(67, 23);
+			this.groupBox6.Name = "groupBox6";
+			this.groupBox6.Size = new System.Drawing.Size(180, 42);
+			this.groupBox6.TabIndex = 8;
+			this.groupBox6.TabStop = false;
+			this.groupBox6.Text = "Academic Title";
+			// 
+			// radioNone
+			// 
+			this.radioNone.AutoSize = true;
+			this.radioNone.Location = new System.Drawing.Point(120, 19);
+			this.radioNone.Name = "radioNone";
+			this.radioNone.Size = new System.Drawing.Size(51, 17);
+			this.radioNone.TabIndex = 7;
+			this.radioNone.TabStop = true;
+			this.radioNone.Text = "None";
+			this.radioNone.UseVisualStyleBackColor = true;
+			this.radioNone.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
+			// 
+			// groupBox3
+			// 
+			this.groupBox3.Location = new System.Drawing.Point(6, 106);
+			this.groupBox3.Name = "groupBox3";
+			this.groupBox3.Size = new System.Drawing.Size(232, 114);
+			this.groupBox3.TabIndex = 0;
+			this.groupBox3.TabStop = false;
+			this.groupBox3.Text = "Address";
 			// 
 			// groupBox4
 			// 
@@ -542,6 +589,7 @@
 			this.btnClear.TabIndex = 9;
 			this.btnClear.Text = "Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnClose
 			// 
@@ -551,52 +599,6 @@
 			this.btnClose.TabIndex = 9;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
-			// 
-			// radioNone
-			// 
-			this.radioNone.AutoSize = true;
-			this.radioNone.Location = new System.Drawing.Point(120, 19);
-			this.radioNone.Name = "radioNone";
-			this.radioNone.Size = new System.Drawing.Size(51, 17);
-			this.radioNone.TabIndex = 7;
-			this.radioNone.TabStop = true;
-			this.radioNone.Text = "None";
-			this.radioNone.UseVisualStyleBackColor = true;
-			this.radioNone.CheckedChanged += new System.EventHandler(this.radioButton9_CheckedChanged);
-			// 
-			// groupBox6
-			// 
-			this.groupBox6.Controls.Add(this.radioNone);
-			this.groupBox6.Controls.Add(this.radioProf);
-			this.groupBox6.Controls.Add(this.radioDr);
-			this.groupBox6.Location = new System.Drawing.Point(67, 23);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(180, 42);
-			this.groupBox6.TabIndex = 8;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Academic Title";
-			// 
-			// groupBox7
-			// 
-			this.groupBox7.Controls.Add(this.radioMs);
-			this.groupBox7.Controls.Add(this.radioRev);
-			this.groupBox7.Controls.Add(this.radioMrs);
-			this.groupBox7.Controls.Add(this.radioMr);
-			this.groupBox7.Location = new System.Drawing.Point(262, 23);
-			this.groupBox7.Name = "groupBox7";
-			this.groupBox7.Size = new System.Drawing.Size(253, 42);
-			this.groupBox7.TabIndex = 9;
-			this.groupBox7.TabStop = false;
-			this.groupBox7.Text = "Personal Title";
-			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.radioForeign);
-			this.panel1.Controls.Add(this.radioLocal);
-			this.panel1.Location = new System.Drawing.Point(67, 294);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(149, 41);
-			this.panel1.TabIndex = 10;
 			// 
 			// ScrSetAppointment
 			// 
@@ -624,12 +626,12 @@
 			this.groupBox5.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
-			this.groupBox7.ResumeLayout(false);
-			this.groupBox7.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.groupBox7.ResumeLayout(false);
+			this.groupBox7.PerformLayout();
+			this.groupBox6.ResumeLayout(false);
+			this.groupBox6.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

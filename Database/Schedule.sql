@@ -80,15 +80,27 @@ BEGIN
 END // 
 DELIMITER ;
 
+drop procedure SearchSchedules;
 DELIMITER //
-create procedure GetCurrentScedules(DID int,startDate date,endDate date)
+create procedure SearchSchedules(vDID int,startDate date,endDate date)
 begin
-	select * from Schedule
-    where Status = 2 AND ;
+	if (vDID != -1) THEN
+		select S.SchID,
+        concat(S.Date,' ', S.StartTime,' ', S.EndTime,' ', (Select concat(Title,'', D.Fname, ' ', D.Lname) from Doctor as D where D.DID = S.DID))
+        ,S.DID
+        from Schedule as S
+		where S.Status = 2 AND S.DID = vDID AND S.Date >= startDate AND S.EndDate <= endDate  ;
+    ELSE 
+		select S.SchID,
+        concat(S.Date,' ', S.StartTime,' ', S.EndTime,' ', (Select concat(Title,'', D.Fname, ' ', D.Lname) from Doctor as D where D.DID = S.DID))
+        ,S.DID
+        from Schedule as S
+		where S.Status = 2 AND S.Date >= startDate AND S.EndDate <= endDate  ;
+    END IF;
 end //
 DELIMITER ;
 
-
+select * from Appointment;
 DELIMITER //
 create procedure GetSchedulesForDay(vDateToFind date)
 BEGIN 

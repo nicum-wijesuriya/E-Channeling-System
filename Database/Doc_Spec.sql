@@ -19,3 +19,9 @@ BEGIN
 END
 DELIMITER ;
 
+DELIMITER //
+create procedure SpecializationsForDoctor(vDID int)
+BEGIN
+	Select SID, Name from speciality where DID = vDID;
+END //
+DELIMITER ;
