@@ -8,16 +8,34 @@ namespace AMC
 {
 	public class ComboBoxItem
 	{
-		public string Text
+		private String text;
+
+		public String Text
 		{
-			get;
-			set;
+			get
+			{
+				return text;
+			}
+			set
+			{
+				text = value;
+			}
 		}
-		public string Value
+
+		private String value;
+
+		public String Value
 		{
-			get;
-			set;
+			get
+			{
+				return this.value;
+			}
+			set
+			{
+				this.value = value;
+			}
 		}
+		
 		public ComboBoxItem(String Value, String Text)
 		{
 			this.Text = Text;

@@ -105,7 +105,20 @@ namespace AMC
 
 		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			int DID;
+			String startDate;
+			String endDate;
 
+			if(this.cmbDoctor.SelectedItem.ToString().Equals("All"))
+			{
+				DID = -1;
+			}
+			else
+			{
+				Int32.TryParse((String)this.cmbDoctor.SelectedValue,out DID);
+			}
+
+			startDate = this.dtpStartDate.
 		}
 	}
 }
