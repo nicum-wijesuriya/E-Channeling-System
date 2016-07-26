@@ -30,5 +30,11 @@ call AddPatient ( 'Mr', 'Nicum', 'Wijesuriya', '123', 'idicjndc', 'Colombo', 'ni
                 
 select * from Patient;
 select * from Appointment;
+select * from Speciality;
+
 
 call AddAppointment( 1, 1, 3, '2016-05-26', 200.00);
+
+call AddSpeciality("Cardiologists");
+
+call InsertDocSpec(1,1);
