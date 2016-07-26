@@ -13,9 +13,31 @@ namespace DatabaseConnector
 		ParameterList parameterList = new ParameterList();
 		private MySqlConnection con;
 
+		private int sID;
+
+		public int SID
+		{
+			get { return sID; }
+			set { sID = value; }
+		}
+
+		private String name;
+
+		public String Name
+		{
+			get { return name; }
+			set { name = value; }
+		}
+
 		public Speciality(MySqlConnection con)
 		{
 			this.con = con;
+		}
+
+		public Speciality(int SID, String name)
+		{
+			this.SID = SID;
+			this.Name = name;
 		}
 
 		public MySqlCommand AddSpeciality(String vName)

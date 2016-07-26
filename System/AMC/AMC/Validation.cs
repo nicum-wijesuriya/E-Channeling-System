@@ -10,35 +10,64 @@ namespace AMC
 {
 	class Validation : ApplicationException
 	{
-		private int errorcode;
+		private static int errorcode;
+		private static String errorMsg;
 
 		public Validation(int errorcode)
 		{
 			switch (errorcode)
 			{
+				case 0:
+					if (errorMsg == "")
+					{
+						errorMsg = "Invalid Entry";
+					}
+					MessageBox.Show(errorMsg);
+					break;
 				case 1:
-					MessageBox.Show("Invalid Email");
+					errorMsg = "Invalid Email";
+					MessageBox.Show(errorMsg);
 					break;
 				case 2:
-					MessageBox.Show("Invalid Phone number");
+					errorMsg = "Invalid Phone number";
+					MessageBox.Show(errorMsg);
 					break;
 				case 3:
-					MessageBox.Show("Invalid ID");
+					errorMsg = "Invalid ID";
+					MessageBox.Show(errorMsg);
 					break;
 				case 4:
-					MessageBox.Show("Invalid NIC Number");
+					errorMsg = "Invalid NIC Number";
+					MessageBox.Show(errorMsg);
 					break;
 				case 5:
-					MessageBox.Show("Invalid Fee");
+					errorMsg = "Invalid Fee";
+					MessageBox.Show(errorMsg);
 					break;
 				case 6:
-					MessageBox.Show("Invalid No. of patients");
+					errorMsg = "Invalid No. of patients";
+					MessageBox.Show(errorMsg);
+					break;
+				case 7:
+					if (errorMsg == "")
+					{
+						errorMsg = "Cannot keep field empty";
+					}
+					MessageBox.Show(errorMsg);
 					break;
 			}
+
+			
 		}
 
+		public static void valGeneral(String msg)
+		{
+			errorMsg = msg;
+			errorcode = 0;
+			throw new Validation(errorcode);
+		}
 
-		public void valEmail(String email)
+		public static void valEmail(String email)
 		{
 			Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
 			Match match = regex.Match(email);
@@ -50,7 +79,7 @@ namespace AMC
 
 		}
 
-		public void valMobile(String number)
+		public static void valMobile(String number)
 		{
 			Regex regex = new Regex(@"^07[0-9]{8}$");
 			Match match = regex.Match(number);
@@ -61,7 +90,7 @@ namespace AMC
 			}
 		}
 
-		public void valLand(String number)
+		public static void valLand(String number)
 		{
 			Regex regex = new Regex(@"^0[0-9]{9}$");
 			Match match = regex.Match(number);
@@ -72,7 +101,7 @@ namespace AMC
 			}
 		}
 
-		public void valForeign(String number)
+		public static void valForeign(String number)
 		{
 			Regex regex = new Regex(@"^(00|+)[0-9]{7,13}$");
 			Match match = regex.Match(number);
@@ -83,7 +112,7 @@ namespace AMC
 			}
 		}
 
-		public void valID(String ID)
+		public static void valID(String ID)
 		{
 			Regex regex = new Regex(@"^[0-9]+$");
 			Match match = regex.Match(ID);
@@ -94,7 +123,7 @@ namespace AMC
 			}
 		}
 
-		public void valNIC(String NIC)
+		public static void valNIC(String NIC)
 		{
 			Regex regex = new Regex(@"^([0-9]{9}(V|X)|[0-9]{12})+$");
 			Match match = regex.Match(NIC);
@@ -105,9 +134,9 @@ namespace AMC
 			}
 		}
 
-		public void valMoney(String money)
+		public static void valMoney(String money)
 		{
-			Regex regex = new Regex(@"^([0-9]+|[0-9]+(.00)+$");
+			Regex regex = new Regex(@"(^[0-9]+)|([0-9]+(.00)+)$");
 			Match match = regex.Match(money);
 			if (!(match.Success))
 			{
@@ -116,13 +145,25 @@ namespace AMC
 			}
 		}
 
-		public void valMaxPatients(String patients)
+		public static void valMaxPatients(String patients)
 		{
 			Regex regex = new Regex(@"^([0-9]+$");
 			Match match = regex.Match(patients);
 			if (!(match.Success))
 			{
 				errorcode = 6;
+				throw new Validation(errorcode);
+			}
+		}
+
+		public static void valEmptyField(String fieldData, String msg)
+		{
+			errorMsg = msg;
+			Regex regex = new Regex(@"\s$");
+			Match match = regex.Match(fieldData);
+			if (match.Success)
+			{
+				errorcode = 7;
 				throw new Validation(errorcode);
 			}
 		}

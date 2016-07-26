@@ -14,6 +14,8 @@ namespace AMC
 {
 	public partial class ScrDoctorRegistration : Form
 	{
+		List<Speciality> specList = new List<Speciality>();
+
 		public ScrDoctorRegistration()
 		{
 			InitializeComponent();
@@ -51,7 +53,102 @@ namespace AMC
 
 		private void btnRegister_Click(object sender, EventArgs e)
 		{
+			try
+			{
+				// start validation
+				bool check = false;
+				foreach (RadioButton r1 in grpAcademicTitle.Controls)
+				{
+					if (r1.Checked)
+					{
+						check = true;
+					}
+				}
 
+				if (check == false)
+				{
+					Validation.valGeneral("Please enter Academic Title");
+				}
+
+				check = false;
+				foreach (RadioButton r1 in grpPersonalTitle.Controls)
+				{
+					if (r1.Checked)
+					{
+						check = true;
+					}
+				}
+				
+				if (check == false)
+				{
+					Validation.valGeneral("Please enter Personal Title");
+				}
+				
+
+				String fName = txtFirstName.Text;
+				if (fName == "First Name")
+				{
+					Validation.valGeneral("Please fill First Name");
+				}
+				Validation.valEmptyField(fName, "Please fill First Name");
+
+				String lName = txtLastName.Text;
+				if (lName == "Last Name")
+				{
+					Validation.valGeneral("Please fill Last Name");
+				}
+				Validation.valEmptyField(lName, "Please fill Last Name");
+
+				String contactNo = txtContactNo.Text;
+				Validation.valMobile(contactNo);
+
+				String email = txtEmail.Text;
+				Validation.valEmail(email);
+
+				String fee = txtFee.Text;
+				Validation.valMoney(fee);
+
+				// end validation
+
+				String acTitle = "";
+				foreach (RadioButton r in grpAcademicTitle.Controls)
+				{
+					if (r.Checked)
+					{
+						acTitle = r.Text;
+					}
+				}
+
+				String perTitle = "";
+				foreach (RadioButton r in grpPersonalTitle.Controls)
+				{
+					if (r.Checked)
+					{
+						acTitle = r.Text;
+					}
+				}
+
+				String title = "";
+
+				if (perTitle == "Mr.")
+				{
+					title = acTitle;
+				}
+				else
+				{
+					title = acTitle + " (" + perTitle + ")";
+				}
+
+				DBConnect db = DBConnect.Connect();
+
+				Doctor doc = new Doctor(db.Connection);
+				MySqlCommand cmd = doc.AddDoctor(title, fName, lName, contactNo, email, fee);
+
+				ScrHome scrH = new ScrHome();
+				scrH.Visible = true;
+				this.Visible = false;
+			}
+			catch (Validation ex) { }
 		}
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
@@ -71,7 +168,35 @@ namespace AMC
 			String name = res.GetString(1);
 			res.Close();
 
-			MessageBox.Show(""+name+"   "+SID);
+			specList.Add(new Speciality(SID, name));
+
+
+		}
+
+		private void btnClearSpec_Click(object sender, EventArgs e)
+		{
+			this.txtNewSpec.Text = "";
+		}
+
+		private void btnClear_Click(object sender, EventArgs e)
+		{
+			radioProf.Checked = false;
+			radioDr.Checked = false;
+			radioMr.Checked = false;
+			radioMrs.Checked = false;
+			radioMs.Checked = false;
+			txtFirstName.Text = "";
+			txtLastName.Text = "";
+			txtContactNo.Text = "";
+			txtEmail.Text = "";
+			txtFee.Text = "";
+		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			ScrHome scrH = new ScrHome();
+			scrH.Visible = true;
+			this.Visible = false;
 		}
 	}
 }

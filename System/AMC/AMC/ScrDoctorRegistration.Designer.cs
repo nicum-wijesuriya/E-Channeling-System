@@ -46,12 +46,12 @@
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnCancel = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.grpPersonalTitle = new System.Windows.Forms.GroupBox();
 			this.radioMs = new System.Windows.Forms.RadioButton();
-			this.groupBox5 = new System.Windows.Forms.GroupBox();
+			this.grpAcademicTitle = new System.Windows.Forms.GroupBox();
 			this.radioDr = new System.Windows.Forms.RadioButton();
 			this.radioProf = new System.Windows.Forms.RadioButton();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.grpSpecialization = new System.Windows.Forms.GroupBox();
 			this.txtNewSpec = new System.Windows.Forms.TextBox();
 			this.btnClearSpec = new System.Windows.Forms.Button();
 			this.btnNewSpec = new System.Windows.Forms.Button();
@@ -62,9 +62,9 @@
 			this.cmbSelectedSpec = new System.Windows.Forms.ComboBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
-			this.groupBox6.SuspendLayout();
-			this.groupBox5.SuspendLayout();
-			this.groupBox2.SuspendLayout();
+			this.grpPersonalTitle.SuspendLayout();
+			this.grpAcademicTitle.SuspendLayout();
+			this.grpSpecialization.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
@@ -204,6 +204,7 @@
 			this.btnClear.TabIndex = 4;
 			this.btnClear.Text = "Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnCancel
 			// 
@@ -213,11 +214,12 @@
 			this.btnCancel.TabIndex = 4;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.groupBox6);
-			this.groupBox1.Controls.Add(this.groupBox5);
+			this.groupBox1.Controls.Add(this.grpPersonalTitle);
+			this.groupBox1.Controls.Add(this.grpAcademicTitle);
 			this.groupBox1.Controls.Add(this.txtLastName);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.txtFirstName);
@@ -238,17 +240,17 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Doctor Details";
 			// 
-			// groupBox6
+			// grpPersonalTitle
 			// 
-			this.groupBox6.Controls.Add(this.radioMs);
-			this.groupBox6.Controls.Add(this.radioMrs);
-			this.groupBox6.Controls.Add(this.radioMr);
-			this.groupBox6.Location = new System.Drawing.Point(257, 31);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(236, 51);
-			this.groupBox6.TabIndex = 7;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Personal Title";
+			this.grpPersonalTitle.Controls.Add(this.radioMs);
+			this.grpPersonalTitle.Controls.Add(this.radioMrs);
+			this.grpPersonalTitle.Controls.Add(this.radioMr);
+			this.grpPersonalTitle.Location = new System.Drawing.Point(257, 31);
+			this.grpPersonalTitle.Name = "grpPersonalTitle";
+			this.grpPersonalTitle.Size = new System.Drawing.Size(236, 51);
+			this.grpPersonalTitle.TabIndex = 7;
+			this.grpPersonalTitle.TabStop = false;
+			this.grpPersonalTitle.Text = "Personal Title";
 			// 
 			// radioMs
 			// 
@@ -261,16 +263,16 @@
 			this.radioMs.Text = "Ms.";
 			this.radioMs.UseVisualStyleBackColor = true;
 			// 
-			// groupBox5
+			// grpAcademicTitle
 			// 
-			this.groupBox5.Controls.Add(this.radioDr);
-			this.groupBox5.Controls.Add(this.radioProf);
-			this.groupBox5.Location = new System.Drawing.Point(98, 31);
-			this.groupBox5.Name = "groupBox5";
-			this.groupBox5.Size = new System.Drawing.Size(144, 51);
-			this.groupBox5.TabIndex = 6;
-			this.groupBox5.TabStop = false;
-			this.groupBox5.Text = "Acadamic Title";
+			this.grpAcademicTitle.Controls.Add(this.radioDr);
+			this.grpAcademicTitle.Controls.Add(this.radioProf);
+			this.grpAcademicTitle.Location = new System.Drawing.Point(98, 31);
+			this.grpAcademicTitle.Name = "grpAcademicTitle";
+			this.grpAcademicTitle.Size = new System.Drawing.Size(144, 51);
+			this.grpAcademicTitle.TabIndex = 6;
+			this.grpAcademicTitle.TabStop = false;
+			this.grpAcademicTitle.Text = "Acadamic Title";
 			// 
 			// radioDr
 			// 
@@ -296,19 +298,19 @@
 			this.radioProf.UseVisualStyleBackColor = true;
 			this.radioProf.CheckedChanged += new System.EventHandler(this.radioProf_CheckedChanged);
 			// 
-			// groupBox2
+			// grpSpecialization
 			// 
-			this.groupBox2.Controls.Add(this.txtNewSpec);
-			this.groupBox2.Controls.Add(this.btnClearSpec);
-			this.groupBox2.Controls.Add(this.btnNewSpec);
-			this.groupBox2.Controls.Add(this.groupBox3);
-			this.groupBox2.Controls.Add(this.groupBox4);
-			this.groupBox2.Location = new System.Drawing.Point(519, 23);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(307, 315);
-			this.groupBox2.TabIndex = 6;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Specialization";
+			this.grpSpecialization.Controls.Add(this.txtNewSpec);
+			this.grpSpecialization.Controls.Add(this.btnClearSpec);
+			this.grpSpecialization.Controls.Add(this.btnNewSpec);
+			this.grpSpecialization.Controls.Add(this.groupBox3);
+			this.grpSpecialization.Controls.Add(this.groupBox4);
+			this.grpSpecialization.Location = new System.Drawing.Point(519, 23);
+			this.grpSpecialization.Name = "grpSpecialization";
+			this.grpSpecialization.Size = new System.Drawing.Size(307, 315);
+			this.grpSpecialization.TabIndex = 6;
+			this.grpSpecialization.TabStop = false;
+			this.grpSpecialization.Text = "Specialization";
 			// 
 			// txtNewSpec
 			// 
@@ -326,6 +328,7 @@
 			this.btnClearSpec.TabIndex = 4;
 			this.btnClearSpec.Text = "Clear";
 			this.btnClearSpec.UseVisualStyleBackColor = true;
+			this.btnClearSpec.Click += new System.EventHandler(this.btnClearSpec_Click);
 			// 
 			// btnNewSpec
 			// 
@@ -400,19 +403,19 @@
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(838, 349);
-			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.grpSpecialization);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrDoctorRegistration";
 			this.Text = "Register Doctor";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
-			this.groupBox5.ResumeLayout(false);
-			this.groupBox5.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
+			this.grpPersonalTitle.ResumeLayout(false);
+			this.grpPersonalTitle.PerformLayout();
+			this.grpAcademicTitle.ResumeLayout(false);
+			this.grpAcademicTitle.PerformLayout();
+			this.grpSpecialization.ResumeLayout(false);
+			this.grpSpecialization.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
@@ -438,7 +441,7 @@
 		private System.Windows.Forms.Button btnClear;
 		private System.Windows.Forms.Button btnCancel;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.GroupBox grpSpecialization;
 		private System.Windows.Forms.TextBox txtNewSpec;
 		private System.Windows.Forms.Button btnClearSpec;
 		private System.Windows.Forms.Button btnNewSpec;
@@ -451,7 +454,7 @@
 		private System.Windows.Forms.RadioButton radioMs;
 		private System.Windows.Forms.RadioButton radioDr;
 		private System.Windows.Forms.RadioButton radioProf;
-		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.GroupBox groupBox5;
+		private System.Windows.Forms.GroupBox grpPersonalTitle;
+		private System.Windows.Forms.GroupBox grpAcademicTitle;
 	}
 }
