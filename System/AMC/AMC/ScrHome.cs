@@ -16,5 +16,40 @@ namespace AMC
 		{
 			InitializeComponent();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			ScrDoctorRegistration scrDoc = new ScrDoctorRegistration();
+			scrDoc.Visible = true;
+			this.Visible = false;
+		}
+
+		private void btnAddSchedule_Click(object sender, EventArgs e)
+		{
+			AddSchedule scr = new AddSchedule();
+			scr.Visible = true;
+			this.Visible = false;
+		}
+
+		private void btnUpdateSchedule_Click(object sender, EventArgs e)
+		{
+			//Cancel the Schedule 
+			//Inform all patients with that schedule
+
+		}
+
+		private void btnSetAppointment_Click(object sender, EventArgs e)
+		{
+			ScrSetAppointment scr = new ScrSetAppointment();
+			scr.Visible = true;
+			this.Visible = false;
+		}
+
+		private void btnCancelAppointment_Click(object sender, EventArgs e)
+		{
+			ScrCancelAppointment scr = new ScrCancelAppointment();
+			scr.Visible = true;
+			this.Visible = false;
+		}
 	}
 }

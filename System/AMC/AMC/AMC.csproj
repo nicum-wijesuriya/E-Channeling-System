@@ -90,6 +90,12 @@
     <EmbeddedResource Include="ScrCancelAppointment.resx">
       <DependentUpon>ScrCancelAppointment.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScrDoctorRegistration.resx">
+      <DependentUpon>ScrDoctorRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrHome.resx">
+      <DependentUpon>ScrHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScrSetAppointment.resx">
       <DependentUpon>ScrSetAppointment.cs</DependentUpon>
     </EmbeddedResource>

@@ -42,7 +42,7 @@ namespace DatabaseConnector
 			
 		}
 
-		public MySqlCommand AddSchedule(String vSchID, String vDate, String vStartTime, String vEndTime, String vMaxPatients, String vDID)
+		public MySqlCommand UpdateSchedule(String vSchID, String vDate, String vStartTime, String vEndTime, String vMaxPatients, String vDID)
 		{
 			parameterList.Add(new Parameter("vSchID", vSchID));
 			parameterList.Add(new Parameter("vDate", vDate));

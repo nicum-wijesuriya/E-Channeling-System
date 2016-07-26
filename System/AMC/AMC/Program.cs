@@ -21,17 +21,17 @@ namespace AMC
 		[STAThread]
 		static void Main()
 		{
-			//Application.EnableVisualStyles();
-			//Application.SetCompatibleTextRenderingDefault(false);
-			//Application.Run(new Form1());
-			DBConnect db = DBConnect.Connect();
+			Application.EnableVisualStyles();
+			Application.SetCompatibleTextRenderingDefault(false);
+			Application.Run(new ScrHome());
+			//DBConnect db = DBConnect.Connect();
 			
-			Patient p = new Patient(db.Connection);
+			//Patient p = new Patient(db.Connection);
 
 		//	MySqlCommand cmd = p.AddPatient("as","ds","12","dascn","asd","nick@gmail.com", "911162580v", "Mr.", "0712583695","0112700556", "1");
 		//	MySqlCommand cmd = p.UpdatePatient("2","ad", "ds", "12", "dascn", "asd", "nick@gmail.com", "911162580v", "Mr.", "0712583695", "0112700556", "1");
-			MySqlCommand cmd = p.DeletePatient("1");
-			db.ExecuteProcedure(cmd,1);
+			//MySqlCommand cmd = p.DeletePatient("1");
+			//db.ExecuteProcedure(cmd,1);
 
 		}
 	}

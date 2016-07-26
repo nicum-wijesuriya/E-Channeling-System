@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrSetAppointment));
 			this.label1 = new System.Windows.Forms.Label();
 			this.comboBox1 = new System.Windows.Forms.ComboBox();
 			this.label2 = new System.Windows.Forms.Label();
@@ -565,6 +566,7 @@
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrSetAppointment";
 			this.Text = "Place Appointment";
 			this.groupBox1.ResumeLayout(false);

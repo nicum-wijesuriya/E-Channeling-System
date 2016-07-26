@@ -50,13 +50,13 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.button5 = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button8 = new System.Windows.Forms.Button();
+			this.button5 = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.button8 = new System.Windows.Forms.Button();
+			this.button7 = new System.Windows.Forms.Button();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -277,15 +277,6 @@
 			this.textBox6.TabIndex = 0;
 			this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
 			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(29, 263);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(76, 23);
-			this.button5.TabIndex = 4;
-			this.button5.Text = "Add New";
-			this.button5.UseVisualStyleBackColor = true;
-			// 
 			// button6
 			// 
 			this.button6.Location = new System.Drawing.Point(205, 263);
@@ -295,23 +286,14 @@
 			this.button6.Text = "Clear";
 			this.button6.UseVisualStyleBackColor = true;
 			// 
-			// button7
+			// button5
 			// 
-			this.button7.Location = new System.Drawing.Point(14, 50);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(79, 23);
-			this.button7.TabIndex = 4;
-			this.button7.Text = "Add";
-			this.button7.UseVisualStyleBackColor = true;
-			// 
-			// button8
-			// 
-			this.button8.Location = new System.Drawing.Point(14, 128);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(79, 23);
-			this.button8.TabIndex = 4;
-			this.button8.Text = "Remove";
-			this.button8.UseVisualStyleBackColor = true;
+			this.button5.Location = new System.Drawing.Point(29, 263);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(76, 23);
+			this.button5.TabIndex = 4;
+			this.button5.Text = "Add New";
+			this.button5.UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
 			// 
@@ -327,14 +309,6 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Currently Available Specializations";
 			// 
-			// comboBox2
-			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(14, 101);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(252, 21);
-			this.comboBox2.TabIndex = 3;
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
@@ -343,6 +317,32 @@
 			this.label6.Size = new System.Drawing.Size(122, 13);
 			this.label6.TabIndex = 5;
 			this.label6.Text = "Selected Specializations";
+			// 
+			// button8
+			// 
+			this.button8.Location = new System.Drawing.Point(14, 128);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(79, 23);
+			this.button8.TabIndex = 4;
+			this.button8.Text = "Remove";
+			this.button8.UseVisualStyleBackColor = true;
+			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(14, 50);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(79, 23);
+			this.button7.TabIndex = 4;
+			this.button7.Text = "Add";
+			this.button7.UseVisualStyleBackColor = true;
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Location = new System.Drawing.Point(14, 101);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(252, 21);
+			this.comboBox2.TabIndex = 3;
 			// 
 			// groupBox4
 			// 
@@ -353,7 +353,7 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "New Specialization";
 			// 
-			// DoctorRegistration
+			// ScrDoctorRegistration
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -361,7 +361,7 @@
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "DoctorRegistration";
+			this.Name = "ScrDoctorRegistration";
 			this.Text = "Register Doctor";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
