@@ -29,18 +29,18 @@
 		private void InitializeComponent()
 		{
 			this.label1 = new System.Windows.Forms.Label();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.txtRefID = new System.Windows.Forms.TextBox();
+			this.btnCancel = new System.Windows.Forms.Button();
+			this.btnUpdate = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label7 = new System.Windows.Forms.Label();
-			this.label9 = new System.Windows.Forms.Label();
-			this.label11 = new System.Windows.Forms.Label();
-			this.label13 = new System.Windows.Forms.Label();
-			this.label15 = new System.Windows.Forms.Label();
-			this.label17 = new System.Windows.Forms.Label();
+			this.lblPatientNIC = new System.Windows.Forms.Label();
+			this.lblDoctorName = new System.Windows.Forms.Label();
+			this.lblScheduleDate = new System.Windows.Forms.Label();
+			this.lblScheduleTime = new System.Windows.Forms.Label();
+			this.lblQueueNo = new System.Windows.Forms.Label();
+			this.lblFee = new System.Windows.Forms.Label();
 			this.label16 = new System.Windows.Forms.Label();
-			this.label19 = new System.Windows.Forms.Label();
+			this.lblRoom = new System.Windows.Forms.Label();
 			this.label18 = new System.Windows.Forms.Label();
 			this.label14 = new System.Windows.Forms.Label();
 			this.label12 = new System.Windows.Forms.Label();
@@ -48,16 +48,16 @@
 			this.label8 = new System.Windows.Forms.Label();
 			this.label6 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.cmbDoctor = new System.Windows.Forms.ComboBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dtpEndDate = new System.Windows.Forms.DateTimePicker();
+			this.dtpStartDate = new System.Windows.Forms.DateTimePicker();
 			this.label5 = new System.Windows.Forms.Label();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button4 = new System.Windows.Forms.Button();
+			this.cmbSchedule = new System.Windows.Forms.ComboBox();
+			this.btnSave = new System.Windows.Forms.Button();
+			this.btnClear = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -71,41 +71,41 @@
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Reference ID";
 			// 
-			// textBox1
+			// txtRefID
 			// 
-			this.textBox1.Location = new System.Drawing.Point(101, 27);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(215, 20);
-			this.textBox1.TabIndex = 1;
+			this.txtRefID.Location = new System.Drawing.Point(101, 27);
+			this.txtRefID.Name = "txtRefID";
+			this.txtRefID.Size = new System.Drawing.Size(215, 20);
+			this.txtRefID.TabIndex = 1;
 			// 
-			// button1
+			// btnCancel
 			// 
-			this.button1.Location = new System.Drawing.Point(328, 25);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "Cancel";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnCancel.Location = new System.Drawing.Point(328, 25);
+			this.btnCancel.Name = "btnCancel";
+			this.btnCancel.Size = new System.Drawing.Size(75, 23);
+			this.btnCancel.TabIndex = 2;
+			this.btnCancel.Text = "Cancel";
+			this.btnCancel.UseVisualStyleBackColor = true;
 			// 
-			// button2
+			// btnUpdate
 			// 
-			this.button2.Location = new System.Drawing.Point(419, 25);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 2;
-			this.button2.Text = "Update";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnUpdate.Location = new System.Drawing.Point(419, 25);
+			this.btnUpdate.Name = "btnUpdate";
+			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
+			this.btnUpdate.TabIndex = 2;
+			this.btnUpdate.Text = "Update";
+			this.btnUpdate.UseVisualStyleBackColor = true;
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.label7);
-			this.groupBox1.Controls.Add(this.label9);
-			this.groupBox1.Controls.Add(this.label11);
-			this.groupBox1.Controls.Add(this.label13);
-			this.groupBox1.Controls.Add(this.label15);
-			this.groupBox1.Controls.Add(this.label17);
+			this.groupBox1.Controls.Add(this.lblPatientNIC);
+			this.groupBox1.Controls.Add(this.lblDoctorName);
+			this.groupBox1.Controls.Add(this.lblScheduleDate);
+			this.groupBox1.Controls.Add(this.lblScheduleTime);
+			this.groupBox1.Controls.Add(this.lblQueueNo);
+			this.groupBox1.Controls.Add(this.lblFee);
 			this.groupBox1.Controls.Add(this.label16);
-			this.groupBox1.Controls.Add(this.label19);
+			this.groupBox1.Controls.Add(this.lblRoom);
 			this.groupBox1.Controls.Add(this.label18);
 			this.groupBox1.Controls.Add(this.label14);
 			this.groupBox1.Controls.Add(this.label12);
@@ -119,65 +119,65 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Appoinment Details";
 			// 
-			// label7
+			// lblPatientNIC
 			// 
-			this.label7.AutoSize = true;
-			this.label7.Location = new System.Drawing.Point(146, 28);
-			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(61, 13);
-			this.label7.TabIndex = 4;
-			this.label7.Text = "Patient NIC";
-			this.label7.Click += new System.EventHandler(this.label2_Click);
+			this.lblPatientNIC.AutoSize = true;
+			this.lblPatientNIC.Location = new System.Drawing.Point(146, 28);
+			this.lblPatientNIC.Name = "lblPatientNIC";
+			this.lblPatientNIC.Size = new System.Drawing.Size(61, 13);
+			this.lblPatientNIC.TabIndex = 4;
+			this.lblPatientNIC.Text = "Patient NIC";
+			this.lblPatientNIC.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label9
+			// lblDoctorName
 			// 
-			this.label9.AutoSize = true;
-			this.label9.Location = new System.Drawing.Point(146, 59);
-			this.label9.Name = "label9";
-			this.label9.Size = new System.Drawing.Size(70, 13);
-			this.label9.TabIndex = 4;
-			this.label9.Text = "Doctor Name";
-			this.label9.Click += new System.EventHandler(this.label2_Click);
+			this.lblDoctorName.AutoSize = true;
+			this.lblDoctorName.Location = new System.Drawing.Point(146, 59);
+			this.lblDoctorName.Name = "lblDoctorName";
+			this.lblDoctorName.Size = new System.Drawing.Size(70, 13);
+			this.lblDoctorName.TabIndex = 4;
+			this.lblDoctorName.Text = "Doctor Name";
+			this.lblDoctorName.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label11
+			// lblScheduleDate
 			// 
-			this.label11.AutoSize = true;
-			this.label11.Location = new System.Drawing.Point(146, 90);
-			this.label11.Name = "label11";
-			this.label11.Size = new System.Drawing.Size(84, 13);
-			this.label11.TabIndex = 4;
-			this.label11.Text = "Scheduled Date";
-			this.label11.Click += new System.EventHandler(this.label2_Click);
+			this.lblScheduleDate.AutoSize = true;
+			this.lblScheduleDate.Location = new System.Drawing.Point(146, 90);
+			this.lblScheduleDate.Name = "lblScheduleDate";
+			this.lblScheduleDate.Size = new System.Drawing.Size(84, 13);
+			this.lblScheduleDate.TabIndex = 4;
+			this.lblScheduleDate.Text = "Scheduled Date";
+			this.lblScheduleDate.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label13
+			// lblScheduleTime
 			// 
-			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(146, 121);
-			this.label13.Name = "label13";
-			this.label13.Size = new System.Drawing.Size(84, 13);
-			this.label13.TabIndex = 4;
-			this.label13.Text = "Scheduled Time";
-			this.label13.Click += new System.EventHandler(this.label2_Click);
+			this.lblScheduleTime.AutoSize = true;
+			this.lblScheduleTime.Location = new System.Drawing.Point(146, 121);
+			this.lblScheduleTime.Name = "lblScheduleTime";
+			this.lblScheduleTime.Size = new System.Drawing.Size(84, 13);
+			this.lblScheduleTime.TabIndex = 4;
+			this.lblScheduleTime.Text = "Scheduled Time";
+			this.lblScheduleTime.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label15
+			// lblQueueNo
 			// 
-			this.label15.AutoSize = true;
-			this.label15.Location = new System.Drawing.Point(146, 152);
-			this.label15.Name = "label15";
-			this.label15.Size = new System.Drawing.Size(59, 13);
-			this.label15.TabIndex = 4;
-			this.label15.Text = "Queue No ";
-			this.label15.Click += new System.EventHandler(this.label2_Click);
+			this.lblQueueNo.AutoSize = true;
+			this.lblQueueNo.Location = new System.Drawing.Point(146, 152);
+			this.lblQueueNo.Name = "lblQueueNo";
+			this.lblQueueNo.Size = new System.Drawing.Size(59, 13);
+			this.lblQueueNo.TabIndex = 4;
+			this.lblQueueNo.Text = "Queue No ";
+			this.lblQueueNo.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label17
+			// lblFee
 			// 
-			this.label17.AutoSize = true;
-			this.label17.Location = new System.Drawing.Point(146, 214);
-			this.label17.Name = "label17";
-			this.label17.Size = new System.Drawing.Size(25, 13);
-			this.label17.TabIndex = 4;
-			this.label17.Text = "Fee";
-			this.label17.Click += new System.EventHandler(this.label2_Click);
+			this.lblFee.AutoSize = true;
+			this.lblFee.Location = new System.Drawing.Point(146, 214);
+			this.lblFee.Name = "lblFee";
+			this.lblFee.Size = new System.Drawing.Size(25, 13);
+			this.lblFee.TabIndex = 4;
+			this.lblFee.Text = "Fee";
+			this.lblFee.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// label16
 			// 
@@ -189,15 +189,15 @@
 			this.label16.Text = "Fee";
 			this.label16.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// label19
+			// lblRoom
 			// 
-			this.label19.AutoSize = true;
-			this.label19.Location = new System.Drawing.Point(146, 183);
-			this.label19.Name = "label19";
-			this.label19.Size = new System.Drawing.Size(35, 13);
-			this.label19.TabIndex = 4;
-			this.label19.Text = "Room";
-			this.label19.Click += new System.EventHandler(this.label2_Click);
+			this.lblRoom.AutoSize = true;
+			this.lblRoom.Location = new System.Drawing.Point(146, 183);
+			this.lblRoom.Name = "lblRoom";
+			this.lblRoom.Size = new System.Drawing.Size(35, 13);
+			this.lblRoom.TabIndex = 4;
+			this.lblRoom.Text = "Room";
+			this.lblRoom.Click += new System.EventHandler(this.label2_Click);
 			// 
 			// label18
 			// 
@@ -269,13 +269,13 @@
 			this.label2.Text = "Doctor";
 			this.label2.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// comboBox1
+			// cmbDoctor
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(413, 81);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(121, 21);
-			this.comboBox1.TabIndex = 5;
+			this.cmbDoctor.FormattingEnabled = true;
+			this.cmbDoctor.Location = new System.Drawing.Point(413, 81);
+			this.cmbDoctor.Name = "cmbDoctor";
+			this.cmbDoctor.Size = new System.Drawing.Size(121, 21);
+			this.cmbDoctor.TabIndex = 5;
 			// 
 			// label3
 			// 
@@ -298,8 +298,8 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.dateTimePicker2);
-			this.groupBox2.Controls.Add(this.dateTimePicker1);
+			this.groupBox2.Controls.Add(this.dtpEndDate);
+			this.groupBox2.Controls.Add(this.dtpStartDate);
 			this.groupBox2.Controls.Add(this.label4);
 			this.groupBox2.Controls.Add(this.label3);
 			this.groupBox2.Location = new System.Drawing.Point(371, 108);
@@ -309,19 +309,19 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Date";
 			// 
-			// dateTimePicker2
+			// dtpEndDate
 			// 
-			this.dateTimePicker2.Location = new System.Drawing.Point(53, 46);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker2.TabIndex = 7;
+			this.dtpEndDate.Location = new System.Drawing.Point(53, 46);
+			this.dtpEndDate.Name = "dtpEndDate";
+			this.dtpEndDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpEndDate.TabIndex = 7;
 			// 
-			// dateTimePicker1
+			// dtpStartDate
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(53, 20);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(200, 20);
-			this.dateTimePicker1.TabIndex = 7;
+			this.dtpStartDate.Location = new System.Drawing.Point(53, 20);
+			this.dtpStartDate.Name = "dtpStartDate";
+			this.dtpStartDate.Size = new System.Drawing.Size(200, 20);
+			this.dtpStartDate.TabIndex = 7;
 			// 
 			// label5
 			// 
@@ -333,47 +333,47 @@
 			this.label5.Text = "Schedule";
 			this.label5.Click += new System.EventHandler(this.label2_Click);
 			// 
-			// comboBox2
+			// cmbSchedule
 			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(424, 199);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(121, 21);
-			this.comboBox2.TabIndex = 5;
+			this.cmbSchedule.FormattingEnabled = true;
+			this.cmbSchedule.Location = new System.Drawing.Point(424, 199);
+			this.cmbSchedule.Name = "cmbSchedule";
+			this.cmbSchedule.Size = new System.Drawing.Size(121, 21);
+			this.cmbSchedule.TabIndex = 5;
 			// 
-			// button3
+			// btnSave
 			// 
-			this.button3.Location = new System.Drawing.Point(371, 285);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(99, 25);
-			this.button3.TabIndex = 8;
-			this.button3.Text = "Save Changes";
-			this.button3.UseVisualStyleBackColor = true;
+			this.btnSave.Location = new System.Drawing.Point(371, 285);
+			this.btnSave.Name = "btnSave";
+			this.btnSave.Size = new System.Drawing.Size(99, 25);
+			this.btnSave.TabIndex = 8;
+			this.btnSave.Text = "Save Changes";
+			this.btnSave.UseVisualStyleBackColor = true;
 			// 
-			// button4
+			// btnClear
 			// 
-			this.button4.Location = new System.Drawing.Point(540, 285);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(99, 25);
-			this.button4.TabIndex = 8;
-			this.button4.Text = "Clear";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnClear.Location = new System.Drawing.Point(540, 285);
+			this.btnClear.Name = "btnClear";
+			this.btnClear.Size = new System.Drawing.Size(99, 25);
+			this.btnClear.TabIndex = 8;
+			this.btnClear.Text = "Clear";
+			this.btnClear.UseVisualStyleBackColor = true;
 			// 
 			// ScrCancelAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(666, 340);
-			this.Controls.Add(this.button4);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.comboBox2);
+			this.Controls.Add(this.btnClear);
+			this.Controls.Add(this.btnSave);
+			this.Controls.Add(this.cmbSchedule);
 			this.Controls.Add(this.label5);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.cmbDoctor);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.textBox1);
+			this.Controls.Add(this.btnUpdate);
+			this.Controls.Add(this.btnCancel);
+			this.Controls.Add(this.txtRefID);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.groupBox2);
 			this.Name = "ScrCancelAppointment";
@@ -390,34 +390,34 @@
 		#endregion
 
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button2;
+		private System.Windows.Forms.TextBox txtRefID;
+		private System.Windows.Forms.Button btnCancel;
+		private System.Windows.Forms.Button btnUpdate;
 		private System.Windows.Forms.GroupBox groupBox1;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cmbDoctor;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpEndDate;
+		private System.Windows.Forms.DateTimePicker dtpStartDate;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.ComboBox comboBox2;
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label9;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.Label label13;
-		private System.Windows.Forms.Label label15;
+		private System.Windows.Forms.ComboBox cmbSchedule;
+		private System.Windows.Forms.Button btnSave;
+		private System.Windows.Forms.Button btnClear;
+		private System.Windows.Forms.Label lblPatientNIC;
+		private System.Windows.Forms.Label lblDoctorName;
+		private System.Windows.Forms.Label lblScheduleDate;
+		private System.Windows.Forms.Label lblScheduleTime;
+		private System.Windows.Forms.Label lblQueueNo;
 		private System.Windows.Forms.Label label14;
 		private System.Windows.Forms.Label label12;
 		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.Label label8;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label17;
+		private System.Windows.Forms.Label lblFee;
 		private System.Windows.Forms.Label label16;
-		private System.Windows.Forms.Label label19;
+		private System.Windows.Forms.Label lblRoom;
 		private System.Windows.Forms.Label label18;
 	}
 }

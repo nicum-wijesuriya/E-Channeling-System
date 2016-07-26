@@ -28,14 +28,13 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrDoctorRegistration));
 			this.label1 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
-			this.radioButton1 = new System.Windows.Forms.RadioButton();
-			this.radioButton2 = new System.Windows.Forms.RadioButton();
+			this.radioProf = new System.Windows.Forms.RadioButton();
+			this.radioProfMrs = new System.Windows.Forms.RadioButton();
 			this.radioButton3 = new System.Windows.Forms.RadioButton();
 			this.radioButton4 = new System.Windows.Forms.RadioButton();
 			this.textBox1 = new System.Windows.Forms.TextBox();
@@ -50,13 +49,13 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.textBox6 = new System.Windows.Forms.TextBox();
-			this.button5 = new System.Windows.Forms.Button();
 			this.button6 = new System.Windows.Forms.Button();
-			this.button7 = new System.Windows.Forms.Button();
-			this.button8 = new System.Windows.Forms.Button();
+			this.button5 = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.label6 = new System.Windows.Forms.Label();
+			this.button8 = new System.Windows.Forms.Button();
+			this.button7 = new System.Windows.Forms.Button();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -113,27 +112,27 @@
 			this.label5.Text = "Fee per Patient";
 			this.label5.Click += new System.EventHandler(this.label1_Click);
 			// 
-			// radioButton1
+			// radioProf
 			// 
-			this.radioButton1.AutoSize = true;
-			this.radioButton1.Location = new System.Drawing.Point(112, 36);
-			this.radioButton1.Name = "radioButton1";
-			this.radioButton1.Size = new System.Drawing.Size(47, 17);
-			this.radioButton1.TabIndex = 1;
-			this.radioButton1.TabStop = true;
-			this.radioButton1.Text = "Prof.";
-			this.radioButton1.UseVisualStyleBackColor = true;
+			this.radioProf.AutoSize = true;
+			this.radioProf.Location = new System.Drawing.Point(112, 36);
+			this.radioProf.Name = "radioProf";
+			this.radioProf.Size = new System.Drawing.Size(47, 17);
+			this.radioProf.TabIndex = 1;
+			this.radioProf.TabStop = true;
+			this.radioProf.Text = "Prof.";
+			this.radioProf.UseVisualStyleBackColor = true;
 			// 
-			// radioButton2
+			// radioProfMrs
 			// 
-			this.radioButton2.AutoSize = true;
-			this.radioButton2.Location = new System.Drawing.Point(193, 36);
-			this.radioButton2.Name = "radioButton2";
-			this.radioButton2.Size = new System.Drawing.Size(70, 17);
-			this.radioButton2.TabIndex = 1;
-			this.radioButton2.TabStop = true;
-			this.radioButton2.Text = "Prof(Mrs).";
-			this.radioButton2.UseVisualStyleBackColor = true;
+			this.radioProfMrs.AutoSize = true;
+			this.radioProfMrs.Location = new System.Drawing.Point(193, 36);
+			this.radioProfMrs.Name = "radioProfMrs";
+			this.radioProfMrs.Size = new System.Drawing.Size(70, 17);
+			this.radioProfMrs.TabIndex = 1;
+			this.radioProfMrs.TabStop = true;
+			this.radioProfMrs.Text = "Prof(Mrs).";
+			this.radioProfMrs.UseVisualStyleBackColor = true;
 			// 
 			// radioButton3
 			// 
@@ -237,9 +236,9 @@
 			this.groupBox1.Controls.Add(this.textBox1);
 			this.groupBox1.Controls.Add(this.radioButton3);
 			this.groupBox1.Controls.Add(this.textBox3);
-			this.groupBox1.Controls.Add(this.radioButton2);
+			this.groupBox1.Controls.Add(this.radioProfMrs);
 			this.groupBox1.Controls.Add(this.textBox4);
-			this.groupBox1.Controls.Add(this.radioButton1);
+			this.groupBox1.Controls.Add(this.radioProf);
 			this.groupBox1.Controls.Add(this.textBox5);
 			this.groupBox1.Controls.Add(this.button4);
 			this.groupBox1.Controls.Add(this.label2);
@@ -277,15 +276,6 @@
 			this.textBox6.TabIndex = 0;
 			this.textBox6.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
 			// 
-			// button5
-			// 
-			this.button5.Location = new System.Drawing.Point(29, 263);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(76, 23);
-			this.button5.TabIndex = 4;
-			this.button5.Text = "Add New";
-			this.button5.UseVisualStyleBackColor = true;
-			// 
 			// button6
 			// 
 			this.button6.Location = new System.Drawing.Point(205, 263);
@@ -295,23 +285,14 @@
 			this.button6.Text = "Clear";
 			this.button6.UseVisualStyleBackColor = true;
 			// 
-			// button7
+			// button5
 			// 
-			this.button7.Location = new System.Drawing.Point(14, 50);
-			this.button7.Name = "button7";
-			this.button7.Size = new System.Drawing.Size(79, 23);
-			this.button7.TabIndex = 4;
-			this.button7.Text = "Add";
-			this.button7.UseVisualStyleBackColor = true;
-			// 
-			// button8
-			// 
-			this.button8.Location = new System.Drawing.Point(14, 128);
-			this.button8.Name = "button8";
-			this.button8.Size = new System.Drawing.Size(79, 23);
-			this.button8.TabIndex = 4;
-			this.button8.Text = "Remove";
-			this.button8.UseVisualStyleBackColor = true;
+			this.button5.Location = new System.Drawing.Point(29, 263);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(76, 23);
+			this.button5.TabIndex = 4;
+			this.button5.Text = "Add New";
+			this.button5.UseVisualStyleBackColor = true;
 			// 
 			// groupBox3
 			// 
@@ -327,14 +308,6 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Currently Available Specializations";
 			// 
-			// comboBox2
-			// 
-			this.comboBox2.FormattingEnabled = true;
-			this.comboBox2.Location = new System.Drawing.Point(14, 101);
-			this.comboBox2.Name = "comboBox2";
-			this.comboBox2.Size = new System.Drawing.Size(252, 21);
-			this.comboBox2.TabIndex = 3;
-			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
@@ -343,6 +316,32 @@
 			this.label6.Size = new System.Drawing.Size(122, 13);
 			this.label6.TabIndex = 5;
 			this.label6.Text = "Selected Specializations";
+			// 
+			// button8
+			// 
+			this.button8.Location = new System.Drawing.Point(14, 128);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(79, 23);
+			this.button8.TabIndex = 4;
+			this.button8.Text = "Remove";
+			this.button8.UseVisualStyleBackColor = true;
+			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(14, 50);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(79, 23);
+			this.button7.TabIndex = 4;
+			this.button7.Text = "Add";
+			this.button7.UseVisualStyleBackColor = true;
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Location = new System.Drawing.Point(14, 101);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(252, 21);
+			this.comboBox2.TabIndex = 3;
 			// 
 			// groupBox4
 			// 
@@ -353,15 +352,14 @@
 			this.groupBox4.TabStop = false;
 			this.groupBox4.Text = "New Specialization";
 			// 
-			// DoctorRegistration
+			// ScrDoctorRegistration
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(838, 349);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "DoctorRegistration";
+			this.Name = "ScrDoctorRegistration";
 			this.Text = "Register Doctor";
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
@@ -380,8 +378,8 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.RadioButton radioButton1;
-		private System.Windows.Forms.RadioButton radioButton2;
+		private System.Windows.Forms.RadioButton radioProf;
+		private System.Windows.Forms.RadioButton radioProfMrs;
 		private System.Windows.Forms.RadioButton radioButton3;
 		private System.Windows.Forms.RadioButton radioButton4;
 		private System.Windows.Forms.TextBox textBox1;

@@ -28,38 +28,38 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
+			this.dgvTimeSlots = new System.Windows.Forms.DataGridView();
 			this.Doctor = new System.Windows.Forms.Label();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.cmbDoctor = new System.Windows.Forms.ComboBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+			this.dtpDate = new System.Windows.Forms.DateTimePicker();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.dateTimePicker3 = new System.Windows.Forms.DateTimePicker();
-			this.button1 = new System.Windows.Forms.Button();
-			this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
+			this.dtpTimeFrom = new System.Windows.Forms.DateTimePicker();
+			this.btnCheck = new System.Windows.Forms.Button();
+			this.dtpTimeTo = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.dateTimePicker4 = new System.Windows.Forms.DateTimePicker();
+			this.txtMaxPatients = new System.Windows.Forms.TextBox();
+			this.dtpScheduleFrom = new System.Windows.Forms.DateTimePicker();
 			this.label6 = new System.Windows.Forms.Label();
-			this.dateTimePicker5 = new System.Windows.Forms.DateTimePicker();
+			this.dtpScheduleTo = new System.Windows.Forms.DateTimePicker();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// dataGridView1
+			// dgvTimeSlots
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Location = new System.Drawing.Point(32, 19);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.Size = new System.Drawing.Size(514, 131);
-			this.dataGridView1.TabIndex = 0;
+			this.dgvTimeSlots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvTimeSlots.Location = new System.Drawing.Point(32, 19);
+			this.dgvTimeSlots.Name = "dgvTimeSlots";
+			this.dgvTimeSlots.Size = new System.Drawing.Size(514, 131);
+			this.dgvTimeSlots.TabIndex = 0;
 			// 
 			// Doctor
 			// 
@@ -70,13 +70,13 @@
 			this.Doctor.TabIndex = 1;
 			this.Doctor.Text = "Doctor";
 			// 
-			// comboBox1
+			// cmbDoctor
 			// 
-			this.comboBox1.FormattingEnabled = true;
-			this.comboBox1.Location = new System.Drawing.Point(113, 51);
-			this.comboBox1.Name = "comboBox1";
-			this.comboBox1.Size = new System.Drawing.Size(189, 21);
-			this.comboBox1.TabIndex = 2;
+			this.cmbDoctor.FormattingEnabled = true;
+			this.cmbDoctor.Location = new System.Drawing.Point(113, 51);
+			this.cmbDoctor.Name = "cmbDoctor";
+			this.cmbDoctor.Size = new System.Drawing.Size(189, 21);
+			this.cmbDoctor.TabIndex = 2;
 			// 
 			// label1
 			// 
@@ -88,19 +88,19 @@
 			this.label1.Text = "Date";
 			this.label1.Click += new System.EventHandler(this.label1_Click);
 			// 
-			// dateTimePicker1
+			// dtpDate
 			// 
-			this.dateTimePicker1.Location = new System.Drawing.Point(409, 48);
-			this.dateTimePicker1.Name = "dateTimePicker1";
-			this.dateTimePicker1.Size = new System.Drawing.Size(189, 20);
-			this.dateTimePicker1.TabIndex = 4;
-			this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+			this.dtpDate.Location = new System.Drawing.Point(409, 48);
+			this.dtpDate.Name = "dtpDate";
+			this.dtpDate.Size = new System.Drawing.Size(189, 20);
+			this.dtpDate.TabIndex = 4;
+			this.dtpDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.dateTimePicker3);
-			this.groupBox1.Controls.Add(this.button1);
-			this.groupBox1.Controls.Add(this.dateTimePicker2);
+			this.groupBox1.Controls.Add(this.dtpTimeFrom);
+			this.groupBox1.Controls.Add(this.btnCheck);
+			this.groupBox1.Controls.Add(this.dtpTimeTo);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
 			this.groupBox1.Location = new System.Drawing.Point(51, 95);
@@ -110,30 +110,30 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Check Time";
 			// 
-			// dateTimePicker3
+			// dtpTimeFrom
 			// 
-			this.dateTimePicker3.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker3.Location = new System.Drawing.Point(62, 19);
-			this.dateTimePicker3.Name = "dateTimePicker3";
-			this.dateTimePicker3.Size = new System.Drawing.Size(130, 20);
-			this.dateTimePicker3.TabIndex = 5;
+			this.dtpTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTimeFrom.Location = new System.Drawing.Point(62, 19);
+			this.dtpTimeFrom.Name = "dtpTimeFrom";
+			this.dtpTimeFrom.Size = new System.Drawing.Size(130, 20);
+			this.dtpTimeFrom.TabIndex = 5;
 			// 
-			// button1
+			// btnCheck
 			// 
-			this.button1.Location = new System.Drawing.Point(465, 18);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(98, 21);
-			this.button1.TabIndex = 4;
-			this.button1.Text = "Check";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnCheck.Location = new System.Drawing.Point(465, 18);
+			this.btnCheck.Name = "btnCheck";
+			this.btnCheck.Size = new System.Drawing.Size(98, 21);
+			this.btnCheck.TabIndex = 4;
+			this.btnCheck.Text = "Check";
+			this.btnCheck.UseVisualStyleBackColor = true;
 			// 
-			// dateTimePicker2
+			// dtpTimeTo
 			// 
-			this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker2.Location = new System.Drawing.Point(300, 18);
-			this.dateTimePicker2.Name = "dateTimePicker2";
-			this.dateTimePicker2.Size = new System.Drawing.Size(130, 20);
-			this.dateTimePicker2.TabIndex = 2;
+			this.dtpTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTimeTo.Location = new System.Drawing.Point(300, 18);
+			this.dtpTimeTo.Name = "dtpTimeTo";
+			this.dtpTimeTo.Size = new System.Drawing.Size(130, 20);
+			this.dtpTimeTo.TabIndex = 2;
 			// 
 			// label3
 			// 
@@ -155,10 +155,10 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.textBox1);
-			this.groupBox2.Controls.Add(this.dateTimePicker4);
+			this.groupBox2.Controls.Add(this.txtMaxPatients);
+			this.groupBox2.Controls.Add(this.dtpScheduleFrom);
 			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Controls.Add(this.dateTimePicker5);
+			this.groupBox2.Controls.Add(this.dtpScheduleTo);
 			this.groupBox2.Controls.Add(this.label4);
 			this.groupBox2.Controls.Add(this.label5);
 			this.groupBox2.Location = new System.Drawing.Point(51, 360);
@@ -168,22 +168,22 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Schedule Details";
 			// 
-			// textBox1
+			// txtMaxPatients
 			// 
-			this.textBox1.Location = new System.Drawing.Point(498, 18);
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(49, 20);
-			this.textBox1.TabIndex = 8;
+			this.txtMaxPatients.Location = new System.Drawing.Point(498, 18);
+			this.txtMaxPatients.Name = "txtMaxPatients";
+			this.txtMaxPatients.Size = new System.Drawing.Size(49, 20);
+			this.txtMaxPatients.TabIndex = 8;
 			// 
-			// dateTimePicker4
+			// dtpScheduleFrom
 			// 
-			this.dateTimePicker4.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker4.Location = new System.Drawing.Point(62, 19);
-			this.dateTimePicker4.Name = "dateTimePicker4";
-			this.dateTimePicker4.Size = new System.Drawing.Size(130, 20);
-			this.dateTimePicker4.TabIndex = 3;
-			this.dateTimePicker4.Visible = false;
-			this.dateTimePicker4.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
+			this.dtpScheduleFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
+			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
+			this.dtpScheduleFrom.Size = new System.Drawing.Size(130, 20);
+			this.dtpScheduleFrom.TabIndex = 3;
+			this.dtpScheduleFrom.Visible = false;
+			this.dtpScheduleFrom.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
 			// 
 			// label6
 			// 
@@ -194,15 +194,15 @@
 			this.label6.TabIndex = 7;
 			this.label6.Text = "Maximum Patients";
 			// 
-			// dateTimePicker5
+			// dtpScheduleTo
 			// 
-			this.dateTimePicker5.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dateTimePicker5.Location = new System.Drawing.Point(247, 19);
-			this.dateTimePicker5.Name = "dateTimePicker5";
-			this.dateTimePicker5.Size = new System.Drawing.Size(130, 20);
-			this.dateTimePicker5.TabIndex = 2;
-			this.dateTimePicker5.Visible = false;
-			this.dateTimePicker5.ValueChanged += new System.EventHandler(this.dateTimePicker5_ValueChanged);
+			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpScheduleTo.Location = new System.Drawing.Point(247, 19);
+			this.dtpScheduleTo.Name = "dtpScheduleTo";
+			this.dtpScheduleTo.Size = new System.Drawing.Size(130, 20);
+			this.dtpScheduleTo.TabIndex = 2;
+			this.dtpScheduleTo.Visible = false;
+			this.dtpScheduleTo.ValueChanged += new System.EventHandler(this.dateTimePicker5_ValueChanged);
 			// 
 			// label4
 			// 
@@ -224,7 +224,7 @@
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.dataGridView1);
+			this.groupBox3.Controls.Add(this.dgvTimeSlots);
 			this.groupBox3.Location = new System.Drawing.Point(51, 163);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(574, 180);
@@ -240,13 +240,13 @@
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
-			this.Controls.Add(this.dateTimePicker1);
+			this.Controls.Add(this.dtpDate);
 			this.Controls.Add(this.label1);
-			this.Controls.Add(this.comboBox1);
+			this.Controls.Add(this.cmbDoctor);
 			this.Controls.Add(this.Doctor);
 			this.Name = "AddSchedule";
 			this.Text = "Add Schedule";
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
@@ -259,24 +259,24 @@
 
 		#endregion
 
-		private System.Windows.Forms.DataGridView dataGridView1;
+		private System.Windows.Forms.DataGridView dgvTimeSlots;
 		private System.Windows.Forms.Label Doctor;
-		private System.Windows.Forms.ComboBox comboBox1;
+		private System.Windows.Forms.ComboBox cmbDoctor;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker1;
+		private System.Windows.Forms.DateTimePicker dtpDate;
 		private System.Windows.Forms.GroupBox groupBox1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker2;
+		private System.Windows.Forms.DateTimePicker dtpTimeTo;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.GroupBox groupBox2;
-		private System.Windows.Forms.DateTimePicker dateTimePicker4;
-		private System.Windows.Forms.DateTimePicker dateTimePicker5;
+		private System.Windows.Forms.DateTimePicker dtpScheduleFrom;
+		private System.Windows.Forms.DateTimePicker dtpScheduleTo;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnCheck;
 		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.DateTimePicker dateTimePicker3;
+		private System.Windows.Forms.TextBox txtMaxPatients;
+		private System.Windows.Forms.DateTimePicker dtpTimeFrom;
 		private System.Windows.Forms.GroupBox groupBox3;
 	}
 }
