@@ -4,12 +4,16 @@ create table Speciality
     Name varchar(60)
 );
 
+drop procedure AddSpeciality;
+
 DELIMITER //
 create procedure AddSpeciality (
-	vName varchar(60)
+	vName varchar(60),
+    newSpecID int out
 )
 BEGIN
 	insert into Speciality (Name) values (vName);
+    select SID from speciality order by SID desc Limit 1;
 END //
 DELIMITER ;
 

@@ -16,8 +16,8 @@ namespace DatabaseConnector
 		private MySqlConnectionStringBuilder ConnectionString;
 		private MySqlConnection connection;
 
-		public static const int DOES_NOT_EXPECT_RESULT_SET = 1;
-		public static const int EXPECT_RESULT_SET = 2;
+		public  const int DOES_NOT_EXPECT_RESULT_SET = 1;
+		public  const int EXPECT_RESULT_SET = 2;
 
 		public MySqlConnection Connection
 		{
