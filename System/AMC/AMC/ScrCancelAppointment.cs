@@ -98,7 +98,8 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 
 			Appointment app = new Appointment(db.Connection);
-			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text,);
+			
+			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text,this.cmbSchedule.SelectedItem.ToString());
 
 			db.ExecuteProcedure(cmd, 1);
 		}
