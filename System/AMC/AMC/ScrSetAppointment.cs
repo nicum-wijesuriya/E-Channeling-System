@@ -26,5 +26,10 @@ namespace AMC
 		{
 
 		}
+
+		private void radioButton9_CheckedChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }
