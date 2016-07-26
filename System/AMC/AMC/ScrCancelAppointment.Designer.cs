@@ -77,6 +77,7 @@
 			this.txtRefID.Name = "txtRefID";
 			this.txtRefID.Size = new System.Drawing.Size(215, 20);
 			this.txtRefID.TabIndex = 1;
+			this.txtRefID.TextChanged += new System.EventHandler(this.txtRefID_TextChanged);
 			// 
 			// btnCancel
 			// 

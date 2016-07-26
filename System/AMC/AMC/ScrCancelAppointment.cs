@@ -26,5 +26,10 @@ namespace AMC
 		{
 
 		}
+
+		private void txtRefID_TextChanged(object sender, EventArgs e)
+		{
+
+		}
 	}
 }

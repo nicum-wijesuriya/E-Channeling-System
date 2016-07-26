@@ -115,6 +115,7 @@
 			this.dtpTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
 			this.dtpTimeFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpTimeFrom.Name = "dtpTimeFrom";
+			this.dtpTimeFrom.ShowUpDown = true;
 			this.dtpTimeFrom.Size = new System.Drawing.Size(130, 20);
 			this.dtpTimeFrom.TabIndex = 5;
 			// 
@@ -132,6 +133,7 @@
 			this.dtpTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
 			this.dtpTimeTo.Location = new System.Drawing.Point(300, 18);
 			this.dtpTimeTo.Name = "dtpTimeTo";
+			this.dtpTimeTo.ShowUpDown = true;
 			this.dtpTimeTo.Size = new System.Drawing.Size(130, 20);
 			this.dtpTimeTo.TabIndex = 2;
 			// 
