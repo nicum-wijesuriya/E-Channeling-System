@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AMC
 {
-	public class ComboboxItem
+	public class ComboBoxItem
 	{
 		public string Text
 		{
@@ -18,7 +18,11 @@ namespace AMC
 			get;
 			set;
 		}
-
+		public ComboBoxItem(String Value, String Text)
+		{
+			this.Text = Text;
+			this.Value = Value;
+		}
 		public override string ToString()
 		{
 			return Text;

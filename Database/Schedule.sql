@@ -81,9 +81,10 @@ END //
 DELIMITER ;
 
 DELIMITER //
-create procedure GetCurrentScedules()
+create procedure GetCurrentScedules(DID int,startDate date,endDate date)
 begin
-	select * from Schedule where Status = 2;
+	select * from Schedule
+    where Status = 2 AND ;
 end //
 DELIMITER ;
 

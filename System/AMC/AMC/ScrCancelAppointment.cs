@@ -81,10 +81,13 @@ namespace AMC
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, 2);
 
-			this.cmbDoctor.Items.Add("All");
+			this.cmbDoctor.Items.Clear();
+
+			this.cmbDoctor.Items.Add(new ComboBoxItem("0","All"));
 			while(rs.Read())
 			{
-				
+				ComboBoxItem item = new ComboBoxItem(rs.GetString(0),rs.GetString(1));
+				this.cmbDoctor.Items.Add(item);
 			}
 			rs.Close();
 
