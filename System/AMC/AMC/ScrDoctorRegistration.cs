@@ -155,25 +155,32 @@ namespace AMC
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
 		{
-			String newSpec = this.txtNewSpec.Text;
+			try
+			{
+				String newSpec = this.txtNewSpec.Text;
 
-			DBConnect db = DBConnect.Connect();
+				Validation.valEmptyField(newSpec, "Specialization cannot be empty");
 
-			Speciality spec = new Speciality(db.Connection);
+				DBConnect db = DBConnect.Connect();
 
-			MySqlCommand cmd = spec.AddSpeciality(newSpec);
+				Speciality spec = new Speciality(db.Connection);
 
-			MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				MySqlCommand cmd = spec.AddSpeciality(newSpec);
 
-			res.Read();
-			String SID = res.GetString(0);
-			String name = res.GetString(1);
-			res.Close();
+				MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
-			selectedSpecList.Add(new Speciality(SID, name));
-			FillSelectedSpec(SID, name);
+				res.Read();
+				String SID = res.GetString(0);
+				String name = res.GetString(1);
+				res.Close();
 
-			this.txtNewSpec.Text = "";
+				selectedSpecList.Add(new Speciality(SID, name));
+				FillSelectedSpec(SID, name);
+
+				this.txtNewSpec.Text = "";
+			}
+			catch { }
+
 		}
 
 
@@ -235,11 +242,21 @@ namespace AMC
 
 		private void btnAddSpec_Click(object sender, EventArgs e)
 		{
-			String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
-			String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
+			try
+			{
+				if (cmbSpec.SelectedIndex == 0)
+				{
+					Validation.valGeneral("Please select a Specialization");
+				}
 
-			selectedSpecList.Add(new Speciality(SID, name));
-			FillSelectedSpec(SID, name);
+				String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
+				String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
+
+				selectedSpecList.Add(new Speciality(SID, name));
+				FillSelectedSpec(SID, name);
+			}
+			catch { }
+
 
 		}
 
