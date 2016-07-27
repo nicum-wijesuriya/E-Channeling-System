@@ -167,6 +167,11 @@ namespace AMC
 
 		private void btnAddSch_Click(object sender, EventArgs e)
 		{
+			try
+			{
+
+			}
+			catch { }
 			String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
 			String startTime = this.getTime(this.dtpScheduleFrom.Value);
 			String endTime = this.getTime(this.dtpScheduleTo.Value);

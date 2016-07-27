@@ -123,7 +123,7 @@
 			this.cmbSpec.Location = new System.Drawing.Point(359, 32);
 			this.cmbSpec.Name = "cmbSpec";
 			this.cmbSpec.Size = new System.Drawing.Size(166, 21);
-			this.cmbSpec.TabIndex = 1;
+			this.cmbSpec.TabIndex = 2;
 			// 
 			// label4
 			// 
@@ -150,7 +150,7 @@
 			this.dtpDateFrom.Location = new System.Drawing.Point(61, 18);
 			this.dtpDateFrom.Name = "dtpDateFrom";
 			this.dtpDateFrom.Size = new System.Drawing.Size(191, 20);
-			this.dtpDateFrom.TabIndex = 2;
+			this.dtpDateFrom.TabIndex = 3;
 			this.dtpDateFrom.ValueChanged += new System.EventHandler(this.dtpDateFrom_ValueChanged);
 			// 
 			// dtpDateTo
@@ -158,7 +158,7 @@
 			this.dtpDateTo.Location = new System.Drawing.Point(325, 93);
 			this.dtpDateTo.Name = "dtpDateTo";
 			this.dtpDateTo.Size = new System.Drawing.Size(200, 20);
-			this.dtpDateTo.TabIndex = 3;
+			this.dtpDateTo.TabIndex = 4;
 			this.dtpDateTo.ValueChanged += new System.EventHandler(this.dtpDateTo_ValueChanged);
 			// 
 			// label6
@@ -177,7 +177,7 @@
 			this.cmbSchedule.Location = new System.Drawing.Point(114, 134);
 			this.cmbSchedule.Name = "cmbSchedule";
 			this.cmbSchedule.Size = new System.Drawing.Size(411, 21);
-			this.cmbSchedule.TabIndex = 1;
+			this.cmbSchedule.TabIndex = 5;
 			// 
 			// label7
 			// 
@@ -194,7 +194,7 @@
 			this.txtNIC.Location = new System.Drawing.Point(114, 169);
 			this.txtNIC.Name = "txtNIC";
 			this.txtNIC.Size = new System.Drawing.Size(178, 20);
-			this.txtNIC.TabIndex = 4;
+			this.txtNIC.TabIndex = 6;
 			this.txtNIC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIC_KeyDown);
 			// 
 			// btnCheck
@@ -203,7 +203,7 @@
 			this.btnCheck.Location = new System.Drawing.Point(298, 167);
 			this.btnCheck.Name = "btnCheck";
 			this.btnCheck.Size = new System.Drawing.Size(75, 23);
-			this.btnCheck.TabIndex = 5;
+			this.btnCheck.TabIndex = 7;
 			this.btnCheck.Text = "Check";
 			this.btnCheck.UseVisualStyleBackColor = true;
 			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
@@ -214,7 +214,7 @@
 			this.radioMr.Location = new System.Drawing.Point(17, 21);
 			this.radioMr.Name = "radioMr";
 			this.radioMr.Size = new System.Drawing.Size(40, 17);
-			this.radioMr.TabIndex = 6;
+			this.radioMr.TabIndex = 11;
 			this.radioMr.TabStop = true;
 			this.radioMr.Text = "Mr.";
 			this.radioMr.UseVisualStyleBackColor = true;
@@ -225,7 +225,7 @@
 			this.radioMrs.Location = new System.Drawing.Point(74, 21);
 			this.radioMrs.Name = "radioMrs";
 			this.radioMrs.Size = new System.Drawing.Size(45, 17);
-			this.radioMrs.TabIndex = 6;
+			this.radioMrs.TabIndex = 12;
 			this.radioMrs.TabStop = true;
 			this.radioMrs.Text = "Mrs.";
 			this.radioMrs.UseVisualStyleBackColor = true;
@@ -236,7 +236,7 @@
 			this.radioRev.Location = new System.Drawing.Point(182, 21);
 			this.radioRev.Name = "radioRev";
 			this.radioRev.Size = new System.Drawing.Size(48, 17);
-			this.radioRev.TabIndex = 6;
+			this.radioRev.TabIndex = 14;
 			this.radioRev.TabStop = true;
 			this.radioRev.Text = "Rev.";
 			this.radioRev.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
 			this.radioDr.Location = new System.Drawing.Point(68, 19);
 			this.radioDr.Name = "radioDr";
 			this.radioDr.Size = new System.Drawing.Size(39, 17);
-			this.radioDr.TabIndex = 6;
+			this.radioDr.TabIndex = 9;
 			this.radioDr.TabStop = true;
 			this.radioDr.Text = "Dr.";
 			this.radioDr.UseVisualStyleBackColor = true;
@@ -260,7 +260,7 @@
 			this.radioProf.Location = new System.Drawing.Point(11, 19);
 			this.radioProf.Name = "radioProf";
 			this.radioProf.Size = new System.Drawing.Size(47, 17);
-			this.radioProf.TabIndex = 6;
+			this.radioProf.TabIndex = 8;
 			this.radioProf.TabStop = true;
 			this.radioProf.Text = "Prof.";
 			this.radioProf.UseVisualStyleBackColor = true;
@@ -272,7 +272,7 @@
 			this.radioMs.Location = new System.Drawing.Point(134, 21);
 			this.radioMs.Name = "radioMs";
 			this.radioMs.Size = new System.Drawing.Size(42, 17);
-			this.radioMs.TabIndex = 6;
+			this.radioMs.TabIndex = 13;
 			this.radioMs.TabStop = true;
 			this.radioMs.Text = "Ms.";
 			this.radioMs.UseVisualStyleBackColor = true;
@@ -303,7 +303,7 @@
 			this.txtFirstName.Location = new System.Drawing.Point(70, 71);
 			this.txtFirstName.Name = "txtFirstName";
 			this.txtFirstName.Size = new System.Drawing.Size(143, 20);
-			this.txtFirstName.TabIndex = 4;
+			this.txtFirstName.TabIndex = 15;
 			// 
 			// label10
 			// 
@@ -320,7 +320,7 @@
 			this.txtLastName.Location = new System.Drawing.Point(281, 71);
 			this.txtLastName.Name = "txtLastName";
 			this.txtLastName.Size = new System.Drawing.Size(143, 20);
-			this.txtLastName.TabIndex = 4;
+			this.txtLastName.TabIndex = 16;
 			// 
 			// label12
 			// 
@@ -337,7 +337,7 @@
 			this.txtANumber.Location = new System.Drawing.Point(83, 363);
 			this.txtANumber.Name = "txtANumber";
 			this.txtANumber.Size = new System.Drawing.Size(143, 20);
-			this.txtANumber.TabIndex = 4;
+			this.txtANumber.TabIndex = 17;
 			// 
 			// label13
 			// 
@@ -354,7 +354,7 @@
 			this.txtAStreet.Location = new System.Drawing.Point(83, 389);
 			this.txtAStreet.Name = "txtAStreet";
 			this.txtAStreet.Size = new System.Drawing.Size(143, 20);
-			this.txtAStreet.TabIndex = 4;
+			this.txtAStreet.TabIndex = 1;
 			// 
 			// label14
 			// 
@@ -371,7 +371,7 @@
 			this.txtACity.Location = new System.Drawing.Point(83, 415);
 			this.txtACity.Name = "txtACity";
 			this.txtACity.Size = new System.Drawing.Size(143, 20);
-			this.txtACity.TabIndex = 4;
+			this.txtACity.TabIndex = 19;
 			// 
 			// label16
 			// 
@@ -388,7 +388,7 @@
 			this.txtMobileNo.Location = new System.Drawing.Point(75, 243);
 			this.txtMobileNo.Name = "txtMobileNo";
 			this.txtMobileNo.Size = new System.Drawing.Size(143, 20);
-			this.txtMobileNo.TabIndex = 4;
+			this.txtMobileNo.TabIndex = 20;
 			// 
 			// label17
 			// 
@@ -405,7 +405,7 @@
 			this.txtHomeNo.Location = new System.Drawing.Point(284, 243);
 			this.txtHomeNo.Name = "txtHomeNo";
 			this.txtHomeNo.Size = new System.Drawing.Size(143, 20);
-			this.txtHomeNo.TabIndex = 4;
+			this.txtHomeNo.TabIndex = 21;
 			// 
 			// label18
 			// 
@@ -422,7 +422,7 @@
 			this.txtEmail.Location = new System.Drawing.Point(75, 269);
 			this.txtEmail.Name = "txtEmail";
 			this.txtEmail.Size = new System.Drawing.Size(143, 20);
-			this.txtEmail.TabIndex = 4;
+			this.txtEmail.TabIndex = 22;
 			// 
 			// groupBox1
 			// 
@@ -488,7 +488,7 @@
 			this.pnlNationality.Location = new System.Drawing.Point(67, 294);
 			this.pnlNationality.Name = "pnlNationality";
 			this.pnlNationality.Size = new System.Drawing.Size(149, 41);
-			this.pnlNationality.TabIndex = 10;
+			this.pnlNationality.TabIndex = 23;
 			// 
 			// radioForeign
 			// 
@@ -496,7 +496,7 @@
 			this.radioForeign.Location = new System.Drawing.Point(68, 13);
 			this.radioForeign.Name = "radioForeign";
 			this.radioForeign.Size = new System.Drawing.Size(60, 17);
-			this.radioForeign.TabIndex = 6;
+			this.radioForeign.TabIndex = 25;
 			this.radioForeign.TabStop = true;
 			this.radioForeign.Text = "Foreign";
 			this.radioForeign.UseVisualStyleBackColor = true;
@@ -507,7 +507,7 @@
 			this.radioLocal.Location = new System.Drawing.Point(7, 13);
 			this.radioLocal.Name = "radioLocal";
 			this.radioLocal.Size = new System.Drawing.Size(51, 17);
-			this.radioLocal.TabIndex = 6;
+			this.radioLocal.TabIndex = 24;
 			this.radioLocal.TabStop = true;
 			this.radioLocal.Text = "Local";
 			this.radioLocal.UseVisualStyleBackColor = true;
@@ -521,7 +521,7 @@
 			this.grpPersonalTitle.Location = new System.Drawing.Point(262, 23);
 			this.grpPersonalTitle.Name = "grpPersonalTitle";
 			this.grpPersonalTitle.Size = new System.Drawing.Size(253, 42);
-			this.grpPersonalTitle.TabIndex = 9;
+			this.grpPersonalTitle.TabIndex = 11;
 			this.grpPersonalTitle.TabStop = false;
 			this.grpPersonalTitle.Text = "Personal Title";
 			// 
@@ -543,7 +543,7 @@
 			this.radioNone.Location = new System.Drawing.Point(120, 19);
 			this.radioNone.Name = "radioNone";
 			this.radioNone.Size = new System.Drawing.Size(51, 17);
-			this.radioNone.TabIndex = 7;
+			this.radioNone.TabIndex = 10;
 			this.radioNone.TabStop = true;
 			this.radioNone.Text = "None";
 			this.radioNone.UseVisualStyleBackColor = true;
@@ -583,7 +583,7 @@
 			this.btnSave.Location = new System.Drawing.Point(126, 595);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
-			this.btnSave.TabIndex = 9;
+			this.btnSave.TabIndex = 26;
 			this.btnSave.Text = "Save";
 			this.btnSave.UseVisualStyleBackColor = true;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -594,7 +594,7 @@
 			this.btnClear.Location = new System.Drawing.Point(256, 595);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 23);
-			this.btnClear.TabIndex = 9;
+			this.btnClear.TabIndex = 27;
 			this.btnClear.Text = "Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -605,7 +605,7 @@
 			this.btnClose.Location = new System.Drawing.Point(381, 595);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
-			this.btnClose.TabIndex = 9;
+			this.btnClose.TabIndex = 28;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
