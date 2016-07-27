@@ -98,5 +98,22 @@ namespace DatabaseConnector
 			return command;
 
 		}
+
+		public MySqlCommand GetSpeciality()
+		{
+			
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "GetSpeciality";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
 	}
 }
