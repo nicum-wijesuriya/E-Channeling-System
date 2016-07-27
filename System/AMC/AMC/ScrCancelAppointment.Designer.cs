@@ -319,6 +319,7 @@
 			// dtpEndDate
 			// 
 			this.dtpEndDate.Location = new System.Drawing.Point(53, 46);
+			this.dtpEndDate.MinDate = new System.DateTime(2016, 7, 27, 0, 0, 0, 0);
 			this.dtpEndDate.Name = "dtpEndDate";
 			this.dtpEndDate.Size = new System.Drawing.Size(267, 20);
 			this.dtpEndDate.TabIndex = 7;
@@ -327,9 +328,11 @@
 			// dtpStartDate
 			// 
 			this.dtpStartDate.Location = new System.Drawing.Point(53, 20);
+			this.dtpStartDate.MinDate = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.Name = "dtpStartDate";
 			this.dtpStartDate.Size = new System.Drawing.Size(267, 20);
 			this.dtpStartDate.TabIndex = 7;
+			this.dtpStartDate.Value = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
 			// 
 			// label5

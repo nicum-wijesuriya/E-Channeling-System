@@ -33,7 +33,7 @@ select * from Appointment;
 select * from Speciality;
 
 
-call AddAppointment( 1, 1, 3, '2016-05-26', 200.00);
+call AddAppointment( 1, 1);
 
 call AddSpeciality("Cardiologists");
 

@@ -224,7 +224,16 @@ namespace AMC
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
+			
 			this.FillPatientDetails();
+
+/*			try
+			{
+				String refID = txtRefID.Text;
+				Validation.valID(refID);
+			}
+			catch { }
+*/
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
