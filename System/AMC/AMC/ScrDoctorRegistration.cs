@@ -14,7 +14,8 @@ namespace AMC
 {
 	public partial class ScrDoctorRegistration : Form
 	{
-		List<Speciality> selectedSpecList = new List<Speciality>();
+		List<Speciality> selectedSpecList = new List<Speciality>(); //Specialities selected by the doctor
+		List<Speciality> specList = new List<Speciality>(); // All Specialities
 
 		public ScrDoctorRegistration()
 		{
@@ -209,14 +210,26 @@ namespace AMC
 	
 		private void SearchSpeciality()
 		{
-			List<Speciality> specList = new List<Speciality>();
+			int SID;
+			String name;
+
+			
 			DBConnect db = DBConnect.Connect();
 			Speciality spec = new Speciality(db.Connection);
 
 			MySqlCommand cmd = spec.GetAllSpeciality();
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
-			rs.Read();
+			while (rs.Read())
+			{
+				SID = rs.GetInt32(0);
+				name = rs.GetString(1);
+				Speciality sp = new Speciality(SID, name);
+				specList.Add(sp);
+			}
+
+
+
 		}
 	}
 }
