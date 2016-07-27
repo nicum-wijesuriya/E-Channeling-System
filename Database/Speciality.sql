@@ -26,23 +26,21 @@ BEGIN
 END //
 DELIMITER ;
 
-drop procedure DeleteSpeciality;
-
 DELIMITER // 
-create procedure DeleteSpeciality(vSID int)
+create procedure DeleteSPeciality(vSID int)
 BEGIN
 	delete from Speciality where SID = vSID;
 END // 
 DELIMITER ;
 
-drop procedure GetAllSpeciality;
 
 DELIMITER // 
-create procedure GetAllSeciality()
+create procedure GetAllSpeciality()
 BEGIN
 	select * from Speciality;
 END // 
 DELIMITER ;
+
 
 
 truncate table Speciality;

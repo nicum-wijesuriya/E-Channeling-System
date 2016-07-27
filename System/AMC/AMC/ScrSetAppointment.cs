@@ -20,6 +20,7 @@ namespace AMC
 			InitializeComponent();
 			this.isRegistered = false;
 			this.FillDoctor();
+			this.FillSpeciality();
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -206,5 +207,90 @@ namespace AMC
 
 			this.cmbDoctor.SelectedIndex = 0;
 		}
+
+		private void FillSpeciality()
+		{
+			DBConnect db = DBConnect.Connect();
+
+			Speciality spec = new Speciality(db.Connection);
+			MySqlCommand cmd = spec.GetSpeciality();
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			this.cmbSpec.Items.Clear();
+
+			this.cmbSpec.Items.Add(new ComboBoxItem("0", "All"));
+			while (rs.Read())
+			{
+				ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
+				this.cmbSpec.Items.Add(item);
+			}
+			rs.Close();
+
+			this.cmbSpec.SelectedIndex = 0;
+		}
+
+		private void fillSchedule()
+		{
+			int DID;
+			String startDate;
+			String endDate;
+
+			if (((ComboBoxItem)this.cmbDoctor.SelectedItem).Text.Equals("All"))
+			{
+				DID = -1;
+			}
+			else
+			{
+				Int32.TryParse(((ComboBoxItem)this.cmbDoctor.SelectedItem).Value, out DID);
+			}
+
+			startDate = this.dtpDateFrom.Value.Date.Year + "-" + this.dtpDateFrom.Value.Date.Month + "-" + this.dtpDateFrom.Value.Date.Day;
+			endDate = this.dtpDateTo.Value.Date.Year + "-" + this.dtpDateTo.Value.Date.Month + "-" + this.dtpDateTo.Value.Date.Day;
+
+			DBConnect db = DBConnect.Connect();
+
+			Schedule sch = new Schedule(db.Connection);
+			String SchID = (String)this.cmbSchedule.SelectedValue;
+
+			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			this.cmbSchedule.Items.Clear();
+			this.cmbSchedule.Items.Add(new ComboBoxItem("0", "Select a Schedule"));
+			while (rs.Read())
+			{
+				this.cmbSchedule.Items.Add(new ComboBoxItem(rs.GetString(0), rs.GetString(1)));
+			}
+
+			rs.Close();
+
+			this.cmbSchedule.SelectedIndex = 0;
+		}
+
+		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
+		{
+			this.fillSchedule();
+		}
+
+		private void dtpDateFrom_ValueChanged(object sender, EventArgs e)
+		{
+			this.fillSchedule();
+		}
+
+		private void dtpDateTo_ValueChanged(object sender, EventArgs e)
+		{
+			this.fillSchedule();
+		}
+
+		private void txtNIC_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				this.UpdatePatientFields();
+			}
+		}
+
 	}
 }

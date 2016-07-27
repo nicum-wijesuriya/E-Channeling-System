@@ -38,7 +38,7 @@ Begin
 
 	insert into Patient (FName,LName,ANumber, AStreet,ACity,Email,NICNo,Title,CMobile,CHome,IsLocal) 
 	values (vFName,vLName,vANumber,vAStreet,vACity,vEmail,vNICNo,vTitle,vCMobile,vCHome,vIsLocal);
-	
+	Select PID from patient 
 END //
 DELIMITER ;
 

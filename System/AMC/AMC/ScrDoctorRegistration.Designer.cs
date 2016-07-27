@@ -185,7 +185,6 @@
 			this.cmbSpec.Name = "cmbSpec";
 			this.cmbSpec.Size = new System.Drawing.Size(252, 21);
 			this.cmbSpec.TabIndex = 3;
-			this.cmbSpec.SelectedIndexChanged += new System.EventHandler(this.cmbSpec_SelectedIndexChanged);
 			// 
 			// btnRegister
 			// 

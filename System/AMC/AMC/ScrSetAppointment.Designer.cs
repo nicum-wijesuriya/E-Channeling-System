@@ -105,6 +105,7 @@
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(191, 21);
 			this.cmbDoctor.TabIndex = 1;
+			this.cmbDoctor.SelectedIndexChanged += new System.EventHandler(this.cmbDoctor_SelectedIndexChanged);
 			// 
 			// label2
 			// 
@@ -150,6 +151,7 @@
 			this.dtpDateFrom.Name = "dtpDateFrom";
 			this.dtpDateFrom.Size = new System.Drawing.Size(191, 20);
 			this.dtpDateFrom.TabIndex = 2;
+			this.dtpDateFrom.ValueChanged += new System.EventHandler(this.dtpDateFrom_ValueChanged);
 			// 
 			// dtpDateTo
 			// 
@@ -157,6 +159,7 @@
 			this.dtpDateTo.Name = "dtpDateTo";
 			this.dtpDateTo.Size = new System.Drawing.Size(200, 20);
 			this.dtpDateTo.TabIndex = 3;
+			this.dtpDateTo.ValueChanged += new System.EventHandler(this.dtpDateTo_ValueChanged);
 			// 
 			// label6
 			// 
@@ -192,6 +195,7 @@
 			this.txtNIC.Name = "txtNIC";
 			this.txtNIC.Size = new System.Drawing.Size(217, 20);
 			this.txtNIC.TabIndex = 4;
+			this.txtNIC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIC_KeyDown);
 			// 
 			// btnCheck
 			// 
