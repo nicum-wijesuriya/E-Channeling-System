@@ -14,7 +14,7 @@ namespace AMC
 {
 	public partial class ScrDoctorRegistration : Form
 	{
-		List<Speciality> specList = new List<Speciality>();
+		List<Speciality> selectedSpecList = new List<Speciality>();
 
 		public ScrDoctorRegistration()
 		{
@@ -168,10 +168,12 @@ namespace AMC
 			String name = res.GetString(1);
 			res.Close();
 
-			specList.Add(new Speciality(SID, name));
+			selectedSpecList.Add(new Speciality(SID, name));
 
 
 		}
+
+
 
 		private void btnClearSpec_Click(object sender, EventArgs e)
 		{
@@ -197,6 +199,24 @@ namespace AMC
 			ScrHome scrH = new ScrHome();
 			scrH.Visible = true;
 			this.Visible = false;
+		}
+
+		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
+
+		}
+	
+		private void SearchSpeciality()
+		{
+			List<Speciality> specList = new List<Speciality>();
+			DBConnect db = DBConnect.Connect();
+			Speciality spec = new Speciality(db.Connection);
+
+			MySqlCommand cmd = spec.GetAllSpeciality();
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			rs.Read();
 		}
 	}
 }

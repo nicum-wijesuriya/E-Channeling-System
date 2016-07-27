@@ -26,12 +26,25 @@ BEGIN
 END //
 DELIMITER ;
 
+drop procedure DeleteSpeciality;
+
 DELIMITER // 
-create procedure DeleteSPeciality(vSID int)
+create procedure DeleteSpeciality(vSID int)
 BEGIN
 	delete from Speciality where SID = vSID;
 END // 
 DELIMITER ;
+
+drop procedure GetAllSpeciality;
+
+DELIMITER // 
+create procedure GetAllSeciality()
+BEGIN
+	select * from Speciality;
+END // 
+DELIMITER ;
+
+
 truncate table Speciality;
 
 Insert into speciality(Name) values ('Cardiac Electrophysiologists');
