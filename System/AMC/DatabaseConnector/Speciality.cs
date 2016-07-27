@@ -13,9 +13,9 @@ namespace DatabaseConnector
 		ParameterList parameterList = new ParameterList();
 		private MySqlConnection con;
 
-		private int sID;
+		private String sID;
 
-		public int SID
+		public String SID
 		{
 			get { return sID; }
 			set { sID = value; }
@@ -34,7 +34,7 @@ namespace DatabaseConnector
 			this.con = con;
 		}
 
-		public Speciality(int SID, String name)
+		public Speciality(String SID, String name)
 		{
 			this.SID = SID;
 			this.Name = name;

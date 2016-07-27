@@ -185,6 +185,7 @@
 			this.cmbSpec.Name = "cmbSpec";
 			this.cmbSpec.Size = new System.Drawing.Size(252, 21);
 			this.cmbSpec.TabIndex = 3;
+			this.cmbSpec.SelectedIndexChanged += new System.EventHandler(this.cmbSpec_SelectedIndexChanged_1);
 			// 
 			// btnRegister
 			// 
@@ -371,6 +372,7 @@
 			this.btnRemoveSpec.TabIndex = 4;
 			this.btnRemoveSpec.Text = "Remove";
 			this.btnRemoveSpec.UseVisualStyleBackColor = true;
+			this.btnRemoveSpec.Click += new System.EventHandler(this.btnRemoveSpec_Click);
 			// 
 			// btnAddSpec
 			// 
@@ -380,6 +382,7 @@
 			this.btnAddSpec.TabIndex = 4;
 			this.btnAddSpec.Text = "Add";
 			this.btnAddSpec.UseVisualStyleBackColor = true;
+			this.btnAddSpec.Click += new System.EventHandler(this.btnAddSpec_Click);
 			// 
 			// cmbSelectedSpec
 			// 

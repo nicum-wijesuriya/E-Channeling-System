@@ -15,11 +15,12 @@ namespace AMC
 	public partial class ScrDoctorRegistration : Form
 	{
 		List<Speciality> selectedSpecList = new List<Speciality>(); //Specialities selected by the doctor
-		List<Speciality> specList = new List<Speciality>(); // All Specialities
 
 		public ScrDoctorRegistration()
 		{
 			InitializeComponent();
+			this.FillSpeciality();
+
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -165,13 +166,14 @@ namespace AMC
 			MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
 			res.Read();
-			int SID = res.GetInt32(0);
+			String SID = res.GetString(0);
 			String name = res.GetString(1);
 			res.Close();
 
 			selectedSpecList.Add(new Speciality(SID, name));
+			FillSelectedSpec(SID, name);
 
-
+			this.txtNewSpec.Text = "";
 		}
 
 
@@ -205,7 +207,6 @@ namespace AMC
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
-			FillSpeciality();
 		}
 
 		private void FillSpeciality()
@@ -219,7 +220,7 @@ namespace AMC
 
 			this.cmbSpec.Items.Clear();
 
-			this.cmbSpec.Items.Add(new ComboBoxItem("0", "All"));
+			this.cmbSpec.Items.Add(new ComboBoxItem("0", "Select"));
 			while (rs.Read())
 			{
 				ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
@@ -231,5 +232,33 @@ namespace AMC
 
 
 		}
+
+		private void btnAddSpec_Click(object sender, EventArgs e)
+		{
+			String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
+			String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
+
+			selectedSpecList.Add(new Speciality(SID, name));
+			FillSelectedSpec(SID, name);
+
+		}
+
+		private void FillSelectedSpec(String SID, String name)
+		{
+			this.cmbSelectedSpec.Items.Add(new ComboBoxItem(SID, name));
+		}
+
+		private void cmbSpec_SelectedIndexChanged_1(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnRemoveSpec_Click(object sender, EventArgs e)
+		{
+			selectedSpecList.RemoveAt(this.cmbSelectedSpec.SelectedIndex);
+			this.cmbSelectedSpec.Items.RemoveAt(this.cmbSelectedSpec.SelectedIndex);
+		}
+
+
 	}
 }
