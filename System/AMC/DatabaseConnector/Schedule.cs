@@ -108,6 +108,7 @@ namespace DatabaseConnector
 		{
 			parameterList.Add(new Parameter("vDateToFind", vDateToFind));
 			parameterList.Add(new Parameter("searchStartTime", searchStartTime));
+			parameterList.Add(new Parameter("searchEndTime", searchStartTime));
 
 
 			MySqlCommand command = new MySqlCommand();

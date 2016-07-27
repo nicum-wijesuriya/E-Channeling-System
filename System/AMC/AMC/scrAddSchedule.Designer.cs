@@ -66,7 +66,7 @@
 			// Doctor
 			// 
 			this.Doctor.AutoSize = true;
-			this.Doctor.Location = new System.Drawing.Point(57, 54);
+			this.Doctor.Location = new System.Drawing.Point(12, 18);
 			this.Doctor.Name = "Doctor";
 			this.Doctor.Size = new System.Drawing.Size(39, 13);
 			this.Doctor.TabIndex = 1;
@@ -75,7 +75,7 @@
 			// cmbDoctor
 			// 
 			this.cmbDoctor.FormattingEnabled = true;
-			this.cmbDoctor.Location = new System.Drawing.Point(113, 51);
+			this.cmbDoctor.Location = new System.Drawing.Point(68, 15);
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(189, 21);
 			this.cmbDoctor.TabIndex = 2;
@@ -83,7 +83,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(348, 54);
+			this.label1.Location = new System.Drawing.Point(303, 18);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(30, 13);
 			this.label1.TabIndex = 3;
@@ -92,7 +92,7 @@
 			// 
 			// dtpDate
 			// 
-			this.dtpDate.Location = new System.Drawing.Point(409, 48);
+			this.dtpDate.Location = new System.Drawing.Point(364, 12);
 			this.dtpDate.Name = "dtpDate";
 			this.dtpDate.Size = new System.Drawing.Size(189, 20);
 			this.dtpDate.TabIndex = 4;
@@ -105,7 +105,7 @@
 			this.groupBox1.Controls.Add(this.dtpTimeTo);
 			this.groupBox1.Controls.Add(this.label3);
 			this.groupBox1.Controls.Add(this.label2);
-			this.groupBox1.Location = new System.Drawing.Point(51, 95);
+			this.groupBox1.Location = new System.Drawing.Point(6, 50);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(574, 52);
 			this.groupBox1.TabIndex = 5;
@@ -120,6 +120,7 @@
 			this.dtpTimeFrom.ShowUpDown = true;
 			this.dtpTimeFrom.Size = new System.Drawing.Size(130, 20);
 			this.dtpTimeFrom.TabIndex = 5;
+			this.dtpTimeFrom.ValueChanged += new System.EventHandler(this.dtpTimeFrom_ValueChanged);
 			// 
 			// btnCheck
 			// 
@@ -129,6 +130,7 @@
 			this.btnCheck.TabIndex = 4;
 			this.btnCheck.Text = "Check";
 			this.btnCheck.UseVisualStyleBackColor = true;
+			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
 			// 
 			// dtpTimeTo
 			// 
@@ -165,7 +167,7 @@
 			this.groupBox2.Controls.Add(this.dtpScheduleTo);
 			this.groupBox2.Controls.Add(this.label4);
 			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Location = new System.Drawing.Point(51, 360);
+			this.groupBox2.Location = new System.Drawing.Point(6, 305);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(574, 52);
 			this.groupBox2.TabIndex = 6;
@@ -229,7 +231,7 @@
 			// groupBox3
 			// 
 			this.groupBox3.Controls.Add(this.dgvTimeSlots);
-			this.groupBox3.Location = new System.Drawing.Point(51, 163);
+			this.groupBox3.Location = new System.Drawing.Point(6, 108);
 			this.groupBox3.Name = "groupBox3";
 			this.groupBox3.Size = new System.Drawing.Size(574, 180);
 			this.groupBox3.TabIndex = 7;
@@ -238,7 +240,7 @@
 			// 
 			// button1
 			// 
-			this.button1.Location = new System.Drawing.Point(83, 419);
+			this.button1.Location = new System.Drawing.Point(38, 364);
 			this.button1.Name = "button1";
 			this.button1.Size = new System.Drawing.Size(93, 23);
 			this.button1.TabIndex = 8;
@@ -247,7 +249,7 @@
 			// 
 			// button2
 			// 
-			this.button2.Location = new System.Drawing.Point(532, 419);
+			this.button2.Location = new System.Drawing.Point(487, 364);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(93, 23);
 			this.button2.TabIndex = 8;
@@ -259,7 +261,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(664, 480);
+			this.ClientSize = new System.Drawing.Size(590, 399);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox3);
