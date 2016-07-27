@@ -189,32 +189,35 @@
 			// 
 			// btnRegister
 			// 
+			this.btnRegister.BackColor = System.Drawing.SystemColors.Control;
 			this.btnRegister.Location = new System.Drawing.Point(69, 263);
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Size = new System.Drawing.Size(99, 23);
 			this.btnRegister.TabIndex = 17;
 			this.btnRegister.Text = "Register";
-			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.UseVisualStyleBackColor = false;
 			this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClear.Location = new System.Drawing.Point(211, 263);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 23);
 			this.btnClear.TabIndex = 18;
 			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCancel.Location = new System.Drawing.Point(355, 263);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(99, 23);
 			this.btnCancel.TabIndex = 19;
 			this.btnCancel.Text = "Close";
-			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.UseVisualStyleBackColor = false;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// groupBox1
@@ -323,22 +326,24 @@
 			// 
 			// btnClearSpec
 			// 
+			this.btnClearSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClearSpec.Location = new System.Drawing.Point(205, 263);
 			this.btnClearSpec.Name = "btnClearSpec";
 			this.btnClearSpec.Size = new System.Drawing.Size(76, 23);
 			this.btnClearSpec.TabIndex = 16;
 			this.btnClearSpec.Text = "Clear";
-			this.btnClearSpec.UseVisualStyleBackColor = true;
+			this.btnClearSpec.UseVisualStyleBackColor = false;
 			this.btnClearSpec.Click += new System.EventHandler(this.btnClearSpec_Click);
 			// 
 			// btnNewSpec
 			// 
+			this.btnNewSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnNewSpec.Location = new System.Drawing.Point(29, 263);
 			this.btnNewSpec.Name = "btnNewSpec";
 			this.btnNewSpec.Size = new System.Drawing.Size(76, 23);
 			this.btnNewSpec.TabIndex = 15;
 			this.btnNewSpec.Text = "Add New";
-			this.btnNewSpec.UseVisualStyleBackColor = true;
+			this.btnNewSpec.UseVisualStyleBackColor = false;
 			this.btnNewSpec.Click += new System.EventHandler(this.btnNewSpec_Click);
 			// 
 			// groupBox3
@@ -366,22 +371,24 @@
 			// 
 			// btnRemoveSpec
 			// 
+			this.btnRemoveSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnRemoveSpec.Location = new System.Drawing.Point(14, 128);
 			this.btnRemoveSpec.Name = "btnRemoveSpec";
 			this.btnRemoveSpec.Size = new System.Drawing.Size(79, 23);
 			this.btnRemoveSpec.TabIndex = 13;
 			this.btnRemoveSpec.Text = "Remove";
-			this.btnRemoveSpec.UseVisualStyleBackColor = true;
+			this.btnRemoveSpec.UseVisualStyleBackColor = false;
 			this.btnRemoveSpec.Click += new System.EventHandler(this.btnRemoveSpec_Click);
 			// 
 			// btnAddSpec
 			// 
+			this.btnAddSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnAddSpec.Location = new System.Drawing.Point(14, 50);
 			this.btnAddSpec.Name = "btnAddSpec";
 			this.btnAddSpec.Size = new System.Drawing.Size(79, 23);
 			this.btnAddSpec.TabIndex = 11;
 			this.btnAddSpec.Text = "Add";
-			this.btnAddSpec.UseVisualStyleBackColor = true;
+			this.btnAddSpec.UseVisualStyleBackColor = false;
 			this.btnAddSpec.Click += new System.EventHandler(this.btnAddSpec_Click);
 			// 
 			// cmbSelectedSpec

@@ -199,13 +199,14 @@
 			// 
 			// btnCheck
 			// 
+			this.btnCheck.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCheck.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnCheck.Location = new System.Drawing.Point(298, 167);
 			this.btnCheck.Name = "btnCheck";
 			this.btnCheck.Size = new System.Drawing.Size(75, 23);
 			this.btnCheck.TabIndex = 7;
 			this.btnCheck.Text = "Check";
-			this.btnCheck.UseVisualStyleBackColor = true;
+			this.btnCheck.UseVisualStyleBackColor = false;
 			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
 			// 
 			// radioMr
@@ -579,35 +580,38 @@
 			// 
 			// btnSave
 			// 
+			this.btnSave.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSave.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnSave.Location = new System.Drawing.Point(126, 595);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(75, 23);
 			this.btnSave.TabIndex = 26;
 			this.btnSave.Text = "Save";
-			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnClear.Location = new System.Drawing.Point(256, 595);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(75, 23);
 			this.btnClear.TabIndex = 27;
 			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnClose
 			// 
+			this.btnClose.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
 			this.btnClose.Location = new System.Drawing.Point(381, 595);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(75, 23);
 			this.btnClose.TabIndex = 28;
 			this.btnClose.Text = "Close";
-			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// ScrSetAppointment
