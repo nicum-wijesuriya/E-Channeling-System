@@ -41,12 +41,31 @@ namespace AMC
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
+			String refID = txtRefID.Text;
 			DBConnect db = DBConnect.Connect();
 
 			Appointment app = new Appointment(db.Connection);
-			MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
 
-			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+			MySqlCommand cmd2 = app.FindAppointment(refID);
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd2, DBConnect.EXPECT_RESULT_SET);
+
+			try
+			{
+				Validation.valID(refID);
+				if (rs.HasRows)
+				{
+					MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
+					db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+				}
+				else
+				{
+					Validation.valGeneral("Invalid Reference ID");
+				}
+
+			}
+			catch { }
+
 		}
 
 		private void ToggleUpdate(Boolean value)
@@ -60,8 +79,37 @@ namespace AMC
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
+			String refID = txtRefID.Text;
+			DBConnect db = DBConnect.Connect();
+
+			Appointment app = new Appointment(db.Connection);
+			MySqlCommand cmd = app.FindAppointment(refID);
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			bool check = rs.HasRows;
+			rs.Close();
+
 			this.ToggleUpdate(true);
-			this.FillDoctor();
+			this.FillDoctor();	
+			
+/*			try
+			{
+				Validation.valID(refID);
+				if (check) 
+				{
+					this.ToggleUpdate(true);
+					this.FillDoctor();					
+				}
+				else
+				{
+					Validation.valGeneral("Invalid Reference ID");
+				}
+
+			}
+			catch {}
+
+*/
+
 
 		}
 		private void FillDoctor()
@@ -96,9 +144,21 @@ namespace AMC
 			
 			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text, SchID);
 
-			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+			try
+			{
+				if (cmbSchedule.SelectedIndex == 0)
+				{
+					Validation.valGeneral("Please select a schedule");
+				}
+				else
+				{
+					db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+					this.FillPatientDetails();
+				}
+			}
+			catch { }
 
-			this.FillPatientDetails();
+
 		}
 
 		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
@@ -225,15 +285,16 @@ namespace AMC
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
 			
-			this.FillPatientDetails();
 
-/*			try
+		try
 			{
 				String refID = txtRefID.Text;
 				Validation.valID(refID);
+				this.FillPatientDetails();
+
 			}
 			catch { }
-*/
+
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
