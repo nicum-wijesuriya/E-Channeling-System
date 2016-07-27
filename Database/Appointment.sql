@@ -28,7 +28,7 @@ BEGIN
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
-    Declare vDID date;
+    Declare vDID int;
 
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);

@@ -107,7 +107,6 @@ namespace AMC
 			this.txtEmail.Text = "";
 			this.txtMobileNo.Text = "";
 			this.txtHomeNo.Text = "";
-
 		}
 
 		private void fillDoctors()
