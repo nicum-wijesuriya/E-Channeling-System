@@ -217,7 +217,7 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 			Speciality spec = new Speciality(db.Connection);
 
-			MySqlCommand cmd = spec.GetAllSpeciality();
+			MySqlCommand cmd = spec.GetSpeciality();
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
 			while (rs.Read())
