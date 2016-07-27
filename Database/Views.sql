@@ -7,7 +7,7 @@ where D.DID IN (
 	select DID 
     From Schedule 
     where Status = 2
-)
+);
 
 drop procedure AvailableDoctors;
 

@@ -17,6 +17,7 @@ create table Patient
     isDeleted bool default false
 );
 Alter table patient modify Title varchar(9);
+
 drop procedure AddPatient;
 DELIMITER //
 create procedure AddPatient (
