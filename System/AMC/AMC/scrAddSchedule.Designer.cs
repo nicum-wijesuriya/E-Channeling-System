@@ -47,7 +47,7 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnAddSch = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).BeginInit();
 			this.groupBox1.SuspendLayout();
@@ -78,7 +78,7 @@
 			this.cmbDoctor.Location = new System.Drawing.Point(68, 15);
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(189, 21);
-			this.cmbDoctor.TabIndex = 2;
+			this.cmbDoctor.TabIndex = 1;
 			// 
 			// label1
 			// 
@@ -95,7 +95,7 @@
 			this.dtpDate.Location = new System.Drawing.Point(364, 12);
 			this.dtpDate.Name = "dtpDate";
 			this.dtpDate.Size = new System.Drawing.Size(189, 20);
-			this.dtpDate.TabIndex = 4;
+			this.dtpDate.TabIndex = 2;
 			this.dtpDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
 			// 
 			// groupBox1
@@ -119,7 +119,7 @@
 			this.dtpTimeFrom.Name = "dtpTimeFrom";
 			this.dtpTimeFrom.ShowUpDown = true;
 			this.dtpTimeFrom.Size = new System.Drawing.Size(130, 20);
-			this.dtpTimeFrom.TabIndex = 5;
+			this.dtpTimeFrom.TabIndex = 3;
 			this.dtpTimeFrom.ValueChanged += new System.EventHandler(this.dtpTimeFrom_ValueChanged);
 			// 
 			// btnCheck
@@ -127,7 +127,7 @@
 			this.btnCheck.Location = new System.Drawing.Point(465, 18);
 			this.btnCheck.Name = "btnCheck";
 			this.btnCheck.Size = new System.Drawing.Size(98, 21);
-			this.btnCheck.TabIndex = 4;
+			this.btnCheck.TabIndex = 5;
 			this.btnCheck.Text = "Check";
 			this.btnCheck.UseVisualStyleBackColor = true;
 			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
@@ -139,7 +139,7 @@
 			this.dtpTimeTo.Name = "dtpTimeTo";
 			this.dtpTimeTo.ShowUpDown = true;
 			this.dtpTimeTo.Size = new System.Drawing.Size(130, 20);
-			this.dtpTimeTo.TabIndex = 2;
+			this.dtpTimeTo.TabIndex = 4;
 			// 
 			// label3
 			// 
@@ -187,8 +187,7 @@
 			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
 			this.dtpScheduleFrom.Size = new System.Drawing.Size(130, 20);
-			this.dtpScheduleFrom.TabIndex = 3;
-			this.dtpScheduleFrom.Visible = false;
+			this.dtpScheduleFrom.TabIndex = 6;
 			this.dtpScheduleFrom.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
 			// 
 			// label6
@@ -206,8 +205,7 @@
 			this.dtpScheduleTo.Location = new System.Drawing.Point(247, 19);
 			this.dtpScheduleTo.Name = "dtpScheduleTo";
 			this.dtpScheduleTo.Size = new System.Drawing.Size(130, 20);
-			this.dtpScheduleTo.TabIndex = 2;
-			this.dtpScheduleTo.Visible = false;
+			this.dtpScheduleTo.TabIndex = 7;
 			this.dtpScheduleTo.ValueChanged += new System.EventHandler(this.dateTimePicker5_ValueChanged);
 			// 
 			// label4
@@ -238,21 +236,22 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Available Time Slots";
 			// 
-			// button1
+			// btnAddSch
 			// 
-			this.button1.Location = new System.Drawing.Point(38, 364);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(93, 23);
-			this.button1.TabIndex = 8;
-			this.button1.Text = "Add";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnAddSch.Location = new System.Drawing.Point(38, 364);
+			this.btnAddSch.Name = "btnAddSch";
+			this.btnAddSch.Size = new System.Drawing.Size(93, 23);
+			this.btnAddSch.TabIndex = 9;
+			this.btnAddSch.Text = "Add";
+			this.btnAddSch.UseVisualStyleBackColor = true;
+			this.btnAddSch.Click += new System.EventHandler(this.btnAddSch_Click);
 			// 
 			// button2
 			// 
 			this.button2.Location = new System.Drawing.Point(487, 364);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(93, 23);
-			this.button2.TabIndex = 8;
+			this.button2.TabIndex = 10;
 			this.button2.Text = "Close";
 			this.button2.UseVisualStyleBackColor = true;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -263,7 +262,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(590, 399);
 			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
+			this.Controls.Add(this.btnAddSch);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
@@ -306,7 +305,7 @@
 		private System.Windows.Forms.TextBox txtMaxPatients;
 		private System.Windows.Forms.DateTimePicker dtpTimeFrom;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button btnAddSch;
 		private System.Windows.Forms.Button button2;
 	}
 }
