@@ -15,6 +15,7 @@ namespace AMC
 	public partial class ScrSetAppointment : Form
 	{
 		Boolean isRegistered;
+		int currentPID;
 		public ScrSetAppointment()
 		{
 			InitializeComponent();
@@ -58,7 +59,7 @@ namespace AMC
 			if (rs.Read())
 			{
 				this.isRegistered = true;
-
+				this.currentPID = rs.GetInt32(0);
 				String Title = rs.GetString(8);
 				this.checkTitles(Title);
 				this.txtFirstName.Text = rs.GetString(1);
@@ -85,6 +86,7 @@ namespace AMC
 			else
 			{
 				this.isRegistered = false;
+				this.currentPID = -1;
 				this.ClearPatientFields();
 			}
 		}
@@ -170,24 +172,89 @@ namespace AMC
 
 		private void btnClear_Click(object sender, EventArgs e)
 		{
-
+			this.FillDoctor();
+			this.fillSchedule();
+			this.ClearPatientFields();
 		}
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
-			if(this.isRegistered)
+			String academicTitle;
+			String personalTitle;
+			String title;
+			int isLocal;
+
+			if(this.radioLocal.Checked)
 			{
-			
+				isLocal = 1;
 			}
 			else
 			{
-				
+				isLocal = 0;
 			}
+
+			if(this.radioProf.Checked)
+			{
+				academicTitle = "Prof.";
+			}
+			else if(this.radioDr.Checked)
+			{
+				academicTitle = "Dr.";
+			}
+			else
+			{
+				academicTitle = "";
+			}
+
+			if(this.radioRev.Checked)
+			{
+				personalTitle = "Rev.";
+			}
+			else if(this.radioMrs.Checked)
+			{
+				personalTitle = "Mrs.";
+			}
+			else if(this.radioMs.Checked)
+			{
+				personalTitle = "Ms.";
+			}
+			else
+			{
+				personalTitle = "Mr.";
+			}
+			title = academicTitle + personalTitle;
+			Console.WriteLine("\n\nTitle : " + title+ " Length :"+title.Length+"\n\n");
+			DBConnect db = DBConnect.Connect();
+			if(this.isRegistered)
+			{
+				Patient p = new Patient(db.Connection);
+				MySqlCommand cmd = p.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, 
+					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text,isLocal + "");
+
+				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				db.CloseConnection();
+			}
+			else
+			{
+				Patient p = new Patient(db.Connection);
+				MySqlCommand cmd = p.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
+						,this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text,isLocal + "");
+
+				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				rs.Read();
+				this.currentPID = rs.GetInt32(0);
+				rs.Close();
+				db.CloseConnection();
+			}
+			db = DBConnect.Connect();
+			Appointment app = new Appointment(db.Connection);
+			MySqlCommand command = app.AddAppointment(this.currentPID + "", (this.cmbSchedule.SelectedItem as ComboBoxItem).Value);
+			db.ExecuteProcedure(command, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+			db.CloseConnection();
 		}
+
 		private void FillDoctor()
 		{
-
-
 			DBConnect db = DBConnect.Connect();
 
 			Doctor doc = new Doctor(db.Connection);
@@ -290,6 +357,13 @@ namespace AMC
 			{
 				this.UpdatePatientFields();
 			}
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
+			this.Close();
 		}
 
 	}

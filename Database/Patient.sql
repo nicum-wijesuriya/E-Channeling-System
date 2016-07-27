@@ -17,10 +17,11 @@ create table Patient
     isDeleted bool default false
 );
 Alter table patient modify Title varchar(9);
+drop procedure AddPatient;
 DELIMITER //
 create procedure AddPatient (
 
-    vTitle varchar(4),	
+    vTitle varchar(9),	
     vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),
@@ -38,7 +39,7 @@ Begin
 
 	insert into Patient (FName,LName,ANumber, AStreet,ACity,Email,NICNo,Title,CMobile,CHome,IsLocal) 
 	values (vFName,vLName,vANumber,vAStreet,vACity,vEmail,vNICNo,vTitle,vCMobile,vCHome,vIsLocal);
-	Select PID from patient 
+	Select PID from patient order by PID desc LIMIT 1 ;
 END //
 DELIMITER ;
 
@@ -47,7 +48,7 @@ drop procedure UpdatePatient;
 DELIMITER //
 create procedure UpdatePatient (
 	vPID int,    
-    vTitle varchar(4),
+    vTitle varchar(9),
 	vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),

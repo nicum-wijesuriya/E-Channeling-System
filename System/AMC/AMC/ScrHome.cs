@@ -19,16 +19,21 @@ namespace AMC
 
 		private void button1_Click(object sender, EventArgs e)
 		{
-			ScrDoctorRegistration scrDoc = new ScrDoctorRegistration();
-			scrDoc.Visible = true;
-			this.Visible = false;
+			ScrDoctorRegistration scr = new ScrDoctorRegistration();
+			//scrDoc.Visible = true;
+			//this.RemoveThis();
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
+			
 		}
 
 		private void btnAddSchedule_Click(object sender, EventArgs e)
 		{
 			scrAddSchedule scr = new scrAddSchedule();
-			scr.Visible = true;
-			this.Visible = false;
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
 		}
 
 		private void btnUpdateSchedule_Click(object sender, EventArgs e)
@@ -41,15 +46,19 @@ namespace AMC
 		private void btnSetAppointment_Click(object sender, EventArgs e)
 		{
 			ScrSetAppointment scr = new ScrSetAppointment();
-			scr.Visible = true;
-			this.Visible = false;
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
 		}
 
 		private void btnCancelAppointment_Click(object sender, EventArgs e)
 		{
 			ScrCancelAppointment scr = new ScrCancelAppointment();
-			scr.Visible = true;
-			this.Visible = false;
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
 		}
+
+	
 	}
 }

@@ -63,8 +63,11 @@ namespace DatabaseConnector
 		{
 			try
 			{
-
-				this.Connection.Open();
+				if(this.Connection.State != System.Data.ConnectionState.Open)
+				{
+					this.Connection.Open();
+				}
+				
 				switch (type)
 				{
 					case 1:
@@ -84,6 +87,11 @@ namespace DatabaseConnector
 
 				return null;
 			}
+		}
+
+		public void CloseConnection()
+		{
+			this.Connection.Close();
 		}
     }
 }

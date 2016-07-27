@@ -226,5 +226,12 @@ namespace AMC
 		{
 			this.FillPatientDetails();
 		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
+			this.Close();
+		}
 	}
 }

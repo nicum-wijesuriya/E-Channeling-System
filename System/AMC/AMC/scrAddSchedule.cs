@@ -36,5 +36,12 @@ namespace AMC
 		{
 
 		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
+			this.Close();
+		}
 	}
 }

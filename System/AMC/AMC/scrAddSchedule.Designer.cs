@@ -47,6 +47,8 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.label5 = new System.Windows.Forms.Label();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.button1 = new System.Windows.Forms.Button();
+			this.button2 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -234,11 +236,32 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Available Time Slots";
 			// 
-			// AddSchedule
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(83, 419);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(93, 23);
+			this.button1.TabIndex = 8;
+			this.button1.Text = "Add";
+			this.button1.UseVisualStyleBackColor = true;
+			// 
+			// button2
+			// 
+			this.button2.Location = new System.Drawing.Point(532, 419);
+			this.button2.Name = "button2";
+			this.button2.Size = new System.Drawing.Size(93, 23);
+			this.button2.TabIndex = 8;
+			this.button2.Text = "Close";
+			this.button2.UseVisualStyleBackColor = true;
+			this.button2.Click += new System.EventHandler(this.button2_Click);
+			// 
+			// scrAddSchedule
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(664, 480);
+			this.Controls.Add(this.button2);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
@@ -246,7 +269,7 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cmbDoctor);
 			this.Controls.Add(this.Doctor);
-			this.Name = "AddSchedule";
+			this.Name = "scrAddSchedule";
 			this.Text = "Add Schedule";
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).EndInit();
 			this.groupBox1.ResumeLayout(false);
@@ -280,5 +303,7 @@
 		private System.Windows.Forms.TextBox txtMaxPatients;
 		private System.Windows.Forms.DateTimePicker dtpTimeFrom;
 		private System.Windows.Forms.GroupBox groupBox3;
+		private System.Windows.Forms.Button button1;
+		private System.Windows.Forms.Button button2;
 	}
 }

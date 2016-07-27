@@ -12,7 +12,7 @@ create table Patient
     ACity varchar(25),
     Email varchar(50),
     NICNo varchar(10) not null,
-    Title varchar(4),
+    Title varchar(9),
     CMobile int(10),
     CHome int(10),
     IsLocal bool,
