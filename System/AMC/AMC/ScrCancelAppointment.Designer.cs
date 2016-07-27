@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrCancelAppointment));
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtRefID = new System.Windows.Forms.TextBox();
 			this.btnCancel = new System.Windows.Forms.Button();
@@ -397,6 +398,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(719, 340);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
@@ -412,7 +414,9 @@
 			this.Controls.Add(this.txtRefID);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.groupBox2);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrCancelAppointment";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cancel or Update Appointment";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrCancelAppointment_FormClosing);
 			this.Load += new System.EventHandler(this.ScrCancelAppointment_Load);

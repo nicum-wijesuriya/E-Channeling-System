@@ -145,6 +145,7 @@
 			this.Controls.Add(this.groupBox2);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrHome";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Home";
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
