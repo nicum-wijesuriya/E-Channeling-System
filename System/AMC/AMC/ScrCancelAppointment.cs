@@ -303,5 +303,11 @@ namespace AMC
 			scr.Show();
 			this.Close();
 		}
+
+		private void ScrCancelAppointment_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
+		}
 	}
 }

@@ -414,6 +414,7 @@
 			this.Controls.Add(this.groupBox2);
 			this.Name = "ScrCancelAppointment";
 			this.Text = "Cancel or Update Appointment";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrCancelAppointment_FormClosing);
 			this.Load += new System.EventHandler(this.ScrCancelAppointment_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
