@@ -46,7 +46,7 @@ namespace AMC
 				Validation.valEmptyField(txtNIC.Text, "Enter NIC / Passport Number");
 				this.UpdatePatientFields();
 			}
-			catch { }
+			catch (Validation ex) { }
 		}
 
 		public void UpdatePatientFields()
@@ -254,7 +254,7 @@ namespace AMC
 
 			}
 
-			catch { }
+			catch (Validation ex) { }
 			
 
 

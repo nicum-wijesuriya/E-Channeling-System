@@ -64,7 +64,7 @@ namespace AMC
 				}
 
 			}
-			catch { }
+			catch (Validation ex) { }
 
 		}
 
@@ -148,7 +148,7 @@ namespace AMC
 					this.FillPatientDetails();
 				}
 			}
-			catch { }
+			catch (Validation ex) { }
 
 
 		}
@@ -283,7 +283,7 @@ namespace AMC
 				this.FillPatientDetails();
 
 			}
-			catch { }
+			catch (Validation ex) { }
 
 		}
 

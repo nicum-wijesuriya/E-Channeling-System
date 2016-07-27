@@ -125,12 +125,13 @@
 			// 
 			// btnCheck
 			// 
+			this.btnCheck.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCheck.Location = new System.Drawing.Point(465, 18);
 			this.btnCheck.Name = "btnCheck";
 			this.btnCheck.Size = new System.Drawing.Size(98, 21);
 			this.btnCheck.TabIndex = 5;
 			this.btnCheck.Text = "Check";
-			this.btnCheck.UseVisualStyleBackColor = true;
+			this.btnCheck.UseVisualStyleBackColor = false;
 			this.btnCheck.Click += new System.EventHandler(this.btnCheck_Click);
 			// 
 			// dtpTimeTo
@@ -239,22 +240,24 @@
 			// 
 			// btnAddSch
 			// 
+			this.btnAddSch.BackColor = System.Drawing.SystemColors.Control;
 			this.btnAddSch.Location = new System.Drawing.Point(38, 364);
 			this.btnAddSch.Name = "btnAddSch";
 			this.btnAddSch.Size = new System.Drawing.Size(93, 23);
 			this.btnAddSch.TabIndex = 9;
 			this.btnAddSch.Text = "Add";
-			this.btnAddSch.UseVisualStyleBackColor = true;
+			this.btnAddSch.UseVisualStyleBackColor = false;
 			this.btnAddSch.Click += new System.EventHandler(this.btnAddSch_Click);
 			// 
 			// button2
 			// 
+			this.button2.BackColor = System.Drawing.SystemColors.Control;
 			this.button2.Location = new System.Drawing.Point(487, 364);
 			this.button2.Name = "button2";
 			this.button2.Size = new System.Drawing.Size(93, 23);
 			this.button2.TabIndex = 10;
 			this.button2.Text = "Close";
-			this.button2.UseVisualStyleBackColor = true;
+			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
 			// scrAddSchedule

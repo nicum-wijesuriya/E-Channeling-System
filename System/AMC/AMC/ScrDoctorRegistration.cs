@@ -179,7 +179,7 @@ namespace AMC
 
 				this.txtNewSpec.Text = "";
 			}
-			catch { }
+			catch (Validation ex) { }
 
 		}
 
@@ -244,7 +244,7 @@ namespace AMC
 		{
 			try
 			{
-				if (cmbSpec.SelectedIndex == 0)
+				if (cmbSpec.SelectedIndex == 0 || (ComboBoxItem)this.cmbSpec.SelectedItem == null)
 				{
 					Validation.valGeneral("Please select a Specialization");
 				}
@@ -255,7 +255,7 @@ namespace AMC
 				selectedSpecList.Add(new Speciality(SID, name));
 				FillSelectedSpec(SID, name);
 			}
-			catch { }
+			catch (Validation ex) { }
 
 
 		}
