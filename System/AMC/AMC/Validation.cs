@@ -159,9 +159,12 @@ namespace AMC
 
 		public static void valMaxPatients(String patients)
 		{
-			Regex regex = new Regex(@"^([0-9]+$");
+			Regex regex = new Regex(@"^[0-9]+$");
 			Match match = regex.Match(patients);
-			if (!(match.Success))
+			
+			int maxPatients;
+			Int32.TryParse(patients, out maxPatients);
+			if (!(match.Success) || maxPatients == 0)
 			{
 				errorcode = 6;
 				throw new Validation(errorcode);

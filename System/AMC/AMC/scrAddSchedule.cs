@@ -169,22 +169,28 @@ namespace AMC
 		{
 			try
 			{
+				if (cmbDoctor.SelectedIndex == 0 || (this.cmbDoctor.SelectedItem as ComboBoxItem) == null)
+				{
+					Validation.valGeneral("Please select a Doctor");
+				}
+				Validation.valMaxPatients(txtMaxPatients.Text);
+				
+				String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
+				String startTime = this.getTime(this.dtpScheduleFrom.Value);
+				String endTime = this.getTime(this.dtpScheduleTo.Value);
+				String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
+				String MaxPatients = this.txtMaxPatients.Text;
+				int Status = 2;
+				DBConnect db = DBConnect.Connect();
+				Schedule sch = new Schedule(db.Connection);
 
+				MySqlCommand cmd = sch.AddSchedule(date,startTime,endTime,MaxPatients,Status + "",DID);
+				db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+
+				MessageBox.Show("Schedule Added!");
 			}
-			catch { }
-			String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
-			String startTime = this.getTime(this.dtpScheduleFrom.Value);
-			String endTime = this.getTime(this.dtpScheduleTo.Value);
-			String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
-			String MaxPatients = this.txtMaxPatients.Text;
-			int Status = 2;
-			DBConnect db = DBConnect.Connect();
-			Schedule sch = new Schedule(db.Connection);
+			catch (Validation ex){ }
 
-			MySqlCommand cmd = sch.AddSchedule(date,startTime,endTime,MaxPatients,Status + "",DID);
-			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
-
-			MessageBox.Show("Schedule Added!");
 		
 		}
 	}

@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(scrAddSchedule));
 			this.dgvTimeSlots = new System.Windows.Forms.DataGridView();
 			this.Doctor = new System.Windows.Forms.Label();
 			this.cmbDoctor = new System.Windows.Forms.ComboBox();
@@ -260,6 +261,7 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(590, 399);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.btnAddSch);
@@ -270,7 +272,9 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.cmbDoctor);
 			this.Controls.Add(this.Doctor);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "scrAddSchedule";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Add Schedule";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.scrAddSchedule_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).EndInit();
