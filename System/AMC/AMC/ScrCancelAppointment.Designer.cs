@@ -78,6 +78,7 @@
 			this.txtRefID.Size = new System.Drawing.Size(215, 20);
 			this.txtRefID.TabIndex = 1;
 			this.txtRefID.TextChanged += new System.EventHandler(this.txtRefID_TextChanged);
+			this.txtRefID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRefID_KeyDown);
 			// 
 			// btnCancel
 			// 
@@ -385,6 +386,7 @@
 			this.Controls.Add(this.groupBox2);
 			this.Name = "ScrCancelAppointment";
 			this.Text = "Cancel or Update Appointment";
+			this.Load += new System.EventHandler(this.ScrCancelAppointment_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox2.ResumeLayout(false);

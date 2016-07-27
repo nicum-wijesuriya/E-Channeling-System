@@ -14,6 +14,7 @@ create table Appointment
     
 );
 call AddAppointment(1,2);
+select * from appointment;
 drop procedure AddAppointment;
 
 DELIMITER // 
@@ -98,18 +99,18 @@ DELIMITER ;
 drop procedure CancelAppointment;
 drop procedure CloseAppointment;
 
-
+call CancelAppointment(1);
 DELIMITER //
 create procedure CancelAppointment(vRefID int)
 BEGIN
-	update Appoinment set status = 1 where RefID = VRefID; 
+	update Appointment set status = 1 where RefID = VRefID; 
 END //
 DELIMITER ;
 
 DELIMITER //
 create procedure CloseAppointment(vRefID int)
 BEGIN
-	update Appoinment set status = 3 where RefID = VRefID; 
+	update Appointment set status = 3 where RefID = VRefID; 
 END //
 DELIMITER ;
 drop procedure FindAppoinment;

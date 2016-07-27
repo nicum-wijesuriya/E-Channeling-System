@@ -19,6 +19,7 @@ namespace AMC
 		public ScrCancelAppointment()
 		{
 			InitializeComponent();
+			this.setPatientToDefault();
 			this.ToggleUpdate(false);
 			this.cmbSchedule.Items.Add(new ComboBoxItem("0","Select a Schedule"));
 		}
@@ -35,28 +36,7 @@ namespace AMC
 
 		private void txtRefID_TextChanged(object sender, EventArgs e)
 		{
-			this.ToggleUpdate(false);
-			DBConnect db = DBConnect.Connect();
-
-			Appointment app = new Appointment(db.Connection);
 			
-			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
-		
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			if (rs.Read())
-			{
-
-				this.lblPatientNIC.Text = rs.GetString(0);
-				this.lblDoctorName.Text = rs.GetString(1);
-				this.lblScheduleDate.Text = rs.GetString(2);
-				this.lblScheduleTime.Text = rs.GetString(3);
-				this.lblQueueNo.Text = rs.GetString(4);
-				this.lblRoom.Text = rs.GetString(5);
-				this.lblFee.Text = rs.GetString(6);
-				this.currentDID = rs.GetInt32(7);
-
-				rs.Close();
-			}
 		}
 
 		private void btnCancel_Click(object sender, EventArgs e)
@@ -167,6 +147,56 @@ namespace AMC
 		private void dtpEndDate_ValueChanged(object sender, EventArgs e)
 		{
 			this.fillSchedule();
+		}
+
+		private void ScrCancelAppointment_Load(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtRefID_KeyDown(object sender, KeyEventArgs e)
+		{
+			if(e.KeyCode == Keys.Enter)
+			{
+				this.ToggleUpdate(false);
+				DBConnect db = DBConnect.Connect();
+
+				Appointment app = new Appointment(db.Connection);
+
+				MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
+
+				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				if (rs != null && rs.Read())
+				{
+
+					this.lblPatientNIC.Text = rs.GetString(0);
+					this.lblDoctorName.Text = rs.GetString(1);
+					this.lblScheduleDate.Text = rs.GetString(2);
+					this.lblScheduleTime.Text = rs.GetString(3);
+					this.lblQueueNo.Text = rs.GetString(4);
+					this.lblRoom.Text = rs.GetString(5);
+					this.lblFee.Text = rs.GetString(6);
+					this.currentDID = rs.GetInt32(7);
+
+					rs.Close();
+				}
+				else
+				{
+					this.setPatientToDefault();
+				}
+			}
+		}
+
+		private void setPatientToDefault()
+		{
+			this.lblPatientNIC.Text = "N/A";
+			this.lblDoctorName.Text = "N/A";
+			this.lblScheduleDate.Text = "N/A";
+			this.lblScheduleTime.Text = "N/A";
+			this.lblQueueNo.Text = "N/A";
+			this.lblRoom.Text = "N/A";
+			this.lblFee.Text = "N/A";
+			this.currentDID = -1;
 		}
 	}
 }
