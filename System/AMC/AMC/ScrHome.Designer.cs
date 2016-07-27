@@ -28,22 +28,21 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrHome));
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.button4 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
+			this.btnCancelAppointment = new System.Windows.Forms.Button();
+			this.btnSetAppointment = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.button5 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
-			this.button1 = new System.Windows.Forms.Button();
+			this.btnUpdateSchedule = new System.Windows.Forms.Button();
+			this.btnAddSchedule = new System.Windows.Forms.Button();
+			this.btnRegister = new System.Windows.Forms.Button();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.button4);
-			this.groupBox2.Controls.Add(this.button2);
+			this.groupBox2.Controls.Add(this.btnCancelAppointment);
+			this.groupBox2.Controls.Add(this.btnSetAppointment);
 			this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox2.Location = new System.Drawing.Point(37, 44);
 			this.groupBox2.Name = "groupBox2";
@@ -52,31 +51,33 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Patient";
 			// 
-			// button4
+			// btnCancelAppointment
 			// 
-			this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button4.Location = new System.Drawing.Point(44, 153);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(194, 30);
-			this.button4.TabIndex = 2;
-			this.button4.Text = "Cancel Appointment";
-			this.button4.UseVisualStyleBackColor = true;
+			this.btnCancelAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnCancelAppointment.Location = new System.Drawing.Point(44, 153);
+			this.btnCancelAppointment.Name = "btnCancelAppointment";
+			this.btnCancelAppointment.Size = new System.Drawing.Size(194, 30);
+			this.btnCancelAppointment.TabIndex = 2;
+			this.btnCancelAppointment.Text = "Cancel Appointment";
+			this.btnCancelAppointment.UseVisualStyleBackColor = true;
+			this.btnCancelAppointment.Click += new System.EventHandler(this.btnCancelAppointment_Click);
 			// 
-			// button2
+			// btnSetAppointment
 			// 
-			this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button2.Location = new System.Drawing.Point(44, 85);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(194, 30);
-			this.button2.TabIndex = 1;
-			this.button2.Text = "Appointment";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnSetAppointment.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnSetAppointment.Location = new System.Drawing.Point(44, 85);
+			this.btnSetAppointment.Name = "btnSetAppointment";
+			this.btnSetAppointment.Size = new System.Drawing.Size(194, 30);
+			this.btnSetAppointment.TabIndex = 1;
+			this.btnSetAppointment.Text = "Appointment";
+			this.btnSetAppointment.UseVisualStyleBackColor = true;
+			this.btnSetAppointment.Click += new System.EventHandler(this.btnSetAppointment_Click);
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.button5);
-			this.groupBox3.Controls.Add(this.button3);
-			this.groupBox3.Controls.Add(this.button1);
+			this.groupBox3.Controls.Add(this.btnUpdateSchedule);
+			this.groupBox3.Controls.Add(this.btnAddSchedule);
+			this.groupBox3.Controls.Add(this.btnRegister);
 			this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox3.Location = new System.Drawing.Point(358, 44);
 			this.groupBox3.Name = "groupBox3";
@@ -85,35 +86,38 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Doctor";
 			// 
-			// button5
+			// btnUpdateSchedule
 			// 
-			this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button5.Location = new System.Drawing.Point(44, 188);
-			this.button5.Name = "button5";
-			this.button5.Size = new System.Drawing.Size(194, 30);
-			this.button5.TabIndex = 2;
-			this.button5.Text = "Update Schedule";
-			this.button5.UseVisualStyleBackColor = true;
+			this.btnUpdateSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnUpdateSchedule.Location = new System.Drawing.Point(44, 188);
+			this.btnUpdateSchedule.Name = "btnUpdateSchedule";
+			this.btnUpdateSchedule.Size = new System.Drawing.Size(194, 30);
+			this.btnUpdateSchedule.TabIndex = 2;
+			this.btnUpdateSchedule.Text = "Update Schedule";
+			this.btnUpdateSchedule.UseVisualStyleBackColor = true;
+			this.btnUpdateSchedule.Click += new System.EventHandler(this.btnUpdateSchedule_Click);
 			// 
-			// button3
+			// btnAddSchedule
 			// 
-			this.button3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button3.Location = new System.Drawing.Point(44, 118);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(194, 30);
-			this.button3.TabIndex = 1;
-			this.button3.Text = "Add Schedule";
-			this.button3.UseVisualStyleBackColor = true;
+			this.btnAddSchedule.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAddSchedule.Location = new System.Drawing.Point(44, 118);
+			this.btnAddSchedule.Name = "btnAddSchedule";
+			this.btnAddSchedule.Size = new System.Drawing.Size(194, 30);
+			this.btnAddSchedule.TabIndex = 1;
+			this.btnAddSchedule.Text = "Add Schedule";
+			this.btnAddSchedule.UseVisualStyleBackColor = true;
+			this.btnAddSchedule.Click += new System.EventHandler(this.btnAddSchedule_Click);
 			// 
-			// button1
+			// btnRegister
 			// 
-			this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.button1.Location = new System.Drawing.Point(44, 49);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(194, 30);
-			this.button1.TabIndex = 0;
-			this.button1.Text = "Register";
-			this.button1.UseVisualStyleBackColor = true;
+			this.btnRegister.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnRegister.Location = new System.Drawing.Point(44, 49);
+			this.btnRegister.Name = "btnRegister";
+			this.btnRegister.Size = new System.Drawing.Size(194, 30);
+			this.btnRegister.TabIndex = 0;
+			this.btnRegister.Text = "Register";
+			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// ScrHome
 			// 
@@ -122,7 +126,6 @@
 			this.ClientSize = new System.Drawing.Size(666, 340);
 			this.Controls.Add(this.groupBox3);
 			this.Controls.Add(this.groupBox2);
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrHome";
 			this.Text = "Home";
 			this.groupBox2.ResumeLayout(false);
@@ -135,11 +138,11 @@
 
 		private System.Windows.Forms.GroupBox groupBox2;
 		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Button button4;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button5;
-		private System.Windows.Forms.Button button3;
+		private System.Windows.Forms.Button btnRegister;
+		private System.Windows.Forms.Button btnCancelAppointment;
+		private System.Windows.Forms.Button btnSetAppointment;
+		private System.Windows.Forms.Button btnUpdateSchedule;
+		private System.Windows.Forms.Button btnAddSchedule;
 
 
 	}

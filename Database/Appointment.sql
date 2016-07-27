@@ -13,7 +13,8 @@ create table Appointment
     Status int(1)
     
 );
-
+call AddAppointment(1,2);
+select * from appointment;
 drop procedure AddAppointment;
 
 DELIMITER // 
@@ -28,7 +29,7 @@ BEGIN
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
-    Declare vDID date;
+    Declare vDID int;
 
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);
@@ -74,7 +75,7 @@ BEGIN
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
-    Declare vDID date;
+    Declare vDID int;
 
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);
@@ -95,24 +96,42 @@ BEGIN
 END //
 DELIMITER ;
 
+call UpdateAppointment(1,3);
+
 drop procedure CancelAppointment;
 drop procedure CloseAppointment;
 
-
+call CancelAppointment(1);
 DELIMITER //
 create procedure CancelAppointment(vRefID int)
 BEGIN
-	update Appoinment set status = 1 where RefID = VRefID; 
+	update Appointment set status = 1 where RefID = VRefID; 
 END //
 DELIMITER ;
 
 DELIMITER //
 create procedure CloseAppointment(vRefID int)
 BEGIN
-	update Appoinment set status = 3 where RefID = VRefID; 
+	update Appointment set status = 3 where RefID = VRefID; 
 END //
 DELIMITER ;
+drop procedure FindAppoinment;
+DELIMITER //
+create procedure FindAppoinment(vRefID int)
+BEGIN
+	select (Select P.NICNo from Patient as P where P.PID = A.PID) as NICNo,
+			(Select concat(D.Title,D.FName,' ',D.LName) from Doctor as D where D.DID = A.DID) as DocName,
+            A.Date as SchDate, A.Time as SchTime,A.QueNo as QueNo,
+            (Select R.Name from Room as R where R.RoomID = (Select S.RoomID from Schedule as S where A.SchID = S.SchID )) as Room,
+            A.Fee as Fee, A.DID
+    from Appointment as A
+    where A.RefID = vRefID;
+END//
+DELIMITER ;
 
+select * from appointment;
+
+call FindAppoinment(2);
 DELIMITER //
 create function getQueueNo (vSchID int) returns int 
     

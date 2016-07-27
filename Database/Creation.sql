@@ -12,7 +12,7 @@ create table Patient
     ACity varchar(25),
     Email varchar(50),
     NICNo varchar(10) not null,
-    Title varchar(4),
+    Title varchar(9),
     CMobile int(10),
     CHome int(10),
     IsLocal bool,
@@ -56,6 +56,8 @@ create table Doc_Spec
     Primary Key (DID,SID)
 );
 
+select * from Schedule;
+
 create table Appointment
 (
 	RefID int primary key auto_increment,
@@ -79,4 +81,4 @@ create table Room
 Alter table Doctor Add isDeleted bool default false after Fee;
 Alter table Patient Add isDeleted bool default false after isLocal;
 Alter table Schedule Add RoomID int after DID;
-Alter table Doctor modify Title varchar(7);
+Alter table Doctor modify Title varchar(9);
