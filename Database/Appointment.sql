@@ -75,7 +75,7 @@ BEGIN
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
-    Declare vDID date;
+    Declare vDID int;
 
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);
@@ -95,6 +95,8 @@ BEGIN
 
 END //
 DELIMITER ;
+
+call UpdateAppointment(1,3);
 
 drop procedure CancelAppointment;
 drop procedure CloseAppointment;

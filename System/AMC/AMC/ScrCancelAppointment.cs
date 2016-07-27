@@ -61,6 +61,12 @@ namespace AMC
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
 			this.ToggleUpdate(true);
+			this.FillDoctor();
+
+		}
+		private void FillDoctor()
+		{
+		
 
 			DBConnect db = DBConnect.Connect();
 
@@ -71,28 +77,28 @@ namespace AMC
 
 			this.cmbDoctor.Items.Clear();
 
-			this.cmbDoctor.Items.Add(new ComboBoxItem("0","All"));
-			while(rs.Read())
+			this.cmbDoctor.Items.Add(new ComboBoxItem("0", "All"));
+			while (rs.Read())
 			{
-				ComboBoxItem item = new ComboBoxItem(rs.GetString(0),rs.GetString(1));
+				ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
 				this.cmbDoctor.Items.Add(item);
 			}
 			rs.Close();
 
 			this.cmbDoctor.SelectedIndex = 0;
-
 		}
-
 		private void btnSave_Click(object sender, EventArgs e)
 		{
 			DBConnect db = DBConnect.Connect();
 
 			Appointment app = new Appointment(db.Connection);
-			String SchID = (String)this.cmbSchedule.SelectedValue ;
+			String SchID = ((ComboBoxItem)this.cmbSchedule.SelectedItem).Value;
 			
 			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text, SchID);
 
 			db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+
+			this.FillPatientDetails();
 		}
 
 		private void cmbDoctor_SelectedIndexChanged(object sender, EventArgs e)
@@ -158,32 +164,7 @@ namespace AMC
 		{
 			if(e.KeyCode == Keys.Enter)
 			{
-				this.ToggleUpdate(false);
-				DBConnect db = DBConnect.Connect();
-
-				Appointment app = new Appointment(db.Connection);
-
-				MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
-
-				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-				if (rs != null && rs.Read())
-				{
-
-					this.lblPatientNIC.Text = rs.GetString(0);
-					this.lblDoctorName.Text = rs.GetString(1);
-					this.lblScheduleDate.Text = rs.GetString(2);
-					this.lblScheduleTime.Text = rs.GetString(3);
-					this.lblQueueNo.Text = rs.GetString(4);
-					this.lblRoom.Text = rs.GetString(5);
-					this.lblFee.Text = rs.GetString(6);
-					this.currentDID = rs.GetInt32(7);
-
-					rs.Close();
-				}
-				else
-				{
-					this.setPatientToDefault();
-				}
+				this.FillPatientDetails();
 			}
 		}
 
@@ -197,6 +178,53 @@ namespace AMC
 			this.lblRoom.Text = "N/A";
 			this.lblFee.Text = "N/A";
 			this.currentDID = -1;
+		}
+
+		private void FillPatientDetails()
+		{
+			this.ToggleUpdate(false);
+			DBConnect db = DBConnect.Connect();
+
+			Appointment app = new Appointment(db.Connection);
+
+			MySqlCommand cmd = app.FindAppointment(this.txtRefID.Text);
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			if (rs != null && rs.Read())
+			{
+
+				this.lblPatientNIC.Text = rs.GetString(0);
+				this.lblDoctorName.Text = rs.GetString(1);
+				this.lblScheduleDate.Text = rs.GetString(2);
+				this.lblScheduleTime.Text = rs.GetString(3);
+				this.lblQueueNo.Text = rs.GetString(4);
+				this.lblRoom.Text = rs.GetString(5);
+				this.lblFee.Text = rs.GetString(6);
+				this.currentDID = rs.GetInt32(7);
+
+				rs.Close();
+			}
+			else
+			{
+				this.setPatientToDefault();
+			}
+		}
+
+		private void setUpdateSecToDefault()
+		{
+
+			this.fillSchedule();
+		}
+
+		private void btnClear_Click(object sender, EventArgs e)
+		{
+			this.FillDoctor();
+			this.ToggleUpdate(this.UpdateStatus);			
+		}
+
+		private void btnSearch_Click(object sender, EventArgs e)
+		{
+			this.FillPatientDetails();
 		}
 	}
 }

@@ -19,6 +19,7 @@ namespace AMC
 		{
 			InitializeComponent();
 			this.isRegistered = false;
+			this.FillDoctor();
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -109,10 +110,6 @@ namespace AMC
 			this.txtHomeNo.Text = "";
 		}
 
-		private void fillDoctors()
-		{
-			
-		}
 
 		private void checkTitles(String Title)
 		{
@@ -173,6 +170,41 @@ namespace AMC
 		private void btnClear_Click(object sender, EventArgs e)
 		{
 
+		}
+
+		private void btnSave_Click(object sender, EventArgs e)
+		{
+			if(this.isRegistered)
+			{
+			
+			}
+			else
+			{
+				
+			}
+		}
+		private void FillDoctor()
+		{
+
+
+			DBConnect db = DBConnect.Connect();
+
+			Doctor doc = new Doctor(db.Connection);
+			MySqlCommand cmd = doc.AvailableDoctors();
+
+			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+			this.cmbDoctor.Items.Clear();
+
+			this.cmbDoctor.Items.Add(new ComboBoxItem("0", "All"));
+			while (rs.Read())
+			{
+				ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
+				this.cmbDoctor.Items.Add(item);
+			}
+			rs.Close();
+
+			this.cmbDoctor.SelectedIndex = 0;
 		}
 	}
 }

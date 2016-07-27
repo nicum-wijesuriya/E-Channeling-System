@@ -58,6 +58,7 @@
 			this.cmbSchedule = new System.Windows.Forms.ComboBox();
 			this.btnSave = new System.Windows.Forms.Button();
 			this.btnClear = new System.Windows.Forms.Button();
+			this.btnSearch = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -82,7 +83,7 @@
 			// 
 			// btnCancel
 			// 
-			this.btnCancel.Location = new System.Drawing.Point(328, 25);
+			this.btnCancel.Location = new System.Drawing.Point(413, 25);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 2;
@@ -92,7 +93,7 @@
 			// 
 			// btnUpdate
 			// 
-			this.btnUpdate.Location = new System.Drawing.Point(419, 25);
+			this.btnUpdate.Location = new System.Drawing.Point(494, 24);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
 			this.btnUpdate.TabIndex = 2;
@@ -366,6 +367,17 @@
 			this.btnClear.TabIndex = 8;
 			this.btnClear.Text = "Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
+			// 
+			// btnSearch
+			// 
+			this.btnSearch.Location = new System.Drawing.Point(332, 25);
+			this.btnSearch.Name = "btnSearch";
+			this.btnSearch.Size = new System.Drawing.Size(75, 23);
+			this.btnSearch.TabIndex = 2;
+			this.btnSearch.Text = "Search";
+			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// ScrCancelAppointment
 			// 
@@ -380,6 +392,7 @@
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.btnUpdate);
+			this.Controls.Add(this.btnSearch);
 			this.Controls.Add(this.btnCancel);
 			this.Controls.Add(this.txtRefID);
 			this.Controls.Add(this.label1);
@@ -428,5 +441,6 @@
 		private System.Windows.Forms.Label label16;
 		private System.Windows.Forms.Label lblRoom;
 		private System.Windows.Forms.Label label18;
+		private System.Windows.Forms.Button btnSearch;
 	}
 }
