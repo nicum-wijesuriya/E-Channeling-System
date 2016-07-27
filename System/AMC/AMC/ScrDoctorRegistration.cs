@@ -205,29 +205,29 @@ namespace AMC
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
 		{
 
-
+			FillSpeciality();
 		}
-	
-		private void SearchSpeciality()
+
+		private void FillSpeciality()
 		{
-			int SID;
-			String name;
-
-			
 			DBConnect db = DBConnect.Connect();
-			Speciality spec = new Speciality(db.Connection);
 
+			Speciality spec = new Speciality(db.Connection);
 			MySqlCommand cmd = spec.GetSpeciality();
+
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
+			this.cmbSpec.Items.Clear();
+
+			this.cmbSpec.Items.Add(new ComboBoxItem("0", "All"));
 			while (rs.Read())
 			{
-				SID = rs.GetInt32(0);
-				name = rs.GetString(1);
-				Speciality sp = new Speciality(SID, name);
-				specList.Add(sp);
+				ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
+				this.cmbSpec.Items.Add(item);
 			}
+			rs.Close();
 
+			this.cmbSpec.SelectedIndex = 0;
 
 
 		}
