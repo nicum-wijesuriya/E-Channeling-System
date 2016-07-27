@@ -86,16 +86,11 @@ namespace AMC
 			MySqlCommand cmd = app.FindAppointment(refID);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			bool check = rs.HasRows;
-			rs.Close();
 
-			this.ToggleUpdate(true);
-			this.FillDoctor();	
-			
-/*			try
+		try
 			{
 				Validation.valID(refID);
-				if (check) 
+				if (rs.HasRows) 
 				{
 					this.ToggleUpdate(true);
 					this.FillDoctor();					
@@ -107,9 +102,6 @@ namespace AMC
 
 			}
 			catch {}
-
-*/
-
 
 		}
 		private void FillDoctor()
@@ -284,8 +276,6 @@ namespace AMC
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			
-
 		try
 			{
 				String refID = txtRefID.Text;

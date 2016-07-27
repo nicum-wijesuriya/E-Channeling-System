@@ -78,7 +78,7 @@
 			this.txtRefID.Location = new System.Drawing.Point(101, 27);
 			this.txtRefID.Name = "txtRefID";
 			this.txtRefID.Size = new System.Drawing.Size(215, 20);
-			this.txtRefID.TabIndex = 1;
+			this.txtRefID.TabIndex = 0;
 			this.txtRefID.TextChanged += new System.EventHandler(this.txtRefID_TextChanged);
 			this.txtRefID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRefID_KeyDown);
 			// 
@@ -97,7 +97,7 @@
 			this.btnUpdate.Location = new System.Drawing.Point(494, 24);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-			this.btnUpdate.TabIndex = 2;
+			this.btnUpdate.TabIndex = 3;
 			this.btnUpdate.Text = "Update";
 			this.btnUpdate.UseVisualStyleBackColor = true;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
@@ -312,7 +312,7 @@
 			this.groupBox2.Location = new System.Drawing.Point(371, 108);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(336, 78);
-			this.groupBox2.TabIndex = 7;
+			this.groupBox2.TabIndex = 6;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Date";
 			// 
@@ -322,7 +322,7 @@
 			this.dtpEndDate.MinDate = new System.DateTime(2016, 7, 27, 0, 0, 0, 0);
 			this.dtpEndDate.Name = "dtpEndDate";
 			this.dtpEndDate.Size = new System.Drawing.Size(267, 20);
-			this.dtpEndDate.TabIndex = 7;
+			this.dtpEndDate.TabIndex = 1;
 			this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
 			// 
 			// dtpStartDate
@@ -331,7 +331,7 @@
 			this.dtpStartDate.MinDate = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.Name = "dtpStartDate";
 			this.dtpStartDate.Size = new System.Drawing.Size(267, 20);
-			this.dtpStartDate.TabIndex = 7;
+			this.dtpStartDate.TabIndex = 0;
 			this.dtpStartDate.Value = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
 			// 
@@ -351,7 +351,7 @@
 			this.cmbSchedule.Location = new System.Drawing.Point(424, 199);
 			this.cmbSchedule.Name = "cmbSchedule";
 			this.cmbSchedule.Size = new System.Drawing.Size(283, 21);
-			this.cmbSchedule.TabIndex = 5;
+			this.cmbSchedule.TabIndex = 7;
 			// 
 			// btnSave
 			// 
@@ -368,7 +368,7 @@
 			this.btnClear.Location = new System.Drawing.Point(500, 278);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 25);
-			this.btnClear.TabIndex = 8;
+			this.btnClear.TabIndex = 9;
 			this.btnClear.Text = "Clear";
 			this.btnClear.UseVisualStyleBackColor = true;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -378,7 +378,7 @@
 			this.btnSearch.Location = new System.Drawing.Point(332, 25);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
-			this.btnSearch.TabIndex = 2;
+			this.btnSearch.TabIndex = 1;
 			this.btnSearch.Text = "Search";
 			this.btnSearch.UseVisualStyleBackColor = true;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
@@ -388,7 +388,7 @@
 			this.btnClose.Location = new System.Drawing.Point(606, 278);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(101, 25);
-			this.btnClose.TabIndex = 9;
+			this.btnClose.TabIndex = 10;
 			this.btnClose.Text = "Close";
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);

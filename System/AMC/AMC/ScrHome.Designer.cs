@@ -57,7 +57,7 @@
 			this.btnCancelAppointment.Location = new System.Drawing.Point(44, 153);
 			this.btnCancelAppointment.Name = "btnCancelAppointment";
 			this.btnCancelAppointment.Size = new System.Drawing.Size(194, 30);
-			this.btnCancelAppointment.TabIndex = 2;
+			this.btnCancelAppointment.TabIndex = 1;
 			this.btnCancelAppointment.Text = "Cancel Appointment";
 			this.btnCancelAppointment.UseVisualStyleBackColor = true;
 			this.btnCancelAppointment.Click += new System.EventHandler(this.btnCancelAppointment_Click);
@@ -68,7 +68,7 @@
 			this.btnSetAppointment.Location = new System.Drawing.Point(44, 85);
 			this.btnSetAppointment.Name = "btnSetAppointment";
 			this.btnSetAppointment.Size = new System.Drawing.Size(194, 30);
-			this.btnSetAppointment.TabIndex = 1;
+			this.btnSetAppointment.TabIndex = 0;
 			this.btnSetAppointment.Text = "Appointment";
 			this.btnSetAppointment.UseVisualStyleBackColor = true;
 			this.btnSetAppointment.Click += new System.EventHandler(this.btnSetAppointment_Click);
