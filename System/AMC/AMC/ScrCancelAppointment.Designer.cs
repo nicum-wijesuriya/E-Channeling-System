@@ -85,22 +85,24 @@
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCancel.Location = new System.Drawing.Point(413, 25);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 2;
 			this.btnCancel.Text = "Cancel";
-			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.UseVisualStyleBackColor = false;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// btnUpdate
 			// 
+			this.btnUpdate.BackColor = System.Drawing.SystemColors.Control;
 			this.btnUpdate.Location = new System.Drawing.Point(494, 24);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
 			this.btnUpdate.TabIndex = 3;
 			this.btnUpdate.Text = "Update";
-			this.btnUpdate.UseVisualStyleBackColor = true;
+			this.btnUpdate.UseVisualStyleBackColor = false;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 			// 
 			// groupBox1
@@ -356,42 +358,46 @@
 			// 
 			// btnSave
 			// 
+			this.btnSave.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSave.Location = new System.Drawing.Point(395, 278);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(99, 25);
 			this.btnSave.TabIndex = 8;
 			this.btnSave.Text = "Save Changes";
-			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClear.Location = new System.Drawing.Point(500, 278);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 25);
 			this.btnClear.TabIndex = 9;
 			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnSearch
 			// 
+			this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSearch.Location = new System.Drawing.Point(332, 25);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
 			this.btnSearch.TabIndex = 1;
 			this.btnSearch.Text = "Search";
-			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// btnClose
 			// 
+			this.btnClose.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClose.Location = new System.Drawing.Point(606, 278);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(101, 25);
 			this.btnClose.TabIndex = 10;
 			this.btnClose.Text = "Close";
-			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// ScrCancelAppointment
