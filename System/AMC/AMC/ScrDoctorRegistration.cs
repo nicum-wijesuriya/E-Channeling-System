@@ -102,7 +102,7 @@ namespace AMC
 				Validation.valEmptyField(lName, "Please fill Last Name");
 
 				String contactNo = txtContactNo.Text;
-				Validation.valMobile(contactNo);
+				Validation.valMobile(contactNo, "");
 
 				String email = txtEmail.Text;
 				Validation.valEmail(email);

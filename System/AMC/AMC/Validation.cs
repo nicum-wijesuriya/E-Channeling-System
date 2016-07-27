@@ -29,7 +29,10 @@ namespace AMC
 					MessageBox.Show(errorMsg);
 					break;
 				case 2:
-					errorMsg = "Invalid Phone number";
+					if (errorMsg == "")
+					{
+						errorMsg = "Invalid Phone number";
+					}
 					MessageBox.Show(errorMsg);
 					break;
 				case 3:
@@ -52,6 +55,13 @@ namespace AMC
 					if (errorMsg == "")
 					{
 						errorMsg = "Cannot keep field empty";
+					}
+					MessageBox.Show(errorMsg);
+					break;
+				case 8:
+					if (errorMsg == "")
+					{
+						errorMsg = "Cannot keep Name empty";
 					}
 					MessageBox.Show(errorMsg);
 					break;
@@ -79,9 +89,10 @@ namespace AMC
 
 		}
 
-		public static void valMobile(String number)
+		public static void valMobile(String number, String msg)
 		{
-			Regex regex = new Regex(@"^07[0-9]{8}$");
+			errorMsg = msg;
+			Regex regex = new Regex(@"^0{0,1}7[0-9]{8}$");
 			Match match = regex.Match(number);
 			if (!(match.Success))
 			{
@@ -90,9 +101,10 @@ namespace AMC
 			}
 		}
 
-		public static void valLand(String number)
+		public static void valLand(String number, String msg)
 		{
-			Regex regex = new Regex(@"^0[0-9]{9}$");
+			errorMsg = msg;
+			Regex regex = new Regex(@"^0{0,1}[0-9]{9}$");
 			Match match = regex.Match(number);
 			if (!(match.Success))
 			{
@@ -161,9 +173,21 @@ namespace AMC
 			errorMsg = msg;
 			Regex regex = new Regex(@"\s$");
 			Match match = regex.Match(fieldData);
-			if (match.Success)
+			if (match.Success | fieldData == "")
 			{
 				errorcode = 7;
+				throw new Validation(errorcode);
+			}
+		}
+		
+		public static void valName(String fieldData, String msg)
+		{
+			errorMsg = msg;
+			Regex regex = new Regex(@"[a-zA-Z]+[\ a-zA-Z]*$");
+			Match match = regex.Match(fieldData);
+			if (!match.Success | fieldData == "")
+			{
+				errorcode = 8;
 				throw new Validation(errorcode);
 			}
 		}

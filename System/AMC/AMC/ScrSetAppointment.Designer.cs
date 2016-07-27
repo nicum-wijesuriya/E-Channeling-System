@@ -68,11 +68,11 @@
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
-			this.panel1 = new System.Windows.Forms.Panel();
+			this.pnlNationality = new System.Windows.Forms.Panel();
 			this.radioForeign = new System.Windows.Forms.RadioButton();
 			this.radioLocal = new System.Windows.Forms.RadioButton();
-			this.groupBox7 = new System.Windows.Forms.GroupBox();
-			this.groupBox6 = new System.Windows.Forms.GroupBox();
+			this.grpPersonalTitle = new System.Windows.Forms.GroupBox();
+			this.grpAcademicTitle = new System.Windows.Forms.GroupBox();
 			this.radioNone = new System.Windows.Forms.RadioButton();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -83,9 +83,9 @@
 			this.groupBox1.SuspendLayout();
 			this.groupBox5.SuspendLayout();
 			this.groupBox2.SuspendLayout();
-			this.panel1.SuspendLayout();
-			this.groupBox7.SuspendLayout();
-			this.groupBox6.SuspendLayout();
+			this.pnlNationality.SuspendLayout();
+			this.grpPersonalTitle.SuspendLayout();
+			this.grpAcademicTitle.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -174,9 +174,9 @@
 			// cmbSchedule
 			// 
 			this.cmbSchedule.FormattingEnabled = true;
-			this.cmbSchedule.Location = new System.Drawing.Point(74, 134);
+			this.cmbSchedule.Location = new System.Drawing.Point(114, 134);
 			this.cmbSchedule.Name = "cmbSchedule";
-			this.cmbSchedule.Size = new System.Drawing.Size(451, 21);
+			this.cmbSchedule.Size = new System.Drawing.Size(411, 21);
 			this.cmbSchedule.TabIndex = 1;
 			// 
 			// label7
@@ -184,16 +184,16 @@
 			this.label7.AutoSize = true;
 			this.label7.Location = new System.Drawing.Point(12, 176);
 			this.label7.Name = "label7";
-			this.label7.Size = new System.Drawing.Size(42, 13);
+			this.label7.Size = new System.Drawing.Size(94, 13);
 			this.label7.TabIndex = 0;
-			this.label7.Text = "NIC No";
+			this.label7.Text = "NIC / Passport No";
 			this.label7.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// txtNIC
 			// 
-			this.txtNIC.Location = new System.Drawing.Point(75, 169);
+			this.txtNIC.Location = new System.Drawing.Point(114, 169);
 			this.txtNIC.Name = "txtNIC";
-			this.txtNIC.Size = new System.Drawing.Size(217, 20);
+			this.txtNIC.Size = new System.Drawing.Size(178, 20);
 			this.txtNIC.TabIndex = 4;
 			this.txtNIC.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNIC_KeyDown);
 			// 
@@ -458,9 +458,9 @@
 			// 
 			// groupBox2
 			// 
-			this.groupBox2.Controls.Add(this.panel1);
-			this.groupBox2.Controls.Add(this.groupBox7);
-			this.groupBox2.Controls.Add(this.groupBox6);
+			this.groupBox2.Controls.Add(this.pnlNationality);
+			this.groupBox2.Controls.Add(this.grpPersonalTitle);
+			this.groupBox2.Controls.Add(this.grpAcademicTitle);
 			this.groupBox2.Controls.Add(this.groupBox3);
 			this.groupBox2.Controls.Add(this.txtHomeNo);
 			this.groupBox2.Controls.Add(this.txtLastName);
@@ -481,14 +481,14 @@
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Patient Details";
 			// 
-			// panel1
+			// pnlNationality
 			// 
-			this.panel1.Controls.Add(this.radioForeign);
-			this.panel1.Controls.Add(this.radioLocal);
-			this.panel1.Location = new System.Drawing.Point(67, 294);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(149, 41);
-			this.panel1.TabIndex = 10;
+			this.pnlNationality.Controls.Add(this.radioForeign);
+			this.pnlNationality.Controls.Add(this.radioLocal);
+			this.pnlNationality.Location = new System.Drawing.Point(67, 294);
+			this.pnlNationality.Name = "pnlNationality";
+			this.pnlNationality.Size = new System.Drawing.Size(149, 41);
+			this.pnlNationality.TabIndex = 10;
 			// 
 			// radioForeign
 			// 
@@ -512,30 +512,30 @@
 			this.radioLocal.Text = "Local";
 			this.radioLocal.UseVisualStyleBackColor = true;
 			// 
-			// groupBox7
+			// grpPersonalTitle
 			// 
-			this.groupBox7.Controls.Add(this.radioMs);
-			this.groupBox7.Controls.Add(this.radioRev);
-			this.groupBox7.Controls.Add(this.radioMrs);
-			this.groupBox7.Controls.Add(this.radioMr);
-			this.groupBox7.Location = new System.Drawing.Point(262, 23);
-			this.groupBox7.Name = "groupBox7";
-			this.groupBox7.Size = new System.Drawing.Size(253, 42);
-			this.groupBox7.TabIndex = 9;
-			this.groupBox7.TabStop = false;
-			this.groupBox7.Text = "Personal Title";
+			this.grpPersonalTitle.Controls.Add(this.radioMs);
+			this.grpPersonalTitle.Controls.Add(this.radioRev);
+			this.grpPersonalTitle.Controls.Add(this.radioMrs);
+			this.grpPersonalTitle.Controls.Add(this.radioMr);
+			this.grpPersonalTitle.Location = new System.Drawing.Point(262, 23);
+			this.grpPersonalTitle.Name = "grpPersonalTitle";
+			this.grpPersonalTitle.Size = new System.Drawing.Size(253, 42);
+			this.grpPersonalTitle.TabIndex = 9;
+			this.grpPersonalTitle.TabStop = false;
+			this.grpPersonalTitle.Text = "Personal Title";
 			// 
-			// groupBox6
+			// grpAcademicTitle
 			// 
-			this.groupBox6.Controls.Add(this.radioNone);
-			this.groupBox6.Controls.Add(this.radioProf);
-			this.groupBox6.Controls.Add(this.radioDr);
-			this.groupBox6.Location = new System.Drawing.Point(67, 23);
-			this.groupBox6.Name = "groupBox6";
-			this.groupBox6.Size = new System.Drawing.Size(180, 42);
-			this.groupBox6.TabIndex = 8;
-			this.groupBox6.TabStop = false;
-			this.groupBox6.Text = "Academic Title";
+			this.grpAcademicTitle.Controls.Add(this.radioNone);
+			this.grpAcademicTitle.Controls.Add(this.radioProf);
+			this.grpAcademicTitle.Controls.Add(this.radioDr);
+			this.grpAcademicTitle.Location = new System.Drawing.Point(67, 23);
+			this.grpAcademicTitle.Name = "grpAcademicTitle";
+			this.grpAcademicTitle.Size = new System.Drawing.Size(180, 42);
+			this.grpAcademicTitle.TabIndex = 8;
+			this.grpAcademicTitle.TabStop = false;
+			this.grpAcademicTitle.Text = "Academic Title";
 			// 
 			// radioNone
 			// 
@@ -637,12 +637,12 @@
 			this.groupBox5.PerformLayout();
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox2.PerformLayout();
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
-			this.groupBox7.ResumeLayout(false);
-			this.groupBox7.PerformLayout();
-			this.groupBox6.ResumeLayout(false);
-			this.groupBox6.PerformLayout();
+			this.pnlNationality.ResumeLayout(false);
+			this.pnlNationality.PerformLayout();
+			this.grpPersonalTitle.ResumeLayout(false);
+			this.grpPersonalTitle.PerformLayout();
+			this.grpAcademicTitle.ResumeLayout(false);
+			this.grpAcademicTitle.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -698,8 +698,8 @@
 		private System.Windows.Forms.Button btnClear;
 		private System.Windows.Forms.Button btnClose;
 		private System.Windows.Forms.RadioButton radioNone;
-		private System.Windows.Forms.GroupBox groupBox7;
-		private System.Windows.Forms.GroupBox groupBox6;
-		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.GroupBox grpPersonalTitle;
+		private System.Windows.Forms.GroupBox grpAcademicTitle;
+		private System.Windows.Forms.Panel pnlNationality;
 	}
 }

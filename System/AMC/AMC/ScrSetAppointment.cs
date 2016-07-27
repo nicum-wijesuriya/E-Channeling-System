@@ -41,7 +41,12 @@ namespace AMC
 
 		private void btnCheck_Click(object sender, EventArgs e)
 		{
-			this.UpdatePatientFields();
+			try
+			{
+				Validation.valEmptyField(txtNIC.Text, "Enter NIC / Passport Number");
+				this.UpdatePatientFields();
+			}
+			catch { }
 		}
 
 		public void UpdatePatientFields()
@@ -179,12 +184,90 @@ namespace AMC
 
 		private void btnSave_Click(object sender, EventArgs e)
 		{
+			try
+			{
+				if (cmbSchedule.SelectedIndex == 0)
+				{
+					Validation.valGeneral("Please select a Schedule");
+				}
+				
+				bool check = false;
+				foreach (RadioButton r1 in grpAcademicTitle.Controls)
+				{
+					if (r1.Checked)
+					{
+						check = true;
+					}
+				}
+
+				if (check == false)
+				{
+					Validation.valGeneral("Please enter Academic Title");
+				}
+
+				check = false;
+				foreach (RadioButton r1 in grpPersonalTitle.Controls)
+				{
+					if (r1.Checked)
+					{
+						check = true;
+					}
+				}
+
+				if (check == false)
+				{
+					Validation.valGeneral("Please enter Personal Title");
+				} 
+				
+
+
+				Validation.valName(txtFirstName.Text, "Please fill First Name");
+				Validation.valName(txtLastName.Text, "Please fill Last Name");
+				Validation.valEmptyField(txtANumber.Text, "Please fill Address Number");
+				Validation.valEmptyField(txtAStreet.Text, "Please fill Street Name");
+				Validation.valEmptyField(txtACity.Text, "Please fill City");
+				Validation.valMobile(txtMobileNo.Text, "Invalid Mobile Number");
+				Validation.valLand(txtHomeNo.Text, "Invalid Home Number");
+				Validation.valEmail(txtEmail.Text);
+				
+				check = false;
+				foreach (RadioButton r1 in pnlNationality.Controls)
+				{
+					if (r1.Checked)
+					{
+						check = true;
+					}
+				}
+
+				if (check == false)
+				{
+					Validation.valGeneral("Please enter Nationality");
+				}
+
+				if (radioLocal.Checked)
+				{
+					Validation.valNIC(txtNIC.Text);
+				}
+
+				SaveDetails();
+				ClearPatientFields();
+
+			}
+
+			catch { }
+			
+
+
+		}
+
+		private void SaveDetails()
+		{
 			String academicTitle;
 			String personalTitle;
 			String title;
 			int isLocal;
 
-			if(this.radioLocal.Checked)
+			if (this.radioLocal.Checked)
 			{
 				isLocal = 1;
 			}
@@ -193,11 +276,11 @@ namespace AMC
 				isLocal = 0;
 			}
 
-			if(this.radioProf.Checked)
+			if (this.radioProf.Checked)
 			{
 				academicTitle = "Prof.";
 			}
-			else if(this.radioDr.Checked)
+			else if (this.radioDr.Checked)
 			{
 				academicTitle = "Dr.";
 			}
@@ -206,15 +289,15 @@ namespace AMC
 				academicTitle = "";
 			}
 
-			if(this.radioRev.Checked)
+			if (this.radioRev.Checked)
 			{
 				personalTitle = "Rev.";
 			}
-			else if(this.radioMrs.Checked)
+			else if (this.radioMrs.Checked)
 			{
 				personalTitle = "Mrs.";
 			}
-			else if(this.radioMs.Checked)
+			else if (this.radioMs.Checked)
 			{
 				personalTitle = "Ms.";
 			}
@@ -223,13 +306,13 @@ namespace AMC
 				personalTitle = "Mr.";
 			}
 			title = academicTitle + personalTitle;
-			Console.WriteLine("\n\nTitle : " + title+ " Length :"+title.Length+"\n\n");
+			Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
 			DBConnect db = DBConnect.Connect();
-			if(this.isRegistered)
+			if (this.isRegistered)
 			{
 				Patient p = new Patient(db.Connection);
-				MySqlCommand cmd = p.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, 
-					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text,isLocal + "");
+				MySqlCommand cmd = p.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
+					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 				db.CloseConnection();
@@ -238,7 +321,7 @@ namespace AMC
 			{
 				Patient p = new Patient(db.Connection);
 				MySqlCommand cmd = p.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
-						,this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text,isLocal + "");
+						, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 				rs.Read();

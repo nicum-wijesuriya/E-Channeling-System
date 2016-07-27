@@ -93,9 +93,9 @@
 			this.label3.AutoSize = true;
 			this.label3.Location = new System.Drawing.Point(20, 143);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(61, 13);
+			this.label3.Size = new System.Drawing.Size(55, 13);
 			this.label3.TabIndex = 0;
-			this.label3.Text = "Contact No";
+			this.label3.Text = "Mobile No";
 			this.label3.Click += new System.EventHandler(this.label1_Click);
 			// 
 			// label4
