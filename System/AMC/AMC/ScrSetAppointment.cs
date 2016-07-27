@@ -244,7 +244,7 @@ namespace AMC
 					Validation.valGeneral("Please enter Nationality");
 				}
 
-				if (radioLocal.Checked)
+				if (radioLocal.Checked && !this.isRegistered)
 				{
 					Validation.valNIC(txtNIC.Text);
 				}

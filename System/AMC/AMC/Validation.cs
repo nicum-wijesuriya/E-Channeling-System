@@ -137,7 +137,7 @@ namespace AMC
 
 		public static void valNIC(String NIC)
 		{
-			Regex regex = new Regex(@"^([0-9]{9}(V|X)|[0-9]{12})+$");
+			Regex regex = new Regex(@"^([0-9]{9}(V|X|v|x)|[0-9]{12})+$");
 			Match match = regex.Match(NIC);
 			if (!(match.Success))
 			{
