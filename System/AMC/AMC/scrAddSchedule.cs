@@ -94,6 +94,7 @@ namespace AMC
 				this.dgvTimeSlots.Rows.Clear();
 				this.dgvTimeSlots.Refresh();
 
+				this.dgvTimeSlots.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 				this.dgvTimeSlots.ColumnCount = 4;
 				this.dgvTimeSlots.Columns[0].Name = "Date";
 				this.dgvTimeSlots.Columns[1].Name = "Start Time";
@@ -102,9 +103,12 @@ namespace AMC
 				while(rs.Read())
 				{
 					//DataGridViewRow row = new DataGridViewRow();
-					String[] row = { rs.GetString(0), rs.GetString(1), rs.GetString(2), rs.GetString(3) };
+					DateTime date = Convert.ToDateTime(rs.GetString(0));
+					String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
+					String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3) };
 					this.dgvTimeSlots.Rows.Add(row);	
 				}
+				
 				rs.Close();
 			}
 		}
