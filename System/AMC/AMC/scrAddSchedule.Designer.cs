@@ -271,6 +271,7 @@
 			this.Controls.Add(this.Doctor);
 			this.Name = "scrAddSchedule";
 			this.Text = "Add Schedule";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.scrAddSchedule_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();

@@ -213,7 +213,7 @@
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(99, 23);
 			this.btnCancel.TabIndex = 4;
-			this.btnCancel.Text = "Cancel";
+			this.btnCancel.Text = "Close";
 			this.btnCancel.UseVisualStyleBackColor = true;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
@@ -411,6 +411,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrDoctorRegistration";
 			this.Text = "Register Doctor";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrDoctorRegistration_FormClosing);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.grpPersonalTitle.ResumeLayout(false);

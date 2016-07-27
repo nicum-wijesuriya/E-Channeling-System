@@ -43,5 +43,11 @@ namespace AMC
 			scr.Show();
 			this.Close();
 		}
+
+		private void scrAddSchedule_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
+		}
 	}
 }

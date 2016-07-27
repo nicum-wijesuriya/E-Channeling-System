@@ -614,7 +614,6 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.CancelButton = this.btnClose;
 			this.ClientSize = new System.Drawing.Size(565, 630);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
@@ -631,6 +630,7 @@
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrSetAppointment";
 			this.Text = "Place Appointment";
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrSetAppointment_FormClosing);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.groupBox5.ResumeLayout(false);

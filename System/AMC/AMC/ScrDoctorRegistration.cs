@@ -199,9 +199,9 @@ namespace AMC
 
 		private void btnCancel_Click(object sender, EventArgs e)
 		{
-			ScrHome scrH = new ScrHome();
-			scrH.Visible = true;
-			this.Visible = false;
+			var scr = (ScrHome)Tag;
+			scr.Show();
+			this.Close();
 		}
 
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
@@ -257,6 +257,12 @@ namespace AMC
 		{
 			selectedSpecList.RemoveAt(this.cmbSelectedSpec.SelectedIndex);
 			this.cmbSelectedSpec.Items.RemoveAt(this.cmbSelectedSpec.SelectedIndex);
+		}
+
+		private void ScrDoctorRegistration_FormClosing(object sender, FormClosingEventArgs e)
+		{
+			var scr = (ScrHome)Tag;
+			scr.Show();
 		}
 
 
