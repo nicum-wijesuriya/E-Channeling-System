@@ -128,7 +128,7 @@ namespace AMC
 				{
 					if (r.Checked)
 					{
-						acTitle = r.Text;
+						perTitle = r.Text;
 					}
 				}
 
@@ -140,7 +140,7 @@ namespace AMC
 				}
 				else
 				{
-					title = acTitle + " (" + perTitle + ")";
+					title = acTitle + "(" + perTitle + ")";
 				}
 
 				if (selectedSpecList.Count == 0)
@@ -148,7 +148,6 @@ namespace AMC
 					Validation.valGeneral("Please add Specialization(s)");
 				}
 				DBConnect db = DBConnect.Connect();
-
 				Doctor doc = new Doctor(db.Connection);
 				MySqlCommand cmd = doc.AddDoctor(title, fName, lName, contactNo, email, fee);
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
@@ -271,6 +270,12 @@ namespace AMC
 				String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
 				String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
 
+				foreach (Speciality s in selectedSpecList) {
+					if (s.SID == SID)
+					{
+						Validation.valGeneral("Specialization already added");
+					}
+				}
 				selectedSpecList.Add(new Speciality(SID, name));
 				FillSelectedSpec(SID, name);
 				this.cmbSelectedSpec.SelectedIndex = 0;

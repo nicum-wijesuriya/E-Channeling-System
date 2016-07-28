@@ -16,7 +16,7 @@ alter table Doctor Modify Title varchar(11);
 drop procedure AddDoctor;
 DELIMITER //
 create procedure AddDoctor (
-	vTitle varchar(4),
+	vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),
@@ -33,10 +33,16 @@ Begin
 END //
 DELIMITER ;
 
+select * from Doctor;
+
+call AddDoctor ('Prof.(Mrs.)', 'Kamal', 'Perera', 1234597, 'kalad;jm', 300);
+
+drop procedure UpdateDoctor;
+
 DELIMITER //
 create procedure UpdateDoctor (
 	vDID int,
-    vTitle varchar(4),
+    vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),
