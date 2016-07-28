@@ -22,7 +22,7 @@ drop procedure AddPatient;
 DELIMITER //
 create procedure AddPatient (
 
-    vTitle varchar(9),	
+    vTitle varchar(11),	
     vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),
@@ -49,7 +49,7 @@ drop procedure UpdatePatient;
 DELIMITER //
 create procedure UpdatePatient (
 	vPID int,    
-    vTitle varchar(9),
+    vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),
