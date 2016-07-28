@@ -8,8 +8,10 @@ create table Schedule
     EndTime time not null,
     MaxPatients int not null,
     Status int(1), 
-    DID int references Doctor(DID)
+    DID int references Doctor(DID),
+    RoomID int references room(RoomID)
 );
+drop procedure AddSchedule;
 
 DELIMITER // 
 create procedure AddSchedule(
@@ -18,7 +20,8 @@ create procedure AddSchedule(
     vEndTime time,
     vMaxPatients int,
     vStatus int(1), 
-    vDID int 
+    vDID int,
+    vRoomID int
     )
 BEGIN
 	insert into Schedule (
@@ -27,7 +30,8 @@ BEGIN
 		EndTime,
 		MaxPatients,
 		Status, 
-		DID
+		DID,
+        RoomID
     )
     values (
     vDate,
@@ -35,7 +39,8 @@ BEGIN
     vEndTime,
     vMaxPatients,
     vStatus, 
-    vDID
+    vDID,
+    vRoomID
     );
 END //
 DELIMITER ;
