@@ -155,6 +155,10 @@ namespace AMC
 				this.dgvTimeSlots.Columns[4].Name = "Room ID";
 				this.dgvTimeSlots.Columns[4].Visible = false;
 
+				if (rs == null)
+				{
+					Validation.valGeneral("No available Time Slots");
+				}
 				while(rs.Read())
 				{					
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
@@ -248,6 +252,11 @@ namespace AMC
 				String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
 				String MaxPatients = this.txtMaxPatients.Text;
 				int Status = 2;
+
+				if (dgvTimeSlots.SelectedRows == null)
+				{
+					Validation.valGeneral("Select a Time Slot");
+				}
 				DataGridViewRow row = this.dgvTimeSlots.SelectedRows[0];
 				String RID = (String)row.Cells[4].Value;
 				Int32.TryParse(RID, out this.RoomID);

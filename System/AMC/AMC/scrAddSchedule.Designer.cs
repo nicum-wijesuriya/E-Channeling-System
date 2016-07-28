@@ -118,7 +118,9 @@
 			// 
 			// dtpTimeFrom
 			// 
-			this.dtpTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpTimeFrom.CustomFormat = "HH:mm";
+			this.dtpTimeFrom.MinDate = new System.DateTime(2016, 7, 28, 8, 0, 0, 0);
 			this.dtpTimeFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpTimeFrom.Name = "dtpTimeFrom";
 			this.dtpTimeFrom.ShowUpDown = true;
@@ -139,7 +141,8 @@
 			// 
 			// dtpTimeTo
 			// 
-			this.dtpTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpTimeTo.CustomFormat = "HH:mm";
 			this.dtpTimeTo.Location = new System.Drawing.Point(300, 18);
 			this.dtpTimeTo.Name = "dtpTimeTo";
 			this.dtpTimeTo.ShowUpDown = true;
@@ -188,7 +191,9 @@
 			// 
 			// dtpScheduleFrom
 			// 
-			this.dtpScheduleFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpScheduleFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpScheduleFrom.CustomFormat = "HH:mm";
+			this.dtpScheduleFrom.MinDate = new System.DateTime(2016, 7, 28, 8, 0, 0, 0); 
 			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
 			this.dtpScheduleFrom.ShowUpDown = true;
@@ -207,7 +212,8 @@
 			// 
 			// dtpScheduleTo
 			// 
-			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpScheduleTo.CustomFormat = "HH:mm";
 			this.dtpScheduleTo.Location = new System.Drawing.Point(189, 19);
 			this.dtpScheduleTo.Name = "dtpScheduleTo";
 			this.dtpScheduleTo.ShowUpDown = true;
