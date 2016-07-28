@@ -139,14 +139,15 @@ BEGIN
 						select * from Schedule where Status = 2
 					   ) AS S 
 		 where S.Date = vDateToFind
-		 LIMIT 1;		 
+         order by S.StartTime
+		 LIMIT 1;
              
 		 
 		 Select S.SchID into $EndIndex from (
 						select * from Schedule where Status = 2
-					   ) AS S 
+					   ) AS S
 		 where S.Date = vDateToFind 
-		 ORDER BY S.SchID desc
+		 ORDER BY S.StartTime desc
 		 LIMIT 1;
     
 		create temporary table AvailableSlots
@@ -163,7 +164,7 @@ BEGIN
 		 (select S.Date, $CenterStartTime, S.StartTime, (select Name from Room where RoomID = S.RoomID),S.RoomID from (
 						select * from Schedule where Status = 2
 					   ) AS S 
-		 where S.Date = vDateToFind
+		 where S.Date = vDateToFind order by StartTime, EndTime
          LIMIT 1)
 	UNION
 		 (select S.Date, S.EndTime, 
@@ -176,7 +177,7 @@ BEGIN
 					   (
 							select * from Schedule where Status = 2
 					   ) AS S
-         where S.Date = vDateToFind
+         where S.Date = vDateToFind order by StartTime, EndTime
          LIMIT 1)
          ;
          
@@ -196,7 +197,7 @@ BEGIN
 							select * from Schedule where Status = 2
 					   ) AS S
                        
-		 where S.Date = vDateToFind AND S.SchID > $StartIndex AND S.SchID < $EndIndex;
+		 where S.Date = vDateToFind AND rownum() > $StartIndex AND rownum() < $EndIndex;
          
          # Inserting the Last row of the Current Schedules into availableSlots
          
@@ -206,7 +207,7 @@ BEGIN
 						select * from Schedule where Status = 2
 					   ) AS S 
 		 where S.Date = vDateToFind
-         Order by S.SchID Desc
+         Order by StartTime, EndTime Desc
          LIMIT 1;
          
          # Selecting all in AvailableSlots table
@@ -235,8 +236,11 @@ BEGIN
      
 END // 
 DELIMITER ;
-select * from Schedule;
+select * from Schedule where status = 2 order by StartTime, EndTime;
 drop procedure GetFreeSlotsForTheWeek;
+
+select SchID,rownum() from Schedule where SchID = 6;
+
 
 DELIMITER //
 create procedure GetFreeSlotsForTheWeek(vDateToFind date, searchStartTime time, searchEndTime time)
