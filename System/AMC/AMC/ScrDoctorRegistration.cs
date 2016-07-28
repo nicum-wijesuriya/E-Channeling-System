@@ -164,8 +164,8 @@ namespace AMC
 					db.ExecuteProcedure(cmd1, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
 				}
 
-				ScrHome scrH = new ScrHome();
-				scrH.Visible = true;
+				scrAddSchedule scrSch = new scrAddSchedule();
+				scrSch.Visible = true;
 				this.Visible = false;			
 			}
 			catch (Validation ex) { }
