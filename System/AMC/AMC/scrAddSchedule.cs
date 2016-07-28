@@ -127,14 +127,8 @@ namespace AMC
 					//DataGridViewRow row = new DataGridViewRow();
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
 
-					DateTime startTimeTo = Convert.ToDateTime(rs.GetString(1));
-					DateTime endTimeTo = Convert.ToDateTime(rs.GetString(2));
-
-					String startTimeValue = startTimeTo.Hour + ":" + startTimeTo.Minute + ":" + startTimeTo.Second;
-					String endTimeValue = endTimeTo.Hour + ":" + endTimeTo.Minute + ":" + endTimeTo.Second;
-
 					String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
-					String[] row = { dateValue, startTimeValue, endTimeValue, rs.GetString(3) };
+					String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3) };
 					this.dgvTimeSlots.Rows.Add(row);	
 				}
 				

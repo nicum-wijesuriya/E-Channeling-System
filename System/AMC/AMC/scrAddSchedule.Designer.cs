@@ -60,7 +60,9 @@
 			// 
 			this.dgvTimeSlots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvTimeSlots.Location = new System.Drawing.Point(32, 19);
+			this.dgvTimeSlots.MultiSelect = false;
 			this.dgvTimeSlots.Name = "dgvTimeSlots";
+			this.dgvTimeSlots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvTimeSlots.Size = new System.Drawing.Size(514, 131);
 			this.dgvTimeSlots.TabIndex = 0;
 			// 

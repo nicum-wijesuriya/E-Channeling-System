@@ -154,12 +154,13 @@ BEGIN
 			Date date,
 			StartTime time,
 			EndTime time,
-            Room varchar(20)
+            Room varchar(20),
+            RoomID int
 		);
         # Inserting the First row of the Current Schedules into availableSlots
-		 insert into AvailableSlots (Date, StartTime, EndTime, Room)
+		 insert into AvailableSlots (Date, StartTime, EndTime, Room, RoomID)
     
-		 (select S.Date, $CenterStartTime, S.StartTime, (select Name from Room where RoomID = S.RoomID) from (
+		 (select S.Date, $CenterStartTime, S.StartTime, (select Name from Room where RoomID = S.RoomID),S.RoomID from (
 						select * from Schedule where Status = 2
 					   ) AS S 
 		 where S.Date = vDateToFind
@@ -170,7 +171,7 @@ BEGIN
 							 select StartTime 
 							 from Schedule 
 							 where status = 2 AND SchID > S.SchID LIMIT 1
-                         ) , (select Name from Room where RoomID = S.RoomID)
+                         ) , (select Name from Room where RoomID = S.RoomID),S.RoomID
 					   from 
 					   (
 							select * from Schedule where Status = 2
@@ -181,7 +182,7 @@ BEGIN
          
          # Inserting all rows between first and last rows of the Current Schedules into availableSlots
          
-         insert into AvailableSlots (Date, StartTime, EndTime, Room)
+         insert into AvailableSlots (Date, StartTime, EndTime, Room, RoomID)
     
 		 select S.Date, S.EndTime, 
 						 (
@@ -189,7 +190,7 @@ BEGIN
 							 from Schedule 
 							 where status = 2 AND SchID > S.SchID LIMIT 1
                          ) 
-                         , (select Name from Room where RoomID = S.RoomID)
+                         , (select Name from Room where RoomID = S.RoomID),S.RoomID
 					   from 
 					   (
 							select * from Schedule where Status = 2
@@ -199,9 +200,9 @@ BEGIN
          
          # Inserting the Last row of the Current Schedules into availableSlots
          
-         insert into AvailableSlots (Date, StartTime, EndTime, Room)
+         insert into AvailableSlots (Date, StartTime, EndTime, Room, RoomID)
     
-		 select S.Date, S.EndTime, $CenterEndTIme, (select Name from Room where RoomID = S.RoomID) from (
+		 select S.Date, S.EndTime, $CenterEndTIme, (select Name from Room where RoomID = S.RoomID),S.RoomID from (
 						select * from Schedule where Status = 2
 					   ) AS S 
 		 where S.Date = vDateToFind
@@ -219,14 +220,15 @@ BEGIN
         
         while(countIndex <= $NumOFRooms) DO
 			if((select count(Room) from AvailableSlots as A where (Select RoomID from Room where Name = A.Room) = countIndex) = 0) THEN
-				insert into AvailableSlots (Date, StartTime, EndTime, Room) 
-                values (vDateToFind, searchStartTime, searchEndTime, (Select Name from Room where RoomID = countIndex));
+				insert into AvailableSlots (Date, StartTime, EndTime, Room,RoomID) 
+                values (vDateToFind, searchStartTime, searchEndTime, (Select Name from Room where RoomID = countIndex), countIndex);
 			end if;
             set countIndex = countIndex + 1;
 		end while;
+        
+       
          Select * from AvailableSlots
-		 where time_to_sec(searchStartTime) <= time_to_sec(StartTime) AND time_to_sec(searchEndTime) >= time_to_sec(StartTime)
-         
+		 where time_to_sec(searchStartTime) <= time_to_sec(StartTime) AND time_to_sec(searchEndTime) >= time_to_sec(StartTime)         
 		order by StartTime, Room ;
          
          drop table AvailableSlots;
