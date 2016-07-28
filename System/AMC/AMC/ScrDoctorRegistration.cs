@@ -20,6 +20,8 @@ namespace AMC
 		{
 			InitializeComponent();
 			this.FillSpeciality();
+			//this.radioProf.Checked = false;
+			this.radioDr.Checked = true;
 
 		}
 

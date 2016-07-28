@@ -343,24 +343,31 @@ namespace AMC
 
 			result.Close();
 			//db.CloseConnection();
+			try
+			{
 
-			db = DBConnect.Connect();
-			command = app.FindAppointmentByID(RefID + "");
-			result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
-			result.Read();
-			String userEmail = result.GetString(6);
-			StringBuilder message = new StringBuilder();
-			message.Append("\nRefference Number : " + RefID);
-			message.Append("\n Doctor : " + result.GetString(1));
-			message.Append("\n Date : " + result.GetString(2));
-			message.Append("\n Time : " + result.GetString(3));
-			message.Append("\n Queue No : " + result.GetString(4));
-			message.Append("\n Fee : " + result.GetString(5));
+				db = DBConnect.Connect();
+				command = app.FindAppointmentByID(RefID + "");
+				result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+				result.Read();
+				String userEmail = result.GetString(6);
+				StringBuilder message = new StringBuilder();
+				message.Append("\nRefference Number : " + RefID);
+				message.Append("\n Doctor : " + result.GetString(1));
+				message.Append("\n Date : " + result.GetString(2));
+				message.Append("\n Time : " + result.GetString(3));
+				message.Append("\n Queue No : " + result.GetString(4));
+				message.Append("\n Fee : " + result.GetString(5));
 
-			result.Close();
-			db.CloseConnection();
+				result.Close();
+				db.CloseConnection();
 
-			Validation.sendMail(userEmail,message.ToString(),Validation.PATIENT);
+				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to Send Email!");
+			}
 		}
 
 		private void FillDoctor()

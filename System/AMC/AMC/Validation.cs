@@ -223,12 +223,13 @@ namespace AMC
 		{
 			MailMessage mail = new MailMessage("amdmedcenter@gmail.com", mailTo);
 			SmtpClient client = new SmtpClient();
-			client.Port = 25;
+			client.Port = 587;
+			client.EnableSsl = true;
 			client.DeliveryMethod = SmtpDeliveryMethod.Network;
-			client.UseDefaultCredentials = false;
+			//client.UseDefaultCredentials = false;
 			client.Credentials = new System.Net.NetworkCredential("amdmedcenter@gmail.com", "amcmedcenter123");
 			client.Host = "smtp.google.com";
-			client.Timeout = 10000;
+			client.Timeout = 20000;
 			StringBuilder message = new StringBuilder();
 			switch(senderType)
 			{
