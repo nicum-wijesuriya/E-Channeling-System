@@ -360,7 +360,7 @@ DELIMITER ;
 
 
 call GetFreeSlotsForADay('2016-05-26', '080000', '200000');
-call GetFreeSlotsForADay('2016-07-27', '080000', '200000');
+call GetFreeSlotsForADay('2016-07-28', '160000', '190000');
 call GetFreeSlotsForTheWeek('2016-05-26',3);
 
 select * from Room;
