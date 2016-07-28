@@ -16,7 +16,7 @@ create table Patient
     IsLocal bool,
     isDeleted bool default false
 );
-Alter table patient modify Title varchar(9);
+Alter table patient modify Title varchar(11);
 
 drop procedure AddPatient;
 DELIMITER //

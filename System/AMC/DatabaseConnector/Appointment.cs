@@ -61,9 +61,9 @@ namespace DatabaseConnector
 
 		public MySqlCommand CancelAppointment(String vRefID)
 		{
-			parameterList = new ParameterList();
+			
 			parameterList.Add(new Parameter("vRefID", vRefID));
-			Console.WriteLine("\n\n\n\n\n\n"+parameterList.List.Count+"\n\n\n\n\n\n");
+			
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
 			command.CommandText = "CancelAppointment";

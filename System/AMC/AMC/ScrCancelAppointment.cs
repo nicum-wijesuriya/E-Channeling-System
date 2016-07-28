@@ -55,16 +55,14 @@ namespace AMC
 				Validation.valID(refID);
 				if (rs.HasRows)
 				{
-					try
-					{
-
+					rs.Close();
+					//db.CloseConnection();
+					db = DBConnect.Connect();
+						app = new Appointment(db.Connection);
 						MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
 						db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
-					}
-					catch(MySqlException ex)
-					{
-						MessageBox.Show(ex.ToString());
-					}
+
+						db.CloseConnection();
 				}
 				else
 				{
