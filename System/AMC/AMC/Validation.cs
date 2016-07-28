@@ -15,6 +15,7 @@ namespace AMC
 		private static String errorMsg;
 		public const int PATIENT = 1;
 		public const int DOCTOR = 2;
+
 		public Validation(int errorcode)
 		{
 			switch (errorcode)
@@ -27,7 +28,10 @@ namespace AMC
 					MessageBox.Show(errorMsg);
 					break;
 				case 1:
-					errorMsg = "Invalid Email";
+					if (errorMsg == "")
+					{
+						errorMsg = "Invalid Entry";
+					}
 					MessageBox.Show(errorMsg);
 					break;
 				case 2:
@@ -67,6 +71,10 @@ namespace AMC
 					}
 					MessageBox.Show(errorMsg);
 					break;
+				case 9:
+					errorMsg = "Invalid Email";
+					MessageBox.Show(errorMsg);
+					break;
 			}
 
 			
@@ -79,16 +87,17 @@ namespace AMC
 			throw new Validation(errorcode);
 		}
 
-		public static void valEmail(String email)
+		public static void valRegex(String toCheck, String reg, String msg )
 		{
-			Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-			Match match = regex.Match(email);
+			errorMsg = msg;
+			Regex regex = new Regex(reg);
+
+			Match match = regex.Match(toCheck);
 			if (!(match.Success))
 			{
 				errorcode = 1;
 				throw new Validation(errorcode);
 			}
-
 		}
 
 		public static void valMobile(String number, String msg)
@@ -197,6 +206,19 @@ namespace AMC
 			}
 		}
 
+		public static void valEmail(String email)
+		{
+			Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+			Match match = regex.Match(email);
+			if (!(match.Success))
+			{
+				errorcode = 9;
+				throw new Validation(errorcode);
+			}
+
+		}
+
+
 		public static void sendMail(String mailTo, String AppointmentDetails, int senderType)
 		{
 			MailMessage mail = new MailMessage("amdmedcenter@gmail.com", mailTo);
@@ -233,6 +255,8 @@ namespace AMC
 			
 			client.Send(mail);
 		}
+
+
 
 
 	}
