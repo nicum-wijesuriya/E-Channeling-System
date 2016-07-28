@@ -65,13 +65,15 @@ namespace AMC
 			if (this.Tag.GetType() == typeof(ScrHome))
 			{
 				scr = (ScrHome)Tag;
+				scr.Show();
 			}
 
 			if (this.Tag.GetType() == typeof(ScrDoctorRegistration))
 			{
 				scr = (ScrDoctorRegistration)Tag;
+				scr.Close();
+
 			}
-			scr.Close();
 		}
 		private void FillDoctor()
 		{
