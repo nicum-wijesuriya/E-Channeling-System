@@ -315,7 +315,7 @@ namespace AMC
 					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-				db.CloseConnection();
+				//db.CloseConnection();
 			}
 			else
 			{
@@ -327,13 +327,36 @@ namespace AMC
 				rs.Read();
 				this.currentPID = rs.GetInt32(0);
 				rs.Close();
-				db.CloseConnection();
+				//db.CloseConnection();
 			}
 			db = DBConnect.Connect();
 			Appointment app = new Appointment(db.Connection);
 			MySqlCommand command = app.AddAppointment(this.currentPID + "", (this.cmbSchedule.SelectedItem as ComboBoxItem).Value);
-			db.ExecuteProcedure(command, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+			MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+			result.Read();
+
+			int RefID = result.GetInt32(0);
+
+			result.Close();
+			//db.CloseConnection();
+
+			db = DBConnect.Connect();
+			command = app.FindAppointmentByID(RefID + "");
+			result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+			result.Read();
+			String userEmail = result.GetString(6);
+			StringBuilder message = new StringBuilder();
+			message.Append("\nRefference Number : " + RefID);
+			message.Append("\n Doctor : " + result.GetString(1));
+			message.Append("\n Date : " + result.GetString(2));
+			message.Append("\n Time : " + result.GetString(3));
+			message.Append("\n Queue No : " + result.GetString(4));
+			message.Append("\n Fee : " + result.GetString(5));
+
+			result.Close();
 			db.CloseConnection();
+
+			Validation.sendMail(userEmail,message.ToString(),Validation.PATIENT);
 		}
 
 		private void FillDoctor()

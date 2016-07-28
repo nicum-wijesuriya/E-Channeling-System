@@ -57,6 +57,8 @@ BEGIN
     vQueNo,
     vTime
     );
+    
+    select RefID from Appointment order by RefID desc Limit 1;
 END //
 DELIMITER ;
 
@@ -206,8 +208,17 @@ BEGIN
 END //
 
 DELIMITER ;
+select * from APpointment;
 
+drop procedure FindAppointmentByID;
+DELIMITER //
+create procedure FindAppointmentByID(vRefID int)
+BEGIN
+	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID), A.Date, A.Time,A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) from appointment as A where RefID = vRefID;
+END //
+DELIMITER ;
 
+select * from Appointment;
 select getTime(1);
 
 drop function getFee;

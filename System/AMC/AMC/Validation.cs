@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace AMC
 {
@@ -12,7 +13,8 @@ namespace AMC
 	{
 		private static int errorcode;
 		private static String errorMsg;
-
+		public const int PATIENT = 1;
+		public const int DOCTOR = 2;
 		public Validation(int errorcode)
 		{
 			switch (errorcode)
@@ -195,7 +197,42 @@ namespace AMC
 			}
 		}
 
+		public static void sendMail(String mailTo, String AppointmentDetails, int senderType)
+		{
+			MailMessage mail = new MailMessage("amdmedcenter@gmail.com", mailTo);
+			SmtpClient client = new SmtpClient();
+			client.Port = 25;
+			client.DeliveryMethod = SmtpDeliveryMethod.Network;
+			client.UseDefaultCredentials = false;
+			client.Credentials = new System.Net.NetworkCredential("amdmedcenter@gmail.com", "amcmedcenter123");
+			client.Host = "smtp.google.com";
+			client.Timeout = 10000;
+			StringBuilder message = new StringBuilder();
+			switch(senderType)
+			{
+				case 1:
+					mail.Subject = "Appointment at AMC Medical Center";
+					message.Append("Dear Patient,");
+					message.Append("\n \nThank you for setting an Appointment with us. Following is the information about your appointment : \n");
+					message.Append("\n");
+					message.Append(AppointmentDetails);
+					message.Append("\n\nThank you.");
+					mail.Body = message.ToString();
+					break;
+				case 2:
+				default:
+					mail.Subject = "Appointments at AMC medical Center";
+					message.Append("Dear Doctor,");
+					message.Append("\n\nThis is an update of your current patients.");
+					message.Append(AppointmentDetails);
+					message.Append("\n\n Thank You.");
+					mail.Body = message.ToString();
+					break;
 
+			}
+			
+			client.Send(mail);
+		}
 
 
 	}

@@ -112,5 +112,23 @@ namespace DatabaseConnector
 
 			return command;
 		}
+
+		public MySqlCommand FindAppointmentByID(String vRefID)
+		{
+			parameterList.Add(new Parameter("vRefID", vRefID));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "FindAppointmentByID";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
 	}
 }
