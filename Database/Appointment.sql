@@ -102,8 +102,8 @@ call UpdateAppointment(1,3);
 
 drop procedure CancelAppointment;
 drop procedure CloseAppointment;
-
-call CancelAppointment(1);
+select * from Appointment;
+call CancelAppointment(3);
 DELIMITER //
 create procedure CancelAppointment(vRefID int)
 BEGIN
@@ -132,7 +132,7 @@ END//
 DELIMITER ;
 
 select * from appointment;
-
+select * from Schedule;
 call FindAppoinment(2);
 DELIMITER //
 create function getQueueNo (vSchID int) returns int 
