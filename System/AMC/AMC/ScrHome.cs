@@ -50,6 +50,7 @@ namespace AMC
 			scr.Tag = this;
 			scr.Show(this);
 			this.Hide();
+			
 		}
 
 		private void btnCancelAppointment_Click(object sender, EventArgs e)

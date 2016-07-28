@@ -188,6 +188,7 @@
 			this.dtpScheduleFrom.Format = System.Windows.Forms.DateTimePickerFormat.Time;
 			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
+			this.dtpScheduleFrom.ShowUpDown = true;
 			this.dtpScheduleFrom.Size = new System.Drawing.Size(130, 20);
 			this.dtpScheduleFrom.TabIndex = 6;
 			this.dtpScheduleFrom.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
@@ -206,6 +207,7 @@
 			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
 			this.dtpScheduleTo.Location = new System.Drawing.Point(247, 19);
 			this.dtpScheduleTo.Name = "dtpScheduleTo";
+			this.dtpScheduleTo.ShowUpDown = true;
 			this.dtpScheduleTo.Size = new System.Drawing.Size(130, 20);
 			this.dtpScheduleTo.TabIndex = 7;
 			this.dtpScheduleTo.ValueChanged += new System.EventHandler(this.dateTimePicker5_ValueChanged);
