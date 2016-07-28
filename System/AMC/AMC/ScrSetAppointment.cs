@@ -59,7 +59,7 @@ namespace AMC
 			MySqlCommand cmd = p.SelectPatient(this.txtNIC.Text);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			Console.WriteLine("RS : "+rs);
+			//Console.WriteLine("RS : "+rs);
 			
 			if (rs.Read())
 			{
@@ -78,7 +78,7 @@ namespace AMC
 
 				int isLocal = rs.GetInt32(11);
 			
-				Console.WriteLine("IsLocal : "+ isLocal);
+				//Console.WriteLine("IsLocal : "+ isLocal);
 				if (isLocal == 1)
 				{
 					this.radioLocal.Checked = true;
@@ -122,11 +122,11 @@ namespace AMC
 		private void checkTitles(String Title)
 		{
 			String[] titleParts = Title.Split('.');
-			Console.WriteLine(titleParts.Length);
-			foreach (String val in titleParts)
-			{
-				Console.WriteLine("Title Part :"+val);
-			}
+			//Console.WriteLine(titleParts.Length);
+			//foreach (String val in titleParts)
+			//{
+			//	Console.WriteLine("Title Part :"+val);
+			//}
 			if (titleParts.Length == 3)
 			{
 				switch (titleParts[0].Trim())
@@ -351,6 +351,7 @@ namespace AMC
 				result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
 				result.Read();
 				String userEmail = result.GetString(6);
+				//MessageBox.Show("User Email : "+ userEmail);
 				StringBuilder message = new StringBuilder();
 				message.Append("\nRefference Number : " + RefID);
 				message.Append("\n Doctor : " + result.GetString(1));
@@ -363,10 +364,11 @@ namespace AMC
 				db.CloseConnection();
 
 				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
+				MessageBox.Show("E-Mail Sent Successfully!");
 			}
 			catch (Exception ex)
 			{
-				MessageBox.Show("Failed to Send Email!");
+				MessageBox.Show("Failed to Send E-Mail!");
 			}
 		}
 
