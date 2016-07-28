@@ -65,6 +65,7 @@
 			this.dgvTimeSlots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvTimeSlots.Size = new System.Drawing.Size(514, 131);
 			this.dgvTimeSlots.TabIndex = 0;
+			this.dgvTimeSlots.SelectionChanged += new System.EventHandler(this.dgvTimeSlots_SelectionChanged);
 			// 
 			// Doctor
 			// 
@@ -180,9 +181,9 @@
 			// 
 			// txtMaxPatients
 			// 
-			this.txtMaxPatients.Location = new System.Drawing.Point(498, 18);
+			this.txtMaxPatients.Location = new System.Drawing.Point(383, 18);
 			this.txtMaxPatients.Name = "txtMaxPatients";
-			this.txtMaxPatients.Size = new System.Drawing.Size(49, 20);
+			this.txtMaxPatients.Size = new System.Drawing.Size(47, 20);
 			this.txtMaxPatients.TabIndex = 8;
 			// 
 			// dtpScheduleFrom
@@ -191,14 +192,14 @@
 			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
 			this.dtpScheduleFrom.ShowUpDown = true;
-			this.dtpScheduleFrom.Size = new System.Drawing.Size(130, 20);
+			this.dtpScheduleFrom.Size = new System.Drawing.Size(86, 20);
 			this.dtpScheduleFrom.TabIndex = 6;
 			this.dtpScheduleFrom.ValueChanged += new System.EventHandler(this.dateTimePicker4_ValueChanged);
 			// 
 			// label6
 			// 
 			this.label6.AutoSize = true;
-			this.label6.Location = new System.Drawing.Point(400, 21);
+			this.label6.Location = new System.Drawing.Point(286, 21);
 			this.label6.Name = "label6";
 			this.label6.Size = new System.Drawing.Size(92, 13);
 			this.label6.TabIndex = 7;
@@ -207,17 +208,17 @@
 			// dtpScheduleTo
 			// 
 			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-			this.dtpScheduleTo.Location = new System.Drawing.Point(247, 19);
+			this.dtpScheduleTo.Location = new System.Drawing.Point(189, 19);
 			this.dtpScheduleTo.Name = "dtpScheduleTo";
 			this.dtpScheduleTo.ShowUpDown = true;
-			this.dtpScheduleTo.Size = new System.Drawing.Size(130, 20);
+			this.dtpScheduleTo.Size = new System.Drawing.Size(84, 20);
 			this.dtpScheduleTo.TabIndex = 7;
 			this.dtpScheduleTo.ValueChanged += new System.EventHandler(this.dateTimePicker5_ValueChanged);
 			// 
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(217, 21);
+			this.label4.Location = new System.Drawing.Point(161, 21);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(20, 13);
 			this.label4.TabIndex = 1;

@@ -18,7 +18,7 @@ namespace DatabaseConnector
 			this.con = con;
 		}
 
-		public MySqlCommand AddSchedule(String vDate, String vStartTime, String vEndTime,String vMaxPatients,String vStatus, String vDID)
+		public MySqlCommand AddSchedule(String vDate, String vStartTime, String vEndTime,String vMaxPatients,String vStatus, String vDID, String vRoomID)
 		{
 			parameterList.Add(new Parameter("vDate", vDate));
 			parameterList.Add(new Parameter("vStartTime", vStartTime));
@@ -26,6 +26,7 @@ namespace DatabaseConnector
 			parameterList.Add(new Parameter("vMaxPatients", vMaxPatients));
 			parameterList.Add(new Parameter("vStatus", vStatus));
 			parameterList.Add(new Parameter("vDID", vDID));
+			parameterList.Add(new Parameter("vRoomID", vRoomID));
 
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
@@ -114,6 +115,28 @@ namespace DatabaseConnector
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
 			command.CommandText = "GetFreeSlotsForADay";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			return command;
+		}
+
+
+		public MySqlCommand FindRooms(String vDateToFind, String searchStartTime, String searchEndTime)
+		{
+			parameterList.Add(new Parameter("vDateToFind", vDateToFind));
+			parameterList.Add(new Parameter("searchStartTime", searchStartTime));
+			parameterList.Add(new Parameter("searchEndTime", searchEndTime));
+
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "FindRooms";
 			command.CommandType = CommandType.StoredProcedure;
 
 			foreach (Parameter p in parameterList.List)
