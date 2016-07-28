@@ -143,14 +143,31 @@ namespace AMC
 					title = acTitle + " (" + perTitle + ")";
 				}
 
+				if (selectedSpecList.Count == 0)
+				{
+					Validation.valGeneral("Please add Specialization(s)");
+				}
 				DBConnect db = DBConnect.Connect();
 
 				Doctor doc = new Doctor(db.Connection);
 				MySqlCommand cmd = doc.AddDoctor(title, fName, lName, contactNo, email, fee);
+				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+				rs.Read();
+				int DID = rs.GetInt32(0);
+				rs.Close();
+
+				db = DBConnect.Connect();
+				foreach (Speciality sp in selectedSpecList)
+				{
+					Doc_Spec ds = new Doc_Spec(db.Connection);
+					MySqlCommand cmd1 = ds.AddDocSpec(DID + "", sp.SID);
+					db.ExecuteProcedure(cmd1, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+				}
 
 				ScrHome scrH = new ScrHome();
 				scrH.Visible = true;
-				this.Visible = false;
+				this.Visible = false;			
 			}
 			catch (Validation ex) { }
 		}
@@ -256,6 +273,7 @@ namespace AMC
 
 				selectedSpecList.Add(new Speciality(SID, name));
 				FillSelectedSpec(SID, name);
+				this.cmbSelectedSpec.SelectedIndex = 0;
 			}
 			catch (Validation ex) { }
 
@@ -282,6 +300,22 @@ namespace AMC
 		{
 			var scr = (ScrHome)Tag;
 			scr.Show();
+		}
+
+		private void txtFirstName_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtFirstName_Enter(object sender, EventArgs e)
+		{
+			txtFirstName.Text = "";
+		}
+
+		private void txtLastName_Enter(object sender, EventArgs e)
+		{
+			txtLastName.Text = "";
+
 		}
 
 

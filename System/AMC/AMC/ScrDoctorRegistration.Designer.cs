@@ -148,6 +148,8 @@
 			this.txtFirstName.Size = new System.Drawing.Size(140, 20);
 			this.txtFirstName.TabIndex = 5;
 			this.txtFirstName.Text = "First Name";
+			this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+			this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
 			// 
 			// txtLastName
 			// 
@@ -156,6 +158,7 @@
 			this.txtLastName.Size = new System.Drawing.Size(214, 20);
 			this.txtLastName.TabIndex = 6;
 			this.txtLastName.Text = "Last Name";
+			this.txtLastName.Enter += new System.EventHandler(this.txtLastName_Enter);
 			// 
 			// txtContactNo
 			// 
