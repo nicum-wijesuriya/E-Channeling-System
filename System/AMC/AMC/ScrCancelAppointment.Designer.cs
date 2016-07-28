@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrCancelAppointment));
 			this.label1 = new System.Windows.Forms.Label();
 			this.txtRefID = new System.Windows.Forms.TextBox();
 			this.btnCancel = new System.Windows.Forms.Button();
@@ -78,28 +79,30 @@
 			this.txtRefID.Location = new System.Drawing.Point(101, 27);
 			this.txtRefID.Name = "txtRefID";
 			this.txtRefID.Size = new System.Drawing.Size(215, 20);
-			this.txtRefID.TabIndex = 1;
+			this.txtRefID.TabIndex = 0;
 			this.txtRefID.TextChanged += new System.EventHandler(this.txtRefID_TextChanged);
 			this.txtRefID.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtRefID_KeyDown);
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCancel.Location = new System.Drawing.Point(413, 25);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(75, 23);
 			this.btnCancel.TabIndex = 2;
 			this.btnCancel.Text = "Cancel";
-			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.UseVisualStyleBackColor = false;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// btnUpdate
 			// 
+			this.btnUpdate.BackColor = System.Drawing.SystemColors.Control;
 			this.btnUpdate.Location = new System.Drawing.Point(494, 24);
 			this.btnUpdate.Name = "btnUpdate";
 			this.btnUpdate.Size = new System.Drawing.Size(75, 23);
-			this.btnUpdate.TabIndex = 2;
+			this.btnUpdate.TabIndex = 3;
 			this.btnUpdate.Text = "Update";
-			this.btnUpdate.UseVisualStyleBackColor = true;
+			this.btnUpdate.UseVisualStyleBackColor = false;
 			this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
 			// 
 			// groupBox1
@@ -312,7 +315,7 @@
 			this.groupBox2.Location = new System.Drawing.Point(371, 108);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(336, 78);
-			this.groupBox2.TabIndex = 7;
+			this.groupBox2.TabIndex = 6;
 			this.groupBox2.TabStop = false;
 			this.groupBox2.Text = "Date";
 			// 
@@ -322,7 +325,7 @@
 			this.dtpEndDate.MinDate = new System.DateTime(2016, 7, 27, 0, 0, 0, 0);
 			this.dtpEndDate.Name = "dtpEndDate";
 			this.dtpEndDate.Size = new System.Drawing.Size(267, 20);
-			this.dtpEndDate.TabIndex = 7;
+			this.dtpEndDate.TabIndex = 1;
 			this.dtpEndDate.ValueChanged += new System.EventHandler(this.dtpEndDate_ValueChanged);
 			// 
 			// dtpStartDate
@@ -331,7 +334,7 @@
 			this.dtpStartDate.MinDate = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.Name = "dtpStartDate";
 			this.dtpStartDate.Size = new System.Drawing.Size(267, 20);
-			this.dtpStartDate.TabIndex = 7;
+			this.dtpStartDate.TabIndex = 0;
 			this.dtpStartDate.Value = new System.DateTime(2016, 7, 27, 11, 42, 29, 0);
 			this.dtpStartDate.ValueChanged += new System.EventHandler(this.dtpStartDate_ValueChanged);
 			// 
@@ -351,52 +354,57 @@
 			this.cmbSchedule.Location = new System.Drawing.Point(424, 199);
 			this.cmbSchedule.Name = "cmbSchedule";
 			this.cmbSchedule.Size = new System.Drawing.Size(283, 21);
-			this.cmbSchedule.TabIndex = 5;
+			this.cmbSchedule.TabIndex = 7;
 			// 
 			// btnSave
 			// 
+			this.btnSave.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSave.Location = new System.Drawing.Point(395, 278);
 			this.btnSave.Name = "btnSave";
 			this.btnSave.Size = new System.Drawing.Size(99, 25);
 			this.btnSave.TabIndex = 8;
 			this.btnSave.Text = "Save Changes";
-			this.btnSave.UseVisualStyleBackColor = true;
+			this.btnSave.UseVisualStyleBackColor = false;
 			this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClear.Location = new System.Drawing.Point(500, 278);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 25);
-			this.btnClear.TabIndex = 8;
+			this.btnClear.TabIndex = 9;
 			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnSearch
 			// 
+			this.btnSearch.BackColor = System.Drawing.SystemColors.Control;
 			this.btnSearch.Location = new System.Drawing.Point(332, 25);
 			this.btnSearch.Name = "btnSearch";
 			this.btnSearch.Size = new System.Drawing.Size(75, 23);
-			this.btnSearch.TabIndex = 2;
+			this.btnSearch.TabIndex = 1;
 			this.btnSearch.Text = "Search";
-			this.btnSearch.UseVisualStyleBackColor = true;
+			this.btnSearch.UseVisualStyleBackColor = false;
 			this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
 			// 
 			// btnClose
 			// 
+			this.btnClose.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClose.Location = new System.Drawing.Point(606, 278);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(101, 25);
-			this.btnClose.TabIndex = 9;
+			this.btnClose.TabIndex = 10;
 			this.btnClose.Text = "Close";
-			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
 			// ScrCancelAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(719, 340);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
@@ -412,7 +420,9 @@
 			this.Controls.Add(this.txtRefID);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.groupBox2);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrCancelAppointment";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cancel or Update Appointment";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrCancelAppointment_FormClosing);
 			this.Load += new System.EventHandler(this.ScrCancelAppointment_Load);

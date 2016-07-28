@@ -61,6 +61,7 @@ namespace DatabaseConnector
 
 		public MySqlCommand CancelAppointment(String vRefID)
 		{
+			
 			parameterList.Add(new Parameter("vRefID", vRefID));
 			
 			MySqlCommand command = new MySqlCommand();
@@ -80,10 +81,36 @@ namespace DatabaseConnector
 		public MySqlCommand CloseAppointment(String vRefID)
 		{
 			parameterList.Add(new Parameter("vRefID", vRefID));
+			try
+			{
+
+				MySqlCommand command = new MySqlCommand();
+				command.Connection = this.con;
+				command.CommandText = "CloseAppointment";
+				command.CommandType = CommandType.StoredProcedure;
+
+				foreach (Parameter p in parameterList.List)
+				{
+					command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+					command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+				}
+				return command;
+			}
+			catch (MySqlException ex)
+			{
+				Console.WriteLine(ex.ToString());
+				return null;
+			}
+			
+		}
+
+		public MySqlCommand FindAppointment(String vRefID)
+		{
+			parameterList.Add(new Parameter("vRefID", vRefID));
 
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
-			command.CommandText = "CloseAppointment";
+			command.CommandText = "FindAppoinment";
 			command.CommandType = CommandType.StoredProcedure;
 
 			foreach (Parameter p in parameterList.List)
@@ -95,13 +122,13 @@ namespace DatabaseConnector
 			return command;
 		}
 
-		public MySqlCommand FindAppointment(String vRefID)
+		public MySqlCommand FindAppointmentByID(String vRefID)
 		{
 			parameterList.Add(new Parameter("vRefID", vRefID));
 
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
-			command.CommandText = "FindAppoinment";
+			command.CommandText = "FindAppointmentByID";
 			command.CommandType = CommandType.StoredProcedure;
 
 			foreach (Parameter p in parameterList.List)

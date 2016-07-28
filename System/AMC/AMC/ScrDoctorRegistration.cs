@@ -20,6 +20,8 @@ namespace AMC
 		{
 			InitializeComponent();
 			this.FillSpeciality();
+			//this.radioProf.Checked = false;
+			this.radioDr.Checked = true;
 
 		}
 
@@ -126,7 +128,7 @@ namespace AMC
 				{
 					if (r.Checked)
 					{
-						acTitle = r.Text;
+						perTitle = r.Text;
 					}
 				}
 
@@ -138,42 +140,65 @@ namespace AMC
 				}
 				else
 				{
-					title = acTitle + " (" + perTitle + ")";
+					title = acTitle + "(" + perTitle + ")";
 				}
 
+				if (selectedSpecList.Count == 0)
+				{
+					Validation.valGeneral("Please add Specialization(s)");
+				}
 				DBConnect db = DBConnect.Connect();
-
 				Doctor doc = new Doctor(db.Connection);
 				MySqlCommand cmd = doc.AddDoctor(title, fName, lName, contactNo, email, fee);
+				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+				rs.Read();
+				int DID = rs.GetInt32(0);
+				rs.Close();
+
+				db = DBConnect.Connect();
+				foreach (Speciality sp in selectedSpecList)
+				{
+					Doc_Spec ds = new Doc_Spec(db.Connection);
+					MySqlCommand cmd1 = ds.AddDocSpec(DID + "", sp.SID);
+					db.ExecuteProcedure(cmd1, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+				}
 
 				ScrHome scrH = new ScrHome();
 				scrH.Visible = true;
-				this.Visible = false;
+				this.Visible = false;			
 			}
 			catch (Validation ex) { }
 		}
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
 		{
-			String newSpec = this.txtNewSpec.Text;
+			try
+			{
+				String newSpec = this.txtNewSpec.Text;
 
-			DBConnect db = DBConnect.Connect();
+				Validation.valEmptyField(newSpec, "Specialization cannot be empty");
 
-			Speciality spec = new Speciality(db.Connection);
+				DBConnect db = DBConnect.Connect();
 
-			MySqlCommand cmd = spec.AddSpeciality(newSpec);
+				Speciality spec = new Speciality(db.Connection);
 
-			MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				MySqlCommand cmd = spec.AddSpeciality(newSpec);
 
-			res.Read();
-			String SID = res.GetString(0);
-			String name = res.GetString(1);
-			res.Close();
+				MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
-			selectedSpecList.Add(new Speciality(SID, name));
-			FillSelectedSpec(SID, name);
+				res.Read();
+				String SID = res.GetString(0);
+				String name = res.GetString(1);
+				res.Close();
 
-			this.txtNewSpec.Text = "";
+				selectedSpecList.Add(new Speciality(SID, name));
+				FillSelectedSpec(SID, name);
+
+				this.txtNewSpec.Text = "";
+			}
+			catch (Validation ex) { }
+
 		}
 
 
@@ -235,11 +260,28 @@ namespace AMC
 
 		private void btnAddSpec_Click(object sender, EventArgs e)
 		{
-			String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
-			String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
+			try
+			{
+				if (cmbSpec.SelectedIndex == 0 || (ComboBoxItem)this.cmbSpec.SelectedItem == null)
+				{
+					Validation.valGeneral("Please select a Specialization");
+				}
 
-			selectedSpecList.Add(new Speciality(SID, name));
-			FillSelectedSpec(SID, name);
+				String SID = ((ComboBoxItem)this.cmbSpec.SelectedItem).Value;
+				String name = ((ComboBoxItem)this.cmbSpec.SelectedItem).Text;
+
+				foreach (Speciality s in selectedSpecList) {
+					if (s.SID == SID)
+					{
+						Validation.valGeneral("Specialization already added");
+					}
+				}
+				selectedSpecList.Add(new Speciality(SID, name));
+				FillSelectedSpec(SID, name);
+				this.cmbSelectedSpec.SelectedIndex = 0;
+			}
+			catch (Validation ex) { }
+
 
 		}
 
@@ -263,6 +305,22 @@ namespace AMC
 		{
 			var scr = (ScrHome)Tag;
 			scr.Show();
+		}
+
+		private void txtFirstName_TextChanged(object sender, EventArgs e)
+		{
+
+		}
+
+		private void txtFirstName_Enter(object sender, EventArgs e)
+		{
+			txtFirstName.Text = "";
+		}
+
+		private void txtLastName_Enter(object sender, EventArgs e)
+		{
+			txtLastName.Text = "";
+
 		}
 
 

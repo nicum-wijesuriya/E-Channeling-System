@@ -124,7 +124,7 @@
 			this.radioMr.Location = new System.Drawing.Point(21, 19);
 			this.radioMr.Name = "radioMr";
 			this.radioMr.Size = new System.Drawing.Size(40, 17);
-			this.radioMr.TabIndex = 1;
+			this.radioMr.TabIndex = 2;
 			this.radioMr.TabStop = true;
 			this.radioMr.Text = "Mr.";
 			this.radioMr.UseVisualStyleBackColor = true;
@@ -135,7 +135,7 @@
 			this.radioMrs.Location = new System.Drawing.Point(88, 19);
 			this.radioMrs.Name = "radioMrs";
 			this.radioMrs.Size = new System.Drawing.Size(45, 17);
-			this.radioMrs.TabIndex = 1;
+			this.radioMrs.TabIndex = 3;
 			this.radioMrs.TabStop = true;
 			this.radioMrs.Text = "Mrs.";
 			this.radioMrs.UseVisualStyleBackColor = true;
@@ -146,37 +146,40 @@
 			this.txtFirstName.Location = new System.Drawing.Point(111, 101);
 			this.txtFirstName.Name = "txtFirstName";
 			this.txtFirstName.Size = new System.Drawing.Size(140, 20);
-			this.txtFirstName.TabIndex = 2;
+			this.txtFirstName.TabIndex = 5;
 			this.txtFirstName.Text = "First Name";
+			this.txtFirstName.TextChanged += new System.EventHandler(this.txtFirstName_TextChanged);
+			this.txtFirstName.Enter += new System.EventHandler(this.txtFirstName_Enter);
 			// 
 			// txtLastName
 			// 
 			this.txtLastName.Location = new System.Drawing.Point(279, 101);
 			this.txtLastName.Name = "txtLastName";
 			this.txtLastName.Size = new System.Drawing.Size(214, 20);
-			this.txtLastName.TabIndex = 2;
+			this.txtLastName.TabIndex = 6;
 			this.txtLastName.Text = "Last Name";
+			this.txtLastName.Enter += new System.EventHandler(this.txtLastName_Enter);
 			// 
 			// txtContactNo
 			// 
 			this.txtContactNo.Location = new System.Drawing.Point(112, 138);
 			this.txtContactNo.Name = "txtContactNo";
 			this.txtContactNo.Size = new System.Drawing.Size(168, 20);
-			this.txtContactNo.TabIndex = 2;
+			this.txtContactNo.TabIndex = 7;
 			// 
 			// txtEmail
 			// 
 			this.txtEmail.Location = new System.Drawing.Point(112, 180);
 			this.txtEmail.Name = "txtEmail";
 			this.txtEmail.Size = new System.Drawing.Size(168, 20);
-			this.txtEmail.TabIndex = 2;
+			this.txtEmail.TabIndex = 8;
 			// 
 			// txtFee
 			// 
 			this.txtFee.Location = new System.Drawing.Point(112, 221);
 			this.txtFee.Name = "txtFee";
 			this.txtFee.Size = new System.Drawing.Size(168, 20);
-			this.txtFee.TabIndex = 2;
+			this.txtFee.TabIndex = 9;
 			// 
 			// cmbSpec
 			// 
@@ -184,37 +187,40 @@
 			this.cmbSpec.Location = new System.Drawing.Point(14, 23);
 			this.cmbSpec.Name = "cmbSpec";
 			this.cmbSpec.Size = new System.Drawing.Size(252, 21);
-			this.cmbSpec.TabIndex = 3;
+			this.cmbSpec.TabIndex = 10;
 			this.cmbSpec.SelectedIndexChanged += new System.EventHandler(this.cmbSpec_SelectedIndexChanged_1);
 			// 
 			// btnRegister
 			// 
+			this.btnRegister.BackColor = System.Drawing.SystemColors.Control;
 			this.btnRegister.Location = new System.Drawing.Point(69, 263);
 			this.btnRegister.Name = "btnRegister";
 			this.btnRegister.Size = new System.Drawing.Size(99, 23);
-			this.btnRegister.TabIndex = 4;
+			this.btnRegister.TabIndex = 17;
 			this.btnRegister.Text = "Register";
-			this.btnRegister.UseVisualStyleBackColor = true;
+			this.btnRegister.UseVisualStyleBackColor = false;
 			this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
 			// 
 			// btnClear
 			// 
+			this.btnClear.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClear.Location = new System.Drawing.Point(211, 263);
 			this.btnClear.Name = "btnClear";
 			this.btnClear.Size = new System.Drawing.Size(99, 23);
-			this.btnClear.TabIndex = 4;
+			this.btnClear.TabIndex = 18;
 			this.btnClear.Text = "Clear";
-			this.btnClear.UseVisualStyleBackColor = true;
+			this.btnClear.UseVisualStyleBackColor = false;
 			this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
 			// 
 			// btnCancel
 			// 
+			this.btnCancel.BackColor = System.Drawing.SystemColors.Control;
 			this.btnCancel.Location = new System.Drawing.Point(355, 263);
 			this.btnCancel.Name = "btnCancel";
 			this.btnCancel.Size = new System.Drawing.Size(99, 23);
-			this.btnCancel.TabIndex = 4;
+			this.btnCancel.TabIndex = 19;
 			this.btnCancel.Text = "Close";
-			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.UseVisualStyleBackColor = false;
 			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// groupBox1
@@ -237,7 +243,7 @@
 			this.groupBox1.Location = new System.Drawing.Point(12, 23);
 			this.groupBox1.Name = "groupBox1";
 			this.groupBox1.Size = new System.Drawing.Size(500, 315);
-			this.groupBox1.TabIndex = 5;
+			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Doctor Details";
 			// 
@@ -249,7 +255,7 @@
 			this.grpPersonalTitle.Location = new System.Drawing.Point(257, 31);
 			this.grpPersonalTitle.Name = "grpPersonalTitle";
 			this.grpPersonalTitle.Size = new System.Drawing.Size(236, 51);
-			this.grpPersonalTitle.TabIndex = 7;
+			this.grpPersonalTitle.TabIndex = 4;
 			this.grpPersonalTitle.TabStop = false;
 			this.grpPersonalTitle.Text = "Personal Title";
 			// 
@@ -259,7 +265,7 @@
 			this.radioMs.Location = new System.Drawing.Point(160, 19);
 			this.radioMs.Name = "radioMs";
 			this.radioMs.Size = new System.Drawing.Size(42, 17);
-			this.radioMs.TabIndex = 5;
+			this.radioMs.TabIndex = 4;
 			this.radioMs.TabStop = true;
 			this.radioMs.Text = "Ms.";
 			this.radioMs.UseVisualStyleBackColor = true;
@@ -271,7 +277,7 @@
 			this.grpAcademicTitle.Location = new System.Drawing.Point(98, 31);
 			this.grpAcademicTitle.Name = "grpAcademicTitle";
 			this.grpAcademicTitle.Size = new System.Drawing.Size(144, 51);
-			this.grpAcademicTitle.TabIndex = 6;
+			this.grpAcademicTitle.TabIndex = 0;
 			this.grpAcademicTitle.TabStop = false;
 			this.grpAcademicTitle.Text = "Acadamic Title";
 			// 
@@ -293,7 +299,7 @@
 			this.radioProf.Location = new System.Drawing.Point(14, 19);
 			this.radioProf.Name = "radioProf";
 			this.radioProf.Size = new System.Drawing.Size(47, 17);
-			this.radioProf.TabIndex = 1;
+			this.radioProf.TabIndex = 0;
 			this.radioProf.TabStop = true;
 			this.radioProf.Text = "Prof.";
 			this.radioProf.UseVisualStyleBackColor = true;
@@ -309,7 +315,7 @@
 			this.grpSpecialization.Location = new System.Drawing.Point(519, 23);
 			this.grpSpecialization.Name = "grpSpecialization";
 			this.grpSpecialization.Size = new System.Drawing.Size(307, 315);
-			this.grpSpecialization.TabIndex = 6;
+			this.grpSpecialization.TabIndex = 10;
 			this.grpSpecialization.TabStop = false;
 			this.grpSpecialization.Text = "Specialization";
 			// 
@@ -318,27 +324,29 @@
 			this.txtNewSpec.Location = new System.Drawing.Point(28, 226);
 			this.txtNewSpec.Name = "txtNewSpec";
 			this.txtNewSpec.Size = new System.Drawing.Size(253, 20);
-			this.txtNewSpec.TabIndex = 0;
+			this.txtNewSpec.TabIndex = 14;
 			this.txtNewSpec.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
 			// 
 			// btnClearSpec
 			// 
+			this.btnClearSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnClearSpec.Location = new System.Drawing.Point(205, 263);
 			this.btnClearSpec.Name = "btnClearSpec";
 			this.btnClearSpec.Size = new System.Drawing.Size(76, 23);
-			this.btnClearSpec.TabIndex = 4;
+			this.btnClearSpec.TabIndex = 16;
 			this.btnClearSpec.Text = "Clear";
-			this.btnClearSpec.UseVisualStyleBackColor = true;
+			this.btnClearSpec.UseVisualStyleBackColor = false;
 			this.btnClearSpec.Click += new System.EventHandler(this.btnClearSpec_Click);
 			// 
 			// btnNewSpec
 			// 
+			this.btnNewSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnNewSpec.Location = new System.Drawing.Point(29, 263);
 			this.btnNewSpec.Name = "btnNewSpec";
 			this.btnNewSpec.Size = new System.Drawing.Size(76, 23);
-			this.btnNewSpec.TabIndex = 4;
+			this.btnNewSpec.TabIndex = 15;
 			this.btnNewSpec.Text = "Add New";
-			this.btnNewSpec.UseVisualStyleBackColor = true;
+			this.btnNewSpec.UseVisualStyleBackColor = false;
 			this.btnNewSpec.Click += new System.EventHandler(this.btnNewSpec_Click);
 			// 
 			// groupBox3
@@ -366,22 +374,24 @@
 			// 
 			// btnRemoveSpec
 			// 
+			this.btnRemoveSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnRemoveSpec.Location = new System.Drawing.Point(14, 128);
 			this.btnRemoveSpec.Name = "btnRemoveSpec";
 			this.btnRemoveSpec.Size = new System.Drawing.Size(79, 23);
-			this.btnRemoveSpec.TabIndex = 4;
+			this.btnRemoveSpec.TabIndex = 13;
 			this.btnRemoveSpec.Text = "Remove";
-			this.btnRemoveSpec.UseVisualStyleBackColor = true;
+			this.btnRemoveSpec.UseVisualStyleBackColor = false;
 			this.btnRemoveSpec.Click += new System.EventHandler(this.btnRemoveSpec_Click);
 			// 
 			// btnAddSpec
 			// 
+			this.btnAddSpec.BackColor = System.Drawing.SystemColors.Control;
 			this.btnAddSpec.Location = new System.Drawing.Point(14, 50);
 			this.btnAddSpec.Name = "btnAddSpec";
 			this.btnAddSpec.Size = new System.Drawing.Size(79, 23);
-			this.btnAddSpec.TabIndex = 4;
+			this.btnAddSpec.TabIndex = 11;
 			this.btnAddSpec.Text = "Add";
-			this.btnAddSpec.UseVisualStyleBackColor = true;
+			this.btnAddSpec.UseVisualStyleBackColor = false;
 			this.btnAddSpec.Click += new System.EventHandler(this.btnAddSpec_Click);
 			// 
 			// cmbSelectedSpec
@@ -390,7 +400,7 @@
 			this.cmbSelectedSpec.Location = new System.Drawing.Point(14, 101);
 			this.cmbSelectedSpec.Name = "cmbSelectedSpec";
 			this.cmbSelectedSpec.Size = new System.Drawing.Size(252, 21);
-			this.cmbSelectedSpec.TabIndex = 3;
+			this.cmbSelectedSpec.TabIndex = 12;
 			// 
 			// groupBox4
 			// 
@@ -405,11 +415,13 @@
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(838, 349);
 			this.Controls.Add(this.grpSpecialization);
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrDoctorRegistration";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Register Doctor";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrDoctorRegistration_FormClosing);
 			this.groupBox1.ResumeLayout(false);

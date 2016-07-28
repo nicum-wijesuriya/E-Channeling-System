@@ -91,6 +91,10 @@ namespace AMC
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 			if(rs!=null)
 			{
+				this.dgvTimeSlots.Rows.Clear();
+				this.dgvTimeSlots.Refresh();
+
+				this.dgvTimeSlots.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 				this.dgvTimeSlots.ColumnCount = 4;
 				this.dgvTimeSlots.Columns[0].Name = "Date";
 				this.dgvTimeSlots.Columns[1].Name = "Start Time";
@@ -99,9 +103,12 @@ namespace AMC
 				while(rs.Read())
 				{
 					//DataGridViewRow row = new DataGridViewRow();
-					String[] row = { rs.GetString(0), rs.GetString(1), rs.GetString(2), rs.GetString(3) };
+					DateTime date = Convert.ToDateTime(rs.GetString(0));
+					String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
+					String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3) };
 					this.dgvTimeSlots.Rows.Add(row);	
 				}
+				
 				rs.Close();
 			}
 		}
@@ -150,6 +157,41 @@ namespace AMC
 			}
 
 			return output;
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+		
+
+		}
+
+		private void btnAddSch_Click(object sender, EventArgs e)
+		{
+			try
+			{
+				if (cmbDoctor.SelectedIndex == 0 || (this.cmbDoctor.SelectedItem as ComboBoxItem) == null)
+				{
+					Validation.valGeneral("Please select a Doctor");
+				}
+				Validation.valMaxPatients(txtMaxPatients.Text);
+				
+				String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
+				String startTime = this.getTime(this.dtpScheduleFrom.Value);
+				String endTime = this.getTime(this.dtpScheduleTo.Value);
+				String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
+				String MaxPatients = this.txtMaxPatients.Text;
+				int Status = 2;
+				DBConnect db = DBConnect.Connect();
+				Schedule sch = new Schedule(db.Connection);
+
+				MySqlCommand cmd = sch.AddSchedule(date,startTime,endTime,MaxPatients,Status + "",DID);
+				db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+
+				MessageBox.Show("Schedule Added!");
+			}
+			catch (Validation ex){ }
+
+		
 		}
 	}
 }

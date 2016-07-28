@@ -55,8 +55,14 @@ namespace AMC
 				Validation.valID(refID);
 				if (rs.HasRows)
 				{
-					MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
-					db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+					rs.Close();
+					//db.CloseConnection();
+					db = DBConnect.Connect();
+						app = new Appointment(db.Connection);
+						MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
+						db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+
+						db.CloseConnection();
 				}
 				else
 				{
@@ -64,7 +70,8 @@ namespace AMC
 				}
 
 			}
-			catch { }
+			catch (Validation ex) { }
+			
 
 		}
 
@@ -86,16 +93,11 @@ namespace AMC
 			MySqlCommand cmd = app.FindAppointment(refID);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			bool check = rs.HasRows;
-			rs.Close();
 
-			this.ToggleUpdate(true);
-			this.FillDoctor();	
-			
-/*			try
+		try
 			{
 				Validation.valID(refID);
-				if (check) 
+				if (rs.HasRows) 
 				{
 					this.ToggleUpdate(true);
 					this.FillDoctor();					
@@ -107,9 +109,6 @@ namespace AMC
 
 			}
 			catch {}
-
-*/
-
 
 		}
 		private void FillDoctor()
@@ -156,7 +155,7 @@ namespace AMC
 					this.FillPatientDetails();
 				}
 			}
-			catch { }
+			catch (Validation ex) { }
 
 
 		}
@@ -284,8 +283,6 @@ namespace AMC
 
 		private void btnSearch_Click(object sender, EventArgs e)
 		{
-			
-
 		try
 			{
 				String refID = txtRefID.Text;
@@ -293,7 +290,7 @@ namespace AMC
 				this.FillPatientDetails();
 
 			}
-			catch { }
+			catch (Validation ex) { }
 
 		}
 

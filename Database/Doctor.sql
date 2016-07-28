@@ -3,7 +3,7 @@ use AMC;
 create table Doctor
 (
 	DID int Primary Key auto_increment,
-	Title varchar(7),
+	Title varchar(11),
 	FName varchar(15) not null,
     LName varchar(30) not null,
     Contact int(10),
@@ -12,9 +12,11 @@ create table Doctor
     isDeleted bool default false
 );
 
+alter table Doctor Modify Title varchar(11);
+drop procedure AddDoctor;
 DELIMITER //
 create procedure AddDoctor (
-	vTitle varchar(4),
+	vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),
@@ -26,14 +28,21 @@ Begin
 	
     insert into Doctor (Title, FName, LName, Contact, Email, Fee)
     values (vTitle, vFName, vLName, vContact, vEmail, vFee);
+    select DID from Doctor order by DID desc LIMIT 1;
 
 END //
 DELIMITER ;
 
+select * from Doctor;
+
+call AddDoctor ('Prof.(Mrs.)', 'Kamal', 'Perera', 1234597, 'kalad;jm', 300);
+
+drop procedure UpdateDoctor;
+
 DELIMITER //
 create procedure UpdateDoctor (
 	vDID int,
-    vTitle varchar(4),
+    vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),

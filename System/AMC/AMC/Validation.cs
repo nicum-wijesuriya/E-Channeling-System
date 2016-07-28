@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using System.Net.Mail;
 
 namespace AMC
 {
@@ -12,6 +13,8 @@ namespace AMC
 	{
 		private static int errorcode;
 		private static String errorMsg;
+		public const int PATIENT = 1;
+		public const int DOCTOR = 2;
 
 		public Validation(int errorcode)
 		{
@@ -25,7 +28,10 @@ namespace AMC
 					MessageBox.Show(errorMsg);
 					break;
 				case 1:
-					errorMsg = "Invalid Email";
+					if (errorMsg == "")
+					{
+						errorMsg = "Invalid Entry";
+					}
 					MessageBox.Show(errorMsg);
 					break;
 				case 2:
@@ -65,6 +71,10 @@ namespace AMC
 					}
 					MessageBox.Show(errorMsg);
 					break;
+				case 9:
+					errorMsg = "Invalid Email";
+					MessageBox.Show(errorMsg);
+					break;
 			}
 
 			
@@ -77,16 +87,17 @@ namespace AMC
 			throw new Validation(errorcode);
 		}
 
-		public static void valEmail(String email)
+		public static void valRegex(String toCheck, String reg, String msg )
 		{
-			Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
-			Match match = regex.Match(email);
+			errorMsg = msg;
+			Regex regex = new Regex(reg);
+
+			Match match = regex.Match(toCheck);
 			if (!(match.Success))
 			{
 				errorcode = 1;
 				throw new Validation(errorcode);
 			}
-
 		}
 
 		public static void valMobile(String number, String msg)
@@ -137,7 +148,7 @@ namespace AMC
 
 		public static void valNIC(String NIC)
 		{
-			Regex regex = new Regex(@"^([0-9]{9}(V|X)|[0-9]{12})+$");
+			Regex regex = new Regex(@"^([0-9]{9}(V|X|v|x)|[0-9]{12})+$");
 			Match match = regex.Match(NIC);
 			if (!(match.Success))
 			{
@@ -159,9 +170,12 @@ namespace AMC
 
 		public static void valMaxPatients(String patients)
 		{
-			Regex regex = new Regex(@"^([0-9]+$");
+			Regex regex = new Regex(@"^[0-9]+$");
 			Match match = regex.Match(patients);
-			if (!(match.Success))
+			
+			int maxPatients;
+			Int32.TryParse(patients, out maxPatients);
+			if (!(match.Success) || maxPatients == 0)
 			{
 				errorcode = 6;
 				throw new Validation(errorcode);
@@ -190,6 +204,58 @@ namespace AMC
 				errorcode = 8;
 				throw new Validation(errorcode);
 			}
+		}
+
+		public static void valEmail(String email)
+		{
+			Regex regex = new Regex(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+			Match match = regex.Match(email);
+			if (!(match.Success))
+			{
+				errorcode = 9;
+				throw new Validation(errorcode);
+			}
+
+		}
+
+
+		public static void sendMail(String mailTo, String AppointmentDetails, int senderType)
+		{
+			MailMessage mail = new MailMessage("amdmedcenter@gmail.com", mailTo);
+			SmtpClient client = new SmtpClient();
+			client.Port = 587;
+			client.EnableSsl = true;
+			client.DeliveryMethod = SmtpDeliveryMethod.Network;
+			//client.UseDefaultCredentials = false;
+			client.Credentials = new System.Net.NetworkCredential("amdmedcenter@gmail.com", "amcmedcenter123");
+			client.Host = "smtp.google.com";
+			client.Timeout = 20000;
+			StringBuilder message = new StringBuilder();
+			switch(senderType)
+			{
+				case 1:
+					mail.Subject = "Appointment at AMC Medical Center";
+					message.Append("Dear Patient,");
+					message.Append("\n \nThank you for setting an Appointment with us. Following is the information about your appointment : \n");
+					message.Append("\n");
+					message.Append(AppointmentDetails);
+					message.Append("\n\nThank you.");
+					mail.Body = message.ToString();
+					break;
+				case 2:
+				default:
+					mail.Subject = "Appointments at AMC medical Center";
+					message.Append("Dear Doctor,");
+					message.Append("\n\nThis is an update of your current patients.");
+					message.Append(AppointmentDetails);
+					message.Append("\n\n Thank You.");
+					mail.Body = message.ToString();
+					break;
+
+			}
+			
+			client.Send(mail);
+			
 		}
 
 

@@ -57,6 +57,8 @@ BEGIN
     vQueNo,
     vTime
     );
+    
+    select RefID from Appointment order by RefID desc Limit 1;
 END //
 DELIMITER ;
 
@@ -100,12 +102,12 @@ call UpdateAppointment(1,3);
 
 drop procedure CancelAppointment;
 drop procedure CloseAppointment;
-
-call CancelAppointment(1);
+select * from Appointment;
+call CancelAppointment(3);
 DELIMITER //
 create procedure CancelAppointment(vRefID int)
 BEGIN
-	update Appointment set status = 1 where RefID = VRefID; 
+	update Appointment set status = 1 where RefID = vRefID; 
 END //
 DELIMITER ;
 
@@ -130,7 +132,7 @@ END//
 DELIMITER ;
 
 select * from appointment;
-
+select * from Schedule;
 call FindAppoinment(2);
 DELIMITER //
 create function getQueueNo (vSchID int) returns int 
@@ -206,8 +208,17 @@ BEGIN
 END //
 
 DELIMITER ;
+select * from APpointment;
 
+drop procedure FindAppointmentByID;
+DELIMITER //
+create procedure FindAppointmentByID(vRefID int)
+BEGIN
+	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID), A.Date, A.Time,A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) from appointment as A where RefID = vRefID;
+END //
+DELIMITER ;
 
+select * from Appointment;
 select getTime(1);
 
 drop function getFee;

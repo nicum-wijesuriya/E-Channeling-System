@@ -31,6 +31,8 @@ call AddPatient ( 'Mr', 'Nicum', 'Wijesuriya', '123', 'idicjndc', 'Colombo', 'ni
 select * from Patient;
 select * from Appointment;
 select * from Speciality;
+select * from Doctor;
+select * from doc_spec;
 
 
 call AddAppointment( 1, 1);

@@ -46,7 +46,7 @@ namespace AMC
 				Validation.valEmptyField(txtNIC.Text, "Enter NIC / Passport Number");
 				this.UpdatePatientFields();
 			}
-			catch { }
+			catch (Validation ex) { }
 		}
 
 		public void UpdatePatientFields()
@@ -59,7 +59,7 @@ namespace AMC
 			MySqlCommand cmd = p.SelectPatient(this.txtNIC.Text);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			Console.WriteLine("RS : "+rs);
+			////Console.WriteLine("RS : "+rs);
 			
 			if (rs.Read())
 			{
@@ -78,7 +78,7 @@ namespace AMC
 
 				int isLocal = rs.GetInt32(11);
 			
-				Console.WriteLine("IsLocal : "+ isLocal);
+				////Console.WriteLine("IsLocal : "+ isLocal);
 				if (isLocal == 1)
 				{
 					this.radioLocal.Checked = true;
@@ -122,11 +122,11 @@ namespace AMC
 		private void checkTitles(String Title)
 		{
 			String[] titleParts = Title.Split('.');
-			Console.WriteLine(titleParts.Length);
-			foreach (String val in titleParts)
-			{
-				Console.WriteLine("Title Part :"+val);
-			}
+			////Console.WriteLine(titleParts.Length);
+			//foreach (String val in titleParts)
+			//{
+			//	//Console.WriteLine("Title Part :"+val);
+			//}
 			if (titleParts.Length == 3)
 			{
 				switch (titleParts[0].Trim())
@@ -244,9 +244,13 @@ namespace AMC
 					Validation.valGeneral("Please enter Nationality");
 				}
 
-				if (radioLocal.Checked)
+				if (radioLocal.Checked && !this.isRegistered)
 				{
 					Validation.valNIC(txtNIC.Text);
+				}
+				else
+				{
+					Validation.valRegex(txtNIC.Text, @"[a-zA-Z0-9]{4,20}", "Invalid Passport No.");
 				}
 
 				SaveDetails();
@@ -254,7 +258,7 @@ namespace AMC
 
 			}
 
-			catch { }
+			catch (Validation ex) { }
 			
 
 
@@ -306,7 +310,7 @@ namespace AMC
 				personalTitle = "Mr.";
 			}
 			title = academicTitle + personalTitle;
-			Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
+			//Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
 			DBConnect db = DBConnect.Connect();
 			if (this.isRegistered)
 			{
@@ -315,7 +319,7 @@ namespace AMC
 					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-				db.CloseConnection();
+				//db.CloseConnection();
 			}
 			else
 			{
@@ -327,13 +331,45 @@ namespace AMC
 				rs.Read();
 				this.currentPID = rs.GetInt32(0);
 				rs.Close();
-				db.CloseConnection();
+				//db.CloseConnection();
 			}
 			db = DBConnect.Connect();
 			Appointment app = new Appointment(db.Connection);
 			MySqlCommand command = app.AddAppointment(this.currentPID + "", (this.cmbSchedule.SelectedItem as ComboBoxItem).Value);
-			db.ExecuteProcedure(command, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
-			db.CloseConnection();
+			MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+			result.Read();
+
+			int RefID = result.GetInt32(0);
+
+			result.Close();
+			//db.CloseConnection();
+			try
+			{
+
+				db = DBConnect.Connect();
+				command = app.FindAppointmentByID(RefID + "");
+				result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+				result.Read();
+				String userEmail = result.GetString(6);
+				//MessageBox.Show("User Email : "+ userEmail);
+				StringBuilder message = new StringBuilder();
+				message.Append("\nRefference Number : " + RefID);
+				message.Append("\n Doctor : " + result.GetString(1));
+				message.Append("\n Date : " + result.GetString(2));
+				message.Append("\n Time : " + result.GetString(3));
+				message.Append("\n Queue No : " + result.GetString(4));
+				message.Append("\n Fee : " + result.GetString(5));
+
+				result.Close();
+				db.CloseConnection();
+
+				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
+				MessageBox.Show("E-Mail Sent Successfully!");
+			}
+			catch (Exception ex)
+			{
+				MessageBox.Show("Failed to Send E-Mail!");
+			}
 		}
 
 		private void FillDoctor()
