@@ -132,7 +132,7 @@ BEGIN
         DECLARE countIndex int ;
         
 		set $CenterStartTime = '080000';
-        set $CenterEndTime = '2000000';
+        set $CenterEndTime = '200000';
         
         
 		 Select S.SchID into $StartIndex from (
