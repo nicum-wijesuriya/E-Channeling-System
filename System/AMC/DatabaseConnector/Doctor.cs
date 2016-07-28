@@ -114,7 +114,16 @@ namespace DatabaseConnector
 			
 			return command;
 		}
+		
+		public MySqlCommand AllDoctors()
+		{
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.con;
+			command.CommandText = "AllDoctors";
+			command.CommandType = CommandType.StoredProcedure;
 
+			return command;
+		}
 		public MySqlCommand AvailableDoctorsForASpecialization(String vSID)
 		{
 			parameterList.Add(new Parameter("vSID", vSID));

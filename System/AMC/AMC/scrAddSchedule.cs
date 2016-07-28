@@ -58,7 +58,7 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 
 			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
+			MySqlCommand cmd = doc.AllDoctors();
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 

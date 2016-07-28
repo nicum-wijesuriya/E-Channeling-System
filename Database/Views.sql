@@ -25,4 +25,11 @@ BEGIN
 END //
 DELIMITER ;
 
+DELIMITER //
+create procedure AllDoctors()
+BEGIN
+	Select distinct(DID), concat(Title,FName,' ',LName) from Doctor;
+END //
+DELIMITER ;
+
 select * from speciality;
