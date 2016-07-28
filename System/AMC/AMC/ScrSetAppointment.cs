@@ -59,7 +59,7 @@ namespace AMC
 			MySqlCommand cmd = p.SelectPatient(this.txtNIC.Text);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			//Console.WriteLine("RS : "+rs);
+			////Console.WriteLine("RS : "+rs);
 			
 			if (rs.Read())
 			{
@@ -78,7 +78,7 @@ namespace AMC
 
 				int isLocal = rs.GetInt32(11);
 			
-				//Console.WriteLine("IsLocal : "+ isLocal);
+				////Console.WriteLine("IsLocal : "+ isLocal);
 				if (isLocal == 1)
 				{
 					this.radioLocal.Checked = true;
@@ -122,10 +122,10 @@ namespace AMC
 		private void checkTitles(String Title)
 		{
 			String[] titleParts = Title.Split('.');
-			//Console.WriteLine(titleParts.Length);
+			////Console.WriteLine(titleParts.Length);
 			//foreach (String val in titleParts)
 			//{
-			//	Console.WriteLine("Title Part :"+val);
+			//	//Console.WriteLine("Title Part :"+val);
 			//}
 			if (titleParts.Length == 3)
 			{
@@ -310,7 +310,7 @@ namespace AMC
 				personalTitle = "Mr.";
 			}
 			title = academicTitle + personalTitle;
-			Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
+			//Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
 			DBConnect db = DBConnect.Connect();
 			if (this.isRegistered)
 			{

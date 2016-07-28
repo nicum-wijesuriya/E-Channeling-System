@@ -107,7 +107,7 @@ call CancelAppointment(1);
 DELIMITER //
 create procedure CancelAppointment(vRefID int)
 BEGIN
-	update Appointment set status = 1 where RefID = VRefID; 
+	update Appointment set status = 1 where RefID = vRefID; 
 END //
 DELIMITER ;
 

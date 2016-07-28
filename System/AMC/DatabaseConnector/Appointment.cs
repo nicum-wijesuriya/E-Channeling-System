@@ -61,8 +61,9 @@ namespace DatabaseConnector
 
 		public MySqlCommand CancelAppointment(String vRefID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
-			
+			Console.WriteLine("\n\n\n\n\n\n"+parameterList.List.Count+"\n\n\n\n\n\n");
 			MySqlCommand command = new MySqlCommand();
 			command.Connection = this.con;
 			command.CommandText = "CancelAppointment";
@@ -80,19 +81,27 @@ namespace DatabaseConnector
 		public MySqlCommand CloseAppointment(String vRefID)
 		{
 			parameterList.Add(new Parameter("vRefID", vRefID));
-
-			MySqlCommand command = new MySqlCommand();
-			command.Connection = this.con;
-			command.CommandText = "CloseAppointment";
-			command.CommandType = CommandType.StoredProcedure;
-
-			foreach (Parameter p in parameterList.List)
+			try
 			{
-				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
-				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
-			}
 
-			return command;
+				MySqlCommand command = new MySqlCommand();
+				command.Connection = this.con;
+				command.CommandText = "CloseAppointment";
+				command.CommandType = CommandType.StoredProcedure;
+
+				foreach (Parameter p in parameterList.List)
+				{
+					command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+					command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+				}
+				return command;
+			}
+			catch (MySqlException ex)
+			{
+				Console.WriteLine(ex.ToString());
+				return null;
+			}
+			
 		}
 
 		public MySqlCommand FindAppointment(String vRefID)

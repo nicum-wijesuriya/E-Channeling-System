@@ -142,7 +142,7 @@ namespace DatabaseConnector
 				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
 				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
 			}
-			Console.WriteLine("Query : "+command.ToString());
+			//Console.WriteLine("Query : "+command.ToString());
 			return command;
 		}
 	}

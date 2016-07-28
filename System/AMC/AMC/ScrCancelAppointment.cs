@@ -55,8 +55,16 @@ namespace AMC
 				Validation.valID(refID);
 				if (rs.HasRows)
 				{
-					MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
-					db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+					try
+					{
+
+						MySqlCommand cmd = app.CancelAppointment(this.txtRefID.Text);
+						db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+					}
+					catch(MySqlException ex)
+					{
+						MessageBox.Show(ex.ToString());
+					}
 				}
 				else
 				{
@@ -65,6 +73,7 @@ namespace AMC
 
 			}
 			catch (Validation ex) { }
+			
 
 		}
 

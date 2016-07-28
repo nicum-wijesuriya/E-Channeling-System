@@ -80,10 +80,10 @@ namespace DatabaseConnector
 			}
 			catch (MySqlException ex)
 			{
-				Console.WriteLine("SQL Exception : ");
-				Console.WriteLine("");
+				//Console.WriteLine("SQL Exception : ");
+				//Console.WriteLine("");
 				
-				Console.WriteLine(ex);
+				//Console.WriteLine(ex);
 
 				return null;
 			}
