@@ -165,8 +165,9 @@ namespace AMC
 				}
 
 				scrAddSchedule scrSch = new scrAddSchedule();
-				scrSch.Visible = true;
-				this.Visible = false;			
+				scrSch.Tag = this;
+				scrSch.Show();
+				this.Hide();			
 			}
 			catch (Validation ex) { }
 		}

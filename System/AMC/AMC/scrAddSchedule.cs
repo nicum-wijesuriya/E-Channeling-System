@@ -43,15 +43,35 @@ namespace AMC
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			var scr = (ScrHome)Tag;
+			Form scr = new Form();
+
+			if (this.Tag.GetType() == typeof(ScrHome))
+			{
+				scr = (ScrHome)Tag;
+			}
+
+			if (this.Tag.GetType() == typeof(ScrDoctorRegistration))
+			{
+				scr = (ScrDoctorRegistration)Tag;
+			}
 			scr.Show();
 			this.Close();
 		}
 
 		private void scrAddSchedule_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			var scr = (ScrHome)Tag;
-			scr.Show();
+			Form scr = new Form();
+
+			if (this.Tag.GetType() == typeof(ScrHome))
+			{
+				scr = (ScrHome)Tag;
+			}
+
+			if (this.Tag.GetType() == typeof(ScrDoctorRegistration))
+			{
+				scr = (ScrDoctorRegistration)Tag;
+			}
+			scr.Close();
 		}
 		private void FillDoctor()
 		{
