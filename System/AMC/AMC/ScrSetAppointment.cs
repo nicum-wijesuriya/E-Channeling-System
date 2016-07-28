@@ -248,6 +248,10 @@ namespace AMC
 				{
 					Validation.valNIC(txtNIC.Text);
 				}
+				else
+				{
+					Validation.valRegex(txtNIC.Text, @"[a-zA-Z0-9]{4,20}", "Invalid Passport No.");
+				}
 
 				SaveDetails();
 				ClearPatientFields();
