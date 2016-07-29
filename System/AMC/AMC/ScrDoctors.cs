@@ -23,12 +23,8 @@ namespace AMC
 
 		private void FillDoctor()
 		{
-			DBConnect db = DBConnect.Connect();
-
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AllDoctors();
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.AllDoctors();
 
 			this.dgvDoctors.Rows.Clear();
 			this.dgvDoctors.Refresh();

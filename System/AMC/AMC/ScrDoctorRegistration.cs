@@ -148,9 +148,8 @@ namespace AMC
 					Validation.valGeneral("Please add Specialization(s)");
 				}
 				DBConnect db = DBConnect.Connect();
-				Operator op = new Operator(db.Connection);
-				MySqlCommand cmd = op.AddDoctor(title, fName, lName, contactNo, email, fee);
-				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				Operator op = new Operator();
+				MySqlDataReader rs = op.AddDoctor(title, fName, lName, contactNo, email, fee);
 
 				rs.Read();
 				int DID = rs.GetInt32(0);
@@ -159,9 +158,9 @@ namespace AMC
 				db = DBConnect.Connect();
 				foreach (Speciality sp in selectedSpecList)
 				{
+
+					rs = op.AddDocSpec(DID + "", sp.SID);
 					
-					MySqlCommand cmd1 = op.AddDocSpec(DID + "", sp.SID);
-					db.ExecuteProcedure(cmd1, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
 				}
 
 				scrAddSchedule scrSch = new scrAddSchedule();
@@ -182,16 +181,16 @@ namespace AMC
 
 				DBConnect db = DBConnect.Connect();
 
-				Operator op = new Operator(db.Connection);
+				Operator op = new Operator();
 
-				MySqlCommand cmd = op.AddSpeciality(newSpec);
+				MySqlDataReader rs = op.AddSpeciality(newSpec);
 
-				MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			
 
-				res.Read();
-				String SID = res.GetString(0);
-				String name = res.GetString(1);
-				res.Close();
+				rs.Read();
+				String SID = rs.GetString(0);
+				String name = rs.GetString(1);
+				rs.Close();
 
 				selectedSpecList.Add(new Speciality(SID, name));
 				FillSelectedSpec(SID, name);
@@ -239,10 +238,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Operator op = new Operator(db.Connection);
-			MySqlCommand cmd = op.GetSpeciality();
-			
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.GetSpeciality();
 
 			this.cmbSpec.Items.Clear();
 

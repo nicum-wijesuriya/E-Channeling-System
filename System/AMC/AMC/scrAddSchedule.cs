@@ -109,10 +109,10 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Operator op = new Operator(db.Connection);
-			MySqlCommand cmd = op.AllDoctors();
+			Operator op = new Operator();
+			MySqlDataReader rs = op.AllDoctors();
 
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			
 
 			this.cmbDoctor.Items.Clear();
 
@@ -129,18 +129,11 @@ namespace AMC
 
 		private void FillAvailableTimeSlots()
 		{
-
-			DBConnect db = DBConnect.Connect();
-
-			Operator op = new Operator(db.Connection);
+			Operator op = new Operator();
 			String schDate = this.dtpDate.Value.Date.Year + "-" + this.dtpDate.Value.Date.Month + "-" + this.dtpDate.Value.Date.Day;
-			//String searchStartTime = this.dtpTimeFrom.Value.Hour + "" + this.dtpTimeFrom.Value.Minute + "" + this.dtpTimeFrom.Value.Second;
-			//String searchEndTime = this.dtpTimeTo.Value.Hour + "" + this.dtpTimeTo.Value.Minute + "" + this.dtpTimeTo.Value.Second;
 			String searchStartTime = this.getTime(this.dtpTimeFrom.Value);
 			String searchEndTime = this.getTime(this.dtpTimeTo.Value);
-			MySqlCommand cmd =op.GetFreeSlotsForADay(schDate,searchStartTime,searchEndTime);
-		//	MessageBox.Show(searchStartTime + " End Time "+ searchEndTime);
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			MySqlDataReader rs =op.GetFreeSlotsForADay(schDate,searchStartTime,searchEndTime);
 
 			if (rs == null)
 			{
@@ -283,22 +276,14 @@ namespace AMC
 					Validation.valGeneral("End Time is higher than Selected End time");
 				}
 
-				//MessageBox.Show("Selected Room ID : " + RID);
+				//MessageBox.Show("Selected Room ID : " + RID);				
+				Operator op = new Operator();
 
-				DBConnect db = DBConnect.Connect();
-				Operator op = new Operator(db.Connection);
-
-				MySqlCommand cmd = op.AddSchedule(date,startTime,endTime,MaxPatients,Status + "",DID,RID);
-				db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
-				
-
-				
+				MySqlDataReader rs  = op.AddSchedule(date, startTime, endTime, MaxPatients, Status + "", DID, RID);
 
 				MessageBox.Show("Schedule Added!");
 			}
 			catch (Validation ex){ }
-
-		
 		}
 
 		private void dgvTimeSlots_SelectionChanged(object sender, EventArgs e)

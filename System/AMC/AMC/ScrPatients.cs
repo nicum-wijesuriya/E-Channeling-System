@@ -43,10 +43,10 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Operator op = new Operator(db.Connection);
+			Operator op = new Operator();
 
-			MySqlCommand cmd = op.SelectAllPatients();
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			MySqlDataReader rs = op.SelectAllPatients();
+			
 
 			if (rs != null)
 			{
