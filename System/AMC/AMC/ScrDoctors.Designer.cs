@@ -28,12 +28,14 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrDoctors));
 			this.dgvDoctors = new System.Windows.Forms.DataGridView();
 			((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// dgvDoctors
 			// 
+			this.dgvDoctors.AccessibleRole = System.Windows.Forms.AccessibleRole.TitleBar;
 			this.dgvDoctors.AllowUserToAddRows = false;
 			this.dgvDoctors.AllowUserToDeleteRows = false;
 			this.dgvDoctors.AllowUserToResizeRows = false;
@@ -52,6 +54,9 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(675, 361);
 			this.Controls.Add(this.dgvDoctors);
+			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximizeBox = false;
 			this.Name = "ScrDoctors";
 			this.Text = "ScrDoctors";
 			((System.ComponentModel.ISupportInitialize)(this.dgvDoctors)).EndInit();
