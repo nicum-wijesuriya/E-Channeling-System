@@ -122,7 +122,7 @@ select * from Room;
 drop procedure GetFreeSlotsForADay;
 
 DELIMITER //
-create procedure GetFreeSlotsForADay(vDateToFind date, searchStartTime time, searchEndTime time)
+create procedure GetFreeSlotsForADay1(vDateToFind date, searchStartTime time, searchEndTime time)
 BEGIN
 		DECLARE $StartIndex int; 		# Contains the start index of the starting row in the availalbe schedules
 		DECLARE $EndIndex int;   		# Contains the Last index of the starting row in the availalbe schedules
@@ -195,8 +195,7 @@ BEGIN
 					   from 
 					   (
 							select * from Schedule where Status = 2
-					   ) AS S
-                       
+					   ) AS S                       
 		 where S.Date = vDateToFind AND rownum() > $StartIndex AND rownum() < $EndIndex;
          
          # Inserting the Last row of the Current Schedules into availableSlots
@@ -364,7 +363,7 @@ DELIMITER ;
 
 
 call GetFreeSlotsForADay('2016-05-26', '080000', '200000');
-call GetFreeSlotsForADay('2016-07-28', '160000', '190000');
+call GetFreeSlotsForADay1('2016-07-28', '160000', '190000');
 call GetFreeSlotsForTheWeek('2016-05-26',3);
 
 select * from Room;
