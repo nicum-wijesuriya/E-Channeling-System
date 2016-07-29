@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrPatients));
 			this.dgvPatients = new System.Windows.Forms.DataGridView();
 			this.button1 = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
@@ -60,6 +61,7 @@
 			this.ClientSize = new System.Drawing.Size(760, 409);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.dgvPatients);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "ScrPatients";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Registered Patients";

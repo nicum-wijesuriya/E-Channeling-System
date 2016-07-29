@@ -23,6 +23,8 @@ namespace AMC
 			this.FillDoctor();
 			RoomID = -1;
 			count = 0;
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label1_Click(object sender, EventArgs e)

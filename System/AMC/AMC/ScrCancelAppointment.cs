@@ -22,6 +22,8 @@ namespace AMC
 			this.setPatientToDefault();
 			this.ToggleUpdate(false);
 			this.cmbSchedule.Items.Add(new ComboBoxItem("0","Select a Schedule"));
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label2_Click(object sender, EventArgs e)

@@ -22,6 +22,8 @@ namespace AMC
 			this.FillSpeciality();
 			//this.radioProf.Checked = false;
 			this.radioDr.Checked = true;
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
 		}
 

@@ -21,6 +21,8 @@ namespace AMC
 			this.dgvPatients.AllowUserToResizeRows = false;
 			this.dgvPatients.AllowUserToDeleteRows = false;
 			this.dgvPatients.AllowUserToAddRows = false;
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void ScrPatients_Load(object sender, EventArgs e)

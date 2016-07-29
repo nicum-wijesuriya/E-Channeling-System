@@ -14,7 +14,9 @@ namespace AMC
 	{
 		public ScrHome()
 		{
-			InitializeComponent();			
+			InitializeComponent();
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void button1_Click(object sender, EventArgs e)

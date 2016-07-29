@@ -22,6 +22,8 @@ namespace AMC
 			this.isRegistered = false;
 			this.FillDoctor();
 			this.FillSpeciality();
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label1_Click(object sender, EventArgs e)
