@@ -119,7 +119,7 @@ END //
 DELIMITER ;
 select * from Room;
 
-drop procedure GetFreeSlotsForADay;
+drop procedure GetFreeSlotsForADay1;
 
 DELIMITER //
 create procedure GetFreeSlotsForADay1(vDateToFind date, searchStartTime time, searchEndTime time)
@@ -135,20 +135,14 @@ BEGIN
         set $CenterEndTime = '200000';
         
         
-		 Select S.SchID into $StartIndex from (
-						select * from Schedule where Status = 2
-					   ) AS S 
-		 where S.Date = vDateToFind
-         order by S.StartTime
-		 LIMIT 1;
+		set $StartIndex = 1;
              
 		 
-		 Select S.SchID into $EndIndex from (
+		 Select count(S.SchID) into $EndIndex from (
 						select * from Schedule where Status = 2
 					   ) AS S
-		 where S.Date = vDateToFind 
-		 ORDER BY S.StartTime desc
-		 LIMIT 1;
+		 where S.Date = vDateToFind ;		 
+		
     
 		create temporary table AvailableSlots
 		(
