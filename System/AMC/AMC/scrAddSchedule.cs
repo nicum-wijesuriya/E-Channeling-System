@@ -163,10 +163,15 @@ namespace AMC
 				{					
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
 
-					String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
-					String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3), rs.GetString(4) };
+					if (!(rs.GetString(1).Equals(null) || rs.GetString(2).Equals(null)))
+					{
+						String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
+						String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3), rs.GetString(4) };
 					
-					this.dgvTimeSlots.Rows.Add(row);	
+						this.dgvTimeSlots.Rows.Add(row);	
+					}
+
+
 				}
 				
 				rs.Close();

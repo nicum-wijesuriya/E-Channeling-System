@@ -66,6 +66,12 @@
     <Compile Include="ScrDoctorRegistration.Designer.cs">
       <DependentUpon>ScrDoctorRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScrDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrDoctors.Designer.cs">
+      <DependentUpon>ScrDoctors.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScrHome.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScrDoctorRegistration.resx">
       <DependentUpon>ScrDoctorRegistration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrDoctors.resx">
+      <DependentUpon>ScrDoctors.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScrHome.resx">
       <DependentUpon>ScrHome.cs</DependentUpon>

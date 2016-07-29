@@ -339,7 +339,7 @@ namespace AMC
 			MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
 			result.Read();
 
-			int RefID = result.GetInt32(0);
+			String RefID = result.GetString(0);
 
 			result.Close();
 			//db.CloseConnection();
