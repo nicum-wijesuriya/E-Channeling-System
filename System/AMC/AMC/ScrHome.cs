@@ -61,6 +61,19 @@ namespace AMC
 			this.Hide();
 		}
 
+		private void button1_Click_1(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnDocDetails_Click(object sender, EventArgs e)
+		{
+			ScrDoctors scr = new ScrDoctors();
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
+		}
+
 	
 	}
 }

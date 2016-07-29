@@ -37,6 +37,7 @@
 			this.btnRegister = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.btnDocDetails = new System.Windows.Forms.Button();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -133,12 +134,25 @@
 			this.label1.TabIndex = 4;
 			this.label1.Text = "ACME MEDICAL CENTER";
 			// 
+			// btnDocDetails
+			// 
+			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
+			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDocDetails.Location = new System.Drawing.Point(394, 405);
+			this.btnDocDetails.Name = "btnDocDetails";
+			this.btnDocDetails.Size = new System.Drawing.Size(194, 66);
+			this.btnDocDetails.TabIndex = 6;
+			this.btnDocDetails.Text = "Doctor Details";
+			this.btnDocDetails.UseVisualStyleBackColor = false;
+			this.btnDocDetails.Click += new System.EventHandler(this.btnDocDetails_Click);
+			// 
 			// ScrHome
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
-			this.ClientSize = new System.Drawing.Size(659, 412);
+			this.ClientSize = new System.Drawing.Size(659, 504);
+			this.Controls.Add(this.btnDocDetails);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.groupBox3);
@@ -165,6 +179,7 @@
 		private System.Windows.Forms.Button btnAddSchedule;
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.Button btnDocDetails;
 
 
 	}

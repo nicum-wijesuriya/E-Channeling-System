@@ -141,7 +141,12 @@ namespace AMC
 			MySqlCommand cmd = sch.GetFreeSlotsForADay(schDate,searchStartTime,searchEndTime);
 		//	MessageBox.Show(searchStartTime + " End Time "+ searchEndTime);
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			if(rs!=null)
+
+			if (rs == null)
+			{
+				Validation.valGeneral("No available Time Slots");
+			}			
+			else
 			{
 				this.dgvTimeSlots.Rows.Clear();
 				this.dgvTimeSlots.Refresh();
@@ -155,10 +160,6 @@ namespace AMC
 				this.dgvTimeSlots.Columns[4].Name = "Room ID";
 				this.dgvTimeSlots.Columns[4].Visible = false;
 
-				if (rs == null)
-				{
-					Validation.valGeneral("No available Time Slots");
-				}
 				while(rs.Read())
 				{					
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
@@ -258,7 +259,7 @@ namespace AMC
 				String MaxPatients = this.txtMaxPatients.Text;
 				int Status = 2;
 
-				if (dgvTimeSlots.SelectedRows == null)
+				if (dgvTimeSlots== null || dgvTimeSlots.SelectedRows == null)
 				{
 					Validation.valGeneral("Select a Time Slot");
 				}
