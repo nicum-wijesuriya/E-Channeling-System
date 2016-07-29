@@ -117,8 +117,8 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
+			Operator op = new Operator(db.Connection);
+			MySqlCommand cmd = op.AvailableDoctors();
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
@@ -185,10 +185,10 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Schedule sch = new Schedule(db.Connection);
+			Operator op = new Operator(db.Connection);
 			String SchID = (String)this.cmbSchedule.SelectedValue;
 
-			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
+			MySqlCommand cmd = op.SearchSchedule(DID + "", startDate, endDate);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 

@@ -54,7 +54,7 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Patient p = new Patient(db.Connection);
+			Operator p = new Operator(db.Connection);
 
 			MySqlCommand cmd = p.SelectPatient(this.txtNIC.Text);
 
@@ -314,8 +314,8 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 			if (this.isRegistered)
 			{
-				Patient p = new Patient(db.Connection);
-				MySqlCommand cmd = p.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
+				Operator op = new Operator(db.Connection);
+				MySqlCommand cmd = op.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
 					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
@@ -323,8 +323,9 @@ namespace AMC
 			}
 			else
 			{
-				Patient p = new Patient(db.Connection);
-				MySqlCommand cmd = p.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
+				Operator op = new Operator(db.Connection);
+			
+				MySqlCommand cmd = op.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
 						, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
@@ -376,8 +377,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
+			Operator op = new Operator(db.Connection);
+			MySqlCommand cmd =op.AvailableDoctors();
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
@@ -398,8 +399,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Speciality spec = new Speciality(db.Connection);
-			MySqlCommand cmd = spec.GetSpeciality();
+			Operator op = new Operator(db.Connection);
+			MySqlCommand cmd = op.GetSpeciality();
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
@@ -436,10 +437,11 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Schedule sch = new Schedule(db.Connection);
+			Operator op = new Operator(db.Connection);
+			
 			String SchID = (String)this.cmbSchedule.SelectedValue;
 
-			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
+			MySqlCommand cmd = op.SearchSchedule(DID + "", startDate, endDate);
 
 			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 
@@ -489,6 +491,14 @@ namespace AMC
 		{
 			var scr = (ScrHome)Tag;
 			scr.Show();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			ScrPatients scr = new ScrPatients();
+			scr.Tag = this;
+			scr.Show();
+			this.Hide();
 		}
 
 		
