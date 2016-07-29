@@ -34,6 +34,9 @@
 			// 
 			// dgvDoctors
 			// 
+			this.dgvDoctors.AllowUserToAddRows = false;
+			this.dgvDoctors.AllowUserToDeleteRows = false;
+			this.dgvDoctors.AllowUserToResizeRows = false;
 			this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDoctors.Location = new System.Drawing.Point(28, 37);
 			this.dgvDoctors.Name = "dgvDoctors";
