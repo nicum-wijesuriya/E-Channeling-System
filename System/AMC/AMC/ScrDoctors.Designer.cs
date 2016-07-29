@@ -39,7 +39,10 @@
 			this.dgvDoctors.AllowUserToResizeRows = false;
 			this.dgvDoctors.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.dgvDoctors.Location = new System.Drawing.Point(28, 37);
+			this.dgvDoctors.MultiSelect = false;
 			this.dgvDoctors.Name = "dgvDoctors";
+			this.dgvDoctors.ReadOnly = true;
+			this.dgvDoctors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvDoctors.Size = new System.Drawing.Size(619, 269);
 			this.dgvDoctors.TabIndex = 0;
 			// 

@@ -46,21 +46,6 @@ namespace AMC
 			rs.Close();
 
 
-			//this.dgvDoctors.Columns[1].Name = "Start Time";
-			//this.dgvDoctors.Columns[2].Name = "End Time";
-			
-			
-			//this.cmbDoctor.Items.Clear();
-
-			//this.cmbDoctor.Items.Add(new ComboBoxItem("0", "-Select a Doctor-"));
-			//while (rs.Read())
-			//{
-			//	ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
-			//	this.cmbDoctor.Items.Add(item);
-			//}
-			//rs.Close();
-
-			//this.cmbDoctor.SelectedIndex = 0;
 		}
 	}
 }
