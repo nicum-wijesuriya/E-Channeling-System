@@ -19,6 +19,8 @@ namespace AMC
 			InitializeComponent();
 			this.dgvPatients.AllowUserToResizeColumns = false;
 			this.dgvPatients.AllowUserToResizeRows = false;
+			this.dgvPatients.AllowUserToDeleteRows = false;
+			this.dgvPatients.AllowUserToAddRows = false;
 		}
 
 		private void ScrPatients_Load(object sender, EventArgs e)

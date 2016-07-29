@@ -153,6 +153,11 @@ namespace AMC
 				this.dgvTimeSlots.Columns[4].Name = "Room ID";
 				this.dgvTimeSlots.Columns[4].Visible = false;
 
+				this.dgvTimeSlots.AllowUserToDeleteRows = false;
+				this.dgvTimeSlots.AllowUserToAddRows = false;
+				this.dgvTimeSlots.AllowUserToResizeRows = false;
+
+
 				while(rs.Read())
 				{					
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
@@ -283,7 +288,7 @@ namespace AMC
 
 				MessageBox.Show("Schedule Added!");
 			}
-			catch (Validation ex){ }
+			catch (Validation){ }
 		}
 
 		private void dgvTimeSlots_SelectionChanged(object sender, EventArgs e)

@@ -46,7 +46,7 @@ namespace AMC
 				Validation.valEmptyField(txtNIC.Text, "Enter NIC / Passport Number");
 				this.UpdatePatientFields();
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 		}
 
 		public void UpdatePatientFields()
@@ -256,7 +256,7 @@ namespace AMC
 
 			}
 
-			catch (Validation ex) { }
+			catch (Validation) { }
 			
 
 
@@ -363,7 +363,7 @@ namespace AMC
 				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
 				MessageBox.Show("E-Mail Sent Successfully!");
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				MessageBox.Show("Failed to Send E-Mail!");
 			}

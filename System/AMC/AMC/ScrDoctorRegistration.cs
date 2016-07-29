@@ -168,7 +168,7 @@ namespace AMC
 				scrSch.Show();
 				this.Hide();			
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 		}
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
@@ -197,7 +197,7 @@ namespace AMC
 
 				this.txtNewSpec.Text = "";
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 		}
 
@@ -278,7 +278,7 @@ namespace AMC
 				FillSelectedSpec(SID, name);
 				this.cmbSelectedSpec.SelectedIndex = 0;
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 
 		}
