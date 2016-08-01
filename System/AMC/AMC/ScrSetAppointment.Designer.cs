@@ -87,6 +87,7 @@
 			this.pnlNationality.SuspendLayout();
 			this.grpPersonalTitle.SuspendLayout();
 			this.grpAcademicTitle.SuspendLayout();
+			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// label1
@@ -330,7 +331,7 @@
 			// label12
 			// 
 			this.label12.AutoSize = true;
-			this.label12.Location = new System.Drawing.Point(23, 366);
+			this.label12.Location = new System.Drawing.Point(11, 31);
 			this.label12.Name = "label12";
 			this.label12.Size = new System.Drawing.Size(44, 13);
 			this.label12.TabIndex = 0;
@@ -339,7 +340,7 @@
 			// 
 			// txtANumber
 			// 
-			this.txtANumber.Location = new System.Drawing.Point(83, 363);
+			this.txtANumber.Location = new System.Drawing.Point(71, 28);
 			this.txtANumber.Name = "txtANumber";
 			this.txtANumber.Size = new System.Drawing.Size(143, 20);
 			this.txtANumber.TabIndex = 17;
@@ -347,7 +348,7 @@
 			// label13
 			// 
 			this.label13.AutoSize = true;
-			this.label13.Location = new System.Drawing.Point(23, 392);
+			this.label13.Location = new System.Drawing.Point(11, 57);
 			this.label13.Name = "label13";
 			this.label13.Size = new System.Drawing.Size(35, 13);
 			this.label13.TabIndex = 0;
@@ -356,7 +357,7 @@
 			// 
 			// txtAStreet
 			// 
-			this.txtAStreet.Location = new System.Drawing.Point(83, 389);
+			this.txtAStreet.Location = new System.Drawing.Point(71, 54);
 			this.txtAStreet.Name = "txtAStreet";
 			this.txtAStreet.Size = new System.Drawing.Size(143, 20);
 			this.txtAStreet.TabIndex = 1;
@@ -364,7 +365,7 @@
 			// label14
 			// 
 			this.label14.AutoSize = true;
-			this.label14.Location = new System.Drawing.Point(23, 418);
+			this.label14.Location = new System.Drawing.Point(11, 83);
 			this.label14.Name = "label14";
 			this.label14.Size = new System.Drawing.Size(24, 13);
 			this.label14.TabIndex = 0;
@@ -373,7 +374,7 @@
 			// 
 			// txtACity
 			// 
-			this.txtACity.Location = new System.Drawing.Point(83, 415);
+			this.txtACity.Location = new System.Drawing.Point(71, 80);
 			this.txtACity.Name = "txtACity";
 			this.txtACity.Size = new System.Drawing.Size(143, 20);
 			this.txtACity.TabIndex = 19;
@@ -491,6 +492,7 @@
 			this.groupBox2.Controls.Add(this.txtEmail);
 			this.groupBox2.Controls.Add(this.groupBox4);
 			this.groupBox2.Controls.Add(this.label3);
+			this.groupBox2.Enabled = false;
 			this.groupBox2.Location = new System.Drawing.Point(8, 238);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(546, 344);
@@ -568,9 +570,16 @@
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Location = new System.Drawing.Point(6, 106);
+			this.groupBox3.Controls.Add(this.txtACity);
+			this.groupBox3.Controls.Add(this.label12);
+			this.groupBox3.Controls.Add(this.label13);
+			this.groupBox3.Controls.Add(this.label14);
+			this.groupBox3.Controls.Add(this.txtAStreet);
+			this.groupBox3.Controls.Add(this.txtANumber);
+			this.groupBox3.Enabled = false;
+			this.groupBox3.Location = new System.Drawing.Point(4, 97);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(232, 114);
+			this.groupBox3.Size = new System.Drawing.Size(232, 123);
 			this.groupBox3.TabIndex = 0;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Address";
@@ -639,12 +648,6 @@
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.btnSave);
-			this.Controls.Add(this.txtACity);
-			this.Controls.Add(this.txtAStreet);
-			this.Controls.Add(this.txtANumber);
-			this.Controls.Add(this.label14);
-			this.Controls.Add(this.label13);
-			this.Controls.Add(this.label12);
 			this.Controls.Add(this.label8);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
@@ -665,6 +668,8 @@
 			this.grpPersonalTitle.PerformLayout();
 			this.grpAcademicTitle.ResumeLayout(false);
 			this.grpAcademicTitle.PerformLayout();
+			this.groupBox3.ResumeLayout(false);
+			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

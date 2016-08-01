@@ -24,6 +24,7 @@ namespace AMC
 			this.FillSpeciality();
 			this.MaximizeBox = false;
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
+			this.ClearPatientFields();
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -94,6 +95,10 @@ namespace AMC
 				this.currentPID = -1;
 				this.ClearPatientFields();
 			}
+
+			this.groupBox2.Enabled = true;
+			this.groupBox3.Enabled = true;
+			this.btnSave.Enabled = true;
 		}
 		public void setNICNo(String NICNo)
 		{
@@ -124,6 +129,9 @@ namespace AMC
 			this.txtEmail.Text = "";
 			this.txtMobileNo.Text = "";
 			this.txtHomeNo.Text = "";
+			this.groupBox2.Enabled = false;
+			this.groupBox3.Enabled = false;
+			this.btnSave.Enabled = false;
 		}
 
 
@@ -262,6 +270,9 @@ namespace AMC
 				ClearPatientFields();
 
 			}
+			catch (Validation)
+			{
+			}
 			catch (MySqlException ex)
 			{
 				MessageBox.Show(ex.Message);
@@ -379,9 +390,7 @@ namespace AMC
 					MessageBox.Show("Failed to Send E-Mail!");
 				}
 			}
-			catch (Validation)
-			{
-			}
+			
 			catch (MySqlException)
 			{
 				throw;

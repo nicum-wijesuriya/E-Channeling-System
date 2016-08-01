@@ -247,10 +247,7 @@ namespace AMC
 				{
 					Validation.valGeneral("Please select a Doctor");
 				}
-				//if (CmbRoom.SelectedIndex == 0 || (this.CmbRoom.SelectedItem as ComboBoxItem) == null)
-				//{
-				//	Validation.valGeneral("Please select a Room");
-				//}
+				
 				Validation.valMaxPatients(txtMaxPatients.Text);
 				
 				String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
