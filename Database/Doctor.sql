@@ -13,13 +13,14 @@ create table Doctor
 );
 
 alter table Doctor Modify Title varchar(11);
+
 drop procedure AddDoctor;
 DELIMITER //
 create procedure AddDoctor (
 	vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
-    vContact int(10),
+    vContact varchar(10),
 	vEmail varchar(50),
 	vFee double(8,2)
 )
@@ -36,9 +37,14 @@ Begin
     */
     
     IF(vFee = 0) THEN 
-		SIGNAL SQLSTATE '45000'
+		SIGNAL SQLSTATE '45000' 
 		SET MESSAGE_TEXT = 'Order No not found in orders table';
 	END IF;
+    
+    IF ( select vContact NOT REGEXP '^[0-9]{2,9}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Contact Number';
+    END IF;
     
     insert into Doctor (Title, FName, LName, Contact, Email, Fee)
     values (vTitle, vFName, vLName, vContact, vEmail, vFee);

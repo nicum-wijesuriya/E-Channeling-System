@@ -112,7 +112,7 @@ namespace AMC
 				Validation.valEmail(email);
 
 				String fee = txtFee.Text;
-				Validation.valMoney(fee);
+				//Validation.valMoney(fee);
 
 				// end validation
 
