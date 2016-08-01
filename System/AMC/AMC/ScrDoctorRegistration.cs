@@ -176,7 +176,9 @@ namespace AMC
 			}
 			catch (MySqlException exc)
 			{
-				MessageBox.Show(exc.Message);				
+				MessageBox.Show(exc.Message);
+				
+				
 			}
 			catch (Validation) { }
 			catch (Exception)
