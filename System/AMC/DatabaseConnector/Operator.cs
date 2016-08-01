@@ -441,7 +441,8 @@ namespace DatabaseConnector
 
 
 
-		public MySqlDataReader UpdateDoctor(String vDID, String vTitle, String vFName, String vLName, String vContact, String vEmail, String vFee)
+		public MySqlDataReader UpdateDoctor(String vDID, String vTitle, String vFName, String vLName, String vContact, 
+			String vEmail, String vFee)
 		{
 			parameterList = new ParameterList();
 
