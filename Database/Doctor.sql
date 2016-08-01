@@ -26,11 +26,19 @@ create procedure AddDoctor (
 
 Begin
 	
- #   DECLARE EXIT HANDLER FOR SQLEXCEPTION
-	#BEGIN
-	#	ROLLBACK;
-	#	SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';
-#	END;
+ /*   DECLARE EXIT HANDLER FOR SQLEXCEPTION
+	BEGIN
+		ROLLBACK;
+		SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'A warning occurred'; 
+		#SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';
+	END;
+    */
+    
+    IF(vFee = 0) THEN 
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Order No not found in orders table';
+	END IF;
     
     insert into Doctor (Title, FName, LName, Contact, Email, Fee)
     values (vTitle, vFName, vLName, vContact, vEmail, vFee);
@@ -113,4 +121,6 @@ BEGIN
 	Select distinct(DID), concat(Title,FName,' ',LName), Contact, Email, Fee from Doctor;
 END //
 DELIMITER ;
+
+
 
