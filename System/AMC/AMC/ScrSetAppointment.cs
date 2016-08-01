@@ -95,7 +95,15 @@ namespace AMC
 				this.ClearPatientFields();
 			}
 		}
+		public void setNICNo(String NICNo)
+		{
+			this.txtNIC.Text = NICNo;
+		}
 
+		public void CallBtnCheck()
+		{
+			this.btnCheck_Click(this,new EventArgs());
+		}
 		public void ClearPatientFields()
 		{
 			this.radioDr.Checked = false;

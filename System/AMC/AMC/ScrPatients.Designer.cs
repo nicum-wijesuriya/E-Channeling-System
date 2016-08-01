@@ -31,8 +31,8 @@
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ScrPatients));
 			this.dgvPatients = new System.Windows.Forms.DataGridView();
 			this.button1 = new System.Windows.Forms.Button();
-			this.lblTest = new System.Windows.Forms.Label();
 			this.btnSelect = new System.Windows.Forms.Button();
+			this.lblTest = new System.Windows.Forms.Label();
 			((System.ComponentModel.ISupportInitialize)(this.dgvPatients)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -42,12 +42,12 @@
 			this.dgvPatients.Location = new System.Drawing.Point(12, 12);
 			this.dgvPatients.MultiSelect = false;
 			this.dgvPatients.Name = "dgvPatients";
+			this.dgvPatients.ReadOnly = true;
 			this.dgvPatients.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvPatients.Size = new System.Drawing.Size(736, 339);
 			this.dgvPatients.TabIndex = 0;
 			this.dgvPatients.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPatients_CellMouseClick);
-			this.dgvPatients.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPatients_CellMouseDown);
-			this.dgvPatients.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dgvPatients_MouseClick);
+			this.dgvPatients.Sorted += new System.EventHandler(this.dgvPatients_Sorted);
 			// 
 			// button1
 			// 
@@ -59,15 +59,6 @@
 			this.button1.UseVisualStyleBackColor = true;
 			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
-			// lblTest
-			// 
-			this.lblTest.AutoSize = true;
-			this.lblTest.Location = new System.Drawing.Point(449, 354);
-			this.lblTest.Name = "lblTest";
-			this.lblTest.Size = new System.Drawing.Size(35, 13);
-			this.lblTest.TabIndex = 2;
-			this.lblTest.Text = "label1";
-			// 
 			// btnSelect
 			// 
 			this.btnSelect.Location = new System.Drawing.Point(13, 358);
@@ -78,13 +69,22 @@
 			this.btnSelect.UseVisualStyleBackColor = true;
 			this.btnSelect.Click += new System.EventHandler(this.btnSelect_Click);
 			// 
+			// lblTest
+			// 
+			this.lblTest.AutoSize = true;
+			this.lblTest.Location = new System.Drawing.Point(483, 370);
+			this.lblTest.Name = "lblTest";
+			this.lblTest.Size = new System.Drawing.Size(35, 13);
+			this.lblTest.TabIndex = 4;
+			this.lblTest.Text = "label1";
+			// 
 			// ScrPatients
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(760, 409);
-			this.Controls.Add(this.btnSelect);
 			this.Controls.Add(this.lblTest);
+			this.Controls.Add(this.btnSelect);
 			this.Controls.Add(this.button1);
 			this.Controls.Add(this.dgvPatients);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -103,7 +103,7 @@
 
 		private System.Windows.Forms.DataGridView dgvPatients;
 		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.Label lblTest;
 		private System.Windows.Forms.Button btnSelect;
+		private System.Windows.Forms.Label lblTest;
 	}
 }
