@@ -428,9 +428,8 @@ namespace DatabaseConnector
 				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
 				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
 			}
-
-			MySqlDataReader rs = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
-			return rs;
+				MySqlDataReader rs = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+				return rs;
 		}
 
 

@@ -84,8 +84,8 @@ namespace DatabaseConnector
 				//Console.WriteLine("");
 				
 				//Console.WriteLine(ex);
-
-				return null;
+				throw;
+				//return null;
 			}
 		}
 

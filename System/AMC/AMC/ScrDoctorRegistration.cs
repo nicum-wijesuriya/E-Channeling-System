@@ -106,7 +106,7 @@ namespace AMC
 				Validation.valEmptyField(lName, "Please fill Last Name");
 
 				String contactNo = txtContactNo.Text;
-				Validation.valMobile(contactNo, "");
+				//Validation.valMobile(contactNo, "");
 
 				String email = txtEmail.Text;
 				Validation.valEmail(email);
@@ -153,24 +153,36 @@ namespace AMC
 				Operator op = new Operator();
 				MySqlDataReader rs = op.AddDoctor(title, fName, lName, contactNo, email, fee);
 
-				rs.Read();
-				int DID = rs.GetInt32(0);
-				rs.Close();
-
-				db = DBConnect.Connect();
-				foreach (Speciality sp in selectedSpecList)
+				if(rs != null)
 				{
+					rs.Read();
+					int DID = rs.GetInt32(0);
+					rs.Close();
 
-					rs = op.AddDocSpec(DID + "", sp.SID);
-					
+					db = DBConnect.Connect();
+					foreach (Speciality sp in selectedSpecList)
+					{
+
+						rs = op.AddDocSpec(DID + "", sp.SID);
+
+					}
+
+					scrAddSchedule scrSch = new scrAddSchedule();
+					scrSch.Tag = this;
+					scrSch.Show();
+					this.Hide();			
 				}
-
-				scrAddSchedule scrSch = new scrAddSchedule();
-				scrSch.Tag = this;
-				scrSch.Show();
-				this.Hide();			
+				
+			}
+			catch (MySqlException exc)
+			{
+				MessageBox.Show(exc.Message);				
 			}
 			catch (Validation) { }
+			catch (Exception)
+			{
+				
+			}
 		}
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
@@ -217,8 +229,8 @@ namespace AMC
 			radioMr.Checked = false;
 			radioMrs.Checked = false;
 			radioMs.Checked = false;
-			txtFirstName.Text = "";
-			txtLastName.Text = "";
+			txtFirstName.Text = "First Name";
+			txtLastName.Text = "Last Name";
 			txtContactNo.Text = "";
 			txtEmail.Text = "";
 			txtFee.Text = "";
@@ -314,13 +326,28 @@ namespace AMC
 
 		private void txtFirstName_Enter(object sender, EventArgs e)
 		{
-			txtFirstName.Text = "";
+			if (this.txtFirstName.Text.Equals("First Name"))
+			{
+				txtFirstName.Text = "";
+			}
 		}
 
 		private void txtLastName_Enter(object sender, EventArgs e)
 		{
-			txtLastName.Text = "";
+			if (this.txtLastName.Text.Equals("Last Name"))
+			{
+				txtLastName.Text = "";
+			}
+		}
 
+		private void cmbSpec_Click(object sender, EventArgs e)
+		{
+			this.cmbSpec.DroppedDown = true;
+		}
+
+		private void cmbSelectedSpec_Click(object sender, EventArgs e)
+		{
+			this.cmbSelectedSpec.DroppedDown = true;
 		}
 
 

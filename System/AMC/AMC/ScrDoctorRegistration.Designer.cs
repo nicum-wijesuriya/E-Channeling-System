@@ -189,6 +189,7 @@
 			this.cmbSpec.Size = new System.Drawing.Size(252, 21);
 			this.cmbSpec.TabIndex = 10;
 			this.cmbSpec.SelectedIndexChanged += new System.EventHandler(this.cmbSpec_SelectedIndexChanged_1);
+			this.cmbSpec.Click += new System.EventHandler(this.cmbSpec_Click);
 			// 
 			// btnRegister
 			// 
@@ -401,6 +402,7 @@
 			this.cmbSelectedSpec.Name = "cmbSelectedSpec";
 			this.cmbSelectedSpec.Size = new System.Drawing.Size(252, 21);
 			this.cmbSelectedSpec.TabIndex = 12;
+			this.cmbSelectedSpec.Click += new System.EventHandler(this.cmbSelectedSpec_Click);
 			// 
 			// groupBox4
 			// 
