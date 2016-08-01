@@ -26,6 +26,12 @@ create procedure AddDoctor (
 
 Begin
 	
+ #   DECLARE EXIT HANDLER FOR SQLEXCEPTION
+	#BEGIN
+	#	ROLLBACK;
+	#	SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';
+#	END;
+    
     insert into Doctor (Title, FName, LName, Contact, Email, Fee)
     values (vTitle, vFName, vLName, vContact, vEmail, vFee);
     select DID from Doctor order by DID desc LIMIT 1;
@@ -35,7 +41,7 @@ DELIMITER ;
 
 select * from Doctor;
 
-call AddDoctor ('Prof.(Mrs.)', 'Kamal', 'Perera', 1234597, 'kalad;jm', 300);
+call AddDoctor ('Prof.(Mrs.)', 'Kamal', 'Perera', 1234597, 'kalad;jm', 100000000000000);
 
 drop procedure UpdateDoctor;
 
