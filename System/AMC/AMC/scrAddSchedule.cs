@@ -158,6 +158,7 @@ namespace AMC
 				this.dgvTimeSlots.AllowUserToDeleteRows = false;
 				this.dgvTimeSlots.AllowUserToAddRows = false;
 				this.dgvTimeSlots.AllowUserToResizeRows = false;
+				this.dgvTimeSlots.ReadOnly = true;
 
 
 				while(rs.Read())

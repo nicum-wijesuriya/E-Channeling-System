@@ -14,6 +14,10 @@ namespace AMC
 {
 	public partial class ScrPatients : Form
 	{
+
+		private int row;
+		
+		String SelectedNICNo;
 		public ScrPatients()
 		{
 			InitializeComponent();
@@ -21,8 +25,12 @@ namespace AMC
 			this.dgvPatients.AllowUserToResizeRows = false;
 			this.dgvPatients.AllowUserToDeleteRows = false;
 			this.dgvPatients.AllowUserToAddRows = false;
+			this.dgvPatients.ReadOnly = true;
 			this.MaximizeBox = false;
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
+			row = -1;
+			
+			
 		}
 
 		private void ScrPatients_Load(object sender, EventArgs e)
@@ -85,6 +93,68 @@ namespace AMC
 
 
 			}
+		}
+
+		private void dgvPatients_MouseClick(object sender, MouseEventArgs e)
+		{
+			//if (e.Button == MouseButtons.Right)
+			//{
+			//	this.dgvPatients_RowContextMenuStripNeeded(sender, new DataGridViewRowContextMenuStripNeededEventArgs(this.dgvPatients.SelectedCells[0].RowIndex));
+			//	//ContextMenu menu = new ContextMenu();
+			//	//menu.MenuItems.Add("Opttion 1");
+			//	//menu.MenuItems.Add("Opttion 2");
+			//	//menu.MenuItems.Add("Opttion 3");
+
+			//	//menu.Show(this.dgvPatients, new Point(e.X, e.Y));
+			//}
+		}
+
+		private void dgvPatients_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			
+		}
+
+		private void dgvPatients_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		
+
+		private void dgvPatients_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			
+				row = e.RowIndex;
+				this.dgvPatients.Rows[row].Selected = true;
+
+			//	ContextMenuStrip menu = new ContextMenuStrip();
+			//	ToolStripMenuItem option1 = new ToolStripMenuItem("Option1");
+
+			//	menu.Items.AddRange(new ToolStripItem[] { option1 });
+
+			//	MessageBox.Show("Row : " + row);
+			//	this.dgvPatients.ContextMenuStrip = menu;
+
+				this.SelectedNICNo = dgvPatients.Rows[row].Cells[4].Value as String;
+				this.lblTest.Text = this.SelectedNICNo;
+				//MessageBox.Show(val);
+				//this.dgvPatients.ContextMenuStrip.Show(e.X, e.Y);
+			
+		}
+
+		private void btnSelect_Click(object sender, EventArgs e)
+		{
+			try
+			{
+
+				if (this.SelectedNICNo == null)
+				{
+					Validation.valGeneral("Please Select a Patient from the Table!");
+				}
+
+
+			}
+			catch (Validation)	{	}
 		}
 	}
 }
