@@ -96,14 +96,14 @@ namespace AMC
 				{
 					Validation.valGeneral("Please fill First Name");
 				}
-				Validation.valEmptyField(fName, "Please fill First Name");
+				//Validation.valEmptyField(fName, "Please fill First Name");
 
 				String lName = txtLastName.Text;
 				if (lName == "Last Name")
 				{
 					Validation.valGeneral("Please fill Last Name");
 				}
-				Validation.valEmptyField(lName, "Please fill Last Name");
+				//Validation.valEmptyField(lName, "Please fill Last Name");
 
 				String contactNo = txtContactNo.Text;
 				//Validation.valMobile(contactNo, "");

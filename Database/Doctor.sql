@@ -22,30 +22,41 @@ create procedure AddDoctor (
     vLName varchar(30),
     vContact varchar(10),
 	vEmail varchar(50),
-	vFee double(8,2)
+	vFee varchar(9)
 )
 
 Begin
 	
- /*   DECLARE EXIT HANDLER FOR SQLEXCEPTION
-	BEGIN
-		ROLLBACK;
+    IF ( select vTitle NOT REGEXP '^(Prof.|Dr.)|(Prof.|Dr.)\((Mrs.|Ms.)\)$') then
 		SIGNAL SQLSTATE '45000'
-        SET MESSAGE_TEXT = 'A warning occurred'; 
-		#SELECT 'An error has occurred, operation rollbacked and the stored procedure was terminated';
-	END;
-    */
+		SET MESSAGE_TEXT = 'Invalid Title';
+    END IF;       
     
-    IF(vFee = 0) THEN 
-		SIGNAL SQLSTATE '45000' 
-		SET MESSAGE_TEXT = 'Order No not found in orders table';
-	END IF;
+    IF ( select vFname NOT REGEXP '^[a-zA-Z]+[\ a-zA-Z]*$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Please fill First Name';
+    END IF;    
+        
+	IF ( select vLname NOT REGEXP '^[a-zA-Z]+[\ a-zA-Z]*$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Please fill Last Name';
+    END IF;    
     
-    IF ( select vContact NOT REGEXP '^[0-9]{2,9}$') then
+    IF ( select vContact NOT REGEXP '^0{0,1}7[0-9]{8}$') then
 		SIGNAL SQLSTATE '45000'
 		SET MESSAGE_TEXT = 'Invalid Contact Number';
     END IF;
     
+    IF ( select vContact NOT REGEXP '^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid email address';
+    END IF;
+    
+    IF(select vFee NOT REGEXP '^([0-9]+)$|^([0-9]+(.00)+)$') THEN 
+		SIGNAL SQLSTATE '45000' 
+		SET MESSAGE_TEXT = 'Invalid Fee';
+	END IF;
+      
     insert into Doctor (Title, FName, LName, Contact, Email, Fee)
     values (vTitle, vFName, vLName, vContact, vEmail, vFee);
     select DID from Doctor order by DID desc LIMIT 1;

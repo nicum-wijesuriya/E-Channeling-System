@@ -15,9 +15,9 @@ create table Appointment
 );
 call AddAppointment(1,13);
 select * from appointment;
+
+
 drop procedure AddAppointment;
-
-
 
 DELIMITER // 
 create procedure AddAppointment(
@@ -27,12 +27,26 @@ create procedure AddAppointment(
 
 BEGIN
 
+
+
 	Declare vQueNo int;
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
     Declare vDID int;
-
+    
+    IF ( select vPID NOT REGEXP '^[0-9]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid PID';
+    END IF; 
+    
+    IF NOT exists( select * from Patient where PID = vPID ) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Patient not Registered';
+    END IF; 
+    
+    
+    
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);
     set vFee = getFee (vSchID);
