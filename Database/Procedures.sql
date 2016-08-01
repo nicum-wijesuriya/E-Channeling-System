@@ -219,7 +219,7 @@ DELIMITER ;
 #Doctor
 DELIMITER //
 create procedure AddDoctor (
-	vTitle varchar(4),
+	vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),
@@ -238,7 +238,7 @@ DELIMITER ;
 DELIMITER //
 create procedure UpdateDoctor (
 	vDID int,
-    vTitle varchar(4),
+    vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vContact int(10),
@@ -280,11 +280,33 @@ Begin
 END //
 DELIMITER ;
 
+DELIMITER //
+create procedure AllDoctors()
+BEGIN
+	Select distinct(DID), concat(Title,FName,' ',LName) from Doctor;
+END //
+DELIMITER ;
+
+
+DELIMITER //
+create procedure AvailableDoctors()
+BEGIN
+	Select distinct(DID), concat(Title,FName,' ',LName) from AvailableDoctors;
+END //
+DELIMITER ;
+
+DELIMITER //
+create procedure AvailableDoctorsForSpecialization(vSID int)
+BEGIN
+	Select DID, concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
+END //
+DELIMITER ;
+
 #Patient
 DELIMITER //
 create procedure AddPatient (
 
-    vTitle varchar(9),	
+    vTitle varchar(11),	
     vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),
@@ -309,7 +331,7 @@ DELIMITER ;
 DELIMITER //
 create procedure UpdatePatient (
 	vPID int,    
-    vTitle varchar(9),
+    vTitle varchar(11),
 	vFName varchar(15),
     vLName varchar(30),
     vANumber varchar(25),
@@ -576,124 +598,6 @@ BEGIN
 END // 
 DELIMITER ;
 
-DELIMITER //
-create procedure GetFreeSlotsForTheWeek(vDateToFind date, searchStartTime time, searchEndTime time)
-BEGIN
-		DECLARE $StartIndex int; 		# Contains the start index of the starting row in the availalbe schedules
-		DECLARE $EndIndex int;   		# Contains the Last index of the starting row in the availalbe schedules
-        DECLARE $CenterStartTime time ; # This is the time when Medical Center Starts 
-		DECLARE $CenterEndTime time ;	# This is the time when Medical Center Ends
-        DECLARE dayCount int;
-        DECLARE $NumOfRooms int;
-        DECLARE countIndex int ;
-        
-		set $CenterStartTime = '080000';
-        set $CenterEndTime = '200000';
-        
-		 Select S.SchID into $StartIndex from (
-						select * from Schedule where Status = 2
-					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind)
-		 LIMIT 1;		 
-             
-		 
-		 Select S.SchID into $EndIndex from (
-						select * from Schedule where Status = 2
-					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) 
-		 ORDER BY S.SchID desc
-		 LIMIT 1;       			
-			
-            
-		create temporary table AvailableSlots
-		(
-			Date date,
-			StartTime time,
-			EndTime time
-		);
-        
-        # Inserting the First row of the Current Schedules into availableSlots
-        
-		 insert into AvailableSlots (Date, StartTime, EndTime)    
-		 (
-			 select S.Date, $CenterStartTime, S.StartTime  from (
-							select * from Schedule where Status = 2
-						   ) AS S 
-			 where weekofyear(S.Date) = weekofyear(vDateToFind)
-			 LIMIT 1
-         )
-         UNION         
-		 (
-			 select S.Date, S.EndTime, 
-							 (
-								 select StartTime 
-								 from Schedule 
-								 where status = 2 AND SchID > S.SchID LIMIT 1
-							 )
-						   from 
-						   (
-								select * from Schedule where Status = 2
-						   ) AS S
-			 where weekofyear(S.Date) = weekofyear(vDateToFind)
-			 LIMIT 1
-		 )         
-         ;
-         
-         # Inserting all rows between first and last rows of the Current Schedules into availableSlots
-         
-         insert into AvailableSlots (Date, StartTime, EndTime)
-    
-		 select S.Date, S.EndTime, 
-						 (
-							 select StartTime 
-							 from Schedule 
-							 where status = 2 AND SchID > S.SchID LIMIT 1
-                         )
-					   from 
-					   (
-							select * from Schedule where Status = 2
-					   ) AS S
-                       
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) AND S.SchID > $StartIndex AND S.SchID < $EndIndex ;
-         
-         # Inserting the Last row of the Current Schedules into availableSlots
-         
-         insert into AvailableSlots (Date, StartTime, EndTime)
-    
-		 select S.Date, S.EndTime, $CenterEndTime  from (
-						select * from Schedule where Status = 2
-					   ) AS S 
-		 where weekofyear(S.Date) = weekofyear(vDateToFind) 
-         Order by S.SchID Desc
-         LIMIT 1;
-         
-         # Selecting all in AvailableSlots table
-       
-         
-        set $NumOfRooms = (select count(RoomID) from Room);
-        
-        
-        set countIndex = 1;
-        set dayCount = 0;
-        while(countIndex < $NumOFRooms) DO
-			while (weekofyear(S.Date) = weekofyear(DATE(vDateToFind, +dayCount)) ) DO
-				if((select count(RoomID) from AvailableSlots where RoomID = countIndex) = 0) THEN
-					insert into AvailableSlots (Date, StartTime, EndTime, RoomID) 
-					values (vDateToFind, searchStartTime, searchEndTime, countIndex);
-				end if;
-			end while;
-            set countIndex = countIndex + 1;
-		end while;
-         Select * from AvailableSlots
-		 where time_to_sec(searchStartTime) <= time_to_sec(StartTime) AND time_to_sec(searchEndTime) >= time_to_sec(StartTime)
-         
-		order by StartTime, RoomID ;    
-         
-        drop temporary table AvailableSlots;
-     
-END // 
-DELIMITER ;
-
 #Speciality
 DELIMITER //
 create procedure AddSpeciality (
@@ -730,5 +634,14 @@ BEGIN
 END // 
 DELIMITER ;
 
-
+create or replace view AvailableDoctors
+AS 
+Select D.DID,D.Title, D.FName, D.LName, S.SID, Sch.StartTime, Sch.Date 
+From Doctor as D JOIN Speciality as S JOIN Doc_Spec as DS JOIN Schedule as Sch
+ON D.DID = DS.DID AND DS.SID = S.SID AND Sch.DID = D.DID
+where D.DID IN (
+	select DID 
+    From Schedule 
+    where Status = 2
+);
 

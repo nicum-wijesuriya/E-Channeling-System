@@ -66,11 +66,23 @@
     <Compile Include="ScrDoctorRegistration.Designer.cs">
       <DependentUpon>ScrDoctorRegistration.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScrDoctors.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrDoctors.Designer.cs">
+      <DependentUpon>ScrDoctors.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScrHome.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ScrHome.Designer.cs">
       <DependentUpon>ScrHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScrPatients.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrPatients.Designer.cs">
+      <DependentUpon>ScrPatients.cs</DependentUpon>
     </Compile>
     <Compile Include="ScrSetAppointment.cs">
       <SubType>Form</SubType>
@@ -97,12 +109,19 @@
     <EmbeddedResource Include="ScrDoctorRegistration.resx">
       <DependentUpon>ScrDoctorRegistration.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScrDoctors.resx">
+      <DependentUpon>ScrDoctors.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScrHome.resx">
       <DependentUpon>ScrHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrPatients.resx">
+      <DependentUpon>ScrPatients.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScrSetAppointment.resx">
       <DependentUpon>ScrSetAppointment.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ClassDiagram1.cd" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -33,6 +33,7 @@ select * from Appointment;
 select * from Speciality;
 select * from Doctor;
 select * from doc_spec;
+select * from Schedule;
 
 
 call AddAppointment( 1, 1);

@@ -22,6 +22,8 @@ namespace AMC
 			this.setPatientToDefault();
 			this.ToggleUpdate(false);
 			this.cmbSchedule.Items.Add(new ComboBoxItem("0","Select a Schedule"));
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label2_Click(object sender, EventArgs e)
@@ -70,7 +72,7 @@ namespace AMC
 				}
 
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 			
 
 		}
@@ -117,10 +119,8 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.AvailableDoctors();
 
 			this.cmbDoctor.Items.Clear();
 
@@ -136,12 +136,11 @@ namespace AMC
 		}
 		private void btnSave_Click(object sender, EventArgs e)
 		{
-			DBConnect db = DBConnect.Connect();
 
-			Appointment app = new Appointment(db.Connection);
+			Operator op = new Operator();
 			String SchID = ((ComboBoxItem)this.cmbSchedule.SelectedItem).Value;
 			
-			MySqlCommand cmd = app.UpdateAppointment(this.txtRefID.Text, SchID);
+		
 
 			try
 			{
@@ -151,11 +150,11 @@ namespace AMC
 				}
 				else
 				{
-					db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+					MySqlDataReader rs = op.UpdateAppointment(this.txtRefID.Text, SchID);
 					this.FillPatientDetails();
 				}
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 
 		}
@@ -183,14 +182,12 @@ namespace AMC
 			startDate = this.dtpStartDate.Value.Date.Year + "-" + this.dtpStartDate.Value.Date.Month + "-" + this.dtpStartDate.Value.Date.Day;
 			endDate = this.dtpEndDate.Value.Date.Year + "-" + this.dtpEndDate.Value.Date.Month + "-" + this.dtpEndDate.Value.Date.Day;
 
-			DBConnect db = DBConnect.Connect();
+			
 
-			Schedule sch = new Schedule(db.Connection);
+			Operator op = new Operator();
 			String SchID = (String)this.cmbSchedule.SelectedValue;
 
-			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			MySqlDataReader rs = op.SearchSchedule(DID + "", startDate, endDate);
 
 			this.cmbSchedule.Items.Clear();
 			this.cmbSchedule.Items.Add(new ComboBoxItem("0", "Select a Schedule"));
@@ -290,7 +287,7 @@ namespace AMC
 				this.FillPatientDetails();
 
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 		}
 

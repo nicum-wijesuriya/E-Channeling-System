@@ -66,6 +66,7 @@
 			this.label18 = new System.Windows.Forms.Label();
 			this.txtEmail = new System.Windows.Forms.TextBox();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox5 = new System.Windows.Forms.GroupBox();
 			this.groupBox2 = new System.Windows.Forms.GroupBox();
 			this.pnlNationality = new System.Windows.Forms.Panel();
@@ -105,7 +106,7 @@
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(191, 21);
 			this.cmbDoctor.TabIndex = 1;
-			this.cmbDoctor.SelectedIndexChanged += new System.EventHandler(this.cmbDoctor_SelectedIndexChanged);
+			this.cmbDoctor.Click += new System.EventHandler(this.cmbDoctor_Click);
 			// 
 			// label2
 			// 
@@ -124,6 +125,8 @@
 			this.cmbSpec.Name = "cmbSpec";
 			this.cmbSpec.Size = new System.Drawing.Size(166, 21);
 			this.cmbSpec.TabIndex = 2;
+			this.cmbSpec.SelectedIndexChanged += new System.EventHandler(this.cmbSpec_SelectedIndexChanged);
+			this.cmbSpec.Click += new System.EventHandler(this.cmbSpec_Click);
 			// 
 			// label4
 			// 
@@ -178,6 +181,7 @@
 			this.cmbSchedule.Name = "cmbSchedule";
 			this.cmbSchedule.Size = new System.Drawing.Size(411, 21);
 			this.cmbSchedule.TabIndex = 5;
+			this.cmbSchedule.Click += new System.EventHandler(this.cmbSchedule_Click);
 			// 
 			// label7
 			// 
@@ -427,6 +431,7 @@
 			// 
 			// groupBox1
 			// 
+			this.groupBox1.Controls.Add(this.button1);
 			this.groupBox1.Controls.Add(this.txtNIC);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.label6);
@@ -444,6 +449,17 @@
 			this.groupBox1.TabIndex = 7;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Search Details";
+			// 
+			// button1
+			// 
+			this.button1.BackColor = System.Drawing.SystemColors.Control;
+			this.button1.Location = new System.Drawing.Point(392, 167);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(133, 23);
+			this.button1.TabIndex = 8;
+			this.button1.Text = "Show All Patients";
+			this.button1.UseVisualStyleBackColor = false;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
 			// 
 			// groupBox5
 			// 
@@ -707,5 +723,6 @@
 		private System.Windows.Forms.GroupBox grpPersonalTitle;
 		private System.Windows.Forms.GroupBox grpAcademicTitle;
 		private System.Windows.Forms.Panel pnlNationality;
+		private System.Windows.Forms.Button button1;
 	}
 }

@@ -22,6 +22,8 @@ namespace AMC
 			this.isRegistered = false;
 			this.FillDoctor();
 			this.FillSpeciality();
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -46,7 +48,7 @@ namespace AMC
 				Validation.valEmptyField(txtNIC.Text, "Enter NIC / Passport Number");
 				this.UpdatePatientFields();
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 		}
 
 		public void UpdatePatientFields()
@@ -54,11 +56,9 @@ namespace AMC
 
 			DBConnect db = DBConnect.Connect();
 
-			Patient p = new Patient(db.Connection);
+			Operator p = new Operator();
 
-			MySqlCommand cmd = p.SelectPatient(this.txtNIC.Text);
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			MySqlDataReader rs = p.SelectPatient(this.txtNIC.Text);
 			////Console.WriteLine("RS : "+rs);
 			
 			if (rs.Read())
@@ -95,7 +95,15 @@ namespace AMC
 				this.ClearPatientFields();
 			}
 		}
+		public void setNICNo(String NICNo)
+		{
+			this.txtNIC.Text = NICNo;
+		}
 
+		public void CallBtnCheck()
+		{
+			this.btnCheck_Click(this,new EventArgs());
+		}
 		public void ClearPatientFields()
 		{
 			this.radioDr.Checked = false;
@@ -258,7 +266,7 @@ namespace AMC
 
 			}
 
-			catch (Validation ex) { }
+			catch (Validation) { }
 			
 
 
@@ -314,20 +322,19 @@ namespace AMC
 			DBConnect db = DBConnect.Connect();
 			if (this.isRegistered)
 			{
-				Patient p = new Patient(db.Connection);
-				MySqlCommand cmd = p.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
+				Operator op = new Operator();
+				MySqlDataReader rs = op.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
 					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
-
-				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
 				//db.CloseConnection();
 			}
 			else
 			{
-				Patient p = new Patient(db.Connection);
-				MySqlCommand cmd = p.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
+				Operator op = new Operator();
+
+				MySqlDataReader rs = op.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
 						, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
-				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				
 				rs.Read();
 				this.currentPID = rs.GetInt32(0);
 				rs.Close();
@@ -339,7 +346,7 @@ namespace AMC
 			MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
 			result.Read();
 
-			int RefID = result.GetInt32(0);
+			String RefID = result.GetString(0);
 
 			result.Close();
 			//db.CloseConnection();
@@ -366,7 +373,7 @@ namespace AMC
 				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
 				MessageBox.Show("E-Mail Sent Successfully!");
 			}
-			catch (Exception ex)
+			catch (Exception)
 			{
 				MessageBox.Show("Failed to Send E-Mail!");
 			}
@@ -376,10 +383,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.AvailableDoctors();
 
 			this.cmbDoctor.Items.Clear();
 
@@ -398,10 +403,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Speciality spec = new Speciality(db.Connection);
-			MySqlCommand cmd = spec.GetSpeciality();
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.GetSpeciality();
 
 			this.cmbSpec.Items.Clear();
 
@@ -434,14 +437,12 @@ namespace AMC
 			startDate = this.dtpDateFrom.Value.Date.Year + "-" + this.dtpDateFrom.Value.Date.Month + "-" + this.dtpDateFrom.Value.Date.Day;
 			endDate = this.dtpDateTo.Value.Date.Year + "-" + this.dtpDateTo.Value.Date.Month + "-" + this.dtpDateTo.Value.Date.Day;
 
-			DBConnect db = DBConnect.Connect();
-
-			Schedule sch = new Schedule(db.Connection);
+			
+			Operator op = new Operator();
+			
 			String SchID = (String)this.cmbSchedule.SelectedValue;
 
-			MySqlCommand cmd = sch.SearchSchedule(DID + "", startDate, endDate);
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			MySqlDataReader rs = op.SearchSchedule(DID + "", startDate, endDate);
 
 			this.cmbSchedule.Items.Clear();
 			this.cmbSchedule.Items.Add(new ComboBoxItem("0", "Select a Schedule"));
@@ -489,6 +490,34 @@ namespace AMC
 		{
 			var scr = (ScrHome)Tag;
 			scr.Show();
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			ScrPatients scr = new ScrPatients();
+			scr.Tag = this;
+			scr.Show();
+			this.Hide();
+		}
+
+		private void cmbDoctor_Click(object sender, EventArgs e)
+		{
+			cmbDoctor.DroppedDown = true;
+
+		}
+
+		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
+		{
+		}
+
+		private void cmbSpec_Click(object sender, EventArgs e)
+		{
+			cmbSpec.DroppedDown = true;
+		}
+
+		private void cmbSchedule_Click(object sender, EventArgs e)
+		{
+			cmbSchedule.DroppedDown = true;
 		}
 
 		

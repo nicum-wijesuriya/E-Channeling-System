@@ -101,3 +101,11 @@ BEGIN
 	select * from Patient where NICNo = vNICNo;
 END //
 DELIMITER ;
+drop procedure SelectAllPatients;
+DELIMITER //
+create procedure SelectAllPatients()
+BEGIN
+	select PID, concat(Title,' ',FName,' ',LName) as Name, concat(ANumber,', ',AStreet,', ',ACity) as Address, Email, NICNo, CMobile, CHome from Patient ;
+END //
+DELIMITER ;
+call selectAllPAtients();

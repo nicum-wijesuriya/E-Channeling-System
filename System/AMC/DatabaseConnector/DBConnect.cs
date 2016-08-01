@@ -78,14 +78,14 @@ namespace DatabaseConnector
 						return command.ExecuteReader();
 				}
 			}
-			catch (MySqlException ex)
+			catch (MySqlException)
 			{
 				//Console.WriteLine("SQL Exception : ");
 				//Console.WriteLine("");
 				
 				//Console.WriteLine(ex);
-
-				return null;
+				throw;
+				//return null;
 			}
 		}
 

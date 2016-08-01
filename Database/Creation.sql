@@ -12,7 +12,7 @@ create table Patient
     ACity varchar(25),
     Email varchar(50),
     NICNo varchar(10) not null,
-    Title varchar(9),
+    Title varchar(11),
     CMobile int(10),
     CHome int(10),
     IsLocal bool,
@@ -22,7 +22,7 @@ create table Patient
 create table Doctor
 (
 	DID int Primary Key auto_increment,
-    Title varchar(7),
+    Title varchar(11),
      FName varchar(15) not null,
     LName varchar(30) not null,
     Contact int(10),

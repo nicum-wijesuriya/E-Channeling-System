@@ -15,7 +15,8 @@ namespace AMC
 		public ScrHome()
 		{
 			InitializeComponent();
-			
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void button1_Click(object sender, EventArgs e)
@@ -50,11 +51,25 @@ namespace AMC
 			scr.Tag = this;
 			scr.Show(this);
 			this.Hide();
+			
 		}
 
 		private void btnCancelAppointment_Click(object sender, EventArgs e)
 		{
 			ScrCancelAppointment scr = new ScrCancelAppointment();
+			scr.Tag = this;
+			scr.Show(this);
+			this.Hide();
+		}
+
+		private void button1_Click_1(object sender, EventArgs e)
+		{
+
+		}
+
+		private void btnDocDetails_Click(object sender, EventArgs e)
+		{
+			ScrDoctors scr = new ScrDoctors();
 			scr.Tag = this;
 			scr.Show(this);
 			this.Hide();

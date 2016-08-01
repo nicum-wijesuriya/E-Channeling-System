@@ -22,6 +22,8 @@ namespace AMC
 			this.FillSpeciality();
 			//this.radioProf.Checked = false;
 			this.radioDr.Checked = true;
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 
 		}
 
@@ -104,13 +106,13 @@ namespace AMC
 				Validation.valEmptyField(lName, "Please fill Last Name");
 
 				String contactNo = txtContactNo.Text;
-				Validation.valMobile(contactNo, "");
+				//Validation.valMobile(contactNo, "");
 
 				String email = txtEmail.Text;
 				Validation.valEmail(email);
 
 				String fee = txtFee.Text;
-				Validation.valMoney(fee);
+				//Validation.valMoney(fee);
 
 				// end validation
 
@@ -148,27 +150,41 @@ namespace AMC
 					Validation.valGeneral("Please add Specialization(s)");
 				}
 				DBConnect db = DBConnect.Connect();
-				Doctor doc = new Doctor(db.Connection);
-				MySqlCommand cmd = doc.AddDoctor(title, fName, lName, contactNo, email, fee);
-				MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+				Operator op = new Operator();
+				MySqlDataReader rs = op.AddDoctor(title, fName, lName, contactNo, email, fee);
 
-				rs.Read();
-				int DID = rs.GetInt32(0);
-				rs.Close();
-
-				db = DBConnect.Connect();
-				foreach (Speciality sp in selectedSpecList)
+				if(rs != null)
 				{
-					Doc_Spec ds = new Doc_Spec(db.Connection);
-					MySqlCommand cmd1 = ds.AddDocSpec(DID + "", sp.SID);
-					db.ExecuteProcedure(cmd1, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
-				}
+					rs.Read();
+					int DID = rs.GetInt32(0);
+					rs.Close();
 
-				ScrHome scrH = new ScrHome();
-				scrH.Visible = true;
-				this.Visible = false;			
+					db = DBConnect.Connect();
+					foreach (Speciality sp in selectedSpecList)
+					{
+
+						rs = op.AddDocSpec(DID + "", sp.SID);
+
+					}
+
+					scrAddSchedule scrSch = new scrAddSchedule();
+					scrSch.Tag = this;
+					scrSch.Show();
+					this.Hide();			
+				}
+				
 			}
-			catch (Validation ex) { }
+			catch (MySqlException exc)
+			{
+				MessageBox.Show(exc.Message);
+				
+				
+			}
+			catch (Validation) { }
+			catch (Exception)
+			{
+				
+			}
 		}
 
 		private void btnNewSpec_Click(object sender, EventArgs e)
@@ -181,23 +197,23 @@ namespace AMC
 
 				DBConnect db = DBConnect.Connect();
 
-				Speciality spec = new Speciality(db.Connection);
+				Operator op = new Operator();
 
-				MySqlCommand cmd = spec.AddSpeciality(newSpec);
+				MySqlDataReader rs = op.AddSpeciality(newSpec);
 
-				MySqlDataReader res =  db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			
 
-				res.Read();
-				String SID = res.GetString(0);
-				String name = res.GetString(1);
-				res.Close();
+				rs.Read();
+				String SID = rs.GetString(0);
+				String name = rs.GetString(1);
+				rs.Close();
 
 				selectedSpecList.Add(new Speciality(SID, name));
 				FillSelectedSpec(SID, name);
 
 				this.txtNewSpec.Text = "";
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 		}
 
@@ -215,8 +231,8 @@ namespace AMC
 			radioMr.Checked = false;
 			radioMrs.Checked = false;
 			radioMs.Checked = false;
-			txtFirstName.Text = "";
-			txtLastName.Text = "";
+			txtFirstName.Text = "First Name";
+			txtLastName.Text = "Last Name";
 			txtContactNo.Text = "";
 			txtEmail.Text = "";
 			txtFee.Text = "";
@@ -238,10 +254,8 @@ namespace AMC
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Speciality spec = new Speciality(db.Connection);
-			MySqlCommand cmd = spec.GetSpeciality();
-
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			Operator op = new Operator();
+			MySqlDataReader rs = op.GetSpeciality();
 
 			this.cmbSpec.Items.Clear();
 
@@ -280,7 +294,7 @@ namespace AMC
 				FillSelectedSpec(SID, name);
 				this.cmbSelectedSpec.SelectedIndex = 0;
 			}
-			catch (Validation ex) { }
+			catch (Validation) { }
 
 
 		}
@@ -314,13 +328,28 @@ namespace AMC
 
 		private void txtFirstName_Enter(object sender, EventArgs e)
 		{
-			txtFirstName.Text = "";
+			if (this.txtFirstName.Text.Equals("First Name"))
+			{
+				txtFirstName.Text = "";
+			}
 		}
 
 		private void txtLastName_Enter(object sender, EventArgs e)
 		{
-			txtLastName.Text = "";
+			if (this.txtLastName.Text.Equals("Last Name"))
+			{
+				txtLastName.Text = "";
+			}
+		}
 
+		private void cmbSpec_Click(object sender, EventArgs e)
+		{
+			this.cmbSpec.DroppedDown = true;
+		}
+
+		private void cmbSelectedSpec_Click(object sender, EventArgs e)
+		{
+			this.cmbSelectedSpec.DroppedDown = true;
 		}
 
 

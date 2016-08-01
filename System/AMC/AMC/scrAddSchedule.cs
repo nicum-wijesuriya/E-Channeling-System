@@ -15,10 +15,16 @@ namespace AMC
 {
 	public partial class scrAddSchedule : Form
 	{
+		int RoomID;
+		int count;
 		public scrAddSchedule()
 		{
 			InitializeComponent();
 			this.FillDoctor();
+			RoomID = -1;
+			count = 0;
+			this.MaximizeBox = false;
+			this.FormBorderStyle = FormBorderStyle.FixedSingle;
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -33,34 +39,82 @@ namespace AMC
 
 		private void dateTimePicker5_ValueChanged(object sender, EventArgs e)
 		{
-
+			//this.FillRoom();
 		}
 
 		private void dateTimePicker4_ValueChanged(object sender, EventArgs e)
 		{
-
+			//this.FillRoom();
 		}
+
+		//private void FillRoom()
+		//{
+		//	DBConnect db = DBConnect.Connect();
+
+		//	Schedule sch = new Schedule(db.Connection);
+		//	String schDate = this.dtpDate.Value.Date.Year + "-" + this.dtpDate.Value.Date.Month + "-" + this.dtpDate.Value.Date.Day;			
+		//	String searchStartTime = this.getTime(this.dtpTimeFrom.Value);
+		//	String searchEndTime = this.getTime(this.dtpTimeTo.Value);
+
+		//	MySqlCommand cmd = sch.FindRooms(schDate, searchStartTime, searchEndTime);
+
+		//	MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+
+		//	this.CmbRoom.Items.Clear();
+
+		//	this.CmbRoom.Items.Add(new ComboBoxItem("0", "-Select a Room-"));
+		//	while (rs.Read())
+		//	{
+		//		ComboBoxItem item = new ComboBoxItem(rs.GetString(0), rs.GetString(1));
+		//		this.CmbRoom.Items.Add(item);
+		//	}
+		//	rs.Close();
+
+		//	this.CmbRoom.SelectedIndex = 0;
+		//}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			var scr = (ScrHome)Tag;
+			Form scr = new Form();
+
+			if (this.Tag.GetType() == typeof(ScrHome))
+			{
+				scr = (ScrHome)Tag;
+			}
+
+			if (this.Tag.GetType() == typeof(ScrDoctorRegistration))
+			{
+				scr = (ScrDoctorRegistration)Tag;
+			}
 			scr.Show();
 			this.Close();
 		}
 
 		private void scrAddSchedule_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			var scr = (ScrHome)Tag;
-			scr.Show();
+			Form scr = new Form();
+
+			if (this.Tag.GetType() == typeof(ScrHome))
+			{
+				scr = (ScrHome)Tag;
+				scr.Show();
+			}
+
+			if (this.Tag.GetType() == typeof(ScrDoctorRegistration))
+			{
+				scr = (ScrDoctorRegistration)Tag;
+				scr.Close();
+
+			}
 		}
 		private void FillDoctor()
 		{
 			DBConnect db = DBConnect.Connect();
 
-			Doctor doc = new Doctor(db.Connection);
-			MySqlCommand cmd = doc.AvailableDoctors();
+			Operator op = new Operator();
+			MySqlDataReader rs = op.AllDoctors();
 
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
+			
 
 			this.cmbDoctor.Items.Clear();
 
@@ -77,39 +131,55 @@ namespace AMC
 
 		private void FillAvailableTimeSlots()
 		{
-
-			DBConnect db = DBConnect.Connect();
-
-			Schedule sch = new Schedule(db.Connection);
+			Operator op = new Operator();
 			String schDate = this.dtpDate.Value.Date.Year + "-" + this.dtpDate.Value.Date.Month + "-" + this.dtpDate.Value.Date.Day;
-			//String searchStartTime = this.dtpTimeFrom.Value.Hour + "" + this.dtpTimeFrom.Value.Minute + "" + this.dtpTimeFrom.Value.Second;
-			//String searchEndTime = this.dtpTimeTo.Value.Hour + "" + this.dtpTimeTo.Value.Minute + "" + this.dtpTimeTo.Value.Second;
 			String searchStartTime = this.getTime(this.dtpTimeFrom.Value);
 			String searchEndTime = this.getTime(this.dtpTimeTo.Value);
-			MySqlCommand cmd = sch.GetFreeSlotsForADay(schDate,searchStartTime,searchEndTime);
-		//	MessageBox.Show(searchStartTime + " End Time "+ searchEndTime);
-			MySqlDataReader rs = db.ExecuteProcedure(cmd, DBConnect.EXPECT_RESULT_SET);
-			if(rs!=null)
+			MySqlDataReader rs =op.GetFreeSlotsForADay(schDate,searchStartTime,searchEndTime);
+
+			if (rs == null)
+			{
+				Validation.valGeneral("No available Time Slots");
+			}			
+			else
 			{
 				this.dgvTimeSlots.Rows.Clear();
 				this.dgvTimeSlots.Refresh();
 
 				this.dgvTimeSlots.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-				this.dgvTimeSlots.ColumnCount = 4;
+				this.dgvTimeSlots.ColumnCount = 5;
 				this.dgvTimeSlots.Columns[0].Name = "Date";
 				this.dgvTimeSlots.Columns[1].Name = "Start Time";
 				this.dgvTimeSlots.Columns[2].Name = "End Time";
 				this.dgvTimeSlots.Columns[3].Name = "Room";
+				this.dgvTimeSlots.Columns[4].Name = "Room ID";
+				this.dgvTimeSlots.Columns[4].Visible = false;
+
+				this.dgvTimeSlots.AllowUserToDeleteRows = false;
+				this.dgvTimeSlots.AllowUserToAddRows = false;
+				this.dgvTimeSlots.AllowUserToResizeRows = false;
+				this.dgvTimeSlots.ReadOnly = true;
+
+
 				while(rs.Read())
-				{
-					//DataGridViewRow row = new DataGridViewRow();
+				{					
 					DateTime date = Convert.ToDateTime(rs.GetString(0));
-					String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
-					String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3) };
-					this.dgvTimeSlots.Rows.Add(row);	
+
+					if (!(rs.GetString(1).Equals(null) || rs.GetString(2).Equals(null)))
+					{
+						String dateValue = date.Year + "-" + date.Month + "-" + date.Day;
+						String[] row = { dateValue, rs.GetString(1), rs.GetString(2), rs.GetString(3), rs.GetString(4) };
+					
+						this.dgvTimeSlots.Rows.Add(row);	
+					}
+
+
 				}
 				
 				rs.Close();
+				//this.dgvTimeSlots.Rows[0].Selected = false;
+				this.RoomID = -1;
+
 			}
 		}
 
@@ -121,6 +191,10 @@ namespace AMC
 		private void btnCheck_Click(object sender, EventArgs e)
 		{
 			this.FillAvailableTimeSlots();
+			this.ActiveControl = this.btnAddSch;
+			dgvTimeSlots.ClearSelection();
+
+
 		}
 
 		private String getTime(DateTime value)
@@ -173,6 +247,10 @@ namespace AMC
 				{
 					Validation.valGeneral("Please select a Doctor");
 				}
+				//if (CmbRoom.SelectedIndex == 0 || (this.CmbRoom.SelectedItem as ComboBoxItem) == null)
+				//{
+				//	Validation.valGeneral("Please select a Room");
+				//}
 				Validation.valMaxPatients(txtMaxPatients.Text);
 				
 				String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
@@ -181,17 +259,44 @@ namespace AMC
 				String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
 				String MaxPatients = this.txtMaxPatients.Text;
 				int Status = 2;
-				DBConnect db = DBConnect.Connect();
-				Schedule sch = new Schedule(db.Connection);
 
-				MySqlCommand cmd = sch.AddSchedule(date,startTime,endTime,MaxPatients,Status + "",DID);
-				db.ExecuteProcedure(cmd, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+				if (dgvTimeSlots== null || dgvTimeSlots.SelectedRows == null)
+				{
+					Validation.valGeneral("Select a Time Slot");
+				}
+				DataGridViewRow row = this.dgvTimeSlots.SelectedRows[0];
+				String RID = (String)row.Cells[4].Value;
+				Int32.TryParse(RID, out this.RoomID);
+
+				String sStartTime = (String)row.Cells[1].Value;
+				String sEndTime = (String)row.Cells[2].Value;
+				DateTime selectedStartTime = Convert.ToDateTime(sStartTime);
+				DateTime selectedEndTime = Convert.ToDateTime(sEndTime);
+
+
+				if (selectedStartTime > this.dtpScheduleFrom.Value)
+				{
+					Validation.valGeneral("Start Time is less than Selected start time");
+				}
+
+				if (selectedEndTime < this.dtpScheduleTo.Value)
+				{
+					Validation.valGeneral("End Time is higher than Selected End time");
+				}
+
+				//MessageBox.Show("Selected Room ID : " + RID);				
+				Operator op = new Operator();
+
+				MySqlDataReader rs  = op.AddSchedule(date, startTime, endTime, MaxPatients, Status + "", DID, RID);
 
 				MessageBox.Show("Schedule Added!");
 			}
-			catch (Validation ex){ }
+			catch (Validation){ }
+		}
 
-		
+		private void dgvTimeSlots_SelectionChanged(object sender, EventArgs e)
+		{
+			
 		}
 	}
 }

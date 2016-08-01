@@ -13,9 +13,11 @@ create table Appointment
     Status int(1)
     
 );
-call AddAppointment(1,2);
+call AddAppointment(1,13);
 select * from appointment;
 drop procedure AddAppointment;
+
+
 
 DELIMITER // 
 create procedure AddAppointment(
@@ -152,6 +154,8 @@ BEGIN
 END //
 DELIMITER ;
 
+
+drop function getTime;
 DELIMITER //
 create function getTime (vSchID int) returns time 
     
@@ -173,9 +177,9 @@ BEGIN
     where SchID = vSchID;
     
   # set avrTime = sec_to_time(Time_to_sec(eTime -sTime) / mPatients);
-    set avrTime =(time_to_sec(eTime) -time_to_sec(sTime))/mPatients;
+    set avrTime =sec_to_time((time_to_sec(eTime) -time_to_sec(sTime))/mPatients);
   #  select avrTime;
-    set appTime = sec_to_time(time_to_sec(sTime) + avrTime * (QueueNo-1) - extraTime);
+    set appTime = sec_to_time(time_to_sec(sTime) + time_to_sec(avrTime) * (QueueNo-1) - extraTime);
     
     return appTime;
     

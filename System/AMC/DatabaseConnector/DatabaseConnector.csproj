@@ -43,6 +43,7 @@
     <Compile Include="Appointment.cs" />
     <Compile Include="Doctor.cs" />
     <Compile Include="Doc_Spec.cs" />
+    <Compile Include="Operator.cs" />
     <Compile Include="Patient.cs" />
     <Compile Include="DBConnect.cs" />
     <Compile Include="Parameter.cs" />
