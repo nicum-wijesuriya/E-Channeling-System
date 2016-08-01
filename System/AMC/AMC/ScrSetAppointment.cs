@@ -500,6 +500,26 @@ namespace AMC
 			this.Hide();
 		}
 
+		private void cmbDoctor_Click(object sender, EventArgs e)
+		{
+			cmbDoctor.DroppedDown = true;
+
+		}
+
+		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
+		{
+		}
+
+		private void cmbSpec_Click(object sender, EventArgs e)
+		{
+			cmbSpec.DroppedDown = true;
+		}
+
+		private void cmbSchedule_Click(object sender, EventArgs e)
+		{
+			cmbSchedule.DroppedDown = true;
+		}
+
 		
 
 	}
