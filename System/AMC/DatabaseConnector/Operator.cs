@@ -579,6 +579,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader UpdateDocSpec(String vDID, String oldSID, String newSID)
 		{
+
 			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vDID", vDID));
 			parameterList.Add(new Parameter("oldSID", oldSID));
@@ -600,6 +601,7 @@ namespace DatabaseConnector
 		}
 		public MySqlDataReader AddAppointment(String vPID, String vSchID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vPID", vPID));
 			parameterList.Add(new Parameter("vSchID", vSchID));
 
@@ -620,6 +622,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader UpdateAppointment(String vRefID, String vSchID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
 			parameterList.Add(new Parameter("vSchID", vSchID));
 
@@ -640,7 +643,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader CancelAppointment(String vRefID)
 		{
-
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
 
 			MySqlCommand command = new MySqlCommand();
@@ -660,6 +663,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader CloseAppointment(String vRefID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
 			try
 			{
@@ -687,6 +691,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader FindAppointment(String vRefID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
 
 			MySqlCommand command = new MySqlCommand();
@@ -706,6 +711,7 @@ namespace DatabaseConnector
 
 		public MySqlDataReader FindAppointmentByID(String vRefID)
 		{
+			parameterList = new ParameterList();
 			parameterList.Add(new Parameter("vRefID", vRefID));
 
 			MySqlCommand command = new MySqlCommand();
@@ -719,7 +725,27 @@ namespace DatabaseConnector
 				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
 			}
 
-			MySqlDataReader rs = db.ExecuteProcedure(command, DBConnect.DOES_NOT_EXPECT_RESULT_SET);
+			MySqlDataReader rs = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+			return rs;
+		}
+
+		public MySqlDataReader FindAppointmentByPatient(String vPID)
+		{
+			parameterList = new ParameterList();
+			parameterList.Add(new Parameter("vPID", vPID));
+
+			MySqlCommand command = new MySqlCommand();
+			command.Connection = this.db.Connection;
+			command.CommandText = "FindAppointmentByPatient";
+			command.CommandType = CommandType.StoredProcedure;
+
+			foreach (Parameter p in parameterList.List)
+			{
+				command.Parameters.AddWithValue(p.ParameterName, p.ParameterValue);
+				command.Parameters[p.ParameterName].Direction = ParameterDirection.Input;
+			}
+
+			MySqlDataReader rs = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
 			return rs;
 		}
 	}

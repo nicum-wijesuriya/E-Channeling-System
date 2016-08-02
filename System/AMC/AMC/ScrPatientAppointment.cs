@@ -14,9 +14,14 @@ namespace AMC
 {
 	public partial class ScrPatientAppointment : Form
 	{
+		int row;
+		int appRow;
 		public ScrPatientAppointment()
 		{
 			InitializeComponent();
+			row = -1;
+			appRow = -1;
+			this.lblSelectedReference.Text = "";
 		}
 
 		private void ScrPatientAppointment_Load(object sender, EventArgs e)
@@ -68,10 +73,98 @@ namespace AMC
 
 		private void ScrPatientAppointment_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			if(this.Tag.GetType() == typeof(ScrCancelAppointment))
-			{
+				if(this.Tag != null)
+				{
+					ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
+					scr.Show();
+				}
 				
+		}
+
+		private void btnClose_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+	//	String SelectedRefID;
+		private void dgvPatient_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			try
+			{
+				this.row = e.RowIndex;
+				if(row != -1)
+				{
+					Operator op = new Operator();
+					
+					
+					this.dgvAppointment.Rows.Clear();
+					this.dgvPatient.Refresh();
+
+					this.dgvAppointment.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+					this.dgvAppointment.ColumnCount = 7;
+					this.dgvAppointment.Columns[0].Name = "RefID";
+					this.dgvAppointment.Columns[0].Visible = false;
+					this.dgvAppointment.Columns[1].Name = "Doctor";
+					this.dgvAppointment.Columns[2].Name = "Date";
+					this.dgvAppointment.Columns[3].Name = "Time";
+					this.dgvAppointment.Columns[4].Name = "Queue Number";
+					this.dgvAppointment.Columns[5].Name = "Fee";
+				//	this.lblSelectedReference.Text = this.dgvPatient.Rows[row].Cells[0].Value as String;
+					MySqlDataReader rs = op.FindAppointmentByPatient(this.dgvPatient.Rows[row].Cells[0].Value as String);
+					if (rs == null || !rs.HasRows)
+					{
+						Validation.valGeneral("No Appoinments Avaialable");					
+					}
+					
+					while (rs.Read())
+					{
+						String[] DataGridRow = { rs.GetString(0), rs.GetString(1), rs.GetString(2), rs.GetString(3), rs.GetString(4), rs.GetString(5) };
+
+						this.dgvAppointment.Rows.Add(DataGridRow);
+					}
+
+					rs.Close();
+
+				}
 			}
+			catch (Validation){}			
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			if(row != -1)
+			{
+				ScrSetAppointment scr = new ScrSetAppointment();
+				this.Tag = null;
+				scr.Tag = new ScrHome();
+				scr.setNICNo(this.dgvPatient.Rows[row].Cells[4].Value as String);
+				scr.CallBtnCheck();
+				scr.Show();
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please Select a Patient");
+			}
+			
+		}
+
+		private void btnUpdate_Click(object sender, EventArgs e)
+		{
+			ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
+			scr.setRefID(this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String);
+			scr.callUpdate();
+			
+			this.Close();
+		}
+
+		private void dgvAppointment_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			this.appRow = e.RowIndex;
+			if(appRow != -1)
+			{
+				this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String;
+			}
+			
 		}
 	}
 }

@@ -311,5 +311,14 @@ namespace AMC
 			scr.Show();
 			this.Hide();
 		}
+
+		public void setRefID(String value)
+		{
+			this.txtRefID.Text = value;
+		}
+		public void callUpdate()
+		{
+			this.btnUpdate_Click(new Object(), new EventArgs());
+		}
 	}
 }
