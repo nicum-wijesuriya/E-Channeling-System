@@ -14,11 +14,13 @@ namespace AMC
 {
 	public partial class ScrDoctors : Form
 	{
+		int row;
+
 		public ScrDoctors()
 		{
 			InitializeComponent();
 			FillDoctor();
-
+			row = -1;
 		}
 
 		private void FillDoctor()
@@ -58,6 +60,19 @@ namespace AMC
 		{
 			var scr = (ScrHome)Tag;
 			scr.Show();
+		}
+
+		private void dgvDoctors_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (e.RowIndex != -1)
+			{
+				row = e.RowIndex;
+			}
+
+			this.dgvDoctors.Rows[row].Selected = true;
+
+			this.SelectedNICNo = dgvPatients.Rows[row].Cells[4].Value as String;
+			this.lblTest.Text = this.SelectedNICNo;
 		}
 	}
 }

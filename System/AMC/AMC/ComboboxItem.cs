@@ -45,5 +45,10 @@ namespace AMC
 		{
 			return Text;
 		}
+
+		public Boolean Equals(ComboBoxItem item)
+		{
+			return (this.Value.Equals(item.Value) && this.text.Equals(item.Text));
+		}
 	}
 }
