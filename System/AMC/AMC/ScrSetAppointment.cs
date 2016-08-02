@@ -526,7 +526,25 @@ namespace AMC
 
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (this.cmbSpec.SelectedIndex != 0)
+			{
+				Operator op = new Operator();
+				MySqlDataReader rs = op.AvailableDoctorsForASpecialization((this.cmbSpec.SelectedItem as ComboBoxItem).Value);
+				this.cmbDoctor.Items.Clear();
+				this.cmbDoctor.Items.Add(new ComboBoxItem("0","All"));
+				while(rs.Read())
+				{
+					this.cmbDoctor.Items.Add(new ComboBoxItem(rs.GetInt32(0) + "", rs.GetString(1)));
+				}
+				rs.Close();
 
+				this.cmbDoctor.SelectedIndex = 0;
+			}
+			else
+			{
+				this.FillDoctor();
+			}
+			
 		}
 
 		private void cmbSpec_Click(object sender, EventArgs e)

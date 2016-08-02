@@ -295,5 +295,13 @@ namespace AMC
 		{
 			
 		}
+
+		private void btnShowAll_Click(object sender, EventArgs e)
+		{
+			ScrDoctors scr = new ScrDoctors();
+			scr.Tag = this;
+			scr.Show();
+			this.Hide();
+		}
 	}
 }
