@@ -526,6 +526,7 @@ namespace AMC
 
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
 		{
+
 		}
 
 		private void cmbSpec_Click(object sender, EventArgs e)
