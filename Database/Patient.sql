@@ -52,7 +52,7 @@ Begin
 		SET MESSAGE_TEXT = 'Invalid NIC Number';
     END IF;
      
-    IF ( select vEmail NOT REGEXP '^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$') then
+    IF ( select vEmail NOT REGEXP '^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$') then
 		SIGNAL SQLSTATE '45000'
 		SET MESSAGE_TEXT = 'Invalid Email Address';
     END IF;
@@ -73,11 +73,11 @@ Begin
     END IF;
     IF ( vACity = '') then
 		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Address Street cannot be empty';
+		SET MESSAGE_TEXT = 'Address City cannot be empty';
     END IF;
     IF ( vAStreet = '') then
 		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Last name cannot be empty';
+		SET MESSAGE_TEXT = 'Address Streey cannot be empty';
     END IF;
 	insert into Patient (FName,LName,ANumber, AStreet,ACity,Email,NICNo,Title,CMobile,CHome,IsLocal) 
 	values (vFName,vLName,vANumber,vAStreet,vACity,vEmail,vNICNo,vTitle,vCMobile,vCHome,vIsLocal);
@@ -98,8 +98,8 @@ create procedure UpdatePatient (
     vACity varchar(25),
     vEmail varchar(50),
     vNICNo varchar(10),
-    vCMobile int(10),
-    vCHome int(10),
+    vCMobile varchar(10),
+    vCHome varchar(10),
     vIsLocal bool
 
 )
@@ -121,7 +121,7 @@ BEGIN
 		SET MESSAGE_TEXT = 'Invalid NIC Number';
     END IF;
      
-    IF ( select vEmail NOT REGEXP '^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$') then
+    IF ( select vEmail NOT REGEXP '^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$') then
 		SIGNAL SQLSTATE '45000'
 		SET MESSAGE_TEXT = 'Invalid Email Address';
     END IF;
@@ -142,11 +142,11 @@ BEGIN
     END IF;
     IF ( vACity = '') then
 		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Address Street cannot be empty';
+		SET MESSAGE_TEXT = 'Address City cannot be empty';
     END IF;
     IF ( vAStreet = '') then
 		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Last name cannot be empty';
+		SET MESSAGE_TEXT = 'Address Street cannot be empty';
     END IF;
 
 	update Patient set 

@@ -336,7 +336,7 @@ namespace AMC
 				{
 					Operator op = new Operator();
 					MySqlDataReader rs = op.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
-						this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
+						this.txtACity.Text, this.txtEmail.Text.Trim(), this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 					//db.CloseConnection();
 				}
 				else
@@ -344,7 +344,7 @@ namespace AMC
 					Operator op = new Operator();
 
 					MySqlDataReader rs = op.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
-							, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
+							, this.txtEmail.Text.Trim(), this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
 
 
 					rs.Read();
