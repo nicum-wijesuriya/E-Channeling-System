@@ -25,8 +25,7 @@ create procedure AddDoctor (
 	vFee varchar(9)
 )
 
-Begin
-	
+Begin	
     IF ( select vTitle NOT REGEXP '^(Prof.|Dr.)|(Prof.|Dr.)\((Mrs.|Ms.)\)$') then
 		SIGNAL SQLSTATE '45000'
 		SET MESSAGE_TEXT = 'Invalid Title';
@@ -83,6 +82,40 @@ create procedure UpdateDoctor (
 )
 
 Begin
+   	if (select count(DID) from Doctor where DID = vDID) = 0 then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Doctor ID';
+    END IF;
+    IF ( select vTitle NOT REGEXP '^(Prof.|Dr.)|(Prof.|Dr.)\((Mrs.|Ms.)\)$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Title';
+    END IF;       
+    
+    IF ( select vFname NOT REGEXP '^[a-zA-Z]+[\ a-zA-Z]*$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Please fill First Name';
+    END IF;    
+        
+	IF ( select vLname NOT REGEXP '^[a-zA-Z]+[\ a-zA-Z]*$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Please fill Last Name';
+    END IF;    
+    
+    IF ( select vContact NOT REGEXP '^0{0,1}7[0-9]{8}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Contact Number';
+    END IF;
+    
+    IF ( select vContact NOT REGEXP '^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid email address';
+    END IF;
+    
+    IF(select vFee NOT REGEXP '^([0-9]+)$|^([0-9]+(.00)+)$') THEN 
+		SIGNAL SQLSTATE '45000' 
+		SET MESSAGE_TEXT = 'Invalid Fee';
+	END IF;
+    
 	update Doctor set 
     Title = vTitle,
 	Fname = vFName,
@@ -96,22 +129,36 @@ Begin
 END //
 DELIMITER ;
 
+drop procedure DeleteDoctor;
 DELIMITER //
 create procedure DeleteDoctor (vDID int)
 
 Begin
-	update Doctor set 
-    isDeleted = true where DID = vDID;
-   
+
+   	if (select count(DID) from Doctor where DID = vDID) = 0 then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Selected Doctor Does Not Exist in the System';
+	else
+		update Doctor set 
+		isDeleted = true where DID = vDID;
+    END IF;
+  
 END //
 DELIMITER ;
+
+drop procedure RecoverDoctor;
 DELIMITER //
 create procedure RecoverDoctor (vDID int)
 
 Begin
-	update Doctor set 
-    isDeleted = false where DID = vDID;
-   
+
+   	if (select count(DID) from Doctor where DID = vDID) = 0 then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Selected Doctor Does Not Exist in the System';
+	else
+		update Doctor set 
+		isDeleted = false where DID = vDID;
+    END IF; 
 END //
 DELIMITER ;
 
@@ -123,11 +170,17 @@ BEGIN
 	Select distinct(DID), concat(Title,FName,' ',LName) from AvailableDoctors;
 END //
 DELIMITER ;
+
 drop procedure AvailableDoctorsForSpecialization;
 DELIMITER //
 create procedure AvailableDoctorsForSpecialization(vSID int)
 BEGIN
-	Select distinct(DID), concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
+	if (select count(SID) from AvailableDoctors where SID = vSID) = 0 then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'No Doctors for Selected Specialization';
+	else
+		Select Distinct(DID), concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
+    END IF;    
 END //
 DELIMITER ;
 
@@ -138,7 +191,6 @@ BEGIN
 	Select distinct(DID), concat(Title,FName,' ',LName), Contact, Email, Fee from Doctor;
 END //
 DELIMITER ;
-call AvailableDoctorsForSpecialization(2);
-select * from Doc_Spec;
 
-select * from speciality;
+
+
