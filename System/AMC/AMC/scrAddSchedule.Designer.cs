@@ -40,7 +40,7 @@
 			this.dtpTimeTo = new System.Windows.Forms.DateTimePicker();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
-			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.grpSchDetails = new System.Windows.Forms.GroupBox();
 			this.txtMaxPatients = new System.Windows.Forms.TextBox();
 			this.dtpScheduleFrom = new System.Windows.Forms.DateTimePicker();
 			this.label6 = new System.Windows.Forms.Label();
@@ -53,19 +53,24 @@
 			this.btnShowAll = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).BeginInit();
 			this.groupBox1.SuspendLayout();
-			this.groupBox2.SuspendLayout();
+			this.grpSchDetails.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// dgvTimeSlots
 			// 
 			this.dgvTimeSlots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dgvTimeSlots.Location = new System.Drawing.Point(32, 19);
+			this.dgvTimeSlots.Location = new System.Drawing.Point(32, 30);
 			this.dgvTimeSlots.MultiSelect = false;
 			this.dgvTimeSlots.Name = "dgvTimeSlots";
+			this.dgvTimeSlots.ReadOnly = true;
+			this.dgvTimeSlots.RowHeadersVisible = false;
+			this.dgvTimeSlots.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.dgvTimeSlots.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvTimeSlots.Size = new System.Drawing.Size(514, 131);
 			this.dgvTimeSlots.TabIndex = 0;
+			this.dgvTimeSlots.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTimeSlots_CellClick);
+			this.dgvTimeSlots.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTimeSlots_CellContentClick);
 			this.dgvTimeSlots.SelectionChanged += new System.EventHandler(this.dgvTimeSlots_SelectionChanged);
 			// 
 			// Doctor
@@ -84,6 +89,7 @@
 			this.cmbDoctor.Name = "cmbDoctor";
 			this.cmbDoctor.Size = new System.Drawing.Size(189, 21);
 			this.cmbDoctor.TabIndex = 1;
+			this.cmbDoctor.Click += new System.EventHandler(this.cmbDoctor_Click);
 			// 
 			// label1
 			// 
@@ -168,20 +174,20 @@
 			this.label2.TabIndex = 0;
 			this.label2.Text = "From";
 			// 
-			// groupBox2
+			// grpSchDetails
 			// 
-			this.groupBox2.Controls.Add(this.txtMaxPatients);
-			this.groupBox2.Controls.Add(this.dtpScheduleFrom);
-			this.groupBox2.Controls.Add(this.label6);
-			this.groupBox2.Controls.Add(this.dtpScheduleTo);
-			this.groupBox2.Controls.Add(this.label4);
-			this.groupBox2.Controls.Add(this.label5);
-			this.groupBox2.Location = new System.Drawing.Point(6, 305);
-			this.groupBox2.Name = "groupBox2";
-			this.groupBox2.Size = new System.Drawing.Size(574, 52);
-			this.groupBox2.TabIndex = 6;
-			this.groupBox2.TabStop = false;
-			this.groupBox2.Text = "Schedule Details";
+			this.grpSchDetails.Controls.Add(this.txtMaxPatients);
+			this.grpSchDetails.Controls.Add(this.dtpScheduleFrom);
+			this.grpSchDetails.Controls.Add(this.label6);
+			this.grpSchDetails.Controls.Add(this.dtpScheduleTo);
+			this.grpSchDetails.Controls.Add(this.label4);
+			this.grpSchDetails.Controls.Add(this.label5);
+			this.grpSchDetails.Location = new System.Drawing.Point(6, 305);
+			this.grpSchDetails.Name = "grpSchDetails";
+			this.grpSchDetails.Size = new System.Drawing.Size(574, 52);
+			this.grpSchDetails.TabIndex = 6;
+			this.grpSchDetails.TabStop = false;
+			this.grpSchDetails.Text = "Schedule Details";
 			// 
 			// txtMaxPatients
 			// 
@@ -248,7 +254,7 @@
 			this.groupBox3.Size = new System.Drawing.Size(574, 180);
 			this.groupBox3.TabIndex = 7;
 			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Available Time Slots";
+			this.groupBox3.Text = "Select a  Time Slot";
 			// 
 			// btnAddSch
 			// 
@@ -293,7 +299,7 @@
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.btnAddSch);
 			this.Controls.Add(this.groupBox3);
-			this.Controls.Add(this.groupBox2);
+			this.Controls.Add(this.grpSchDetails);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.dtpDate);
 			this.Controls.Add(this.label1);
@@ -307,8 +313,8 @@
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).EndInit();
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
-			this.groupBox2.ResumeLayout(false);
-			this.groupBox2.PerformLayout();
+			this.grpSchDetails.ResumeLayout(false);
+			this.grpSchDetails.PerformLayout();
 			this.groupBox3.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
@@ -326,7 +332,7 @@
 		private System.Windows.Forms.DateTimePicker dtpTimeTo;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.GroupBox grpSchDetails;
 		private System.Windows.Forms.DateTimePicker dtpScheduleFrom;
 		private System.Windows.Forms.DateTimePicker dtpScheduleTo;
 		private System.Windows.Forms.Label label4;

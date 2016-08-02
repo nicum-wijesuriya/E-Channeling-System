@@ -160,7 +160,7 @@ namespace DatabaseConnector
 			return rs;
 		}
 
-		public MySqlDataReader AddSchedule(String vDate, String vStartTime, String vEndTime, String vMaxPatients, String vStatus, String vDID, String vRoomID)
+		public MySqlDataReader AddSchedule(String vDate, String vStartTime, String vEndTime, String vMaxPatients, String vDID, String vRoomID)
 		{
 			parameterList = new ParameterList();
 
@@ -168,7 +168,6 @@ namespace DatabaseConnector
 			parameterList.Add(new Parameter("vStartTime", vStartTime));
 			parameterList.Add(new Parameter("vEndTime", vEndTime));
 			parameterList.Add(new Parameter("vMaxPatients", vMaxPatients));
-			parameterList.Add(new Parameter("vStatus", vStatus));
 			parameterList.Add(new Parameter("vDID", vDID));
 			parameterList.Add(new Parameter("vRoomID", vRoomID));
 

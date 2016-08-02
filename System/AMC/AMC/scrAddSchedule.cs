@@ -25,6 +25,7 @@ namespace AMC
 			count = 0;
 			this.MaximizeBox = false;
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
+			this.grpSchDetails.Enabled = false;
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -190,6 +191,7 @@ namespace AMC
 
 		private void btnCheck_Click(object sender, EventArgs e)
 		{
+			this.grpSchDetails.Enabled = false;
 			this.FillAvailableTimeSlots();
 			this.ActiveControl = this.btnAddSch;
 			dgvTimeSlots.ClearSelection();
@@ -247,7 +249,10 @@ namespace AMC
 				{
 					Validation.valGeneral("Please select a Doctor");
 				}
-				
+				if (dgvTimeSlots== null || dgvTimeSlots.SelectedRows.Count == 0)
+				{
+					Validation.valGeneral("Select a Time Slot");
+				}				
 				Validation.valMaxPatients(txtMaxPatients.Text);
 				
 				String date = this.dtpDate.Value.Year + "-" + this.dtpDate.Value.Month + "-" + this.dtpDate.Value.Day;
@@ -255,12 +260,7 @@ namespace AMC
 				String endTime = this.getTime(this.dtpScheduleTo.Value);
 				String DID = (this.cmbDoctor.SelectedItem as ComboBoxItem).Value;
 				String MaxPatients = this.txtMaxPatients.Text;
-				int Status = 2;
 
-				if (dgvTimeSlots== null || dgvTimeSlots.SelectedRows == null)
-				{
-					Validation.valGeneral("Select a Time Slot");
-				}
 				DataGridViewRow row = this.dgvTimeSlots.SelectedRows[0];
 				String RID = (String)row.Cells[4].Value;
 				Int32.TryParse(RID, out this.RoomID);
@@ -284,11 +284,17 @@ namespace AMC
 				//MessageBox.Show("Selected Room ID : " + RID);				
 				Operator op = new Operator();
 
-				MySqlDataReader rs  = op.AddSchedule(date, startTime, endTime, MaxPatients, Status + "", DID, RID);
+				MySqlDataReader rs  = op.AddSchedule(date, startTime, endTime, MaxPatients, DID, RID);
 
 				MessageBox.Show("Schedule Added!");
 			}
 			catch (Validation){ }
+			catch (MySqlException ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
+
+			this.Close();
 		}
 
 		private void dgvTimeSlots_SelectionChanged(object sender, EventArgs e)
@@ -302,6 +308,21 @@ namespace AMC
 			scr.Tag = this;
 			scr.Show();
 			this.Hide();
+		}
+
+		private void dgvTimeSlots_CellContentClick(object sender, DataGridViewCellEventArgs e)
+		{
+
+		}
+
+		private void dgvTimeSlots_CellClick(object sender, DataGridViewCellEventArgs e)
+		{
+			this.grpSchDetails.Enabled = true;
+		}
+
+		private void cmbDoctor_Click(object sender, EventArgs e)
+		{
+			cmbDoctor.DroppedDown = true;
 		}
 	}
 }

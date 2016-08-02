@@ -11,6 +11,8 @@ create table Schedule
     DID int references Doctor(DID),
     RoomID int references room(RoomID)
 );
+
+call AddSchedule ('2016-08-03', '080000', '090000', '20', 19, 1);
 drop procedure AddSchedule;
 
 DELIMITER // 
@@ -19,7 +21,6 @@ create procedure AddSchedule(
     vStartTime time,
     vEndTime time,
     vMaxPatients varchar(2),
-    vStatus int(1), 
     vDID int,
     vRoomID int
     )
@@ -49,7 +50,7 @@ BEGIN
     vStartTime,
     vEndTime,
     vMaxPatients,
-    vStatus, 
+    2,
     vDID,
     vRoomID
     );
