@@ -57,33 +57,39 @@ namespace AMC
 
 		private void ScrDoctors_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			Form scr;
+			
 			if(this.SelectedDoctor == null)
 			{
 				if (this.Tag.GetType() == typeof(scrAddSchedule))
-				{
-					scr = this.Tag as scrAddSchedule;
+				{					
+					scrAddSchedule scr = this.Tag as scrAddSchedule;
+					scr.Show();
 				}	
 				else
 				{
-					scr = this.Tag as ScrHome;
+					ScrHome scr = this.Tag as ScrHome;
+					scr.Show();
 				}				
 			}
 			else
 			{
 				
-				//scr.SelectDoctor(this.SelectedDoctor);
+				
 				if (this.Tag.GetType() == typeof(ScrHome))
 				{
-					scr = new scrAddSchedule();
+					scrAddSchedule scr = new scrAddSchedule();
 					scr.Tag = this.Tag as ScrHome;
+					scr.SelectDoctor(this.SelectedDoctor);
+					scr.Show();
 				}
 				else
 				{
+					scrAddSchedule scr = new scrAddSchedule();
 					scr = this.Tag as scrAddSchedule;
-				}				
-			}
-			scr.Show();
+					scr.SelectDoctor(this.SelectedDoctor);
+					scr.Show();
+				}
+			}			
 		}
 
 		private void dgvDoctors_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)

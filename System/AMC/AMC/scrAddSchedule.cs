@@ -287,6 +287,7 @@ namespace AMC
 				MySqlDataReader rs  = op.AddSchedule(date, startTime, endTime, MaxPatients, DID, RID);
 
 				MessageBox.Show("Schedule Added!");
+				this.Close();
 			}
 			catch (Validation){ }
 			catch (MySqlException ex)
@@ -294,7 +295,7 @@ namespace AMC
 				MessageBox.Show(ex.Message);
 			}
 
-			this.Close();
+			
 		}
 
 		private void dgvTimeSlots_SelectionChanged(object sender, EventArgs e)
@@ -309,7 +310,21 @@ namespace AMC
 			scr.Show();
 			this.Hide();
 		}
-
+		public void SelectDoctor(ComboBoxItem selectedDoctor)
+		{
+			int i = 0;
+			foreach(ComboBoxItem doctor in this.cmbDoctor.Items)
+			{
+				
+				if(doctor.Equals(selectedDoctor))
+				{
+					this.cmbDoctor.SelectedIndex = i;
+					break;
+				}
+				this.cmbDoctor.SelectedIndex = 0;
+				i++;
+			}
+		}
 		private void dgvTimeSlots_CellContentClick(object sender, DataGridViewCellEventArgs e)
 		{
 
