@@ -18,23 +18,12 @@ create procedure AddSchedule(
 	vDate date ,
     vStartTime time,
     vEndTime time,
-    vMaxPatients varchar(2),
+    vMaxPatients int,
     vStatus int(1), 
     vDID int,
     vRoomID int
     )
 BEGIN
-
-    IF ( select vDate < CURDATE()) then
-		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Invalid Date';
-    END IF;   
-    
-	IF ( select vMaxPatients NOT REGEXP '^[0-9]{1,2}$') then
-		SIGNAL SQLSTATE '45000'
-		SET MESSAGE_TEXT = 'Invalid Title';
-    END IF;   
-    
 	insert into Schedule (
 		Date,
 		StartTime,
