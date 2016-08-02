@@ -11,6 +11,8 @@ create table Schedule
     DID int references Doctor(DID),
     RoomID int references room(RoomID)
 );
+
+call AddSchedule ('2016-08-03', '080000', '090000', '20', 19, 1);
 drop procedure AddSchedule;
 
 DELIMITER // 
@@ -18,12 +20,22 @@ create procedure AddSchedule(
 	vDate date ,
     vStartTime time,
     vEndTime time,
-    vMaxPatients int,
-    vStatus int(1), 
+    vMaxPatients varchar(2),
     vDID int,
     vRoomID int
     )
 BEGIN
+
+    IF ( select vDate < CURDATE()) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Date';
+    END IF;   
+    
+	IF ( select vMaxPatients NOT REGEXP '^[0-9]{1,2}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Title';
+    END IF;   
+    
 	insert into Schedule (
 		Date,
 		StartTime,
@@ -38,7 +50,7 @@ BEGIN
     vStartTime,
     vEndTime,
     vMaxPatients,
-    vStatus, 
+    2,
     vDID,
     vRoomID
     );

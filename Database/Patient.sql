@@ -30,14 +30,56 @@ create procedure AddPatient (
     vACity varchar(25),
     vEmail varchar(50),
     vNICNo varchar(10),
-    vCMobile int(10),
-    vCHome int(10),
+    vCMobile varchar(10),
+    vCHome varchar(10),
     vIsLocal bool
 
 )
 
 Begin 
 
+	  IF ( select vCMobile NOT REGEXP '^0{0,1}7[0-9]{8}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Contact Number';
+    END IF;
+    
+    IF ( select vCHome NOT REGEXP '^0{0,1}[0-9]{9}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Home Number';
+    END IF;
+    
+    IF ( select vNICNo NOT REGEXP '^([0-9]{9}(V|X|v|x)|[0-9]{12})+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid NIC Number';
+    END IF;
+     
+    IF ( select vEmail NOT REGEXP '^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Email Address';
+    END IF;
+    
+    IF ( vFName REGEXP '^[\s]+$' OR vFName NOT REGEXP '^[a-zA-Z]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid First name';
+    END IF;
+    
+    IF ( vLName = '' OR vLName NOT REGEXP '^[a-zA-Z\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Last name';
+    END IF;
+    
+    IF ( vANumber REGEXP '^[\s]+$' ) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address Number cannot be empty';
+    END IF;
+    IF ( vACity REGEXP '^[\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address City cannot be empty';
+    END IF;
+    IF ( vAStreet REGEXP '^[\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address Street cannot be empty';
+    END IF;
 	insert into Patient (FName,LName,ANumber, AStreet,ACity,Email,NICNo,Title,CMobile,CHome,IsLocal) 
 	values (vFName,vLName,vANumber,vAStreet,vACity,vEmail,vNICNo,vTitle,vCMobile,vCHome,vIsLocal);
 	Select PID from patient order by PID desc LIMIT 1 ;
@@ -57,12 +99,57 @@ create procedure UpdatePatient (
     vACity varchar(25),
     vEmail varchar(50),
     vNICNo varchar(10),
-    vCMobile int(10),
-    vCHome int(10),
+    vCMobile varchar(10),
+    vCHome varchar(10),
     vIsLocal bool
 
 )
 BEGIN 
+
+
+	  IF ( select vCMobile NOT REGEXP '^0{0,1}7[0-9]{8}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Contact Number';
+    END IF;
+    
+    IF ( select vCHome NOT REGEXP '^0{0,1}[0-9]{9}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Home Number';
+    END IF;
+    
+    IF ( select vNICNo NOT REGEXP '^([0-9]{9}(V|X|v|x)|[0-9]{12})+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid NIC Number';
+    END IF;
+     
+    IF ( select vEmail NOT REGEXP '^[A-Z0-9._%-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Email Address';
+    END IF;
+    
+    IF ( vFName REGEXP '^[\s]+$' OR vFName NOT REGEXP '^[a-zA-Z]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid First name';
+    END IF;
+    
+    IF ( vLName = '' OR vLName NOT REGEXP '^[a-zA-Z\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid Last name';
+    END IF;
+    
+    IF ( vANumber REGEXP '^[\s]+$' ) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address Number cannot be empty';
+    END IF;
+    IF ( vACity REGEXP '^[\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address City cannot be empty';
+    END IF;
+    IF ( vAStreet REGEXP '^[\s]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Address Street cannot be empty';
+    END IF;
+
 	update Patient set 
     FName = vFName,
     LName = vLName,

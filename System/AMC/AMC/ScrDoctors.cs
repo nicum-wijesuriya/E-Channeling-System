@@ -14,11 +14,14 @@ namespace AMC
 {
 	public partial class ScrDoctors : Form
 	{
+		int row;
+		ComboBoxItem SelectedDoctor;
 		public ScrDoctors()
 		{
 			InitializeComponent();
 			FillDoctor();
-
+			row = -1;
+			SelectedDoctor = null;
 		}
 
 		private void FillDoctor()
@@ -44,8 +47,6 @@ namespace AMC
 				this.dgvDoctors.Rows.Add(row);
 			}
 			rs.Close();
-
-
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -56,8 +57,65 @@ namespace AMC
 
 		private void ScrDoctors_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			var scr = (ScrHome)Tag;
-			scr.Show();
+			
+			if(this.SelectedDoctor == null)
+			{
+				if (this.Tag.GetType() == typeof(scrAddSchedule))
+				{					
+					scrAddSchedule scr = this.Tag as scrAddSchedule;
+					scr.Show();
+				}	
+				else
+				{
+					ScrHome scr = this.Tag as ScrHome;
+					scr.Show();
+				}				
+			}
+			else
+			{
+				
+				
+				if (this.Tag.GetType() == typeof(ScrHome))
+				{
+					scrAddSchedule scr = new scrAddSchedule();
+					scr.Tag = this.Tag as ScrHome;
+					scr.SelectDoctor(this.SelectedDoctor);
+					scr.Show();
+				}
+				else
+				{
+					scrAddSchedule scr = new scrAddSchedule();
+					scr = this.Tag as scrAddSchedule;
+					scr.SelectDoctor(this.SelectedDoctor);
+					scr.Show();
+				}
+			}			
+		}
+
+		private void dgvDoctors_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+		{
+			if (e.RowIndex != -1)
+			{
+				row = e.RowIndex;
+			}
+
+			this.dgvDoctors.Rows[row].Selected = true;
+
+			this.SelectedDoctor = new ComboBoxItem(this.dgvDoctors.Rows[row].Cells[0].Value as String, this.dgvDoctors.Rows[row].Cells[1].Value as String);
+			this.lblTest.Text = this.SelectedDoctor.ToString();
+		}
+
+		private void btnSelect_Click(object sender, EventArgs e)
+		{
+			if(this.SelectedDoctor != null)
+			{
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please Select a Doctor from the List");
+			}
+			
 		}
 	}
 }

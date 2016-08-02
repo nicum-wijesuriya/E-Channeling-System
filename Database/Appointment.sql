@@ -15,9 +15,9 @@ create table Appointment
 );
 call AddAppointment(1,13);
 select * from appointment;
+
+
 drop procedure AddAppointment;
-
-
 
 DELIMITER // 
 create procedure AddAppointment(
@@ -27,12 +27,26 @@ create procedure AddAppointment(
 
 BEGIN
 
+
+
 	Declare vQueNo int;
     Declare vtime time;
     Declare vFee double;
     Declare vDate date;
     Declare vDID int;
-
+    
+    IF ( select vPID NOT REGEXP '^[0-9]+$') then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Invalid PID';
+    END IF; 
+    
+    IF NOT exists( select * from Patient where PID = vPID ) then
+		SIGNAL SQLSTATE '45000'
+		SET MESSAGE_TEXT = 'Patient not Registered';
+    END IF; 
+    
+    
+    
 	set vQueNo = getQueueNo(vSchID);
     set vTime = getTime(vSchID);
     set vFee = getFee (vSchID);
@@ -218,12 +232,36 @@ drop procedure FindAppointmentByID;
 DELIMITER //
 create procedure FindAppointmentByID(vRefID int)
 BEGIN
-	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID), A.Date, A.Time,A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) from appointment as A where RefID = vRefID;
+	Select A.RefID, (Select concat(Title, ' ', FName, ' ', LName) from Doctor where DID = A.DID), A.Date, A.Time,
+    A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) 
+    from appointment as A 
+    where RefID = vRefID;
 END //
 DELIMITER ;
+
+drop procedure AllAppointments;
+DELIMITER //
+create procedure AllAppointments()
+BEGIN
+	Select A.RefID, (Select concat(Title,' ',FName,' ', LName) from Doctor where DID = A.DID), A.SchID, 
+    A.Date, A.Time, A.QueNo, (Select concat(Title, ' ',FName, ' ', LName) from Patient where PID = A.PID),
+    (Select NICNo from Patient where PID = A.PID)
+    from appointment as A;
+END //
+DELIMITER ;
+
+call AllAppointments();
 
 select * from Appointment;
 select getTime(1);
 
 drop function getFee;
 drop function getTime;
+
+drop procedure FindAppointmentByPatient ;
+DELIMITER //
+create procedure FindAppointmentByPatient(vPID int)
+BEGIN
+	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID) as Doctor, A.Date, A.Time,A.QueNo,A.Fee from appointment as A where PID = vPID AND Date(A.Date) > Date(NOW());
+END //
+DELIMITER ;

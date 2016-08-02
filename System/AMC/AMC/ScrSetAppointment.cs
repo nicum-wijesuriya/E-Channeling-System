@@ -24,6 +24,7 @@ namespace AMC
 			this.FillSpeciality();
 			this.MaximizeBox = false;
 			this.FormBorderStyle = FormBorderStyle.FixedSingle;
+			this.ClearPatientFields();
 		}
 
 		private void label1_Click(object sender, EventArgs e)
@@ -94,6 +95,10 @@ namespace AMC
 				this.currentPID = -1;
 				this.ClearPatientFields();
 			}
+
+			this.groupBox2.Enabled = true;
+			this.groupBox3.Enabled = true;
+			this.btnSave.Enabled = true;
 		}
 		public void setNICNo(String NICNo)
 		{
@@ -103,6 +108,7 @@ namespace AMC
 		public void CallBtnCheck()
 		{
 			this.btnCheck_Click(this,new EventArgs());
+			
 		}
 		public void ClearPatientFields()
 		{
@@ -124,17 +130,17 @@ namespace AMC
 			this.txtEmail.Text = "";
 			this.txtMobileNo.Text = "";
 			this.txtHomeNo.Text = "";
+			this.groupBox2.Enabled = false;
+			this.groupBox3.Enabled = false;
+			this.btnSave.Enabled = false;
 		}
 
 
 		private void checkTitles(String Title)
 		{
 			String[] titleParts = Title.Split('.');
-			////Console.WriteLine(titleParts.Length);
-			//foreach (String val in titleParts)
-			//{
-			//	//Console.WriteLine("Title Part :"+val);
-			//}
+		
+
 			if (titleParts.Length == 3)
 			{
 				switch (titleParts[0].Trim())
@@ -229,14 +235,14 @@ namespace AMC
 				
 
 
-				Validation.valName(txtFirstName.Text, "Please fill First Name");
-				Validation.valName(txtLastName.Text, "Please fill Last Name");
-				Validation.valEmptyField(txtANumber.Text, "Please fill Address Number");
-				Validation.valEmptyField(txtAStreet.Text, "Please fill Street Name");
-				Validation.valEmptyField(txtACity.Text, "Please fill City");
-				Validation.valMobile(txtMobileNo.Text, "Invalid Mobile Number");
-				Validation.valLand(txtHomeNo.Text, "Invalid Home Number");
-				Validation.valEmail(txtEmail.Text);
+				//Validation.valName(txtFirstName.Text, "Please fill First Name");
+				//Validation.valName(txtLastName.Text, "Please fill Last Name");
+				//Validation.valEmptyField(txtANumber.Text, "Please fill Address Number");
+				//Validation.valEmptyField(txtAStreet.Text, "Please fill Street Name");
+				//Validation.valEmptyField(txtACity.Text, "Please fill City");
+				//Validation.valMobile(txtMobileNo.Text, "Invalid Mobile Number");
+				//Validation.valLand(txtHomeNo.Text, "Invalid Home Number");
+				//Validation.valEmail(txtEmail.Text);
 				
 				check = false;
 				foreach (RadioButton r1 in pnlNationality.Controls)
@@ -265,118 +271,131 @@ namespace AMC
 				ClearPatientFields();
 
 			}
-
-			catch (Validation) { }
-			
-
+			catch (Validation)
+			{
+			}
+			catch (MySqlException ex)
+			{
+				MessageBox.Show(ex.Message);
+			}
 
 		}
 
 		private void SaveDetails()
 		{
-			String academicTitle;
-			String personalTitle;
-			String title;
-			int isLocal;
-
-			if (this.radioLocal.Checked)
-			{
-				isLocal = 1;
-			}
-			else
-			{
-				isLocal = 0;
-			}
-
-			if (this.radioProf.Checked)
-			{
-				academicTitle = "Prof.";
-			}
-			else if (this.radioDr.Checked)
-			{
-				academicTitle = "Dr.";
-			}
-			else
-			{
-				academicTitle = "";
-			}
-
-			if (this.radioRev.Checked)
-			{
-				personalTitle = "Rev.";
-			}
-			else if (this.radioMrs.Checked)
-			{
-				personalTitle = "Mrs.";
-			}
-			else if (this.radioMs.Checked)
-			{
-				personalTitle = "Ms.";
-			}
-			else
-			{
-				personalTitle = "Mr.";
-			}
-			title = academicTitle + personalTitle;
-			//Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
-			DBConnect db = DBConnect.Connect();
-			if (this.isRegistered)
-			{
-				Operator op = new Operator();
-				MySqlDataReader rs = op.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
-					this.txtACity.Text, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
-				//db.CloseConnection();
-			}
-			else
-			{
-				Operator op = new Operator();
-
-				MySqlDataReader rs = op.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
-						, this.txtEmail.Text, this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
-
-				
-				rs.Read();
-				this.currentPID = rs.GetInt32(0);
-				rs.Close();
-				//db.CloseConnection();
-			}
-			db = DBConnect.Connect();
-			Appointment app = new Appointment(db.Connection);
-			MySqlCommand command = app.AddAppointment(this.currentPID + "", (this.cmbSchedule.SelectedItem as ComboBoxItem).Value);
-			MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
-			result.Read();
-
-			String RefID = result.GetString(0);
-
-			result.Close();
-			//db.CloseConnection();
 			try
 			{
 
+				String academicTitle;
+				String personalTitle;
+				String title;
+				int isLocal;
+
+
+				if (this.radioLocal.Checked)
+				{
+					isLocal = 1;
+				}
+				else
+				{
+					isLocal = 0;
+				}
+
+				if (this.radioProf.Checked)
+				{
+					academicTitle = "Prof.";
+				}
+				else if (this.radioDr.Checked)
+				{
+					academicTitle = "Dr.";
+				}
+				else
+				{
+					academicTitle = "";
+				}
+
+				if (this.radioRev.Checked)
+				{
+					personalTitle = "Rev.";
+				}
+				else if (this.radioMrs.Checked)
+				{
+					personalTitle = "Mrs.";
+				}
+				else if (this.radioMs.Checked)
+				{
+					personalTitle = "Ms.";
+				}
+				else
+				{
+					personalTitle = "Mr.";
+				}
+				title = academicTitle + personalTitle;
+				//Console.WriteLine("\n\nTitle : " + title + " Length :" + title.Length + "\n\n");
+				DBConnect db = DBConnect.Connect();
+				if (this.isRegistered)
+				{
+					Operator op = new Operator();
+					MySqlDataReader rs = op.UpdatePatient(this.currentPID + "", this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text,
+						this.txtACity.Text, this.txtEmail.Text.Trim(), this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
+					//db.CloseConnection();
+				}
+				else
+				{
+					Operator op = new Operator();
+
+					MySqlDataReader rs = op.AddPatient(this.txtFirstName.Text, this.txtLastName.Text, this.txtANumber.Text, this.txtAStreet.Text, this.txtACity.Text
+							, this.txtEmail.Text.Trim(), this.txtNIC.Text, title, this.txtMobileNo.Text, this.txtHomeNo.Text, isLocal + "");
+
+
+					rs.Read();
+					this.currentPID = rs.GetInt32(0);
+					rs.Close();
+					//db.CloseConnection();
+				}
 				db = DBConnect.Connect();
-				command = app.FindAppointmentByID(RefID + "");
-				result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+				Appointment app = new Appointment(db.Connection);
+				MySqlCommand command = app.AddAppointment(this.currentPID + "", (this.cmbSchedule.SelectedItem as ComboBoxItem).Value);
+				MySqlDataReader result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
 				result.Read();
-				String userEmail = result.GetString(6);
-				//MessageBox.Show("User Email : "+ userEmail);
-				StringBuilder message = new StringBuilder();
-				message.Append("\nRefference Number : " + RefID);
-				message.Append("\n Doctor : " + result.GetString(1));
-				message.Append("\n Date : " + result.GetString(2));
-				message.Append("\n Time : " + result.GetString(3));
-				message.Append("\n Queue No : " + result.GetString(4));
-				message.Append("\n Fee : " + result.GetString(5));
+
+				String RefID = result.GetString(0);
 
 				result.Close();
-				db.CloseConnection();
+				//db.CloseConnection();
+				try
+				{
 
-				Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
-				MessageBox.Show("E-Mail Sent Successfully!");
+					db = DBConnect.Connect();
+					command = app.FindAppointmentByID(RefID + "");
+					result = db.ExecuteProcedure(command, DBConnect.EXPECT_RESULT_SET);
+					result.Read();
+					String userEmail = result.GetString(6);
+					//MessageBox.Show("User Email : "+ userEmail);
+					StringBuilder message = new StringBuilder();
+					message.Append("\nRefference Number : " + RefID);
+					message.Append("\n Doctor : " + result.GetString(1));
+					message.Append("\n Date : " + result.GetString(2));
+					message.Append("\n Time : " + result.GetString(3));
+					message.Append("\n Queue No : " + result.GetString(4));
+					message.Append("\n Fee : " + result.GetString(5));
+
+					result.Close();
+					db.CloseConnection();
+
+					Validation.sendMail(userEmail, message.ToString(), Validation.PATIENT);
+					MessageBox.Show("E-Mail Sent Successfully!");
+				}
+				catch (Exception)
+				{
+					MessageBox.Show("Failed to Send E-Mail!");
+				}
 			}
-			catch (Exception)
+			
+			catch (MySqlException)
 			{
-				MessageBox.Show("Failed to Send E-Mail!");
-			}
+				throw;
+			}			
 		}
 
 		private void FillDoctor()
@@ -508,6 +527,25 @@ namespace AMC
 
 		private void cmbSpec_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			if (this.cmbSpec.SelectedIndex != 0)
+			{
+				Operator op = new Operator();
+				MySqlDataReader rs = op.AvailableDoctorsForASpecialization((this.cmbSpec.SelectedItem as ComboBoxItem).Value);
+				this.cmbDoctor.Items.Clear();
+				this.cmbDoctor.Items.Add(new ComboBoxItem("0","All"));
+				while(rs.Read())
+				{
+					this.cmbDoctor.Items.Add(new ComboBoxItem(rs.GetInt32(0) + "", rs.GetString(1)));
+				}
+				rs.Close();
+
+				this.cmbDoctor.SelectedIndex = 0;
+			}
+			else
+			{
+				this.FillDoctor();
+			}
+			
 		}
 
 		private void cmbSpec_Click(object sender, EventArgs e)
