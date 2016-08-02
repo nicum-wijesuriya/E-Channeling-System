@@ -50,7 +50,6 @@
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
 			this.btnAddSch = new System.Windows.Forms.Button();
 			this.button2 = new System.Windows.Forms.Button();
-			this.btnShowAll = new System.Windows.Forms.Button();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTimeSlots)).BeginInit();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
@@ -88,7 +87,7 @@
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(354, 18);
+			this.label1.Location = new System.Drawing.Point(303, 18);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(30, 13);
 			this.label1.TabIndex = 3;
@@ -97,9 +96,9 @@
 			// 
 			// dtpDate
 			// 
-			this.dtpDate.Location = new System.Drawing.Point(390, 14);
+			this.dtpDate.Location = new System.Drawing.Point(364, 12);
 			this.dtpDate.Name = "dtpDate";
-			this.dtpDate.Size = new System.Drawing.Size(190, 20);
+			this.dtpDate.Size = new System.Drawing.Size(189, 20);
 			this.dtpDate.TabIndex = 2;
 			this.dtpDate.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
 			// 
@@ -119,10 +118,10 @@
 			// 
 			// dtpTimeFrom
 			// 
-			this.dtpTimeFrom.CustomFormat = "HH:mm";
 			this.dtpTimeFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-			this.dtpTimeFrom.Location = new System.Drawing.Point(62, 19);
+			this.dtpTimeFrom.CustomFormat = "HH:mm";
 			this.dtpTimeFrom.MinDate = new System.DateTime(2016, 7, 28, 8, 0, 0, 0);
+			this.dtpTimeFrom.Location = new System.Drawing.Point(62, 19);
 			this.dtpTimeFrom.Name = "dtpTimeFrom";
 			this.dtpTimeFrom.ShowUpDown = true;
 			this.dtpTimeFrom.Size = new System.Drawing.Size(130, 20);
@@ -142,8 +141,8 @@
 			// 
 			// dtpTimeTo
 			// 
-			this.dtpTimeTo.CustomFormat = "HH:mm";
 			this.dtpTimeTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpTimeTo.CustomFormat = "HH:mm";
 			this.dtpTimeTo.Location = new System.Drawing.Point(300, 18);
 			this.dtpTimeTo.Name = "dtpTimeTo";
 			this.dtpTimeTo.ShowUpDown = true;
@@ -192,10 +191,10 @@
 			// 
 			// dtpScheduleFrom
 			// 
-			this.dtpScheduleFrom.CustomFormat = "HH:mm";
 			this.dtpScheduleFrom.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpScheduleFrom.CustomFormat = "HH:mm";
+			this.dtpScheduleFrom.MinDate = new System.DateTime(2016, 7, 28, 8, 0, 0, 0); 
 			this.dtpScheduleFrom.Location = new System.Drawing.Point(62, 19);
-			this.dtpScheduleFrom.MinDate = new System.DateTime(2016, 7, 28, 8, 0, 0, 0);
 			this.dtpScheduleFrom.Name = "dtpScheduleFrom";
 			this.dtpScheduleFrom.ShowUpDown = true;
 			this.dtpScheduleFrom.Size = new System.Drawing.Size(86, 20);
@@ -213,8 +212,8 @@
 			// 
 			// dtpScheduleTo
 			// 
-			this.dtpScheduleTo.CustomFormat = "HH:mm";
 			this.dtpScheduleTo.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+			this.dtpScheduleTo.CustomFormat = "HH:mm";
 			this.dtpScheduleTo.Location = new System.Drawing.Point(189, 19);
 			this.dtpScheduleTo.Name = "dtpScheduleTo";
 			this.dtpScheduleTo.ShowUpDown = true;
@@ -272,24 +271,12 @@
 			this.button2.UseVisualStyleBackColor = false;
 			this.button2.Click += new System.EventHandler(this.button2_Click);
 			// 
-			// btnShowAll
-			// 
-			this.btnShowAll.BackColor = System.Drawing.SystemColors.Control;
-			this.btnShowAll.Location = new System.Drawing.Point(273, 12);
-			this.btnShowAll.Name = "btnShowAll";
-			this.btnShowAll.Size = new System.Drawing.Size(75, 24);
-			this.btnShowAll.TabIndex = 11;
-			this.btnShowAll.Text = "Doctor List";
-			this.btnShowAll.UseVisualStyleBackColor = false;
-			this.btnShowAll.Click += new System.EventHandler(this.btnShowAll_Click);
-			// 
 			// scrAddSchedule
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.AliceBlue;
-			this.ClientSize = new System.Drawing.Size(588, 399);
-			this.Controls.Add(this.btnShowAll);
+			this.ClientSize = new System.Drawing.Size(590, 399);
 			this.Controls.Add(this.button2);
 			this.Controls.Add(this.btnAddSch);
 			this.Controls.Add(this.groupBox3);
@@ -338,6 +325,5 @@
 		private System.Windows.Forms.GroupBox groupBox3;
 		private System.Windows.Forms.Button btnAddSch;
 		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button btnShowAll;
 	}
 }

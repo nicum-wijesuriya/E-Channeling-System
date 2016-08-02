@@ -48,7 +48,6 @@
 			this.dgvDoctors.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
 			this.dgvDoctors.Size = new System.Drawing.Size(619, 269);
 			this.dgvDoctors.TabIndex = 0;
-			this.dgvDoctors.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvDoctors_CellMouseClick);
 			// 
 			// btnClose
 			// 
