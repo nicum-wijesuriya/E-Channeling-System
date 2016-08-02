@@ -33,14 +33,18 @@
 			this.btnCancelAppointment = new System.Windows.Forms.Button();
 			this.btnSetAppointment = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
+			this.btnDocDetails = new System.Windows.Forms.Button();
 			this.btnAddSchedule = new System.Windows.Forms.Button();
 			this.btnRegister = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.btnDocDetails = new System.Windows.Forms.Button();
+			this.btnAppointments = new System.Windows.Forms.Button();
+			this.btnPatients = new System.Windows.Forms.Button();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.groupBox2.SuspendLayout();
 			this.groupBox3.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox2
@@ -81,16 +85,27 @@
 			// 
 			// groupBox3
 			// 
-			this.groupBox3.Controls.Add(this.btnDocDetails);
 			this.groupBox3.Controls.Add(this.btnAddSchedule);
 			this.groupBox3.Controls.Add(this.btnRegister);
 			this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox3.Location = new System.Drawing.Point(354, 119);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(279, 373);
+			this.groupBox3.Size = new System.Drawing.Size(279, 270);
 			this.groupBox3.TabIndex = 2;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Doctor";
+			// 
+			// btnDocDetails
+			// 
+			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
+			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDocDetails.Location = new System.Drawing.Point(401, 21);
+			this.btnDocDetails.Name = "btnDocDetails";
+			this.btnDocDetails.Size = new System.Drawing.Size(154, 37);
+			this.btnDocDetails.TabIndex = 6;
+			this.btnDocDetails.Text = "Doctor Details";
+			this.btnDocDetails.UseVisualStyleBackColor = false;
+			this.btnDocDetails.Click += new System.EventHandler(this.btnDocDetails_Click);
 			// 
 			// btnAddSchedule
 			// 
@@ -135,17 +150,38 @@
 			this.label1.TabIndex = 4;
 			this.label1.Text = "ACME MEDICAL CENTER";
 			// 
-			// btnDocDetails
+			// btnAppointments
 			// 
-			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
-			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDocDetails.Location = new System.Drawing.Point(40, 265);
-			this.btnDocDetails.Name = "btnDocDetails";
-			this.btnDocDetails.Size = new System.Drawing.Size(194, 66);
-			this.btnDocDetails.TabIndex = 6;
-			this.btnDocDetails.Text = "Doctor Details";
-			this.btnDocDetails.UseVisualStyleBackColor = false;
-			this.btnDocDetails.Click += new System.EventHandler(this.btnDocDetails_Click);
+			this.btnAppointments.BackColor = System.Drawing.SystemColors.Control;
+			this.btnAppointments.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnAppointments.Location = new System.Drawing.Point(222, 21);
+			this.btnAppointments.Name = "btnAppointments";
+			this.btnAppointments.Size = new System.Drawing.Size(154, 37);
+			this.btnAppointments.TabIndex = 7;
+			this.btnAppointments.Text = "Appointment Details";
+			this.btnAppointments.UseVisualStyleBackColor = false;
+			// 
+			// btnPatients
+			// 
+			this.btnPatients.BackColor = System.Drawing.SystemColors.Control;
+			this.btnPatients.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnPatients.Location = new System.Drawing.Point(42, 21);
+			this.btnPatients.Name = "btnPatients";
+			this.btnPatients.Size = new System.Drawing.Size(154, 37);
+			this.btnPatients.TabIndex = 8;
+			this.btnPatients.Text = "Patient Details";
+			this.btnPatients.UseVisualStyleBackColor = false;
+			// 
+			// groupBox1
+			// 
+			this.groupBox1.Controls.Add(this.btnPatients);
+			this.groupBox1.Controls.Add(this.btnAppointments);
+			this.groupBox1.Controls.Add(this.btnDocDetails);
+			this.groupBox1.Location = new System.Drawing.Point(33, 408);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(600, 72);
+			this.groupBox1.TabIndex = 9;
+			this.groupBox1.TabStop = false;
 			// 
 			// ScrHome
 			// 
@@ -153,6 +189,7 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(659, 504);
+			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.groupBox3);
@@ -166,6 +203,7 @@
 			this.groupBox2.ResumeLayout(false);
 			this.groupBox3.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+			this.groupBox1.ResumeLayout(false);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -182,6 +220,9 @@
 		private System.Windows.Forms.PictureBox pictureBox1;
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.Button btnDocDetails;
+		private System.Windows.Forms.Button btnAppointments;
+		private System.Windows.Forms.Button btnPatients;
+		private System.Windows.Forms.GroupBox groupBox1;
 
 
 	}
