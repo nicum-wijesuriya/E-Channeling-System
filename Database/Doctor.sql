@@ -123,11 +123,11 @@ BEGIN
 	Select distinct(DID), concat(Title,FName,' ',LName) from AvailableDoctors;
 END //
 DELIMITER ;
-
+drop procedure AvailableDoctorsForSpecialization;
 DELIMITER //
 create procedure AvailableDoctorsForSpecialization(vSID int)
 BEGIN
-	Select DID, concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
+	Select distinct(DID), concat(Title,'', FName,' ', LName) from AvailableDoctors where SID = vSID;
 END //
 DELIMITER ;
 
@@ -138,6 +138,7 @@ BEGIN
 	Select distinct(DID), concat(Title,FName,' ',LName), Contact, Email, Fee from Doctor;
 END //
 DELIMITER ;
+call AvailableDoctorsForSpecialization(2);
+select * from Doc_Spec;
 
-
-
+select * from speciality;

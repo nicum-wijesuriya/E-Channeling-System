@@ -81,12 +81,13 @@
 			// 
 			// groupBox3
 			// 
+			this.groupBox3.Controls.Add(this.btnDocDetails);
 			this.groupBox3.Controls.Add(this.btnAddSchedule);
 			this.groupBox3.Controls.Add(this.btnRegister);
 			this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.groupBox3.Location = new System.Drawing.Point(354, 119);
 			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(279, 270);
+			this.groupBox3.Size = new System.Drawing.Size(279, 373);
 			this.groupBox3.TabIndex = 2;
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Doctor";
@@ -138,7 +139,7 @@
 			// 
 			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
 			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDocDetails.Location = new System.Drawing.Point(394, 405);
+			this.btnDocDetails.Location = new System.Drawing.Point(40, 265);
 			this.btnDocDetails.Name = "btnDocDetails";
 			this.btnDocDetails.Size = new System.Drawing.Size(194, 66);
 			this.btnDocDetails.TabIndex = 6;
@@ -152,7 +153,6 @@
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.White;
 			this.ClientSize = new System.Drawing.Size(659, 504);
-			this.Controls.Add(this.btnDocDetails);
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.pictureBox1);
 			this.Controls.Add(this.groupBox3);

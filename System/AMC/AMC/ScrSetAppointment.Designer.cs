@@ -287,7 +287,7 @@
 			// label8
 			// 
 			this.label8.AutoSize = true;
-			this.label8.Location = new System.Drawing.Point(20, 268);
+			this.label8.Location = new System.Drawing.Point(11, 42);
 			this.label8.Name = "label8";
 			this.label8.Size = new System.Drawing.Size(27, 13);
 			this.label8.TabIndex = 0;
@@ -479,6 +479,7 @@
 			this.groupBox2.Controls.Add(this.pnlNationality);
 			this.groupBox2.Controls.Add(this.grpPersonalTitle);
 			this.groupBox2.Controls.Add(this.grpAcademicTitle);
+			this.groupBox2.Controls.Add(this.label8);
 			this.groupBox2.Controls.Add(this.groupBox3);
 			this.groupBox2.Controls.Add(this.txtHomeNo);
 			this.groupBox2.Controls.Add(this.txtLastName);
@@ -493,7 +494,7 @@
 			this.groupBox2.Controls.Add(this.groupBox4);
 			this.groupBox2.Controls.Add(this.label3);
 			this.groupBox2.Enabled = false;
-			this.groupBox2.Location = new System.Drawing.Point(8, 238);
+			this.groupBox2.Location = new System.Drawing.Point(12, 230);
 			this.groupBox2.Name = "groupBox2";
 			this.groupBox2.Size = new System.Drawing.Size(546, 344);
 			this.groupBox2.TabIndex = 8;
@@ -648,7 +649,6 @@
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.btnSave);
-			this.Controls.Add(this.label8);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.groupBox2);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -671,7 +671,6 @@
 			this.groupBox3.ResumeLayout(false);
 			this.groupBox3.PerformLayout();
 			this.ResumeLayout(false);
-			this.PerformLayout();
 
 		}
 
