@@ -15,12 +15,13 @@ namespace AMC
 	public partial class ScrDoctors : Form
 	{
 		int row;
-
+		ComboBoxItem SelectedDoctor;
 		public ScrDoctors()
 		{
 			InitializeComponent();
 			FillDoctor();
 			row = -1;
+			SelectedDoctor = null;
 		}
 
 		private void FillDoctor()
@@ -46,8 +47,6 @@ namespace AMC
 				this.dgvDoctors.Rows.Add(row);
 			}
 			rs.Close();
-
-
 		}
 
 		private void btnClose_Click(object sender, EventArgs e)
@@ -58,7 +57,32 @@ namespace AMC
 
 		private void ScrDoctors_FormClosing(object sender, FormClosingEventArgs e)
 		{
-			var scr = (ScrHome)Tag;
+			Form scr;
+			if(this.SelectedDoctor == null)
+			{
+				if (this.Tag.GetType() == typeof(scrAddSchedule))
+				{
+					scr = this.Tag as scrAddSchedule;
+				}	
+				else
+				{
+					scr = this.Tag as ScrHome;
+				}				
+			}
+			else
+			{
+				
+				//scr.SelectDoctor(this.SelectedDoctor);
+				if (this.Tag.GetType() == typeof(ScrHome))
+				{
+					scr = new scrAddSchedule();
+					scr.Tag = this.Tag as ScrHome;
+				}
+				else
+				{
+					scr = this.Tag as scrAddSchedule;
+				}				
+			}
 			scr.Show();
 		}
 
@@ -71,8 +95,21 @@ namespace AMC
 
 			this.dgvDoctors.Rows[row].Selected = true;
 
-			this.SelectedNICNo = dgvPatients.Rows[row].Cells[4].Value as String;
-			this.lblTest.Text = this.SelectedNICNo;
+			this.SelectedDoctor = new ComboBoxItem(this.dgvDoctors.Rows[row].Cells[0].Value as String, this.dgvDoctors.Rows[row].Cells[1].Value as String);
+			this.lblTest.Text = this.SelectedDoctor.ToString();
+		}
+
+		private void btnSelect_Click(object sender, EventArgs e)
+		{
+			if(this.SelectedDoctor != null)
+			{
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please Select a Doctor from the List");
+			}
+			
 		}
 	}
 }
