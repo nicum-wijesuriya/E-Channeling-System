@@ -61,6 +61,7 @@
 			this.btnClear = new System.Windows.Forms.Button();
 			this.btnSearch = new System.Windows.Forms.Button();
 			this.btnClose = new System.Windows.Forms.Button();
+			this.button1 = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
@@ -400,12 +401,23 @@
 			this.btnClose.UseVisualStyleBackColor = false;
 			this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
 			// 
+			// button1
+			// 
+			this.button1.Location = new System.Drawing.Point(594, 24);
+			this.button1.Name = "button1";
+			this.button1.Size = new System.Drawing.Size(97, 23);
+			this.button1.TabIndex = 11;
+			this.button1.Text = "All Appointments";
+			this.button1.UseVisualStyleBackColor = true;
+			this.button1.Click += new System.EventHandler(this.button1_Click);
+			// 
 			// ScrCancelAppointment
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.Color.AliceBlue;
 			this.ClientSize = new System.Drawing.Size(719, 340);
+			this.Controls.Add(this.button1);
 			this.Controls.Add(this.btnClose);
 			this.Controls.Add(this.btnClear);
 			this.Controls.Add(this.btnSave);
@@ -469,5 +481,6 @@
 		private System.Windows.Forms.Label label18;
 		private System.Windows.Forms.Button btnSearch;
 		private System.Windows.Forms.Button btnClose;
+		private System.Windows.Forms.Button button1;
 	}
 }

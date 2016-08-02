@@ -303,5 +303,13 @@ namespace AMC
 			var scr = (ScrHome)Tag;
 			scr.Show();
 		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			ScrPatientAppointment scr = new ScrPatientAppointment();
+			scr.Tag = this;			
+			scr.Show();
+			this.Hide();
+		}
 	}
 }

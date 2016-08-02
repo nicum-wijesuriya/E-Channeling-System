@@ -78,6 +78,12 @@
     <Compile Include="ScrHome.Designer.cs">
       <DependentUpon>ScrHome.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScrPatientAppointment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScrPatientAppointment.Designer.cs">
+      <DependentUpon>ScrPatientAppointment.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScrPatients.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScrHome.resx">
       <DependentUpon>ScrHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScrPatientAppointment.resx">
+      <DependentUpon>ScrPatientAppointment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScrPatients.resx">
       <DependentUpon>ScrPatients.cs</DependentUpon>
