@@ -232,9 +232,25 @@ drop procedure FindAppointmentByID;
 DELIMITER //
 create procedure FindAppointmentByID(vRefID int)
 BEGIN
-	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID), A.Date, A.Time,A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) from appointment as A where RefID = vRefID;
+	Select A.RefID, (Select concat(Title, ' ', FName, ' ', LName) from Doctor where DID = A.DID), A.Date, A.Time,
+    A.QueNo,A.Fee, (Select Email from Patient where PID = A.PID) 
+    from appointment as A 
+    where RefID = vRefID;
 END //
 DELIMITER ;
+
+drop procedure AllAppointments;
+DELIMITER //
+create procedure AllAppointments()
+BEGIN
+	Select A.RefID, (Select concat(Title,' ',FName,' ', LName) from Doctor where DID = A.DID), A.SchID, 
+    A.Date, A.Time, A.QueNo, (Select concat(Title, ' ',FName, ' ', LName) from Patient where PID = A.PID),
+    (Select NICNo from Patient where PID = A.PID)
+    from appointment as A;
+END //
+DELIMITER ;
+
+call AllAppointments();
 
 select * from Appointment;
 select getTime(1);
