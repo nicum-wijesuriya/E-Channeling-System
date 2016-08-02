@@ -116,6 +116,7 @@
 			this.btnCancel.TabIndex = 4;
 			this.btnCancel.Text = "Cancel";
 			this.btnCancel.UseVisualStyleBackColor = true;
+			this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
 			// 
 			// btnClose
 			// 
@@ -179,6 +180,7 @@
 			this.Controls.Add(this.grpPatients);
 			this.Controls.Add(this.groupBox1);
 			this.Name = "ScrPatientAppointment";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "ScrPatientAppointment";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.ScrPatientAppointment_FormClosing);
 			this.Load += new System.EventHandler(this.ScrPatientAppointment_Load);

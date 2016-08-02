@@ -33,9 +33,9 @@
 			this.btnCancelAppointment = new System.Windows.Forms.Button();
 			this.btnSetAppointment = new System.Windows.Forms.Button();
 			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.btnDocDetails = new System.Windows.Forms.Button();
 			this.btnAddSchedule = new System.Windows.Forms.Button();
 			this.btnRegister = new System.Windows.Forms.Button();
+			this.btnDocDetails = new System.Windows.Forms.Button();
 			this.pictureBox1 = new System.Windows.Forms.PictureBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.btnAppointments = new System.Windows.Forms.Button();
@@ -95,18 +95,6 @@
 			this.groupBox3.TabStop = false;
 			this.groupBox3.Text = "Doctor";
 			// 
-			// btnDocDetails
-			// 
-			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
-			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.btnDocDetails.Location = new System.Drawing.Point(401, 21);
-			this.btnDocDetails.Name = "btnDocDetails";
-			this.btnDocDetails.Size = new System.Drawing.Size(154, 37);
-			this.btnDocDetails.TabIndex = 6;
-			this.btnDocDetails.Text = "Doctor Details";
-			this.btnDocDetails.UseVisualStyleBackColor = false;
-			this.btnDocDetails.Click += new System.EventHandler(this.btnDocDetails_Click);
-			// 
 			// btnAddSchedule
 			// 
 			this.btnAddSchedule.BackColor = System.Drawing.SystemColors.Control;
@@ -130,6 +118,18 @@
 			this.btnRegister.Text = "Register";
 			this.btnRegister.UseVisualStyleBackColor = false;
 			this.btnRegister.Click += new System.EventHandler(this.button1_Click);
+			// 
+			// btnDocDetails
+			// 
+			this.btnDocDetails.BackColor = System.Drawing.SystemColors.Control;
+			this.btnDocDetails.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.btnDocDetails.Location = new System.Drawing.Point(401, 21);
+			this.btnDocDetails.Name = "btnDocDetails";
+			this.btnDocDetails.Size = new System.Drawing.Size(154, 37);
+			this.btnDocDetails.TabIndex = 6;
+			this.btnDocDetails.Text = "Doctor Details";
+			this.btnDocDetails.UseVisualStyleBackColor = false;
+			this.btnDocDetails.Click += new System.EventHandler(this.btnDocDetails_Click);
 			// 
 			// pictureBox1
 			// 
@@ -171,6 +171,7 @@
 			this.btnPatients.TabIndex = 8;
 			this.btnPatients.Text = "Patient Details";
 			this.btnPatients.UseVisualStyleBackColor = false;
+			this.btnPatients.Click += new System.EventHandler(this.btnPatients_Click);
 			// 
 			// groupBox1
 			// 

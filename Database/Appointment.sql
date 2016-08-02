@@ -257,3 +257,11 @@ select getTime(1);
 
 drop function getFee;
 drop function getTime;
+
+drop procedure FindAppointmentByPatient ;
+DELIMITER //
+create procedure FindAppointmentByPatient(vPID int)
+BEGIN
+	Select A.RefID, (Select concat(Title,FName, LName) from Doctor where DID = A.DID) as Doctor, A.Date, A.Time,A.QueNo,A.Fee from appointment as A where PID = vPID AND Date(A.Date) > Date(NOW());
+END //
+DELIMITER ;

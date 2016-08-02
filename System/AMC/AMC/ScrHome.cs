@@ -75,6 +75,14 @@ namespace AMC
 			this.Hide();
 		}
 
+		private void btnPatients_Click(object sender, EventArgs e)
+		{
+			ScrPatientAppointment scr = new ScrPatientAppointment();
+			scr.Tag = this;
+			scr.Show();
+			this.Hide();
+		}
+
 	
 	}
 }

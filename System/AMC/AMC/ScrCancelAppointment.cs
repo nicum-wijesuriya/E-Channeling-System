@@ -317,7 +317,8 @@ namespace AMC
 			this.txtRefID.Text = value;
 		}
 		public void callUpdate()
-		{
+		{			
+			this.btnSearch_Click(new Object(), new EventArgs());
 			this.btnUpdate_Click(new Object(), new EventArgs());
 		}
 	}

@@ -108,6 +108,7 @@ namespace AMC
 		public void CallBtnCheck()
 		{
 			this.btnCheck_Click(this,new EventArgs());
+			
 		}
 		public void ClearPatientFields()
 		{

@@ -75,8 +75,17 @@ namespace AMC
 		{
 				if(this.Tag != null)
 				{
-					ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
-					scr.Show();
+					if (this.Tag.GetType() == typeof(ScrHome))
+					{
+						ScrHome scr = this.Tag as ScrHome;
+						scr.Show();
+					}
+					else
+					{
+						ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
+						scr.Show();
+					}
+					
 				}
 				
 		}
@@ -88,14 +97,18 @@ namespace AMC
 	//	String SelectedRefID;
 		private void dgvPatient_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
 		{
+			this.row = e.RowIndex;
+			this.FillAppointments();	
+		}
+		private void FillAppointments()
+		{
 			try
 			{
-				this.row = e.RowIndex;
-				if(row != -1)
+				if (row != -1)
 				{
 					Operator op = new Operator();
-					
-					
+
+
 					this.dgvAppointment.Rows.Clear();
 					this.dgvPatient.Refresh();
 
@@ -108,13 +121,13 @@ namespace AMC
 					this.dgvAppointment.Columns[3].Name = "Time";
 					this.dgvAppointment.Columns[4].Name = "Queue Number";
 					this.dgvAppointment.Columns[5].Name = "Fee";
-				//	this.lblSelectedReference.Text = this.dgvPatient.Rows[row].Cells[0].Value as String;
+					//	this.lblSelectedReference.Text = this.dgvPatient.Rows[row].Cells[0].Value as String;
 					MySqlDataReader rs = op.FindAppointmentByPatient(this.dgvPatient.Rows[row].Cells[0].Value as String);
 					if (rs == null || !rs.HasRows)
 					{
-						Validation.valGeneral("No Appoinments Avaialable");					
+						Validation.valGeneral("No Appoinments Avaialable");
 					}
-					
+
 					while (rs.Read())
 					{
 						String[] DataGridRow = { rs.GetString(0), rs.GetString(1), rs.GetString(2), rs.GetString(3), rs.GetString(4), rs.GetString(5) };
@@ -126,9 +139,10 @@ namespace AMC
 
 				}
 			}
-			catch (Validation){}			
+			catch (Validation)
+			{
+			}	
 		}
-
 		private void button1_Click(object sender, EventArgs e)
 		{
 			if(row != -1)
@@ -150,11 +164,30 @@ namespace AMC
 
 		private void btnUpdate_Click(object sender, EventArgs e)
 		{
-			ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
-			scr.setRefID(this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String);
-			scr.callUpdate();
-			
-			this.Close();
+			if(appRow != -1)
+			{
+				if(this.Tag.GetType() == typeof(ScrCancelAppointment))
+				{
+					ScrCancelAppointment scr = this.Tag as ScrCancelAppointment;
+					scr.setRefID(this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String);
+					scr.callUpdate();
+				}
+				else
+				{
+					ScrCancelAppointment scr =new ScrCancelAppointment();
+					scr.setRefID(this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String);
+					scr.callUpdate();
+					scr.Tag = this.Tag;
+					this.Tag = scr;
+				}
+				
+
+				this.Close();
+			}
+			else
+			{
+				MessageBox.Show("Please select a Appointment");
+			}
 		}
 
 		private void dgvAppointment_CellMouseClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -165,6 +198,28 @@ namespace AMC
 				this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String;
 			}
 			
+		}
+
+		private void btnCancel_Click(object sender, EventArgs e)
+		{
+			if(this.appRow != -1)
+			{
+				Operator op = new Operator();
+				op.CancelAppointment(this.lblSelectedReference.Text = this.dgvAppointment.Rows[appRow].Cells[0].Value as String);
+				this.RefereshDataGrids();
+			}
+			else
+			{
+				MessageBox.Show("Please select a Appointment");
+			}
+		}
+
+		private void RefereshDataGrids()
+		{
+			this.FillPatients();			
+			this.FillAppointments();
+			this.row = -1;
+			this.appRow = -1;
 		}
 	}
 }
