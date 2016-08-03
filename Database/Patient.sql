@@ -80,6 +80,7 @@ Begin
 		SIGNAL SQLSTATE '45000'
 		SET MESSAGE_TEXT = 'Address Street cannot be empty';
     END IF;
+    
 	insert into Patient (FName,LName,ANumber, AStreet,ACity,Email,NICNo,Title,CMobile,CHome,IsLocal) 
 	values (vFName,vLName,vANumber,vAStreet,vACity,vEmail,vNICNo,vTitle,vCMobile,vCHome,vIsLocal);
 	Select PID from patient order by PID desc LIMIT 1 ;
